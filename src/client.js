@@ -4220,7 +4220,13 @@ window.__ModuleLoader__.load({
       },
         E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
         E('span', { className: 'bw-row-icon' }, iconChild),
-        E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'), title: workspace.title || workspace.leaf }, workspace.leaf),
+        E('span', {
+          className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'),
+          // Official parity: the official browser's hover card carries the disk
+          // path for a workspace row. Keep the group-qualified display name on
+          // the first line and append the path, so a grouped row shows both.
+          title: [workspace.title || workspace.leaf, workspace.path].filter(Boolean).join('\n'),
+        }, workspace.leaf),
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
         E('span', { className: 'bw-row-actions', onClick: (e) => e.stopPropagation() },
           // "New group in this workspace" sits LEFT of "New session": it opens
@@ -4303,7 +4309,10 @@ window.__ModuleLoader__.load({
               : E(ui.StateDot, { state: status.state, size: 10 }))
             : E('span', { className: 'bw-dot' }),
         ),
-        E('span', { className: 'bw-row-label' }, node.leaf || node.title),
+        // The row body shows only its leaf segment (the group row above carries
+        // the prefix), so the hover card restores the full display title the
+        // official browser shows.
+        E('span', { className: 'bw-row-label', title: node.title || node.leaf }, node.leaf || node.title),
         node.hasActiveSchedule
           ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutline16', 14))
           : null,

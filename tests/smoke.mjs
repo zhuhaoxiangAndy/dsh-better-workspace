@@ -840,3 +840,17 @@ test('session drag: grouped-row drop joins the group; rows get a group button', 
   assert.match(text, /onAddGroup: count > 0 \? \(\) => setDialog\(\{/, 'it is offered only when the workspace has sessions to move')
   assert.match(text, /targets: sessionsOf\(workspace\)\.map\(\(s\) => \(\{ value: 'sess:' \+ s\.id, label: s\.title \}\)\)/, 'picker scoped to this workspace')
 })
+
+/**
+ * Official hover parity: the official browser's hover card carries the disk
+ * path on a workspace row and the full display title on a session row. The
+ * sidebar replacement had dropped both (display name only / no title at all),
+ * so hovering stopped showing where a workspace actually lives.
+ */
+test('hover cards: workspace rows expose the disk path, session rows the full title', () => {
+  const text = read('src/client.js')
+  assert.match(text, /title: \[workspace\.title \|\| workspace\.leaf, workspace\.path\]\.filter\(Boolean\)\.join\('\\n'\)/,
+    'workspace hover keeps the group-qualified name and appends the disk path')
+  assert.match(text, /className: 'bw-row-label', title: node\.title \|\| node\.leaf/,
+    'session hover carries the full display title again')
+})
