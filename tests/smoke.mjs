@@ -141,11 +141,12 @@ test('quote-on-land effect: blank-born only, user renames pinned, stability wind
   assert.match(text, /!blankSeen\.has\(id\) \|\| touched\.has\(id\)/, 'untouched blankSeen/human guard')
   assert.doesNotMatch(text, /titledSeenRef/, '0.9.1 first-snapshot heuristic must be gone')
   // User renames route through the pinning wrapper; the automatic path alone
-  // keeps the raw injected renameSession. 5 call sites: drag-into-session-group,
-  // session rename dialog, session-group rename, plus the two group-move
-  // entry points (single session / session-group batch).
+  // keeps the raw injected renameSession. 6 call sites: drag-into-session-group,
+  // session rename dialog, session-group rename, the two group-move entry points
+  // (single session / session-group batch), and dropping a session onto a row
+  // inside another group (that drop now JOINS the group instead of flat-reordering).
   assert.match(text, /const renameByUser = \(sessionId, title\) => \{/)
-  assert.equal((text.match(/renameByUser\(/g) || []).length, 5, 'exactly 5 user call sites')
+  assert.equal((text.match(/renameByUser\(/g) || []).length, 6, 'exactly 6 user call sites')
   // The automatic quote waits out a stabilization window instead of racing
   // the async LLM name.
   assert.match(text, /TITLE_STABLE_MS = 20000/)
@@ -517,15 +518,22 @@ test('session reorder: host action preferred, browser-local order as the fallbac
   assert.equal('ws3' in stale.sessionOrder, false)
 
   // Wiring: the host action stays authoritative; the local order only applies
-  // where the host no longer injects one.
-  assert.match(text, /typeof insertSessionBefore === 'function' \? \[\] : sessionOrderOf\(workspace\.workspaceId\)/,
-    'the host order must win wherever the action exists')
+  // where the host no longer injects one — or has refused for that workspace.
+  // 0.1.5-rc.x resolves insertSessionBefore with a RemoteResult, so a refusal
+  // arrives as {ok:false} and must never look like a silent no-op.
+  assert.match(text, /typeof insertSessionBefore === 'function' && !hostOrderFailed\(workspace\.workspaceId\)/,
+    'the host order wins wherever the action exists and has not refused')
   assert.match(text, /actions\.setSessionOrder\(workspaceId, reorderIds\(flat\.map/,
     'the fallback commits the move into the local order')
   assert.match(text, /const sessionOrderMap = useStore \? \(useStore\(s => s\.sessionOrder\) \|\| \{\}\) : \{\}/,
     'the browser subscribes to the local order')
-  assert.match(text, /if \(typeof insertSessionBefore === 'function'\) \{\n          Promise\.resolve\(\)/,
+  assert.match(text, /if \(typeof insertSessionBefore === 'function'\) \{\n            return Promise\.resolve\(\)/,
     'the host channel is tried first in the drop commit')
+  assert.match(text, /if \(result && result\.ok === false\) throw new Error\(result\.error \? result\.error\.message : 'session reorder failed'\)/,
+    'a resolved refusal is turned into an error')
+  assert.match(text, /hostOrderFailedRef\.current\.add\(workspaceId\)/,
+    'the refusing workspace hands the order to the device-local fallback')
+  assert.match(text, /fail\(messageOf\(error\)\)/, 'the refusal is surfaced, never silent')
 })
 
 /**
@@ -807,4 +815,28 @@ test('session rename: using() preferred, binding() fallback for 0.1.5-rc.x hosts
   assert.match(body, /typeof sessions\.binding === 'function' \? sessions\.binding\(sessionId\) : undefined/, 'old binding fallback is probed too')
   assert.match(body, /face\.rename\(title\)/, 'old contract renames through the session face')
   assert.match(body, /throw new Error\('session rename is unavailable on this host'\)/, 'fails loud when neither contract exists')
+})
+
+/**
+ * Session drag, second pass: dropping a session onto a session that lives
+ * inside a name group joins that group (0.14.0 flat-reordered only and said so
+ * in its known-limitations list), and dropping still ends at the host order —
+ * with the device-local fallback whenever the host refuses. Workspace rows also
+ * carry a "new group" button left of "new session".
+ */
+test('session drag: grouped-row drop joins the group; rows get a group button', () => {
+  const text = read('src/client.js')
+  const start = text.indexOf('const commitSessionDrop = (workspaceId, targetSessionId, half) =>')
+  const end = text.indexOf('const commitSessionMoveInto = (workspaceId, groupPath)')
+  assert.ok(start !== -1 && end > start, 'commitSessionDrop sits before commitSessionMoveInto')
+  const body = text.slice(start, end)
+  assert.match(body, /const targetGroup = targetRow \? groupPrefixOf\(targetRow\.title\) : ''/, 'the drop reads the target row group')
+  assert.match(body, /const nextTitle = targetGroup !== '' \? targetGroup \+ '\/' \+ leafOf\(source\.title\) : leafOf\(source\.title\)/, 'the dragged leaf keeps its name under the target group')
+  assert.match(body, /renameByUser\(source\.sessionId, nextTitle\)\.then\(commitOrder\)\.catch\(fail\)/, 'group join renames first (humanTouched), then applies the anchor')
+  assert.match(body, /if \(result && result\.ok === false\) throw new Error/, 'resolved host refusal is turned into an error')
+  assert.match(body, /hostOrderFailedRef\.current\.add\(workspaceId\)/, 'the local order takes over for the refusing workspace')
+  // feat2: the per-workspace group button rides the shared move dialog.
+  assert.match(text, /onAddGroup \? E\('button'/, 'the workspace row renders the extra button only when it can act')
+  assert.match(text, /onAddGroup: count > 0 \? \(\) => setDialog\(\{/, 'it is offered only when the workspace has sessions to move')
+  assert.match(text, /targets: sessionsOf\(workspace\)\.map\(\(s\) => \(\{ value: 'sess:' \+ s\.id, label: s\.title \}\)\)/, 'picker scoped to this workspace')
 })

@@ -4204,7 +4204,7 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function WorkspaceRow({ workspace, depth, count, sessionsOpen, onToggle, onStart, onContextMenu, currentInside, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
+    function WorkspaceRow({ workspace, depth, count, sessionsOpen, onToggle, onStart, onAddGroup, onContextMenu, currentInside, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
       const iconEl = iconOf(iconMode, sessionsOpen)
       const iconChild = pulse
         ? E(PulseGlow, { state: pulse }, iconEl || (typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null))
@@ -4223,6 +4223,16 @@ window.__ModuleLoader__.load({
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'), title: workspace.title || workspace.leaf }, workspace.leaf),
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
         E('span', { className: 'bw-row-actions', onClick: (e) => e.stopPropagation() },
+          // "New group in this workspace" sits LEFT of "New session": it opens
+          // the move dialog in picker mode scoped to this workspace's sessions,
+          // because a group still only exists once a member lands in it.
+          onAddGroup ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': t('group.new'),
+            title: t('group.new'),
+            onClick: (e) => { e.stopPropagation(); onAddGroup() },
+          }, icon('IconFolderOutline16', 16) || icon('IconProjectAddOutline16', 16)) : null,
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutline16')),
         ),
       )
@@ -4970,6 +4980,15 @@ window.__ModuleLoader__.load({
       const [customize, setCustomize] = React.useState(null) // { kind, entryKey, name }
       const [errorText, setErrorText] = React.useState(null)
       const [drag, setDrag] = React.useState(null) // { kind: 'workspace'|'session', source, over } | null
+      // Host reorder can fail WITHOUT throwing: dsh 0.1.5-rc.x resolves
+      // insertSessionBefore with a RemoteResult ({ok:false} for
+      // workspace/move-invalid) instead of rejecting, and 0.1.6-alpha.1 dropped
+      // the action from the browser contract altogether. Remember the
+      // workspaces where the host refused so the device-local order takes over
+      // there — a user's drag must never look like a silent no-op.
+      const hostOrderFailedRef = React.useRef(null)
+      if (hostOrderFailedRef.current === null) hostOrderFailedRef.current = new Set()
+      const hostOrderFailed = (workspaceId) => hostOrderFailedRef.current.has(workspaceId)
       // Workspace drags arm their state one frame LATE (see workspaceDragEvents):
       // arming synchronously re-renders during the dragstart dispatch, the chain
       // expansion inserts rows above the drag source, the cursor leaves the
@@ -5186,7 +5205,9 @@ window.__ModuleLoader__.load({
           }
           return sorted
         }
-        const local = typeof insertSessionBefore === 'function' ? [] : sessionOrderOf(workspace.workspaceId)
+        const local = typeof insertSessionBefore === 'function' && !hostOrderFailed(workspace.workspaceId)
+          ? []
+          : sessionOrderOf(workspace.workspaceId)
         if (local.length === 0) return rows
         const remaining = new Map(rows.map((row) => [row.id, row]))
         const out = []
@@ -5629,16 +5650,42 @@ window.__ModuleLoader__.load({
         const anchor = half === 'after'
           ? (index === -1 ? undefined : (flat[index + 1] ? flat[index + 1].id : undefined))
           : targetSessionId
-        if (typeof insertSessionBefore === 'function') {
-          Promise.resolve()
-            .then(() => (anchor !== undefined ? insertSessionBefore(workspaceId, source.sessionId, anchor) : insertSessionBefore(workspaceId, source.sessionId)))
-            .catch(fail)
+        const commitLocalOrder = () => {
+          if (actions && typeof actions.setSessionOrder === 'function') {
+            actions.setSessionOrder(workspaceId, reorderIds(flat.map((s) => s.id), source.sessionId, anchor))
+          }
+        }
+        const commitOrder = () => {
+          if (typeof insertSessionBefore === 'function') {
+            return Promise.resolve()
+              .then(() => (anchor !== undefined ? insertSessionBefore(workspaceId, source.sessionId, anchor) : insertSessionBefore(workspaceId, source.sessionId)))
+              .then((result) => {
+                // 0.1.5-rc.x hosts RESOLVE with a RemoteResult: a refusal is
+                // {ok:false} (workspace/move-invalid), never a rejection.
+                if (result && result.ok === false) throw new Error(result.error ? result.error.message : 'session reorder failed')
+              })
+              .catch((error) => {
+                hostOrderFailedRef.current.add(workspaceId)
+                commitLocalOrder()
+                fail(messageOf(error))
+              })
+          }
+          // Host channel gone (0.1.6-alpha.1+): the device-local order owns it.
+          commitLocalOrder()
+          return Promise.resolve()
+        }
+        // Dropping onto a session that lives INSIDE a name group joins that
+        // group (0.14.0 only flat-reordered here — its known limitations said
+        // "拖到另一分组内的会话行仅做扁平重排"). Same-group drops stay a pure
+        // reorder; the anchor above is computed on the flat view either way.
+        const targetRow = flat.find((s) => s.id === targetSessionId)
+        const targetGroup = targetRow ? groupPrefixOf(targetRow.title) : ''
+        const nextTitle = targetGroup !== '' ? targetGroup + '/' + leafOf(source.title) : leafOf(source.title)
+        if (targetRow && targetGroup !== groupPrefixOf(source.title) && nextTitle !== source.title) {
+          renameByUser(source.sessionId, nextTitle).then(commitOrder).catch(fail)
           return
         }
-        // Host channel gone: commit the same move into the browser-local order.
-        if (actions && typeof actions.setSessionOrder === 'function') {
-          actions.setSessionOrder(workspaceId, reorderIds(flat.map((s) => s.id), source.sessionId, anchor))
-        }
+        commitOrder()
       }
       const commitSessionMoveInto = (workspaceId, groupPath) => {
         const source = drag.source
@@ -5844,6 +5891,15 @@ window.__ModuleLoader__.load({
           // Starting a session force-expands the workspace row: the user must
           // SEE the new session appear, even if the row was collapsed.
           onStart: () => { actions.setSessionsExpanded(workspace.workspaceId, true); startSession(workspace.workspaceId) },
+          // The per-workspace "new group" entry rides the shared move dialog in
+          // picker mode; it is offered only when there is a session to move
+          // (empty groups were retired in v0.12.0).
+          onAddGroup: count > 0 ? () => setDialog({
+            kind: 'group-move',
+            target: null,
+            targets: sessionsOf(workspace).map((s) => ({ value: 'sess:' + s.id, label: s.title })),
+            initial: '',
+          }) : undefined,
           onContextMenu: (e) => openCtx('workspace', workspace, e),
           dropHalf: wsDropHalf(workspace.workspaceId),
           dragEvents: workspaceDragEvents(workspace),
