@@ -154,6 +154,10 @@ window.__ModuleLoader__.load({
       'group.new': '新建分组',
       'cycle.order.page': '标签切换顺序：页面顺序（点击切换）',
       'cycle.order.recent': '标签切换顺序：最近访问（点击切换）',
+      'settings.collapseLimit': '会话折叠数量',
+      'settings.collapseLimit.all': '不限',
+      'settings.collapseLimit.hint': '每个分组里最多显示这么多个会话，超出的折叠为"+N"。留空 = 全部显示。',
+      'settings.collapseLimit.showAll': '显示全部',
     }
 
     const en = {
@@ -279,6 +283,10 @@ window.__ModuleLoader__.load({
       'group.new': 'New group',
       'cycle.order.page': 'Tab cycling order: page order (click to switch)',
       'cycle.order.recent': 'Tab cycling order: most recently visited (click to switch)',
+      'settings.collapseLimit': 'Session collapse limit',
+      'settings.collapseLimit.all': 'All',
+      'settings.collapseLimit.hint': 'Show at most this many sessions per group; the rest fold into a "+N" row. Empty = show everything.',
+      'settings.collapseLimit.showAll': 'Show all',
     }
 
     /* Third-language dictionaries, keyed by BCP 47 tag. Every entry must carry
@@ -410,6 +418,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'لا يمكن أن يكون مسار المجموعة فارغاً',
         'group.move.title': 'نقل إلى مجموعة',
         'group.new': 'مجموعة جديدة',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'الكل',
+        'settings.collapseLimit.hint': 'حد أقصى لعدد الجلسات المعروضة لكل مجموعة؛ والباقي يطوى في صف "+N". فارغ = عرض الكل.',
+        'settings.collapseLimit.showAll': 'عرض الكل',
         'cycle.order.page': 'ترتيب تبديل العلامات: ترتيب الصفحة',
         'cycle.order.recent': 'ترتيب تبديل العلامات: الأحدث زيارة',
       },
@@ -535,6 +547,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Der Ordnerpfad darf nicht leer sein',
         'group.move.title': 'In Gruppe verschieben',
         'group.new': 'Neue Gruppe',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Alle',
+        'settings.collapseLimit.hint': 'Maximal so viele Sitzungen pro Gruppe anzeigen; der Rest klappt in eine „+N“-Zeile. Leer = alles anzeigen.',
+        'settings.collapseLimit.showAll': 'Alle anzeigen',
         'cycle.order.page': 'Tab-Reihenfolge: Seitenreihenfolge',
         'cycle.order.recent': 'Tab-Reihenfolge: Zuletzt besucht',
       },
@@ -660,6 +676,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Le chemin du dossier ne doit pas être vide',
         'group.move.title': 'Déplacer vers le groupe',
         'group.new': 'Nouveau groupe',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Tout',
+        'settings.collapseLimit.hint': 'Afficher au plus ce nombre de sessions par groupe ; le reste se replie en ligne « +N ». Vide = tout afficher.',
+        'settings.collapseLimit.showAll': 'Tout afficher',
         'cycle.order.page': 'Ordre de navigation des onglets : ordre des pages',
         'cycle.order.recent': 'Ordre de navigation des onglets : dernier accès',
       },
@@ -785,6 +805,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'समूह पथ खाली नहीं हो सकता',
         'group.move.title': 'समूह में ले जाएँ',
         'group.new': 'नया समूह',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'सभी',
+        'settings.collapseLimit.hint': 'प्रति समूह इतने ही सत्र दिखाएँ; बाकी "+N" पंक्ति में मुड़ते हैं। खाली = सब दिखाएँ।',
+        'settings.collapseLimit.showAll': 'सब दिखाएँ',
         'cycle.order.page': 'टैब साइकिल क्रम: पेज क्रम',
         'cycle.order.recent': 'टैब साइकिल क्रम: हाल में देखे गए',
       },
@@ -910,6 +934,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Jalur folder tidak boleh kosong',
         'group.move.title': 'Pindahkan ke grup',
         'group.new': 'Grup baru',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Semua',
+        'settings.collapseLimit.hint': 'Tampilkan paling banyak sesi sebanyak ini per grup; sisanya lipat ke baris "+N". Kosong = tampilkan semua.',
+        'settings.collapseLimit.showAll': 'Tampilkan semua',
         'cycle.order.page': 'Urutan siklus tab: urutan halaman',
         'cycle.order.recent': 'Urutan siklus tab: terakhir dikunjungi',
       },
@@ -1035,6 +1063,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Il percorso della cartella non può essere vuoto',
         'group.move.title': 'Sposta nel gruppo',
         'group.new': 'Nuovo gruppo',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Tutti',
+        'settings.collapseLimit.hint': 'Mostra al massimo queste sessioni per gruppo; il resto si ripiega in una riga "+N". Vuoto = mostra tutto.',
+        'settings.collapseLimit.showAll': 'Mostra tutto',
         'cycle.order.page': 'Ordine ciclico delle schede: ordine delle pagine',
         'cycle.order.recent': 'Ordine ciclico delle schede: ultimi visitati',
       },
@@ -1160,6 +1192,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'フォルダーのパスを入力してください',
         'group.move.title': 'グループに移動',
         'group.new': '新しいグループ',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'すべて',
+        'settings.collapseLimit.hint': '各グループに表示するセッションはこの数まで。残りは「+N」行に折りたたまれます。空 = すべて表示。',
+        'settings.collapseLimit.showAll': 'すべて表示',
         'cycle.order.page': 'タブ切り替え順：ページ順',
         'cycle.order.recent': 'タブ切り替え順：最近アクセス',
       },
@@ -1285,6 +1321,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '폴더 경로를 입력해야 합니다',
         'group.move.title': '그룹으로 이동',
         'group.new': '새 그룹',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': '모두',
+        'settings.collapseLimit.hint': '그룹당 이 수만큼 세션을 표시하고, 나머지는 "+N" 행으로 접힙니다. 비우면 = 모두 표시.',
+        'settings.collapseLimit.showAll': '모두 표시',
         'cycle.order.page': '탭 전환 순서: 페이지 순서',
         'cycle.order.recent': '탭 전환 순서: 최근 방문',
       },
@@ -1410,6 +1450,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Het mappad mag niet leeg zijn',
         'group.move.title': 'Naar groep verplaatsen',
         'group.new': 'Nieuwe groep',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Alles',
+        'settings.collapseLimit.hint': 'Toon maximaal zoveel sessies per groep; de rest vouwt in een "+N"-rij. Leeg = alles tonen.',
+        'settings.collapseLimit.showAll': 'Alles tonen',
         'cycle.order.page': 'Tabvolgorde: pagina volgorde',
         'cycle.order.recent': 'Tabvolgorde: laatst bezocht',
       },
@@ -1535,6 +1579,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Ścieżka folderu nie może być pusta',
         'group.move.title': 'Przenieś do grupy',
         'group.new': 'Nowa grupa',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Wszystkie',
+        'settings.collapseLimit.hint': 'Pokaż co najwyżej tyle sesji w grupie; reszta zwija się do wiersza „+N”. Puste = pokaż wszystko.',
+        'settings.collapseLimit.showAll': 'Pokaż wszystkie',
         'cycle.order.page': 'Kolejność przełączania kart: kolejność stron',
         'cycle.order.recent': 'Kolejność przełączania kart: ostatnio odwiedzone',
       },
@@ -1660,6 +1708,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'O caminho da pasta não pode ficar vazio',
         'group.move.title': 'Mover para o grupo',
         'group.new': 'Novo grupo',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Tudo',
+        'settings.collapseLimit.hint': 'Mostrar no máximo estas sessões por grupo; o resto dobra numa linha "+N". Vazio = mostrar tudo.',
+        'settings.collapseLimit.showAll': 'Mostrar tudo',
         'cycle.order.page': 'Ordem de ciclo das guias: ordem das páginas',
         'cycle.order.recent': 'Ordem de ciclo das guias: mais recentes',
       },
@@ -1785,6 +1837,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Путь папки не может быть пустым',
         'group.move.title': 'Переместить в группу',
         'group.new': 'Новая группа',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Все',
+        'settings.collapseLimit.hint': 'Показывать не более этого числа сессий в группе; остальные сворачиваются в строку «+N». Пусто = показывать все.',
+        'settings.collapseLimit.showAll': 'Показать все',
         'cycle.order.page': 'Порядок переключения вкладок: порядок страниц',
         'cycle.order.recent': 'Порядок переключения вкладок: последние посещённые',
       },
@@ -1910,6 +1966,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Mappsökvägen får inte vara tom',
         'group.move.title': 'Flytta till grupp',
         'group.new': 'Ny grupp',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Alla',
+        'settings.collapseLimit.hint': 'Visa högst så många sessioner per grupp; resten viks in i en "+N"-rad. Tomt = visa alla.',
+        'settings.collapseLimit.showAll': 'Visa alla',
         'cycle.order.page': 'Flikcykelordning: sidordning',
         'cycle.order.recent': 'Flikcykelordning: senast besökt',
       },
@@ -2035,6 +2095,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'เส้นทางกลุ่มต้องไม่ว่าง',
         'group.move.title': 'ย้ายไปยังกลุ่ม',
         'group.new': 'กลุ่มใหม่',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'ทั้งหมด',
+        'settings.collapseLimit.hint': 'แสดงเซสชันต่อกลุ่มมากที่สุดเท่านี้; ส่วนที่เหลือย่อเป็นแถว "+N" ว่าง = แสดงทั้งหมด',
+        'settings.collapseLimit.showAll': 'แสดงทั้งหมด',
         'cycle.order.page': 'ลำดับการสลับแท็บ: ตามลำดับหน้า',
         'cycle.order.recent': 'ลำดับการสลับแท็บ: เข้าชมล่าสุด',
       },
@@ -2160,6 +2224,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Klasör yolu boş olamaz',
         'group.move.title': 'Gruba taşı',
         'group.new': 'Yeni grup',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Tümü',
+        'settings.collapseLimit.hint': 'Grup başına en fazla bu kadar oturum göster; kalanlar "+N" satırına katlanır. Boş = tümünü göster.',
+        'settings.collapseLimit.showAll': 'Tümünü göster',
         'cycle.order.page': 'Sekme döngü sırası: sayfa sırası',
         'cycle.order.recent': 'Sekme döngü sırası: en son ziyaret edilen',
       },
@@ -2285,6 +2353,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Đường dẫn nhóm không được để trống',
         'group.move.title': 'Chuyển vào nhóm',
         'group.new': 'Nhóm mới',
+        'settings.collapseLimit': 'Session collapse limit',
+        'settings.collapseLimit.all': 'Tất cả',
+        'settings.collapseLimit.hint': 'Hiển thị tối đa số phiên này mỗi nhóm; phần còn lại gập thành hàng "+N". Để trống = hiện tất cả.',
+        'settings.collapseLimit.showAll': 'Hiện tất cả',
         'cycle.order.page': 'Thứ tự chuyển thẻ: thứ tự trang',
         'cycle.order.recent': 'Thứ tự chuyển thẻ: truy cập gần nhất',
       },
@@ -2410,6 +2482,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'settings.collapseLimit': '會話摺疊數量',
+        'settings.collapseLimit.all': '全部',
+        'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
+        'settings.collapseLimit.showAll': '顯示全部',
         'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
         'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
@@ -2535,6 +2611,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'settings.collapseLimit': '會話摺疊數量',
+        'settings.collapseLimit.all': '全部',
+        'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
+        'settings.collapseLimit.showAll': '顯示全部',
         'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
         'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
@@ -2660,6 +2740,10 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '群組路徑不能為空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'settings.collapseLimit': '會話摺疊數量',
+        'settings.collapseLimit.all': '全部',
+        'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
+        'settings.collapseLimit.showAll': '顯示全部',
         'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
         'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
@@ -3315,7 +3399,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page' }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -4859,6 +4943,23 @@ window.__ModuleLoader__.load({
           }, E('span', { className: 'bw-switch-thumb' })),
         ),
         E('div', { className: 'bw-hint' }, t('settings.statusPulse.hint')),
+        E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.collapseLimit')),
+          E('input', {
+            type: 'number', min: 0, step: 1,
+            className: 'bw-input',
+            style: { width: 84 },
+            value: prefs.collapseLimit === undefined || prefs.collapseLimit === null ? '' : String(prefs.collapseLimit),
+            placeholder: t('settings.collapseLimit.all'),
+            title: t('settings.collapseLimit.hint'),
+            onChange: (e) => {
+              const raw = e.target.value
+              const v = raw === '' ? undefined : Math.max(0, Math.floor(Number(raw)))
+              setPref('collapseLimit', Number.isFinite(v) ? v : undefined)
+            },
+          }),
+        ),
+        E('div', { className: 'bw-hint' }, t('settings.collapseLimit.hint')),
         E('div', { className: 'bw-setting-label', style: { marginTop: 16 } }, t('settings.appearance')),
         E('div', { className: 'bw-hint' }, t('settings.appearance.hint')),
         E('div', { className: 'bw-appearance-box' },
@@ -5706,9 +5807,16 @@ window.__ModuleLoader__.load({
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
           const half = rowHalf(event)
-          setDrag(current => (current && current.over && current.over.kind === 'workspace' && current.over.target === workspace.workspaceId && current.over.half === half)
-            ? current
-            : (current ? { ...current, over: { kind: 'workspace', target: workspace.workspaceId, half } } : current))
+          // Edge band for the group-root INTO rule: 6px strips at either end.
+          let edge = false
+          try {
+            const rect = event.currentTarget.getBoundingClientRect()
+            edge = event.clientY < rect.top + 6 || event.clientY > rect.bottom - 6
+          } catch { edge = true }
+          setDrag(current => {
+            if (current && current.over && current.over.kind === 'workspace' && current.over.target === workspace.workspaceId && current.over.half === half && current.over.edge === edge) return current
+            return current ? { ...current, over: { kind: 'workspace', target: workspace.workspaceId, half, edge } } : current
+          })
         },
         onDrop: (event) => {
           event.preventDefault()
@@ -5728,11 +5836,13 @@ window.__ModuleLoader__.load({
           // upper half drops BESIDE (reorder), lower half drops INTO (group).
           const isGroupRoot = (items || []).some((w) => w.workspaceId !== workspace.workspaceId
             && String(w.title || '').startsWith(String(workspace.title || 'X') + '/'))
-          const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
-          // Edge-band convention (6px at either edge = reorder beside; the rest of
-          // the row = into the group). A group root's whole body reads as "drop in".
-          const rect = event.currentTarget.getBoundingClientRect()
-          const nearEdge = event.clientY < rect.top + 6 || event.clientY > rect.bottom - 6
+          // v0.19.0: over.edge was computed during onDragOver (DOM is alive there);
+          // reading currentTarget inside onDrop crashed the tree when the drop
+          // landed after the row re-rendered, taking the whole header with it.
+          const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : 'after'
+          const nearEdge = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId
+            ? drag.over.edge === true
+            : true
           if (isGroupRoot && !nearEdge) {
             const segs = splitTitleSegs(String(workspace.title || ''))
             const targetGroup = segs.length > 0 ? segs.join('/') : ''
@@ -6256,6 +6366,45 @@ window.__ModuleLoader__.load({
         // flattened, so sub levels never render there.
         if (workspace.sub && !searching && sessionsOpenOf(workspace.workspaceId)) {
           rows.push(...renderLevelRows(workspace.sub, depth + 1))
+        }
+        // v0.19.0 per-group collapse limit: after the limit-th visible session row,
+        // the remaining rows fold into one "+N" row. A click on it temporarily
+        // expands THIS group (override wins over the limit until toggled back).
+        const limit = Number.isFinite(Number(prefsMap.collapseLimit)) ? Number(prefsMap.collapseLimit) : Infinity
+        if (Number.isFinite(limit)) {
+          const shown = rows.filter((r) => r && r.props && r.props.node && r.props.node.id !== undefined)
+          if (shown.length > limit) {
+            const keep = new Set(shown.slice(0, limit).map((r) => r.props.node.id))
+            const folded = shown.length - limit
+            const expandedOverride = sessionsExpandedMap['collapse:' + workspace.workspaceId] === true
+            if (expandedOverride) {
+              rows.push(E('div', {
+                key: 'bw-clamp-off-' + workspace.workspaceId,
+                className: 'bw-row bw-clamp-row',
+                style: { paddingLeft: 8 + (depth + 1) * 12 },
+                onClick: () => actions.setSessionsExpanded('collapse:' + workspace.workspaceId, false),
+                role: 'button',
+              }, t('settings.collapseLimit.showAll')))
+            } else {
+              const clipped = []
+              let kept = 0
+              for (const r of rows) {
+                if (r && r.props && r.props.node && r.props.node.id !== undefined) {
+                  kept += 1
+                  if (kept > limit) continue
+                }
+                clipped.push(r)
+              }
+              clipped.push(E('div', {
+                key: 'bw-clamp-' + workspace.workspaceId,
+                className: 'bw-row bw-clamp-row',
+                style: { paddingLeft: 8 + (depth + 1) * 12 },
+                onClick: () => actions.setSessionsExpanded('collapse:' + workspace.workspaceId, true),
+                role: 'button',
+              }, '+' + folded))
+              return clipped
+            }
+          }
         }
         rows.push(...renderSessionTree(workspace, depth + 1))
         return rows
