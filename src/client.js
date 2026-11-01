@@ -5332,6 +5332,7 @@ window.__ModuleLoader__.load({
         useDirectoryFlow,
         pickDirectory, listDirectory, createDirectory,
         officialT,
+        uiWorkspace,
         t,
       } = props
 
@@ -7166,6 +7167,7 @@ window.__ModuleLoader__.load({
         open: (sessionId) => { uiWorkspace.openSession(sessionId) },
         searchSessions,
         searchResultLimit: sessions.searchResultLimit !== undefined ? sessions.searchResultLimit : 20,
+        uiWorkspace,
         renameSession,
         forkSession,
         renameWorkspace: (workspaceId, title) => workspaces.rename(workspaceId, title),
