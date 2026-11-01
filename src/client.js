@@ -152,6 +152,8 @@ window.__ModuleLoader__.load({
       'folder.error.empty': '分组路径不能为空',
       'group.move.title': '移动到分组',
       'group.new': '新建分组',
+      'cycle.order.page': '标签切换顺序：页面顺序（点击切换）',
+      'cycle.order.recent': '标签切换顺序：最近访问（点击切换）',
     }
 
     const en = {
@@ -275,6 +277,8 @@ window.__ModuleLoader__.load({
       'folder.error.empty': 'Folder path must not be empty',
       'group.move.title': 'Move to group',
       'group.new': 'New group',
+      'cycle.order.page': 'Tab cycling order: page order (click to switch)',
+      'cycle.order.recent': 'Tab cycling order: most recently visited (click to switch)',
     }
 
     /* Third-language dictionaries, keyed by BCP 47 tag. Every entry must carry
@@ -406,6 +410,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'لا يمكن أن يكون مسار المجموعة فارغاً',
         'group.move.title': 'نقل إلى مجموعة',
         'group.new': 'مجموعة جديدة',
+        'cycle.order.page': 'ترتيب تبديل العلامات: ترتيب الصفحة',
+        'cycle.order.recent': 'ترتيب تبديل العلامات: الأحدث زيارة',
       },
       /* locale: de */
       'de': {
@@ -529,6 +535,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Der Ordnerpfad darf nicht leer sein',
         'group.move.title': 'In Gruppe verschieben',
         'group.new': 'Neue Gruppe',
+        'cycle.order.page': 'Tab-Reihenfolge: Seitenreihenfolge',
+        'cycle.order.recent': 'Tab-Reihenfolge: Zuletzt besucht',
       },
       /* locale: fr */
       'fr': {
@@ -652,6 +660,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Le chemin du dossier ne doit pas être vide',
         'group.move.title': 'Déplacer vers le groupe',
         'group.new': 'Nouveau groupe',
+        'cycle.order.page': 'Ordre de navigation des onglets : ordre des pages',
+        'cycle.order.recent': 'Ordre de navigation des onglets : dernier accès',
       },
       /* locale: hi */
       'hi': {
@@ -775,6 +785,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'समूह पथ खाली नहीं हो सकता',
         'group.move.title': 'समूह में ले जाएँ',
         'group.new': 'नया समूह',
+        'cycle.order.page': 'टैब साइकिल क्रम: पेज क्रम',
+        'cycle.order.recent': 'टैब साइकिल क्रम: हाल में देखे गए',
       },
       /* locale: id */
       'id': {
@@ -898,6 +910,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Jalur folder tidak boleh kosong',
         'group.move.title': 'Pindahkan ke grup',
         'group.new': 'Grup baru',
+        'cycle.order.page': 'Urutan siklus tab: urutan halaman',
+        'cycle.order.recent': 'Urutan siklus tab: terakhir dikunjungi',
       },
       /* locale: it */
       'it': {
@@ -1021,6 +1035,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Il percorso della cartella non può essere vuoto',
         'group.move.title': 'Sposta nel gruppo',
         'group.new': 'Nuovo gruppo',
+        'cycle.order.page': 'Ordine ciclico delle schede: ordine delle pagine',
+        'cycle.order.recent': 'Ordine ciclico delle schede: ultimi visitati',
       },
       /* locale: ja */
       'ja': {
@@ -1144,6 +1160,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'フォルダーのパスを入力してください',
         'group.move.title': 'グループに移動',
         'group.new': '新しいグループ',
+        'cycle.order.page': 'タブ切り替え順：ページ順',
+        'cycle.order.recent': 'タブ切り替え順：最近アクセス',
       },
       /* locale: ko */
       'ko': {
@@ -1267,6 +1285,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '폴더 경로를 입력해야 합니다',
         'group.move.title': '그룹으로 이동',
         'group.new': '새 그룹',
+        'cycle.order.page': '탭 전환 순서: 페이지 순서',
+        'cycle.order.recent': '탭 전환 순서: 최근 방문',
       },
       /* locale: nl */
       'nl': {
@@ -1390,6 +1410,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Het mappad mag niet leeg zijn',
         'group.move.title': 'Naar groep verplaatsen',
         'group.new': 'Nieuwe groep',
+        'cycle.order.page': 'Tabvolgorde: pagina volgorde',
+        'cycle.order.recent': 'Tabvolgorde: laatst bezocht',
       },
       /* locale: pl */
       'pl': {
@@ -1513,6 +1535,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Ścieżka folderu nie może być pusta',
         'group.move.title': 'Przenieś do grupy',
         'group.new': 'Nowa grupa',
+        'cycle.order.page': 'Kolejność przełączania kart: kolejność stron',
+        'cycle.order.recent': 'Kolejność przełączania kart: ostatnio odwiedzone',
       },
       /* locale: pt */
       'pt': {
@@ -1636,6 +1660,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'O caminho da pasta não pode ficar vazio',
         'group.move.title': 'Mover para o grupo',
         'group.new': 'Novo grupo',
+        'cycle.order.page': 'Ordem de ciclo das guias: ordem das páginas',
+        'cycle.order.recent': 'Ordem de ciclo das guias: mais recentes',
       },
       /* locale: ru */
       'ru': {
@@ -1759,6 +1785,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Путь папки не может быть пустым',
         'group.move.title': 'Переместить в группу',
         'group.new': 'Новая группа',
+        'cycle.order.page': 'Порядок переключения вкладок: порядок страниц',
+        'cycle.order.recent': 'Порядок переключения вкладок: последние посещённые',
       },
       /* locale: sv */
       'sv': {
@@ -1882,6 +1910,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Mappsökvägen får inte vara tom',
         'group.move.title': 'Flytta till grupp',
         'group.new': 'Ny grupp',
+        'cycle.order.page': 'Flikcykelordning: sidordning',
+        'cycle.order.recent': 'Flikcykelordning: senast besökt',
       },
       /* locale: th */
       'th': {
@@ -2005,6 +2035,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'เส้นทางกลุ่มต้องไม่ว่าง',
         'group.move.title': 'ย้ายไปยังกลุ่ม',
         'group.new': 'กลุ่มใหม่',
+        'cycle.order.page': 'ลำดับการสลับแท็บ: ตามลำดับหน้า',
+        'cycle.order.recent': 'ลำดับการสลับแท็บ: เข้าชมล่าสุด',
       },
       /* locale: tr */
       'tr': {
@@ -2128,6 +2160,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Klasör yolu boş olamaz',
         'group.move.title': 'Gruba taşı',
         'group.new': 'Yeni grup',
+        'cycle.order.page': 'Sekme döngü sırası: sayfa sırası',
+        'cycle.order.recent': 'Sekme döngü sırası: en son ziyaret edilen',
       },
       /* locale: vi */
       'vi': {
@@ -2251,6 +2285,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Đường dẫn nhóm không được để trống',
         'group.move.title': 'Chuyển vào nhóm',
         'group.new': 'Nhóm mới',
+        'cycle.order.page': 'Thứ tự chuyển thẻ: thứ tự trang',
+        'cycle.order.recent': 'Thứ tự chuyển thẻ: truy cập gần nhất',
       },
       /* locale: zh-HK */
       'zh-HK': {
@@ -2374,6 +2410,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
+        'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
       /* locale: zh-MO */
       'zh-MO': {
@@ -2497,6 +2535,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
+        'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
       /* locale: zh-TW */
       'zh-TW': {
@@ -2620,6 +2660,8 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '群組路徑不能為空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'cycle.order.page': '標籤切換順序：頁面順序（點擊切換）',
+        'cycle.order.recent': '標籤切換順序：最近造訪（點擊切換）',
       },
     }
 
@@ -3260,7 +3302,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page' }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -3308,6 +3350,7 @@ window.__ModuleLoader__.load({
         // official literal set; the bw defaults keep the founding behaviour
         // (tree + both slash layers on + manual host order).
         setGroupBy: (d, value) => { d.groupBy = value },
+      setTabCycleOrder: (d, value) => { d.tabCycleOrder = value },
         setOrderBy: (d, value) => { d.orderBy = value },
         setSessionTitleSlash: (d, value) => { d.sessionTitleSlash = value !== false },
         setWorkspaceTitleSlash: (d, value) => { d.workspaceTitleSlash = value !== false },
@@ -4969,39 +5012,67 @@ window.__ModuleLoader__.load({
       }, [list ? list.byId : null])
 
 
-      /* -------------------- Ctrl+Tab workspace cycling (v0.15) ------------------- */
+      /* ----------------- Ctrl+Tab tab cycling across groups (v0.17) ---------------- */
 
-      // Ctrl+Tab / Ctrl+Shift+Tab cycle workspaces in sidebar order (the host
-      // items order — the same order the 'workspace' view mode renders). Forward
-      // = next down, Shift = previous up, wrapping at both ends. The target opens
-      // its most recently updated visible session; a workspace with none starts a
-      // new session (the same semantics as the row's + button) and force-expands
-      // so the user SEES where they landed, matching onStart. lastCycleRef seeds
-      // the anchor when the current session belongs to no listed workspace (e.g.
-      // an ungrouped session) — after the first press the anchor follows the cycle.
-      // Capture phase + preventDefault beat in-page Tab handling; Electron-native
-      // accelerators, if any, sit above this layer and would need the host
-      // shortcuts service (future work).
-      const lastCycleRef = React.useRef(-1)
-      const cycleWorkspaces = (dir) => {
-        const wsList = (items || []).filter((w) => w && w.workspaceId)
-        if (wsList.length === 0) return
-        const curIdx = wsList.findIndex((w) => !!(currentId && (w.sessionIds || []).includes(currentId)))
-        const anchorIdx = curIdx >= 0 ? curIdx : (lastCycleRef.current >= 0 ? lastCycleRef.current : 0)
-        const nextIdx = (anchorIdx + dir + wsList.length) % wsList.length
-        const target = wsList[nextIdx]
-        lastCycleRef.current = nextIdx
-        // Expand the landing row even when the session open races the wire: the
-        // row must be visible immediately, exactly like the row's + button.
-        if (actions && typeof actions.setSessionsExpanded === 'function') actions.setSessionsExpanded(target.workspaceId, true)
-        let best = null
-        for (const id of target.sessionIds || []) {
-          const summary = list && list.byId ? list.byId[id] : undefined
-          if (!sessionVisible(summary, currentId, archivedSet)) continue
-          if (!best || (summary.updatedAt || 0) > (best.summary.updatedAt || 0)) best = { id, summary }
+      // Ctrl+Tab / Ctrl+Shift+Tab now cycle TABS (sessions), not workspaces: the
+      // flat order follows the rendered sidebar exactly — every workspace's
+      // visible sessions in host order, then the ungrouped block. Crossing a
+      // group boundary is free: the last session of one group is followed by the
+      // first session of the next, so a big group cycles into its inner tabs and
+      // on into the next big group. Two orders, persisted (view store):
+      //   'page'    — sidebar page order (above).
+      //   'recent'  — most recently updated session first (access-time order).
+      // The header button toggles the order and shows the active one via the
+      // official icons: page = the tree/list glyph set, recent = the clock.
+      // Landing semantics per tab: open(id); a workspace chosen with no session
+      // (empty big group) starts a new session and force-expands the row — same
+      // as the row's + button.
+      const tabOrder = useStore ? (useStore(s => s.tabCycleOrder) || 'page') : 'page'
+      const tabsRef = React.useRef({ tabs: [], anchor: -1 })
+      const flatTabs = React.useMemo(() => {
+        const tabs = []
+        for (const w of items || []) {
+          if (!w || !w.workspaceId) continue
+          for (const id of w.sessionIds || []) {
+            const summary = list && list.byId ? list.byId[id] : undefined
+            if (!sessionVisible(summary, currentId, archivedSet)) continue
+            tabs.push({ id, workspaceId: w.workspaceId, updatedAt: (summary && summary.updatedAt) || 0 })
+          }
         }
-        if (best) open(best.id)
-        else if (typeof startSession === 'function') startSession(target.workspaceId)
+        if (list && Array.isArray(list.ids)) {
+          for (const id of list.ids) {
+            const summary = list && list.byId ? list.byId[id] : undefined
+            if (!sessionVisible(summary, currentId, archivedSet)) continue
+            const owned = (items || []).some((w) => w && (w.sessionIds || []).includes(id))
+            if (!owned) tabs.push({ id, workspaceId: null, updatedAt: (summary && summary.updatedAt) || 0 })
+          }
+        }
+        return tabs
+      }, [items, list ? list.byId : null, list ? list.ids : null, currentId, archivedSet])
+      const orderedTabs = React.useMemo(() => {
+        if (tabOrder === 'recent') return [...flatTabs].sort((a, b) => b.updatedAt - a.updatedAt)
+        return flatTabs
+      }, [flatTabs, tabOrder])
+      const cycleTabs = (dir) => {
+        const tabs = orderedTabs
+        if (tabs.length === 0) {
+          // No sessions anywhere: cycle workspaces and open a new session in the
+          // next one (the empty-group land).
+          const wsList = (items || []).filter((w) => w && w.workspaceId)
+          if (wsList.length === 0) return
+          const curIdx = wsList.findIndex((w) => !!(currentId && (w.sessionIds || []).includes(currentId)))
+          const anchor = curIdx >= 0 ? curIdx : (tabsRef.current.anchor >= 0 ? tabsRef.current.anchor : 0)
+          const target = wsList[(anchor + dir + wsList.length) % wsList.length]
+          if (actions && typeof actions.setSessionsExpanded === 'function') actions.setSessionsExpanded(target.workspaceId, true)
+          if (typeof startSession === 'function') startSession(target.workspaceId)
+          return
+        }
+        const curIdx = tabs.findIndex((x) => x.id === currentId)
+        const anchor = curIdx >= 0 ? curIdx : (tabsRef.current.anchor >= 0 ? Math.min(tabsRef.current.anchor, tabs.length - 1) : (dir > 0 ? -1 : 0))
+        const nextIdx = (anchor + dir + tabs.length) % tabs.length
+        const next = tabs[nextIdx]
+        tabsRef.current = { tabs, anchor: nextIdx }
+        open(next.id)
       }
       React.useEffect(() => {
         if (typeof document === 'undefined' || !document || typeof document.addEventListener !== 'function') return undefined
@@ -5009,12 +5080,12 @@ window.__ModuleLoader__.load({
           if (e.key !== 'Tab' || !e.ctrlKey || e.altKey || e.metaKey) return
           e.preventDefault()
           e.stopPropagation()
-          cycleWorkspaces(e.shiftKey ? -1 : 1)
+          cycleTabs(e.shiftKey ? -1 : 1)
         }
         document.addEventListener('keydown', handler, true)
         return () => document.removeEventListener('keydown', handler, true)
-        // Fresh closure per dependency change; the listener is cheap to swap.
-      }, [items, list ? list.byId : null, currentId, archivedSet, startSession, open, actions])
+      }, [orderedTabs, currentId, open, startSession, actions, items, tabOrder])
+
       // Outline color sampler. The outline has to contrast with the LABEL
       // color, and the palette can flip (theme, or a background plugin's
       // light/dark switch) without any React render. So sample the tree's live
@@ -6294,6 +6365,16 @@ window.__ModuleLoader__.load({
             onToggle: (key, value) => { if (key === 'sessionTitleSlash') actions.setSessionTitleSlash(value); else actions.setWorkspaceTitleSlash(value) },
             t,
           }),
+          // Tab-cycle order toggle (v0.17): page order vs recent (access) order.
+          // Official primitive icons only: page = the view glyph for the current
+          // grouping (tree in tree mode, flat list otherwise), recent = the clock.
+          E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            title: tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
+            'aria-label': tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
+            onClick: () => { if (actions && typeof actions.setTabCycleOrder === 'function') actions.setTabCycleOrder(tabOrder === 'recent' ? 'page' : 'recent') },
+          }, icon(tabOrder === 'recent' ? 'IconClockOutline16' : (groupBy === 'workspace-tree' ? 'IconWorkspaceTreeOutline16' : 'IconFlatListOutline16'))),
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
           flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutline16')) : null,
         ),

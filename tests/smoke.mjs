@@ -855,15 +855,15 @@ test('hover cards: workspace rows expose the disk path, session rows the full ti
     'session hover carries the full display title again')
 })
 
-test('client.js registers Ctrl+Tab / Ctrl+Shift+Tab workspace cycling (v0.15)', () => {
+test('client.js registers Ctrl+Tab / Ctrl+Shift+Tab tab cycling (v0.17)', () => {
   const text = read('src/client.js')
-  assert.match(text, /cycleWorkspaces/, 'cycle helper must exist')
+  assert.match(text, /cycleTabs/, 'cycle helper must exist')
   assert.match(text, /document\.addEventListener\('keydown', handler, true\)/, 'capture-phase keydown listener')
   assert.match(text, /e\.key !== 'Tab'/, 'Tab keys only')
   assert.match(text, /e\.ctrlKey/, 'Ctrl modifier required')
   assert.match(text, /e\.shiftKey \? -1 : 1/, 'Shift reverses direction')
   assert.match(text, /e\.preventDefault\(\)/, 'prevent the browser tab switch')
-  assert.match(text, /sessionVisible\(summary, currentId, archivedSet\)/, 'target session must be visibility-filtered')
+  assert.match(text, /sessionVisible\(summary, currentId, archivedSet\)/, 'tabs must be visibility-filtered')
 })
 
 test('client.js does not hard-inject settingsScope (desktop 0.2.x compat, v0.15.1)', () => {
@@ -885,4 +885,14 @@ test('client.js mirrors official status presentation (v0.16.1)', () => {
   assert.match(text, /status\.compact\.planReview/, 'official compact trailing keys')
   assert.match(text, /ot\('status\.waitingApproval'\)/, 'official dictionary copy preferred')
   assert.match(text, /status && status\.trailing \? status\.trailing : timeLabel/, 'official trailingLabel ?? timeLabel contract')
+})
+
+test('client.js cycles session tabs across groups with two persisted orders (v0.17)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /cycleTabs/, 'session-level cycle helper')
+  assert.match(text, /tabCycleOrder/, 'order persists in the view store')
+  assert.match(text, /setTabCycleOrder/, 'store action exists')
+  assert.match(text, /'recent' \? 'page' : 'recent'/, 'header button toggles the order')
+  assert.match(text, /IconClockOutline16/, 'recent order uses the official clock icon')
+  assert.match(text, /cycle\.order\.page/, 'i18n keys shipped')
 })
