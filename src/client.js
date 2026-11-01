@@ -3131,6 +3131,9 @@ window.__ModuleLoader__.load({
       '.bw-row:hover .bw-row-actions{display:flex}',
       '.bw-row:hover .bw-row-time,.bw-row:hover .bw-row-count,.bw-row:hover .bw-schedule-badge{display:none}',
       '.bw-dot{flex:none;width:6px;height:6px;border-radius:50%;background:transparent}',
+    '.bw-spin{flex:none;width:10px;height:10px;border:2px solid rgba(91,140,255,.3);border-top-color:#5b8cff;border-radius:50%;animation:bw-rot .9s linear infinite}',
+    '@keyframes bw-rot{to{transform:rotate(360deg)}}',
+    '.bw-pending-badge{flex:none;font-size:11px;line-height:1;padding:3px 6px;border-radius:999px;color:#c9a24b;background:rgba(201,162,75,.12)}',
       '.bw-session-row{font-size:12.5px;color:var(--dsw-alias-label-secondary,#b8b8b8);min-height:26px}',
       '.bw-sgroup-row{font-size:12.5px;color:var(--dsw-alias-label-tertiary,#9a9a9a);min-height:24px}',
       '.bw-sgroup-row:hover{color:var(--dsw-alias-label-secondary,#b8b8b8)}',
@@ -4251,7 +4254,10 @@ window.__ModuleLoader__.load({
       if (row.pending === 'approval' || row.pending === 'plan-review' || row.pending === 'question') return 'warning'
       if (row.running || row.subagents > 0) return 'ongoing'
       if (row.completed) return 'done'
-      return null
+      // Official 0.2.1 semantics: a session with nothing pending/running/completed
+      // still shows a dot — idle (see official sessionStatuses tail). Mirroring it
+      // keeps row colors aligned with the shipped sidebar.
+      return 'idle'
     }
 
     /**
@@ -4290,7 +4296,7 @@ window.__ModuleLoader__.load({
           ? t('status.' + (node.pending === 'plan-review' ? 'planReview' : node.pending))
           : state === 'ongoing'
             ? (node.running ? t('status.running') : t('status.subagents', { n: node.subagents }))
-            : t('status.completed'),
+            : state === 'idle' ? undefined : t('status.completed'),
       }
       return E('div', {
         className: cls('bw-row', 'bw-session-row', current && 'bw-row-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
@@ -4307,12 +4313,19 @@ window.__ModuleLoader__.load({
               // the settings toggle covers this breathing too.
               ? E(PulseGlow, { state: 'ongoing' }, E(ui.StateDot, { state: status.state, size: 10 }))
               : E(ui.StateDot, { state: status.state, size: 10 }))
-            : E('span', { className: 'bw-dot' }),
+            : (state === 'ongoing'
+              ? E('span', { className: 'bw-spin', 'aria-hidden': 'true' })
+              : E('span', { className: 'bw-dot' })),
         ),
         // The row body shows only its leaf segment (the group row above carries
         // the prefix), so the hover card restores the full display title the
         // official browser shows.
         E('span', { className: 'bw-row-label', title: node.title || node.leaf }, node.leaf || node.title),
+        // Official trailing compact label (「待审批」/ 计划确认 / 等待回答) — bw uses
+        // its full-length keys; same meaning, one row-loud surface.
+        state === 'warning' && status && status.title
+          ? E('span', { className: 'bw-pending-badge' }, status.title)
+          : null,
         node.hasActiveSchedule
           ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutline16', 14))
           : null,
@@ -4863,7 +4876,7 @@ window.__ModuleLoader__.load({
     function BetterBrowser(props) {
       const {
         wide, expandSidebar,
-        useSessions, useSessionPendingInteraction, useWorkspaces,
+        useSessions, useSessionPendingInteraction, useWorkspaces, useSessionStatus,
         useStore, actions,
         startSession, open, renameSession, forkSession, renameWorkspace, deleteWorkspace,
         archiveSession, createWorkspace,
@@ -4908,6 +4921,26 @@ window.__ModuleLoader__.load({
       const subCounts = React.useMemo(() => subagentRunningCounts(list ? list.byId : {}), [list ? list.byId : null])
       // Current session per the alpha.2 retention contract (see mainSessionIdOf).
       const currentId = React.useMemo(() => mainSessionIdOf(list), [list ? list.byId : null])
+      // Unified UI status store (dsh 0.2.1+): per-session { running, completionUnread,
+      // pendingInteraction:{kind}, runningSubagentCount } — the authoritative state the
+      // official browser consumes (sessionNode: status?.running ?? s.running). The
+      // legacy summary fields went stale on this host (running never true → gray dot,
+      // no spinner), so every row derivation goes through statusFaceOf and falls back
+      // to the old fields only when this store is absent (older hosts).
+      const uiStatus = typeof useSessionStatus === 'function' ? useSessionStatus((s) => s) : null
+      const statusFaceOf = (id, summary) => {
+        let st
+        if (uiStatus) { try { st = typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id] } catch { st = undefined } }
+        let kind
+        if (st && st.pendingInteraction) { const k = st.pendingInteraction.kind; if (k === 'approval' || k === 'plan-review' || k === 'question') kind = k }
+        return {
+          running: st ? (st.running ?? !!summary.running) : !!summary.running,
+          completed: st ? st.completionUnread === true : summary.completed === true,
+          subagents: st && Number.isFinite(st.runningSubagentCount) ? st.runningSubagentCount : (subCounts.get(id) || 0),
+          pending: kind || pendingKindOf(pending, id),
+        }
+      }
+
       // Last-known real titles for the cold-restart fallback window (see
       // the title-cache block). Read per render via getSnapshot: no
       // subscription, because a cache write only happens when summary.title
@@ -5189,12 +5222,9 @@ window.__ModuleLoader__.load({
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             blank: !!summary.blank,
-            running: !!summary.running,
-            completed: summary.completed === true,
+            ...statusFaceOf(id, summary),
             hasActiveSchedule: hasActiveScheduleOf(summary),
-            subagents: subCounts.get(id) || 0,
             updatedAt: summary.updatedAt || 0,
-            pending: pendingKindOf(pending, id),
           })
         }
         ungrouped.sort((a, b) => b.updatedAt - a.updatedAt)
@@ -5233,12 +5263,9 @@ window.__ModuleLoader__.load({
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             blank: !!summary.blank,
-            running: !!summary.running,
-            completed: summary.completed === true,
+            ...statusFaceOf(id, summary),
             hasActiveSchedule: hasActiveScheduleOf(summary),
-            subagents: subCounts.get(id) || 0,
             updatedAt: summary.updatedAt || 0,
-            pending: pendingKindOf(pending, id),
           })
         }
         // Browser-local reorder fallback (dsh 0.1.6-alpha.1 stopped injecting

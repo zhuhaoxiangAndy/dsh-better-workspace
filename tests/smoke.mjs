@@ -871,3 +871,18 @@ test('client.js does not hard-inject settingsScope (desktop 0.2.x compat, v0.15.
   assert.doesNotMatch(text, /inject: \[[^\]]*settingsScope/, 'settingsScope must stay a runtime probe, not an inject dependency')
   assert.match(text, /ctx\.settingsScope && typeof ctx\.settingsScope\.bind/, 'probe fallback must remain')
 })
+
+test('client.js consumes the host ui status store with legacy fallback (v0.16.0)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /useSessionStatus/, 'standard face hook must be consumed')
+  assert.match(text, /statusFaceOf/, 'unified per-row status derivation')
+  assert.match(text, /completionUnread === true/, 'completed follows the official completionUnread contract')
+  assert.match(text, /return 'idle'/, 'plain sessions render the official idle dot')
+})
+
+test('client.js surfaces pending work and a spinner fallback (v0.16.0)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /bw-pending-badge/, 'trailing pending badge')
+  assert.match(text, /bw-spin/, 'CSS spinner when StateDot is unavailable')
+  assert.match(text, /@keyframes bw-rot/, 'spinner keyframes shipped')
+})

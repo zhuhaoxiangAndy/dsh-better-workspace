@@ -1,3 +1,13 @@
+## v0.16.0 — 2026-11-01
+
+**类型**:feat(dsh 0.2.1 状态对齐:圈圈不转 / 待审批徽标 / idle 灰点)
+
+- **fix(运行中不转圈)**:行状态改从宿主 `useSessionStatus` 统一状态 store 推导(`statusFaceOf`:running=st.running ?? summary.running、completed=st.completionUnread、子代理=st.runningSubagentCount、pending=st.pendingInteraction.kind),旧 summary 字段仅在老宿主回退 — 0.2.1 把 running 从 list summary 挪进了状态 store,旧读法恒 false → 灰点不转。对齐官方 `sessionStatuses` 推导(dsh-client-ui-workspace lib/client.js L2069-2118)。
+- **feat(idle 灰点)**:`sessionStateOf` 尾部对齐官方语义返回 `idle`,平静会话不再是无状态灰点。
+- **feat(待审批徽标)**:warning 状态行尾追加 `bw-pending-badge`(等待批准 / 计划确认 / 等待回答),复用既有 i18n 键,无新键。
+- **fix(StateDot 缺失兜底)**:`ui.StateDot` 不可用时 ongoing 渲染 CSS 转圈(`bw-spin` + `bw-rot`)。
+
+
 # Changelog — dsh-better-workspace
 
 > 倒序排列,新版本条目在最上面。条目格式:`## vX.Y.Z — YYYY-MM-DD` + 类型(feat / fix / docs / chore)+ 要点 + 相关链接。
