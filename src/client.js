@@ -5682,7 +5682,13 @@ window.__ModuleLoader__.load({
         onDrop: (event) => {
           event.preventDefault()
           event.stopPropagation()
-          if (dragMatches('folder')) { commitFolderMoveInto((workspace.folderPath || '') === '' ? workspace.workspaceId + '//' : (workspace.folderPath)) ; return }
+          if (dragMatches('folder')) {
+            // Dropping a folder onto a root-level workspace clears the group
+            // prefix entirely (move the whole group to the root, beside it).
+            if ((workspace.folderPath || '') === '') { commitFolderMoveInto(''); return }
+            commitFolderMoveInto(workspace.folderPath)
+            return
+          }
           if (!dragMatches('workspace')) return
           const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
           commitWorkspaceDrop(workspace, half)
@@ -5693,6 +5699,10 @@ window.__ModuleLoader__.load({
       // root (prefix strip), or alongside a workspace row (that row's folder).
       // One drag source, three commit shapes; the folder itself is a name, not
       // a node with identity, so rename is the whole move.
+      // Folder rows are BOTH drag sources and drop targets for two drag kinds
+      // (workspace rows and folder rows). One merged handler per verb, so the
+      // spread order can never shadow a sibling: hovering accepts whichever
+      // kind is in flight, dropping routes to that kind's commit.
       const folderDragEvents = (path) => ({
         draggable: !searching,
         onDragStart: (event) => {
@@ -5713,7 +5723,7 @@ window.__ModuleLoader__.load({
           setDrag(null)
         },
         onDragOver: (event) => {
-          if (!dragMatches('folder')) return
+          if (!dragMatches('workspace') && !dragMatches('folder')) return
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
@@ -5722,10 +5732,10 @@ window.__ModuleLoader__.load({
             : (current ? { ...current, over: { kind: 'folder', target: path } } : current))
         },
         onDrop: (event) => {
-          if (!dragMatches('folder')) return
           event.preventDefault()
           event.stopPropagation()
-          commitFolderMoveInto(path)
+          if (dragMatches('folder')) { commitFolderMoveInto(path); return }
+          if (dragMatches('workspace')) { commitWorkspaceMoveInto(path); return }
         },
       })
       const commitFolderMoveInto = (targetIdPath) => {
@@ -5733,7 +5743,24 @@ window.__ModuleLoader__.load({
         setDrag(null)
         const cutAt = targetIdPath.lastIndexOf('//')
         const targetPath = cutAt === -1 ? targetIdPath : targetIdPath.slice(cutAt + 2)
-        if (!targetPath || targetPath === source.folderPath) return
+        // Root drop ('' path): strip the group prefix — the whole group moves to
+        // the root level beside the drop target.
+        if (targetPath === '') {
+          const affected = (items || []).filter((w) => {
+            const segs = splitTitleSegs(w.title)
+            return segs.slice(0, -1).join('/') === source.folderPath
+          })
+          Promise.resolve()
+            .then(async () => {
+              for (const w of affected) {
+                const segs = splitTitleSegs(w.title)
+                await renameWorkspace(w.workspaceId, segs[segs.length - 1])
+              }
+            })
+            .catch(fail)
+          return
+        }
+        if (targetPath === source.folderPath) return
         if (targetPath.startsWith(source.folderPath + '/')) return // into own child: no-op
         const affected = (items || []).filter((w) => {
           const segs = splitTitleSegs(w.title)
@@ -6170,7 +6197,7 @@ window.__ModuleLoader__.load({
           onToggle: () => { if (!searching) actions.setExpanded(idPath, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name, idPath }, e),
           dropInto: wsDropInto(idPath) || (dragMatches('folder') && drag.over && drag.over.kind === 'folder' && drag.over.target === idPath),
-          dragEvents: { ...folderDropEvents(idPath), ...folderDragEvents(idPath) },
+          dragEvents: folderDragEvents(idPath),
           custStyle: rowStyleOf('folder:' + idPath),
           iconMode: (styleEntry('folder:' + idPath) || {}).icon || 'solid',
           pulse: expanded ? null : folderPulseOf(node),
