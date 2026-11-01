@@ -141,12 +141,13 @@ test('quote-on-land effect: blank-born only, user renames pinned, stability wind
   assert.match(text, /!blankSeen\.has\(id\) \|\| touched\.has\(id\)/, 'untouched blankSeen/human guard')
   assert.doesNotMatch(text, /titledSeenRef/, '0.9.1 first-snapshot heuristic must be gone')
   // User renames route through the pinning wrapper; the automatic path alone
-  // keeps the raw injected renameSession. 6 call sites: drag-into-session-group,
+  // keeps the raw injected renameSession. 7 call sites: drag-into-session-group,
   // session rename dialog, session-group rename, the two group-move entry points
-  // (single session / session-group batch), and dropping a session onto a row
-  // inside another group (that drop now JOINS the group instead of flat-reordering).
+  // (single session / session-group batch), dropping a session onto a row inside
+  // another group (JOINS the group instead of flat-reordering), and the v0.18.2
+  // cross-group session move (commitSessionDrop's other-workspace branch).
   assert.match(text, /const renameByUser = \(sessionId, title\) => \{/)
-  assert.equal((text.match(/renameByUser\(/g) || []).length, 6, 'exactly 6 user call sites')
+  assert.equal((text.match(/renameByUser\(/g) || []).length, 7, 'exactly 7 user call sites')
   // The automatic quote waits out a stabilization window instead of racing
   // the async LLM name.
   assert.match(text, /TITLE_STABLE_MS = 20000/)

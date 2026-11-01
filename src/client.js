@@ -5934,6 +5934,27 @@ window.__ModuleLoader__.load({
         if (source.sessionId === targetSessionId) return
         const workspace = (items || []).find(w => w.workspaceId === workspaceId)
         if (!workspace) return
+        // v0.18.2 CROSS-GROUP MOVE: the drag came from another workspace (or the
+        // ungrouped block, whose rows carry workspaceId null). The session joins
+        // the TARGET workspace via its title (group-prefix rename through
+        // renameByUser), then the host insertSessionBefore lands it beside the
+        // anchor. Same-workspace drops fall through to the local reorder below.
+        if (source.workspaceId !== workspaceId) {
+          const targetSegs = splitTitleSegs(String(workspace.title || ''))
+          const targetGroup = targetSegs.length > 0 ? targetSegs.join('/') : ''
+          const flatT = sessionsOf(workspace)
+          const idxT = flatT.findIndex((s) => s.id === targetSessionId)
+          const anchorT = half === 'after'
+            ? (idxT === -1 ? undefined : (flatT[idxT + 1] ? flatT[idxT + 1].id : undefined))
+            : targetSessionId
+          Promise.resolve()
+            .then(() => renameByUser(source.sessionId, targetGroup !== '' ? targetGroup + '/' + (source.leaf || source.title || source.sessionId) : (source.leaf || source.title || source.sessionId)))
+            .then(() => (typeof insertSessionBefore === 'function'
+              ? (anchorT !== undefined ? insertSessionBefore(workspaceId, source.sessionId, anchorT) : insertSessionBefore(workspaceId, source.sessionId))
+              : undefined))
+            .catch(fail)
+          return
+        }
         const flat = sessionsOf(workspace)
         const index = flat.findIndex(s => s.id === targetSessionId)
         const anchor = half === 'after'
