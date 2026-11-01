@@ -158,6 +158,14 @@ window.__ModuleLoader__.load({
       'settings.collapseLimit.all': '不限',
       'settings.collapseLimit.hint': '每个分组里最多显示这么多个会话，超出的折叠为"+N"。留空 = 全部显示。',
       'settings.collapseLimit.showAll': '显示全部',
+      'hub.title': '互动中心',
+      'hub.empty': '没有等待你的互动',
+      'hub.kind.approval': '审批',
+      'hub.kind.plan': '计划',
+      'hub.kind.question': '提问',
+      'hub.allow': '允许一次',
+      'hub.reject': '拒绝',
+      'hub.open': '打开会话',
     }
 
     const en = {
@@ -287,6 +295,14 @@ window.__ModuleLoader__.load({
       'settings.collapseLimit.all': 'All',
       'settings.collapseLimit.hint': 'Show at most this many sessions per group; the rest fold into a "+N" row. Empty = show everything.',
       'settings.collapseLimit.showAll': 'Show all',
+      'hub.title': 'Interaction hub',
+      'hub.empty': 'Nothing is waiting for you',
+      'hub.kind.approval': 'Approval',
+      'hub.kind.plan': 'Plan review',
+      'hub.kind.question': 'Question',
+      'hub.allow': 'Allow once',
+      'hub.reject': 'Reject',
+      'hub.open': 'Open session',
     }
 
     /* Third-language dictionaries, keyed by BCP 47 tag. Every entry must carry
@@ -418,6 +434,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'لا يمكن أن يكون مسار المجموعة فارغاً',
         'group.move.title': 'نقل إلى مجموعة',
         'group.new': 'مجموعة جديدة',
+        'hub.title': 'مركز التفاعل',
+        'hub.empty': 'لا يوجد ما ينتظرك',
+        'hub.kind.approval': 'موافقة',
+        'hub.kind.plan': 'مراجعة الخطة',
+        'hub.kind.question': 'سؤال',
+        'hub.allow': 'سماح مرة واحدة',
+        'hub.reject': 'رفض',
+        'hub.open': 'افتح الجلسة',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'الكل',
         'settings.collapseLimit.hint': 'حد أقصى لعدد الجلسات المعروضة لكل مجموعة؛ والباقي يطوى في صف "+N". فارغ = عرض الكل.',
@@ -547,6 +571,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Der Ordnerpfad darf nicht leer sein',
         'group.move.title': 'In Gruppe verschieben',
         'group.new': 'Neue Gruppe',
+        'hub.title': 'Interaktionscenter',
+        'hub.empty': 'Nichts wartet auf dich',
+        'hub.kind.approval': 'Genehmigung',
+        'hub.kind.plan': 'Planprüfung',
+        'hub.kind.question': 'Frage',
+        'hub.allow': 'Einmal erlauben',
+        'hub.reject': 'Ablehnen',
+        'hub.open': 'Sitzung öffnen',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alle',
         'settings.collapseLimit.hint': 'Maximal so viele Sitzungen pro Gruppe anzeigen; der Rest klappt in eine „+N“-Zeile. Leer = alles anzeigen.',
@@ -676,6 +708,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Le chemin du dossier ne doit pas être vide',
         'group.move.title': 'Déplacer vers le groupe',
         'group.new': 'Nouveau groupe',
+        'hub.title': 'Centre d\'interaction',
+        'hub.empty': 'Rien n\'attend votre réponse',
+        'hub.kind.approval': 'Approbation',
+        'hub.kind.plan': 'Révision du plan',
+        'hub.kind.question': 'Question',
+        'hub.allow': 'Autoriser une fois',
+        'hub.reject': 'Refuser',
+        'hub.open': 'Ouvrir la session',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tout',
         'settings.collapseLimit.hint': 'Afficher au plus ce nombre de sessions par groupe ; le reste se replie en ligne « +N ». Vide = tout afficher.',
@@ -805,6 +845,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'समूह पथ खाली नहीं हो सकता',
         'group.move.title': 'समूह में ले जाएँ',
         'group.new': 'नया समूह',
+        'hub.title': 'इंटरैक्शन केंद्र',
+        'hub.empty': 'कुछ भी आपकी प्रतीक्षा में नहीं है',
+        'hub.kind.approval': 'अनुमोदन',
+        'hub.kind.plan': 'योजना समीक्षा',
+        'hub.kind.question': 'प्रश्न',
+        'hub.allow': 'एक बार अनुमति दें',
+        'hub.reject': 'अस्वीकार करें',
+        'hub.open': 'सत्र खोलें',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'सभी',
         'settings.collapseLimit.hint': 'प्रति समूह इतने ही सत्र दिखाएँ; बाकी "+N" पंक्ति में मुड़ते हैं। खाली = सब दिखाएँ।',
@@ -934,6 +982,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Jalur folder tidak boleh kosong',
         'group.move.title': 'Pindahkan ke grup',
         'group.new': 'Grup baru',
+        'hub.title': 'Pusat interaksi',
+        'hub.empty': 'Tidak ada yang menunggu Anda',
+        'hub.kind.approval': 'Persetujuan',
+        'hub.kind.plan': 'Tinjauan rencana',
+        'hub.kind.question': 'Pertanyaan',
+        'hub.allow': 'Izinkan sekali',
+        'hub.reject': 'Tolak',
+        'hub.open': 'Buka sesi',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Semua',
         'settings.collapseLimit.hint': 'Tampilkan paling banyak sesi sebanyak ini per grup; sisanya lipat ke baris "+N". Kosong = tampilkan semua.',
@@ -1063,6 +1119,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Il percorso della cartella non può essere vuoto',
         'group.move.title': 'Sposta nel gruppo',
         'group.new': 'Nuovo gruppo',
+        'hub.title': 'Centro interazioni',
+        'hub.empty': 'Niente in attesa di te',
+        'hub.kind.approval': 'Approvazione',
+        'hub.kind.plan': 'Revisione del piano',
+        'hub.kind.question': 'Domanda',
+        'hub.allow': 'Consenti una volta',
+        'hub.reject': 'Rifiuta',
+        'hub.open': 'Apri sessione',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tutti',
         'settings.collapseLimit.hint': 'Mostra al massimo queste sessioni per gruppo; il resto si ripiega in una riga "+N". Vuoto = mostra tutto.',
@@ -1192,6 +1256,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'フォルダーのパスを入力してください',
         'group.move.title': 'グループに移動',
         'group.new': '新しいグループ',
+        'hub.title': 'インタラクションセンター',
+        'hub.empty': '待ちのアクションはありません',
+        'hub.kind.approval': '承認',
+        'hub.kind.plan': 'プラン確認',
+        'hub.kind.question': '質問',
+        'hub.allow': '一度だけ許可',
+        'hub.reject': '拒否',
+        'hub.open': 'セッションを開く',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'すべて',
         'settings.collapseLimit.hint': '各グループに表示するセッションはこの数まで。残りは「+N」行に折りたたまれます。空 = すべて表示。',
@@ -1321,6 +1393,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '폴더 경로를 입력해야 합니다',
         'group.move.title': '그룹으로 이동',
         'group.new': '새 그룹',
+        'hub.title': '상호작용 허브',
+        'hub.empty': '기다리는 것이 없습니다',
+        'hub.kind.approval': '승인',
+        'hub.kind.plan': '계획 검토',
+        'hub.kind.question': '질문',
+        'hub.allow': '한 번 허용',
+        'hub.reject': '거부',
+        'hub.open': '세션 열기',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': '모두',
         'settings.collapseLimit.hint': '그룹당 이 수만큼 세션을 표시하고, 나머지는 "+N" 행으로 접힙니다. 비우면 = 모두 표시.',
@@ -1450,6 +1530,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Het mappad mag niet leeg zijn',
         'group.move.title': 'Naar groep verplaatsen',
         'group.new': 'Nieuwe groep',
+        'hub.title': 'Interactiehub',
+        'hub.empty': 'Niets wacht op je',
+        'hub.kind.approval': 'Goedkeuring',
+        'hub.kind.plan': 'Plancontrole',
+        'hub.kind.question': 'Vraag',
+        'hub.allow': 'Eén keer toestaan',
+        'hub.reject': 'Weigeren',
+        'hub.open': 'Sessie openen',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alles',
         'settings.collapseLimit.hint': 'Toon maximaal zoveel sessies per groep; de rest vouwt in een "+N"-rij. Leeg = alles tonen.',
@@ -1579,6 +1667,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Ścieżka folderu nie może być pusta',
         'group.move.title': 'Przenieś do grupy',
         'group.new': 'Nowa grupa',
+        'hub.title': 'Centrum interakcji',
+        'hub.empty': 'Nic na Ciebie nie czeka',
+        'hub.kind.approval': 'Zatwierdzenie',
+        'hub.kind.plan': 'Przegląd planu',
+        'hub.kind.question': 'Pytanie',
+        'hub.allow': 'Zezwól raz',
+        'hub.reject': 'Odrzuć',
+        'hub.open': 'Otwórz sesję',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Wszystkie',
         'settings.collapseLimit.hint': 'Pokaż co najwyżej tyle sesji w grupie; reszta zwija się do wiersza „+N”. Puste = pokaż wszystko.',
@@ -1708,6 +1804,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'O caminho da pasta não pode ficar vazio',
         'group.move.title': 'Mover para o grupo',
         'group.new': 'Novo grupo',
+        'hub.title': 'Central de interações',
+        'hub.empty': 'Nada aguardando você',
+        'hub.kind.approval': 'Aprovação',
+        'hub.kind.plan': 'Revisão do plano',
+        'hub.kind.question': 'Pergunta',
+        'hub.allow': 'Permitir uma vez',
+        'hub.reject': 'Rejeitar',
+        'hub.open': 'Abrir sessão',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tudo',
         'settings.collapseLimit.hint': 'Mostrar no máximo estas sessões por grupo; o resto dobra numa linha "+N". Vazio = mostrar tudo.',
@@ -1837,6 +1941,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Путь папки не может быть пустым',
         'group.move.title': 'Переместить в группу',
         'group.new': 'Новая группа',
+        'hub.title': 'Центр взаимодействий',
+        'hub.empty': 'Ничего не ждёт вашего ответа',
+        'hub.kind.approval': 'Одобрение',
+        'hub.kind.plan': 'Проверка плана',
+        'hub.kind.question': 'Вопрос',
+        'hub.allow': 'Разрешить один раз',
+        'hub.reject': 'Отклонить',
+        'hub.open': 'Открыть сессию',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Все',
         'settings.collapseLimit.hint': 'Показывать не более этого числа сессий в группе; остальные сворачиваются в строку «+N». Пусто = показывать все.',
@@ -1966,6 +2078,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Mappsökvägen får inte vara tom',
         'group.move.title': 'Flytta till grupp',
         'group.new': 'Ny grupp',
+        'hub.title': 'Interaktionshub',
+        'hub.empty': 'Inget väntar på dig',
+        'hub.kind.approval': 'Godkännande',
+        'hub.kind.plan': 'Plangranskning',
+        'hub.kind.question': 'Fråga',
+        'hub.allow': 'Tillåt en gång',
+        'hub.reject': 'Avvisa',
+        'hub.open': 'Öppna session',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alla',
         'settings.collapseLimit.hint': 'Visa högst så många sessioner per grupp; resten viks in i en "+N"-rad. Tomt = visa alla.',
@@ -2095,6 +2215,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'เส้นทางกลุ่มต้องไม่ว่าง',
         'group.move.title': 'ย้ายไปยังกลุ่ม',
         'group.new': 'กลุ่มใหม่',
+        'hub.title': 'ศูนย์โต้ตอบ',
+        'hub.empty': 'ไม่มีอะไรรอคุณอยู่',
+        'hub.kind.approval': 'การอนุมัติ',
+        'hub.kind.plan': 'ตรวจแผน',
+        'hub.kind.question': 'คำถาม',
+        'hub.allow': 'อนุญาตครั้งเดียว',
+        'hub.reject': 'ปฏิเสธ',
+        'hub.open': 'เปิดเซสชัน',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'ทั้งหมด',
         'settings.collapseLimit.hint': 'แสดงเซสชันต่อกลุ่มมากที่สุดเท่านี้; ส่วนที่เหลือย่อเป็นแถว "+N" ว่าง = แสดงทั้งหมด',
@@ -2224,6 +2352,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Klasör yolu boş olamaz',
         'group.move.title': 'Gruba taşı',
         'group.new': 'Yeni grup',
+        'hub.title': 'Etkileşim merkezi',
+        'hub.empty': 'Seni bekleyen bir şey yok',
+        'hub.kind.approval': 'Onay',
+        'hub.kind.plan': 'Plan incelemesi',
+        'hub.kind.question': 'Soru',
+        'hub.allow': 'Bir kez izin ver',
+        'hub.reject': 'Reddet',
+        'hub.open': 'Oturumu aç',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tümü',
         'settings.collapseLimit.hint': 'Grup başına en fazla bu kadar oturum göster; kalanlar "+N" satırına katlanır. Boş = tümünü göster.',
@@ -2353,6 +2489,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Đường dẫn nhóm không được để trống',
         'group.move.title': 'Chuyển vào nhóm',
         'group.new': 'Nhóm mới',
+        'hub.title': 'Trung tâm tương tác',
+        'hub.empty': 'Không có gì chờ bạn',
+        'hub.kind.approval': 'Phê duyệt',
+        'hub.kind.plan': 'Xem xét kế hoạch',
+        'hub.kind.question': 'Câu hỏi',
+        'hub.allow': 'Cho phép một lần',
+        'hub.reject': 'Từ chối',
+        'hub.open': 'Mở phiên',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tất cả',
         'settings.collapseLimit.hint': 'Hiển thị tối đa số phiên này mỗi nhóm; phần còn lại gập thành hàng "+N". Để trống = hiện tất cả.',
@@ -2482,6 +2626,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'hub.title': '互動中心',
+        'hub.empty': '沒有等待你的互動',
+        'hub.kind.approval': '審批',
+        'hub.kind.plan': '計畫確認',
+        'hub.kind.question': '提問',
+        'hub.allow': '允許一次',
+        'hub.reject': '拒絕',
+        'hub.open': '開啟會話',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -2611,6 +2763,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'hub.title': '互動中心',
+        'hub.empty': '沒有等待你的互動',
+        'hub.kind.approval': '審批',
+        'hub.kind.plan': '計畫確認',
+        'hub.kind.question': '提問',
+        'hub.allow': '允許一次',
+        'hub.reject': '拒絕',
+        'hub.open': '開啟會話',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -2740,6 +2900,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '群組路徑不能為空',
         'group.move.title': '移動到分組',
         'group.new': '新增分組',
+        'hub.title': '互動中心',
+        'hub.empty': '沒有等待你的互動',
+        'hub.kind.approval': '審批',
+        'hub.kind.plan': '計畫確認',
+        'hub.kind.question': '提問',
+        'hub.allow': '允許一次',
+        'hub.reject': '拒絕',
+        'hub.open': '開啟會話',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -3306,6 +3474,23 @@ window.__ModuleLoader__.load({
       '.bw-plugin-head:focus-visible{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px}',
       '.bw-plugin-headtext{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}',
       '.bw-plugin-name{font-size:15px;font-weight:600;line-height:1.4;color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-badge{position:absolute;top:-4px;right:-4px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#e5484d;color:#fff;font-size:10px;line-height:15px;text-align:center;font-weight:600}',
+    '.bw-hub-panel{position:absolute;top:30px;right:0;width:340px;max-height:70vh;overflow-y:auto;background:var(--dsw-alias-bg-primary,#1b1b1b);border:1px solid rgba(255,255,255,.08);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.45);z-index:60;padding:6px}',
+    '.bw-hub-head{display:flex;align-items:center;justify-content:space-between;padding:4px 6px}',
+    '.bw-hub-title{font-size:12px;font-weight:600;color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-empty{padding:14px 8px;font-size:12px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
+    '.bw-hub-item{border:1px solid rgba(255,255,255,.07);border-radius:8px;margin:4px 2px;overflow:hidden}',
+    '.bw-hub-item-head{display:flex;gap:6px;align-items:center;padding:6px 8px;cursor:pointer}',
+    '.bw-hub-kind{flex:none;font-size:10px;padding:2px 6px;border-radius:999px;background:rgba(229,72,77,.15);color:#f2a0a3}',
+    '.bw-hub-session{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-ws{flex:none;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--dsw-alias-label-tertiary,#8a8a8a)}',
+    '.bw-hub-body{padding:6px 8px;border-top:1px solid rgba(255,255,255,.06)}',
+    '.bw-hub-tool{font-size:11px;color:var(--dsw-alias-brand-primary,#5b8def);margin-bottom:4px}',
+    '.bw-hub-reason{font-size:12px;color:var(--dsw-alias-label-secondary,#c9c9c9);white-space:pre-wrap;word-break:break-word;max-height:160px;overflow-y:auto}',
+    '.bw-hub-actions{display:flex;gap:6px;margin-top:8px}',
+    '.bw-hub-btn{flex:none;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);cursor:pointer}',
+    '.bw-hub-btn-primary{background:var(--dsw-alias-brand-primary,#5b8def);border-color:transparent;color:#fff}',
+    '.bw-clamp-row{font-size:11.5px;color:var(--dsw-alias-brand-primary,#5b8def);cursor:pointer;min-height:24px}',
       '.bw-plugin-desc{font-size:13px;line-height:1.5;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
       '.bw-plugin-chevron{flex:none;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .16s}',
       '.bw-plugin-chevron-open{transform:rotate(180deg)}',
@@ -5034,6 +5219,108 @@ window.__ModuleLoader__.load({
 
     /* ============================= browser ============================ */
 
+    /* ==================== interaction hub (v0.20.0) ==================== */
+
+    // Aggregates every pending interaction across sessions. Data source: the
+    // host uiSession status store — its values carry the interaction INSTANCE
+    // (kind/key/answerable/answer), not just a kind tag. Answering in place
+    // routes through the instance's own answer(), the same path the official
+    // composer panel uses, so the host waterfall settles identically.
+    function collectInteractions(uiStatus, list, items) {
+      const out = []
+      if (!uiStatus) return out
+      let entries = []
+      try { entries = typeof uiStatus.entries === "function" ? [...uiStatus.entries()] : Object.entries(uiStatus) } catch { return out }
+      const wsOf = (sessionId) => (items || []).find((w) => (w.sessionIds || []).includes(sessionId))
+      for (const [sessionId, st] of entries) {
+        const it = st && st.pendingInteraction
+        if (!it || typeof it !== "object") continue
+        if (it.answerable === false) continue
+        const ws = wsOf(sessionId)
+        const summary = list && list.byId ? list.byId[sessionId] : undefined
+        out.push({
+          sessionId,
+          interaction: it,
+          kind: String(it.kind || "interaction"),
+          key: String(it.key || sessionId),
+          toolName: it.toolName,
+          reason: it.displayReason || it.reason || "",
+          sessionTitle: summary ? (summary.title || summary.displayTitle || sessionId) : sessionId,
+          wsTitle: ws ? String(ws.title || ws.leaf || ws.workspaceId) : "(未分组)",
+          wsPath: ws ? String(ws.path || "") : "",
+        })
+      }
+      return out
+    }
+
+    function InteractionHubButton({ uiStatus, list, items, open, uiWorkspace, officialT, t }) {
+      const [openPanel, setOpenPanel] = React.useState(false)
+      const items2 = collectInteractions(uiStatus, list, items)
+      const count = items2.length
+      const Warning = ui.IconWarningOutline16
+      return E("div", { style: { position: "relative", display: "inline-flex" } },
+        E("button", {
+          type: "button",
+          className: "bw-icon-btn",
+          title: t("hub.title") + (count > 0 ? " (" + count + ")" : ""),
+          "aria-label": t("hub.title"),
+          onClick: () => setOpenPanel((v) => !v),
+        },
+          Warning ? E(Warning, { className: undefined }) : t("hub.title"),
+          count > 0 ? E("span", { className: "bw-hub-badge" }, String(count)) : null,
+        ),
+        openPanel ? E(InteractionHubPanel, {
+          rows: items2,
+          onClose: () => setOpenPanel(false),
+          open,
+          uiWorkspace,
+          officialT,
+          t,
+        }) : null,
+      )
+    }
+
+    function InteractionHubPanel({ rows, onClose, open, uiWorkspace, officialT, t }) {
+      const ot = typeof officialT === "function" ? officialT : null
+      const [expanded, setExpanded] = React.useState({})
+      return E("div", { className: "bw-hub-panel", role: "dialog", "aria-label": t("hub.title") },
+        E("div", { className: "bw-hub-head" },
+          E("span", { className: "bw-hub-title" }, t("hub.title")),
+          E("button", { type: "button", className: "bw-icon-btn", onClick: onClose, "aria-label": t("close") },
+            ui.IconCloseOutline16 ? E(ui.IconCloseOutline16) : "×"),
+        ),
+        rows.length === 0 ? E("div", { className: "bw-hub-empty" }, t("hub.empty")) : null,
+        rows.map((row) => {
+          const isOpen = expanded[row.key] !== false
+          const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
+          return E("div", { key: row.key, className: "bw-hub-item" },
+            E("div", { className: "bw-hub-item-head", onClick: () => setExpanded((s) => ({ ...s, [row.key]: !isOpen })) },
+              E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
+              E("span", { className: "bw-hub-session" }, row.sessionTitle),
+              E("span", { className: "bw-hub-ws", title: row.wsPath }, row.wsTitle),
+            ),
+            isOpen ? E("div", { className: "bw-hub-body" },
+              row.toolName ? E("div", { className: "bw-hub-tool" }, row.toolName) : null,
+              row.reason ? E("div", { className: "bw-hub-reason" }, row.reason) : null,
+              E("div", { className: "bw-hub-actions" },
+                canAnswer && row.kind === "approval" ? [
+                  E("button", { key: "a", type: "button", className: "bw-hub-btn bw-hub-btn-primary",
+                    onClick: () => { try { row.interaction.answer("allowed-once") } catch {} } },
+                    ot ? ot("status.compact.approval") && (ot("allowOnce") || t("hub.allow")) : t("hub.allow")),
+                  E("button", { key: "r", type: "button", className: "bw-hub-btn",
+                    onClick: () => { try { row.interaction.answer("rejected") } catch {} } },
+                    t("hub.reject")),
+                ] : null,
+                E("button", { key: "go", type: "button", className: "bw-hub-btn",
+                  onClick: () => { try { uiWorkspace.openSession(row.sessionId) } catch {} ; onClose() } },
+                  t("hub.open")),
+              ),
+            ) : null,
+          )
+        }),
+      )
+    }
+
     function BetterBrowser(props) {
       const {
         wide, expandSidebar,
@@ -5089,30 +5376,12 @@ window.__ModuleLoader__.load({
       // no spinner), so every row derivation goes through statusFaceOf and falls back
       // to the old fields only when this store is absent (older hosts).
       const uiStatus = typeof useSessionStatus === 'function' ? useSessionStatus((s) => s) : null
-      // v0.16.2-diag: set window.__BW_DIAG = true in the devtools console, then any
-      // BetterBrowser re-render dumps the whole status chain (per-session row
-      // derivation + raw store values) so a stuck state can be located in one look.
-      React.useEffect(() => {
-        if (typeof window === 'undefined' || !window.__BW_DIAG) return
-        try {
-          const rows = []
-          for (const w of items || []) {
-            for (const id of w.sessionIds || []) {
-              const summary = list && list.byId ? list.byId[id] : undefined
-              if (!summary) continue
-              let st
-              try { st = uiStatus ? (typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id]) : 'NO-STORE' } catch (e) { st = 'GET-ERR' }
-              rows.push({
-                id, ws: w.workspaceId,
-                summaryRunning: summary.running, summaryCompleted: summary.completed,
-                store: st,
-                face: statusFaceOf(id, summary),
-              })
-            }
-          }
-          console.log('[bw-diag] status chain', { hasStore: !!uiStatus, storeIsMap: uiStatus instanceof Map, rows })
-        } catch (e) { console.warn('[bw-diag] failed', e) }
-      })
+      // v0.20.0 INTERACTION HUB — the statuses Map carries the live interaction
+      // instance itself (publishPendingInteractions projects value.interaction),
+      // so the sidebar can aggregate every user-attention request without any
+      // new wire: approvals (kind "approval", answer("allowed-once"|"rejected")),
+      // questions, plan reviews. The hub lists each with session title + workspace
+      // path + raw content and answers in place.
       const statusFaceOf = (id, summary) => {
         let st
         if (uiStatus) { try { st = typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id] } catch { st = undefined } }
@@ -6696,6 +6965,15 @@ window.__ModuleLoader__.load({
             workspaceSlash,
             onPick: (kind, value) => { if (kind === 'groupBy') actions.setGroupBy(value); else actions.setOrderBy(value) },
             onToggle: (key, value) => { if (key === 'sessionTitleSlash') actions.setSessionTitleSlash(value); else actions.setWorkspaceTitleSlash(value) },
+            t,
+          }),
+          // v0.20.0 interaction hub: one button aggregating every pending
+          // interaction across all sessions (approvals, questions, plan reviews).
+          // The badge counts answerable items; the panel lists session title,
+          // workspace path, raw content, with in-place answer buttons.
+          E(InteractionHubButton, {
+            uiStatus, list, items, open, uiWorkspace,
+            officialT,
             t,
           }),
           // Tab-cycle order toggle (v0.17): page order vs recent (access) order.
