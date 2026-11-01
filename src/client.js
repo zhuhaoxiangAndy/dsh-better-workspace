@@ -5693,7 +5693,36 @@ window.__ModuleLoader__.load({
             return
           }
           if (!dragMatches('workspace')) return
+          // v0.18.2 GROUP-ROOT RULE: dropping a workspace onto a workspace that
+          // OTHERS extend by title (a group root like "web" with web/… members)
+          // moves the drag INTO that group — every member prefix rewrites, the
+          // tree keeps the dragged row's subtree intact. Row-half still works:
+          // upper half drops BESIDE (reorder), lower half drops INTO (group).
+          const isGroupRoot = (items || []).some((w) => w.workspaceId !== workspace.workspaceId
+            && String(w.title || '').startsWith(String(workspace.title || 'X') + '/'))
           const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
+          if (isGroupRoot && half === 'after') {
+            const segs = splitTitleSegs(String(workspace.title || ''))
+            const targetGroup = segs.length > 0 ? segs.join('/') : ''
+            const src = drag.source
+            const srcFull = (items || []).find((w) => w.workspaceId === src.workspaceId)
+            const srcTitle = String((srcFull && srcFull.title) || '')
+            const srcSegs = splitTitleSegs(srcTitle)
+            const srcLeaf = srcSegs.length > 0 ? srcSegs[srcSegs.length - 1] : src.leaf
+            // Dragged subtree members move with it (their titles extend the drag's title).
+            const members = (items || []).filter((w) => w.workspaceId !== src.workspaceId
+              && srcTitle !== '' && String(w.title || '').startsWith(srcTitle + '/'))
+            Promise.resolve()
+              .then(async () => {
+                await renameWorkspace(src.workspaceId, targetGroup !== '' ? targetGroup + '/' + srcLeaf : srcLeaf)
+                for (const m of members) {
+                  const rest = String(m.title || '').slice(srcTitle.length + 1)
+                  await renameWorkspace(m.workspaceId, targetGroup !== '' ? targetGroup + '/' + rest : rest)
+                }
+              })
+              .catch(fail)
+            return
+          }
           commitWorkspaceDrop(workspace, half)
         },
       })
@@ -5864,7 +5893,7 @@ window.__ModuleLoader__.load({
         },
         onDragEnd: () => setDrag(null),
         onDragOver: (event) => {
-          if (!dragMatches('session') || !canReorderSessions || drag.source.workspaceId !== workspaceId) return
+          if (!dragMatches('session')) return
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
@@ -5874,7 +5903,7 @@ window.__ModuleLoader__.load({
             : (current ? { ...current, over: { kind: 'session', target: session.id, half } } : current))
         },
         onDrop: (event) => {
-          if (!dragMatches('session') || !canReorderSessions || drag.source.workspaceId !== workspaceId) return
+          if (!dragMatches('session')) return
           event.preventDefault()
           event.stopPropagation()
           const half = drag.over && drag.over.kind === 'session' && drag.over.target === session.id ? drag.over.half : rowHalf(event)
@@ -6131,7 +6160,7 @@ window.__ModuleLoader__.load({
         onOpen: (id) => open(id),
         onContextMenu: (e) => openCtx('session', session, e),
         dropHalf: workspaceId ? sessDropHalf(session.id) : null,
-        dragEvents: workspaceId ? sessionDragEvents(session, workspaceId) : undefined,
+        dragEvents: sessionDragEvents(session, workspaceId || null),
         custStyle: rowStyleOf('session:' + session.id),
         breathing: statusPulse,
         t,
