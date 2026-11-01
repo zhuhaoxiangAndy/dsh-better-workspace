@@ -880,9 +880,9 @@ test('client.js consumes the host ui status store with legacy fallback (v0.16.0)
   assert.match(text, /return 'idle'/, 'plain sessions render the official idle dot')
 })
 
-test('client.js surfaces pending work and a spinner fallback (v0.16.0)', () => {
+test('client.js mirrors official status presentation (v0.16.1)', () => {
   const text = read('src/client.js')
-  assert.match(text, /bw-pending-badge/, 'trailing pending badge')
-  assert.match(text, /bw-spin/, 'CSS spinner when StateDot is unavailable')
-  assert.match(text, /@keyframes bw-rot/, 'spinner keyframes shipped')
+  assert.match(text, /status\.compact\.planReview/, 'official compact trailing keys')
+  assert.match(text, /ot\('status\.waitingApproval'\)/, 'official dictionary copy preferred')
+  assert.match(text, /status && status\.trailing \? status\.trailing : timeLabel/, 'official trailingLabel ?? timeLabel contract')
 })

@@ -3131,9 +3131,6 @@ window.__ModuleLoader__.load({
       '.bw-row:hover .bw-row-actions{display:flex}',
       '.bw-row:hover .bw-row-time,.bw-row:hover .bw-row-count,.bw-row:hover .bw-schedule-badge{display:none}',
       '.bw-dot{flex:none;width:6px;height:6px;border-radius:50%;background:transparent}',
-    '.bw-spin{flex:none;width:10px;height:10px;border:2px solid rgba(91,140,255,.3);border-top-color:#5b8cff;border-radius:50%;animation:bw-rot .9s linear infinite}',
-    '@keyframes bw-rot{to{transform:rotate(360deg)}}',
-    '.bw-pending-badge{flex:none;font-size:11px;line-height:1;padding:3px 6px;border-radius:999px;color:#c9a24b;background:rgba(201,162,75,.12)}',
       '.bw-session-row{font-size:12.5px;color:var(--dsw-alias-label-secondary,#b8b8b8);min-height:26px}',
       '.bw-sgroup-row{font-size:12.5px;color:var(--dsw-alias-label-tertiary,#9a9a9a);min-height:24px}',
       '.bw-sgroup-row:hover{color:var(--dsw-alias-label-secondary,#b8b8b8)}',
@@ -4290,13 +4287,27 @@ window.__ModuleLoader__.load({
 
     function SessionRow({ node, depth, current, onOpen, onContextMenu, now, dropHalf, dragEvents, custStyle, breathing, t }) {
       const state = sessionStateOf(node)
+      // Official copy when available (the bound 'workspace' dictionary carries the
+      // exact shipped strings: 等待审批 / 待审批 / 计划待审 / 待回答 / 进行中 / 已完成).
+      // bw's own keys are the fallback for hosts without the bind.
+      const ot = typeof officialT === 'function' ? officialT : null
       const status = state === null ? null : {
         state,
         title: state === 'warning'
-          ? t('status.' + (node.pending === 'plan-review' ? 'planReview' : node.pending))
+          ? (node.pending === 'plan-review'
+            ? (ot ? ot('status.planReview') : t('status.planReview'))
+            : node.pending === 'approval' ? (ot ? ot('status.waitingApproval') : t('status.approval'))
+            : (ot ? ot('status.waitingAnswer') : t('status.question')))
           : state === 'ongoing'
-            ? (node.running ? t('status.running') : t('status.subagents', { n: node.subagents }))
-            : state === 'idle' ? undefined : t('status.completed'),
+            ? (ot ? ot('status.running') : t('status.running'))
+            : state === 'idle' ? undefined : (ot ? ot('status.completed') : t('status.completed')),
+        // Official compact trailing text (待审批 / 计划待审 / 待回答), matching the
+        // official row's time-slot replacement.
+        trailing: state === 'warning'
+          ? (node.pending === 'plan-review' ? (ot ? ot('status.compact.planReview') : t('status.planReview'))
+            : node.pending === 'approval' ? (ot ? ot('status.compact.approval') : t('status.approval'))
+            : (ot ? ot('status.compact.answer') : t('status.question')))
+          : undefined,
       }
       return E('div', {
         className: cls('bw-row', 'bw-session-row', current && 'bw-row-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
@@ -4307,29 +4318,22 @@ window.__ModuleLoader__.load({
         ...(dragEvents || {}),
       },
         E('span', { className: 'bw-row-icon', title: status ? status.title : undefined },
-          status && typeof ui.StateDot === 'function'
+          status && state !== 'idle' && typeof ui.StateDot === 'function'
             ? (state === 'ongoing' && breathing
-              // Running breathes blue ON the session row only (never relays);
-              // the settings toggle covers this breathing too.
-              ? E(PulseGlow, { state: 'ongoing' }, E(ui.StateDot, { state: status.state, size: 10 }))
-              : E(ui.StateDot, { state: status.state, size: 10 }))
-            : (state === 'ongoing'
-              ? E('span', { className: 'bw-spin', 'aria-hidden': 'true' })
-              : E('span', { className: 'bw-dot' })),
+              ? E(PulseGlow, { state: 'ongoing' }, E(ui.StateDot, { state: status.state }))
+              : E(ui.StateDot, { state: status.state }))
+            : null,
         ),
         // The row body shows only its leaf segment (the group row above carries
         // the prefix), so the hover card restores the full display title the
         // official browser shows.
         E('span', { className: 'bw-row-label', title: node.title || node.leaf }, node.leaf || node.title),
-        // Official trailing compact label (「待审批」/ 计划确认 / 等待回答) — bw uses
-        // its full-length keys; same meaning, one row-loud surface.
-        state === 'warning' && status && status.title
-          ? E('span', { className: 'bw-pending-badge' }, status.title)
-          : null,
         node.hasActiveSchedule
           ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutline16', 14))
           : null,
-        E('span', { className: 'bw-row-time' }, timeLabel(node.updatedAt, now, t)),
+        // Official trailing contract: the compact pending text REPLACES the
+        // relative time while waiting (official Rows: trailingLabel ?? timeLabel).
+        E('span', { className: 'bw-row-time' }, status && status.trailing ? status.trailing : timeLabel(node.updatedAt, now, t)),
       )
     }
 
