@@ -4988,6 +4988,30 @@ window.__ModuleLoader__.load({
       // no spinner), so every row derivation goes through statusFaceOf and falls back
       // to the old fields only when this store is absent (older hosts).
       const uiStatus = typeof useSessionStatus === 'function' ? useSessionStatus((s) => s) : null
+      // v0.16.2-diag: set window.__BW_DIAG = true in the devtools console, then any
+      // BetterBrowser re-render dumps the whole status chain (per-session row
+      // derivation + raw store values) so a stuck state can be located in one look.
+      React.useEffect(() => {
+        if (typeof window === 'undefined' || !window.__BW_DIAG) return
+        try {
+          const rows = []
+          for (const w of items || []) {
+            for (const id of w.sessionIds || []) {
+              const summary = list && list.byId ? list.byId[id] : undefined
+              if (!summary) continue
+              let st
+              try { st = uiStatus ? (typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id]) : 'NO-STORE' } catch (e) { st = 'GET-ERR' }
+              rows.push({
+                id, ws: w.workspaceId,
+                summaryRunning: summary.running, summaryCompleted: summary.completed,
+                store: st,
+                face: statusFaceOf(id, summary),
+              })
+            }
+          }
+          console.log('[bw-diag] status chain', { hasStore: !!uiStatus, storeIsMap: uiStatus instanceof Map, rows })
+        } catch (e) { console.warn('[bw-diag] failed', e) }
+      })
       const statusFaceOf = (id, summary) => {
         let st
         if (uiStatus) { try { st = typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id] } catch { st = undefined } }
