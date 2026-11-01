@@ -3,6 +3,13 @@
 > 倒序排列,新版本条目在最上面。条目格式:`## vX.Y.Z — YYYY-MM-DD` + 类型(feat / fix / docs / chore)+ 要点 + 相关链接。
 > 纪律见 AGENTS.md「变更记录纪律」:发版前先更新本文件并随版本提交;事故复盘、复现与真机验证记录也记在这里。
 
+## v0.15.0 — 2026-11-01
+
+**类型**:feat(Ctrl+Tab 工作区循环切换) + fix(dsh 0.2.x 桌面端适配,随 v0.15.1 提交)
+
+- **feat(Ctrl+Tab / Ctrl+Shift+Tab 循环切换工作区)**:捕获阶段 document keydown(Ctrl 必按,Alt/Meta 排除),按宿主 `items` 顺序循环(与「按工作区」视图一致);目标工作区优先打开**最近更新的可见会话**(过 `sessionVisible` 过滤),无可见会话则 `startSession` 新建(与行上 + 按钮同语义),落点行强制展开;当前会话不属任何工作区时用 `lastCycleRef` 锚点续接。纯前端行为,无新 i18n 键、无新存储键。
+- **fix(desktop 适配,v0.15.1)**:`inject` 数组移除 `settingsScope` 硬依赖 — 内核等不到该服务时插件永远 pending 并拖垮整个 web boot(桌面端 2026-10-31 崩溃根因,crash-2026-10-31T01-28-27);`apply()` 内既有的 `ctx.settingsScope` 探测(L6517)继续兜底,缺失即退化为浏览器本地持久化(文档化的 pre-0.9.5 行为)。提供方存在时同步照常工作。
+
 ## v0.13.0 — 2026-09-18
 
 **类型**:feat + fix(dsh 0.1.6-alpha.2 适配:会话导航保留契约迁移;官方视图选项菜单回归 + 会话 / 工作区按 "/" 分组开关)

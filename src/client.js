@@ -4931,6 +4931,53 @@ window.__ModuleLoader__.load({
         }
       }, [list ? list.byId : null])
 
+
+      /* -------------------- Ctrl+Tab workspace cycling (v0.15) ------------------- */
+
+      // Ctrl+Tab / Ctrl+Shift+Tab cycle workspaces in sidebar order (the host
+      // items order — the same order the 'workspace' view mode renders). Forward
+      // = next down, Shift = previous up, wrapping at both ends. The target opens
+      // its most recently updated visible session; a workspace with none starts a
+      // new session (the same semantics as the row's + button) and force-expands
+      // so the user SEES where they landed, matching onStart. lastCycleRef seeds
+      // the anchor when the current session belongs to no listed workspace (e.g.
+      // an ungrouped session) — after the first press the anchor follows the cycle.
+      // Capture phase + preventDefault beat in-page Tab handling; Electron-native
+      // accelerators, if any, sit above this layer and would need the host
+      // shortcuts service (future work).
+      const lastCycleRef = React.useRef(-1)
+      const cycleWorkspaces = (dir) => {
+        const wsList = (items || []).filter((w) => w && w.workspaceId)
+        if (wsList.length === 0) return
+        const curIdx = wsList.findIndex((w) => !!(currentId && (w.sessionIds || []).includes(currentId)))
+        const anchorIdx = curIdx >= 0 ? curIdx : (lastCycleRef.current >= 0 ? lastCycleRef.current : 0)
+        const nextIdx = (anchorIdx + dir + wsList.length) % wsList.length
+        const target = wsList[nextIdx]
+        lastCycleRef.current = nextIdx
+        // Expand the landing row even when the session open races the wire: the
+        // row must be visible immediately, exactly like the row's + button.
+        if (actions && typeof actions.setSessionsExpanded === 'function') actions.setSessionsExpanded(target.workspaceId, true)
+        let best = null
+        for (const id of target.sessionIds || []) {
+          const summary = list && list.byId ? list.byId[id] : undefined
+          if (!sessionVisible(summary, currentId, archivedSet)) continue
+          if (!best || (summary.updatedAt || 0) > (best.summary.updatedAt || 0)) best = { id, summary }
+        }
+        if (best) open(best.id)
+        else if (typeof startSession === 'function') startSession(target.workspaceId)
+      }
+      React.useEffect(() => {
+        if (typeof document === 'undefined' || !document || typeof document.addEventListener !== 'function') return undefined
+        const handler = (e) => {
+          if (e.key !== 'Tab' || !e.ctrlKey || e.altKey || e.metaKey) return
+          e.preventDefault()
+          e.stopPropagation()
+          cycleWorkspaces(e.shiftKey ? -1 : 1)
+        }
+        document.addEventListener('keydown', handler, true)
+        return () => document.removeEventListener('keydown', handler, true)
+        // Fresh closure per dependency change; the listener is cheap to swap.
+      }, [items, list ? list.byId : null, currentId, archivedSet, startSession, open, actions])
       // Outline color sampler. The outline has to contrast with the LABEL
       // color, and the palette can flip (theme, or a background plugin's
       // light/dark switch) without any React render. So sample the tree's live

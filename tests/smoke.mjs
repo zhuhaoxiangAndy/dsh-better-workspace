@@ -854,3 +854,14 @@ test('hover cards: workspace rows expose the disk path, session rows the full ti
   assert.match(text, /className: 'bw-row-label', title: node\.title \|\| node\.leaf/,
     'session hover carries the full display title again')
 })
+
+test('client.js registers Ctrl+Tab / Ctrl+Shift+Tab workspace cycling (v0.15)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /cycleWorkspaces/, 'cycle helper must exist')
+  assert.match(text, /document\.addEventListener\('keydown', handler, true\)/, 'capture-phase keydown listener')
+  assert.match(text, /e\.key !== 'Tab'/, 'Tab keys only')
+  assert.match(text, /e\.ctrlKey/, 'Ctrl modifier required')
+  assert.match(text, /e\.shiftKey \? -1 : 1/, 'Shift reverses direction')
+  assert.match(text, /e\.preventDefault\(\)/, 'prevent the browser tab switch')
+  assert.match(text, /sessionVisible\(summary, currentId, archivedSet\)/, 'target session must be visibility-filtered')
+})
