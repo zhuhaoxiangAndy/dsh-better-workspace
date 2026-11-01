@@ -5729,7 +5729,11 @@ window.__ModuleLoader__.load({
           const isGroupRoot = (items || []).some((w) => w.workspaceId !== workspace.workspaceId
             && String(w.title || '').startsWith(String(workspace.title || 'X') + '/'))
           const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
-          if (isGroupRoot && half === 'after') {
+          // Edge-band convention (6px at either edge = reorder beside; the rest of
+          // the row = into the group). A group root's whole body reads as "drop in".
+          const rect = event.currentTarget.getBoundingClientRect()
+          const nearEdge = event.clientY < rect.top + 6 || event.clientY > rect.bottom - 6
+          if (isGroupRoot && !nearEdge) {
             const segs = splitTitleSegs(String(workspace.title || ''))
             const targetGroup = segs.length > 0 ? segs.join('/') : ''
             const src = drag.source
@@ -6209,7 +6213,7 @@ window.__ModuleLoader__.load({
         onOpen: (id) => open(id),
         onContextMenu: (e) => openCtx('session', session, e),
         dropHalf: workspaceId ? sessDropHalf(session.id) : null,
-        dragEvents: sessionDragEvents(session, workspaceId || null),
+        dragEvents: sessionDragEvents(session, workspaceId === undefined ? null : workspaceId),
         custStyle: rowStyleOf('session:' + session.id),
         breathing: statusPulse,
         t,
