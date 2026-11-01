@@ -5325,7 +5325,10 @@ window.__ModuleLoader__.load({
       // level as a real folder row (folder expansion defaults apply); when the
       // drag ends, the chains merge back. Session drags keep the merged view —
       // their drop targets live inside workspace rows, which compression merges.
-      const draggingWorkspace = drag !== null && drag.kind === 'workspace'
+      // v0.18.1: folder drags expand the chains too — otherwise a folder drag
+      // hovers over collapsed single-chain rows and every potential target is
+      // hidden, which reads as "cannot drag at all".
+      const draggingWorkspace = drag !== null
       const tree = React.useMemo(() => {
         const built = buildTree(items, workspaceSlash)
         if (!compactChains || draggingWorkspace) return built
