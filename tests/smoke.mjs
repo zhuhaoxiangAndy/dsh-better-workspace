@@ -865,3 +865,9 @@ test('client.js registers Ctrl+Tab / Ctrl+Shift+Tab workspace cycling (v0.15)', 
   assert.match(text, /e\.preventDefault\(\)/, 'prevent the browser tab switch')
   assert.match(text, /sessionVisible\(summary, currentId, archivedSet\)/, 'target session must be visibility-filtered')
 })
+
+test('client.js does not hard-inject settingsScope (desktop 0.2.x compat, v0.15.1)', () => {
+  const text = read('src/client.js')
+  assert.doesNotMatch(text, /inject: \[[^\]]*settingsScope/, 'settingsScope must stay a runtime probe, not an inject dependency')
+  assert.match(text, /ctx\.settingsScope && typeof ctx\.settingsScope\.bind/, 'probe fallback must remain')
+})

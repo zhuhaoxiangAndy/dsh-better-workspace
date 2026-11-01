@@ -6583,7 +6583,12 @@ window.__ModuleLoader__.load({
 
     return {
       name: 'dsh-better-workspace',
-      inject: ['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace', 'settingsScope'],
+      // settingsScope is PROBED in apply() (ctx.settingsScope?.bind) instead of
+      // being a hard inject dependency: hosts without the service (dsh 0.2.x
+      // desktop without dshmarket) left the plugin pending forever and failed
+      // the whole web boot (crash-2026-10-31T01-28-27). Absent scope = the
+      // documented pre-0.9.5 browser-local fallback.
+      inject: ['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace'],
       apply,
     }
   },
