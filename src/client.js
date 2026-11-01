@@ -4993,8 +4993,12 @@ window.__ModuleLoader__.load({
         if (uiStatus) { try { st = typeof uiStatus.get === 'function' ? uiStatus.get(id) : uiStatus[id] } catch { st = undefined } }
         let kind
         if (st && st.pendingInteraction) { const k = st.pendingInteraction.kind; if (k === 'approval' || k === 'plan-review' || k === 'question') kind = k }
+        // The status store is the authority when the session appears in it at all:
+        // running is undefined (not false) for sessions not currently executing, so
+        // a `?? summary.running` fallback would resurrect the stale wire field and
+        // keep the dot gray forever. Absent entry only -> legacy fields.
         return {
-          running: st ? (st.running ?? !!summary.running) : !!summary.running,
+          running: st ? (st.running === true) : !!summary.running,
           completed: st ? st.completionUnread === true : summary.completed === true,
           subagents: st && Number.isFinite(st.runningSubagentCount) ? st.runningSubagentCount : (subCounts.get(id) || 0),
           pending: kind || pendingKindOf(pending, id),
