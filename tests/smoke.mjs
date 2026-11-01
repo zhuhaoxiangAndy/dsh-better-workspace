@@ -563,41 +563,44 @@ test('buildTree: disk nesting + name groups inside each level (0.12.0)', () => {
   assert.equal(normDiskPath('/home/u/'), '/home/u')
 
   const items = [
-    { workspaceId: 'a', title: 'web/前端', path: '/home/u/web' },
-    { workspaceId: 'b', title: 'api', path: '/home/u/web/api' },
-    { workspaceId: 'c', title: 'web/后端', path: '/home/u/other' },
-    { workspaceId: 'd', title: 'deep/nested/x', path: '/home/u/web/api/d' },
-    { workspaceId: 'top', title: '独立', path: '/srv' },
+    // v0.18.0: containment is TITLE-ONLY — paths are no longer tree force.
+    // The old disk-nesting fixture (b under a via /home/u/web/api) becomes a
+    // title-nested equivalent: same tree shape, path-agnostic.
+    { workspaceId: 'a', title: 'web/前端', path: '/x/1' },
+    { workspaceId: 'b', title: 'web/前端/api', path: '/x/2' },
+    { workspaceId: 'c', title: 'web/后端', path: '/x/3' },
+    { workspaceId: 'd', title: 'web/前端/api/d', path: '/x/4' },
+    { workspaceId: 'top', title: '独立', path: '/x/5' },
   ]
-  // Disk ancestry: b and d nest under a; nothing nests under c (its
-  // directory /home/u/other has no registered child).
+  // (v0.18.0) diskParentMapOf still computes path ancestry for bookkeeping,
+  // but buildTree no longer consumes it as tree force.
   const parents = diskParentMapOf(items)
   assert.equal(parents.get('a'), undefined)
-  assert.equal(parents.get('b'), 'a')
-  assert.equal(parents.get('d'), 'b')
-  assert.equal(parents.get('top'), undefined)
 
   const tree = buildTree(items)
-  // Root level: one name group (web) holding a and c; the standalone row.
+  // v0.18.0 title-only: b and d nest under a BY TITLE (web/前端/api, …/d),
+  // paths are irrelevant. Root: name group web holds a and c; standalone top.
   assert.deepEqual(tree.folders.map((f) => f.name), ['web'])
   assert.deepEqual(tree.folders[0].workspaces.map((w) => w.workspaceId), ['a', 'c'])
   assert.deepEqual(tree.workspaces.map((w) => w.workspaceId), ['top'])
-  // a's disk children form a nested LEVEL with its own name groups.
+  // a's title children form a nested LEVEL.
   const a = tree.folders[0].workspaces[0]
   assert.ok(a.sub, 'a has nested workspaces')
+  // a's sub level: b strips to leaf 'api' (root-level row); d strips to 'api/d'
+  // which mounts inside the name group 'api'. b and the api group coexist.
   assert.deepEqual(a.sub.workspaces.map((w) => w.workspaceId), ['b'])
-  assert.deepEqual(a.sub.folders, [], "b's title has no '/', so a's nested level holds no name groups")
+  assert.deepEqual(a.sub.folders.map((f) => f.name), ['api'])
+  assert.deepEqual(a.sub.folders[0].workspaces.map((w) => w.workspaceId), ['d'])
   // Sub-level folder identity keys carry the owning chain so same-named
   // groups in different levels never share expansion/styling state.
   // (checked on b's nested level below, where d's title forms groups)
-  // d (b's disk child) sits inside b's sub level, inside the deep group.
+  // d's title 'web/前端/api/d' nests INSIDE b's title chain: b's sub level
+  // holds the name group api (from segment 3), and d is its workspace.
+  // d also title-nests under b ('web/前端/api' + '/d') → b.sub holds d directly.
   const b = a.sub.workspaces[0]
-  assert.ok(b.sub)
-  // d's title 'deep/nested/x' forms the chain deep → nested inside b's level.
-  assert.deepEqual(b.sub.folders.map((f) => f.name), ['deep'])
-  assert.deepEqual(b.sub.folders[0].folders.map((f) => f.name), ['nested'])
-  assert.deepEqual(b.sub.folders[0].folders[0].workspaces.map((w) => w.workspaceId), ['d'])
-  assert.equal(b.sub.folders[0].idPath, 'a//b//deep')
+  assert.ok(b.sub, 'b has title-nested workspaces')
+  assert.deepEqual(b.sub.workspaces.map((w) => w.workspaceId), ['d'], 'd nests one level below b by title')
+  assert.deepEqual(b.sub.folders, [], "d strips to 'd' under b — a bare leaf, no name groups")
   // c has no nested level: sub is null, the row stays a leaf.
   assert.equal(tree.folders[0].workspaces[1].sub, null)
 })
@@ -634,18 +637,18 @@ test('view options: group/order menu + the two slash toggles (0.13.0)', () => {
   const { buildTree, buildSessionTree } = helpers
 
   const items = [
-    { workspaceId: 'a', title: 'web/前端', path: '/home/u/web' },
-    { workspaceId: 'b', title: 'api', path: '/home/u/web/api' },
+    // v0.18.0 title-only containment fixture.
+    { workspaceId: 'a', title: 'web/前端', path: '/x/1' },
+    { workspaceId: 'b', title: 'web/前端/api', path: '/x/2' },
   ]
   // Workspace slash toggle OFF: no name layer — workspaces mount straight
-  // at their disk level; the DISK layer is a filesystem fact and survives.
+  // at the root level; titles stay intact either way.
   const flat = buildTree(items, false)
   assert.deepEqual(flat.folders, [], 'no name groups')
-  assert.deepEqual(flat.workspaces.map((w) => w.workspaceId), ['a'])
+  assert.deepEqual(flat.workspaces.map((w) => w.workspaceId), ['a', 'b'], 'both at root — no name layer, no title nesting')
   assert.equal(flat.workspaces[0].leaf, 'web/前端', 'leaf keeps the full title')
   assert.equal(flat.workspaces[0].folderPath, '')
-  assert.ok(flat.workspaces[0].sub, 'disk nesting survives')
-  assert.equal(flat.workspaces[0].sub.workspaces[0].leaf, 'api')
+  assert.equal(flat.workspaces[0].sub, null, 'v0.18.0: no disk nesting, b is a peer by title only')
 
   const rows = [
     { id: '1', title: 'proj/设计' },
@@ -895,4 +898,13 @@ test('client.js cycles session tabs across groups with two persisted orders (v0.
   assert.match(text, /'recent' \? 'page' : 'recent'/, 'header button toggles the order')
   assert.match(text, /IconClockOutline16/, 'recent order uses the official clock icon')
   assert.match(text, /cycle\.order\.page/, 'i18n keys shipped')
+})
+
+test('containment follows the title, folders drag, chains show a visual separator (v0.18.0)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /return buildLevel\(list, ''\)/, 'tree built from ALL workspaces by title segments')
+  assert.match(text, /folderDragEvents/, 'folder rows are drag sources')
+  assert.match(text, /commitFolderMoveInto/, 'folder drop commit')
+  assert.match(text, /segs\.join\(' › '\)/, 'compressed chains render a visual separator, not a raw slash')
+  assert.doesNotMatch(text, /const sameDisk = source\.disk/, 'disk-layer gating removed from drop commits')
 })

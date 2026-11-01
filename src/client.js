@@ -3040,7 +3040,13 @@ window.__ModuleLoader__.load({
           const segs = splitTitleSegs(workspace.title)
           const folderPath = segs.slice(0, -1).join('/')
           const leaf = segs.length > 0 ? segs[segs.length - 1] : (basename(workspace.path) || String(workspace.title || '') || String(workspace.workspaceId || ''))
-          const subList = childrenOf.get(workspace.workspaceId)
+          // v0.18.0: title-nesting — a workspace's children are the workspaces
+          // whose title extends THIS workspace's full title with a '/' segment.
+          const fullTitle = String(workspace.title || '')
+          const subList = fullTitle !== ''
+            ? wsList.filter((w) => w.workspaceId !== workspace.workspaceId
+              && String(w.title || '').startsWith(fullTitle + '/'))
+            : []
           const entry = {
             workspaceId: workspace.workspaceId,
             title: String(workspace.title || ''),
@@ -3048,7 +3054,9 @@ window.__ModuleLoader__.load({
             sessionIds: Array.isArray(workspace.sessionIds) ? workspace.sessionIds : [],
             leaf,
             folderPath,
-            sub: subList ? buildLevel(subList, (idPrefix !== '' ? idPrefix + '//' : '') + workspace.workspaceId) : null,
+            sub: subList && subList.length > 0
+              ? buildLevel(subList.map((w) => ({ ...w, title: String(w.title || '').slice(fullTitle.length + 1) })), (idPrefix !== '' ? idPrefix + '//' : '') + workspace.workspaceId)
+              : null,
           }
           // Slash grouping OFF (v0.13 view option): skip the name layer —
           // workspaces mount straight at their disk level; the DISK layer
@@ -3056,6 +3064,7 @@ window.__ModuleLoader__.load({
           if (groupBySlash === false) {
             entry.leaf = String(workspace.title || '') || leaf
             entry.folderPath = ''
+            entry.sub = null
             root.workspaces.push(entry)
             continue
           }
@@ -3068,8 +3077,12 @@ window.__ModuleLoader__.load({
         sortRec(root)
         return root
       }
-      const topLevel = list.filter((w) => diskParentOf.get(w.workspaceId) === undefined)
-      return buildLevel(topLevel, '')
+      // v0.18.0 CONTAINMENT RETHINK: hierarchy comes from the TITLE ONLY. The
+      // disk-nesting layer (path containment) is gone as a tree force — a child
+      // directory workspace is a peer whose title decides its level, so any
+      // workspace can be dragged out of (or into) any group by renaming it.
+      // diskParentOf stays computed for the move-dialogs' bookkeeping only.
+      return buildLevel(list, '')
     }
 
     const countWorkspaces = (node) => (node.kind === 'ws'
@@ -3097,11 +3110,11 @@ window.__ModuleLoader__.load({
       ? {
         kind: 'ws',
         path: chain.path,
-        workspace: { ...chain.workspace, leaf: chain.segs.join('/') + '/' + chain.pure, title: chain.workspace.title, folderPath: '' },
+        workspace: { ...chain.workspace, leaf: chain.segs.join(' › ') + ' › ' + chain.pure, title: chain.workspace.title, folderPath: '' },
         folders: [],
         workspaces: [],
       }
-      : { kind: 'folder', path: chain.path, name: chain.segs.join('/'), folders: chain.folders, workspaces: chain.workspaces }
+      : { kind: 'folder', path: chain.path, name: chain.segs.join(' › '), folders: chain.folders, workspaces: chain.workspaces }
 
     function compressTree(node) {
       const folders = (node.folders || []).map(compressTree)
@@ -5624,7 +5637,7 @@ window.__ModuleLoader__.load({
         const over = drag.over
         return over && over.kind === 'workspace' && over.target === workspaceId ? over.half : null
       }
-      const wsDropInto = (path) => dragMatches('workspace') && drag.over && drag.over.kind === 'folder' && drag.over.target === path
+      const wsDropInto = (path) => (dragMatches('workspace') || dragMatches('folder')) && drag.over && drag.over.kind === 'folder' && drag.over.target === path
       const workspaceDragEvents = (workspace) => ({
         draggable: !searching && canDragWorkspace,
         onDragStart: (event) => {
@@ -5667,13 +5680,75 @@ window.__ModuleLoader__.load({
             : (current ? { ...current, over: { kind: 'workspace', target: workspace.workspaceId, half } } : current))
         },
         onDrop: (event) => {
-          if (!dragMatches('workspace')) return
           event.preventDefault()
           event.stopPropagation()
+          if (dragMatches('folder')) { commitFolderMoveInto((workspace.folderPath || '') === '' ? workspace.workspaceId + '//' : (workspace.folderPath)) ; return }
+          if (!dragMatches('workspace')) return
           const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
           commitWorkspaceDrop(workspace, half)
         },
       })
+      // v0.18.0: folders are DRAG SOURCES too. Dragging a folder rewrites every
+      // member's title prefix — into another folder (prefix swap), out to the
+      // root (prefix strip), or alongside a workspace row (that row's folder).
+      // One drag source, three commit shapes; the folder itself is a name, not
+      // a node with identity, so rename is the whole move.
+      const folderDragEvents = (path) => ({
+        draggable: !searching,
+        onDragStart: (event) => {
+          if (searching) return
+          event.stopPropagation()
+          try {
+            event.dataTransfer.effectAllowed = 'move'
+            event.dataTransfer.setData('text/plain', path)
+          } catch { /* best-effort payload */ }
+          if (wsDragArmTimer.current !== null) clearTimeout(wsDragArmTimer.current)
+          wsDragArmTimer.current = setTimeout(() => {
+            wsDragArmTimer.current = null
+            setDrag({ kind: 'folder', source: { folderPath: path }, over: null })
+          }, 0)
+        },
+        onDragEnd: () => {
+          if (wsDragArmTimer.current !== null) { clearTimeout(wsDragArmTimer.current); wsDragArmTimer.current = null }
+          setDrag(null)
+        },
+        onDragOver: (event) => {
+          if (!dragMatches('folder')) return
+          event.preventDefault()
+          event.stopPropagation()
+          try { event.dataTransfer.dropEffect = 'move' } catch { }
+          setDrag(current => (current && current.over && current.over.kind === 'folder' && current.over.target === path)
+            ? current
+            : (current ? { ...current, over: { kind: 'folder', target: path } } : current))
+        },
+        onDrop: (event) => {
+          if (!dragMatches('folder')) return
+          event.preventDefault()
+          event.stopPropagation()
+          commitFolderMoveInto(path)
+        },
+      })
+      const commitFolderMoveInto = (targetIdPath) => {
+        const source = drag.source
+        setDrag(null)
+        const cutAt = targetIdPath.lastIndexOf('//')
+        const targetPath = cutAt === -1 ? targetIdPath : targetIdPath.slice(cutAt + 2)
+        if (!targetPath || targetPath === source.folderPath) return
+        if (targetPath.startsWith(source.folderPath + '/')) return // into own child: no-op
+        const affected = (items || []).filter((w) => {
+          const segs = splitTitleSegs(w.title)
+          return segs.slice(0, -1).join('/') === source.folderPath
+        })
+        Promise.resolve()
+          .then(async () => {
+            for (const w of affected) {
+              const segs = splitTitleSegs(w.title)
+              const leaf = segs[segs.length - 1]
+              await renameWorkspace(w.workspaceId, targetPath + '/' + leaf)
+            }
+          })
+          .catch(fail)
+      }
       const folderDropEvents = (path) => ({
         onDragOver: (event) => {
           if (!dragMatches('workspace')) return
@@ -5707,18 +5782,15 @@ window.__ModuleLoader__.load({
         // in-level drop keeps the manual order next to the anchor, a
         // cross-level drop only re-groups the title (the registry append
         // lands it at the end of ITS disk level).
-        const sameDisk = source.disk === diskParentMap.get(targetWorkspace.workspaceId)
         const chain = sameFolder
           ? Promise.resolve()
           : Promise.resolve().then(() => {
             const newTitle = targetFolder !== '' ? targetFolder + '/' + source.leaf : source.leaf
             return renameWorkspace(source.workspaceId, newTitle)
           })
-        const anchor = !sameDisk
-          ? undefined
-          : (half === 'after'
-            ? nextWorkspaceAfter(targetWorkspace.folderPath || '', targetWorkspace.workspaceId)
-            : targetWorkspace.workspaceId)
+        const anchor = half === 'after'
+          ? nextWorkspaceAfter(targetWorkspace.folderPath || '', targetWorkspace.workspaceId)
+          : targetWorkspace.workspaceId
         chain
           .then(() => (anchor !== undefined ? insertWorkspaceBefore(source.workspaceId, anchor) : insertWorkspaceBefore(source.workspaceId)))
           .catch(fail)
@@ -6097,8 +6169,8 @@ window.__ModuleLoader__.load({
           expanded,
           onToggle: () => { if (!searching) actions.setExpanded(idPath, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name, idPath }, e),
-          dropInto: wsDropInto(idPath),
-          dragEvents: folderDropEvents(idPath),
+          dropInto: wsDropInto(idPath) || (dragMatches('folder') && drag.over && drag.over.kind === 'folder' && drag.over.target === idPath),
+          dragEvents: { ...folderDropEvents(idPath), ...folderDragEvents(idPath) },
           custStyle: rowStyleOf('folder:' + idPath),
           iconMode: (styleEntry('folder:' + idPath) || {}).icon || 'solid',
           pulse: expanded ? null : folderPulseOf(node),
