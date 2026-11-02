@@ -3480,20 +3480,27 @@ window.__ModuleLoader__.load({
     // dark panel styles are gone. What remains is list layout inside the native
     // body, using the same alias tokens the shipped dialogs use, and an
     // auto-sizing list (scroll appears only once genuinely tall).
-    '.bw-hub-list{display:flex;flex-direction:column;gap:8px;max-height:min(52vh,520px);overflow-y:auto}',
-    '.bw-hub-empty{padding:24px 8px;font-size:13px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
-    '.bw-hub-item{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border:1px solid var(--dsw-alias-border-subtle,rgba(255,255,255,.10));border-radius:12px;background:var(--dsw-alias-bg-layer-1,transparent)}',
-    // Kind pill + session + workspace on ONE line, wrapping instead of clipping.
+    // v0.22.0 composer card: same shape language as the native approval panel
+    // (soft card on the composer surface, hairline border, dot strip, action row).
+    // NO fixed height: the card grows with its rows and only the row LIST caps.
+    '.bw-hub-card{display:flex;flex-direction:column;gap:10px;margin:0 0 10px;padding:12px 14px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.12));border-radius:16px;background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04));box-shadow:var(--dsw-elevation-prominent,0 6px 18px rgba(0,0,0,.28))}',
+    '.bw-hub-strip{display:flex;align-items:center;justify-content:space-between;gap:8px}',
+    '.bw-hub-strip-label{display:flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
+    '.bw-hub-close{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);cursor:pointer;font-size:12px;line-height:1}',
+    '.bw-hub-close:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(255,255,255,.08))}',
+    '.bw-hub-list{display:flex;flex-direction:column;gap:10px;padding:2px;max-height:min(46vh,460px);overflow-y:auto;overscroll-behavior:contain}',
+    '.bw-hub-item{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:12px}',
     '.bw-hub-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}',
     '.bw-hub-kind{flex:none;font-size:11px;line-height:18px;padding:0 8px;border-radius:999px;background:var(--dsw-alias-bg-attention-subtle,rgba(229,72,77,.14));color:var(--dsw-alias-label-attention,#e5726f)}',
     '.bw-hub-session{flex:1 1 auto;min-width:0;font-size:13px;font-weight:500;color:var(--dsw-alias-label-primary,#e6e6e6);overflow-wrap:anywhere}',
     '.bw-hub-ws{flex:0 1 auto;font-size:12px;color:var(--dsw-alias-label-secondary,#9a9a9a);overflow-wrap:anywhere}',
     '.bw-hub-tool{font-size:12px;color:var(--dsw-alias-brand-primary,#5b8def);overflow-wrap:anywhere}',
-    // Full reason text, no fixed cap: long commands wrap and the list scrolls.
     '.bw-hub-reason{font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#dedede);white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}',
     '.bw-hub-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}',
-    '.bw-hub-btn{flex:none;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);cursor:pointer}',
-    '.bw-hub-btn-primary{background:var(--dsw-alias-brand-primary,#5b8def);border-color:transparent;color:#fff}',
+    '.bw-hub-empty{padding:18px 8px;font-size:13px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
+    '.bw-hub-trigger-on{background:var(--dsw-alias-interactive-bg-hover,rgba(255,255,255,.10))}',
+    '.bw-hub-trigger{position:relative}',
+    '.bw-hub-badge{position:absolute;top:-3px;right:-3px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;background:var(--dsw-alias-bg-attention,#e5484d);color:var(--dsw-alias-label-on-attention,#fff);font-size:9px;line-height:14px;text-align:center;font-weight:600;pointer-events:none}',
     '.bw-clamp-row{font-size:11.5px;color:var(--dsw-alias-brand-primary,#5b8def);cursor:pointer;min-height:24px}',
       '.bw-plugin-desc{font-size:13px;line-height:1.5;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
       '.bw-plugin-chevron{flex:none;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .16s}',
@@ -5238,6 +5245,27 @@ window.__ModuleLoader__.load({
     // text and painted a near-black panel against the window edge, which read as
     // "broken". The trigger stays an ordinary inline header button, so it rides
     // the sidebar like every other control instead of floating over it.
+    // v0.22.0: shared open-state between the sidebar trigger and the composer
+    // panel. A module-level emitter is enough — both seats live in the same
+    // client realm, and the value is a single boolean, so a store would be
+    // ceremony. `hubOpenListeners` keeps every mounted trigger and panel in sync.
+    let hubOpen = false
+    const hubOpenListeners = new Set()
+    const setHubOpen = (next) => {
+      if (hubOpen === next) return
+      hubOpen = next
+      for (const fn of [...hubOpenListeners]) { try { fn(next) } catch (e) { /* one bad seat never blocks the rest */ } }
+    }
+    const useHubOpen = () => {
+      const [open, set] = React.useState(hubOpen)
+      React.useEffect(() => {
+        hubOpenListeners.add(set)
+        set(hubOpen)
+        return () => { hubOpenListeners.delete(set) }
+      }, [])
+      return open
+    }
+
     function collectInteractions(uiStatus, list, items) {
       const out = []
       if (!uiStatus) return out
@@ -5267,69 +5295,75 @@ window.__ModuleLoader__.load({
 
     // Header trigger: an ordinary inline button (no absolute positioning), with a
     // count badge. Opening it raises the native modal below.
+    // Header trigger: an ordinary inline button (rides the sidebar), toggling the
+    // shared open flag. The panel renders in the composer hole, not in a modal.
     function InteractionHubButton({ uiStatus, list, items, open, uiWorkspace, officialT, t }) {
-      const [openPanel, setOpenPanel] = React.useState(false)
+      const openFlag = useHubOpen()
       const rows = collectInteractions(uiStatus, list, items)
       const count = rows.length
       const Warning = ui.IconWarningOutline16
-      return E(React.Fragment, null,
-        E("button", {
-          type: "button",
-          className: "bw-icon-btn bw-hub-trigger",
-          title: count > 0 ? t("hub.title") + " (" + count + ")" : t("hub.title"),
-          "aria-label": t("hub.title"),
-          onClick: () => setOpenPanel(true),
-        },
-          Warning ? E(Warning, { size: 14 }) : E("span", null, "!"),
-          count > 0 ? E("span", { className: "bw-hub-badge" }, String(count)) : null,
-        ),
-        openPanel ? E(InteractionHubModal, {
-          rows,
-          onClose: () => setOpenPanel(false),
-          open,
-          uiWorkspace,
-          officialT,
-          t,
-        }) : null,
+      return E("button", {
+        type: "button",
+        className: cls("bw-icon-btn bw-hub-trigger", openFlag && "bw-hub-trigger-on"),
+        title: count > 0 ? t("hub.title") + " (" + count + ")" : t("hub.title"),
+        "aria-label": t("hub.title"),
+        "aria-expanded": openFlag,
+        onClick: () => setHubOpen(!openFlag),
+      },
+        Warning ? E(Warning, { size: 14 }) : E("span", null, "!"),
+        count > 0 ? E("span", { className: "bw-hub-badge" }, String(count)) : null,
       )
     }
-
-    // Native modal body. Auto height, native chrome; the list scrolls only once it
-    // is genuinely tall (viewport-relative max), so a single approval shows at its
-    // natural size instead of being clipped by a fixed box.
-    function InteractionHubModal({ rows, onClose, open, uiWorkspace, officialT, t }) {
-      const ot = typeof officialT === "function" ? officialT : null
-      return E(ui.Modal, {
-        open: true,
-        onClose,
-        closeLabel: t("close"),
-        title: rows.length > 0 ? t("hub.title") + " · " + String(rows.length) : t("hub.title"),
-        footer: E("div", { className: "bw-modal-actions" },
-          E(BTN, { variant: "outline", onClick: onClose }, t("close")),
+    // v0.22.0 COMPOSER PANEL — the shipped placement. This registers into the
+    // same `conversation.composer` chain the native approval panel occupies, so it
+    // appears where that panel does: in the conversation column, above the input,
+    // at its natural height. Chrome follows the native approval card (StateDot
+    // strip + headline + action row on the same alias tokens) so it reads as part
+    // of the product rather than an overlay.
+    //
+    // The cross-session list is what the native panels cannot show: each row
+    // carries kind, session title and workspace, then its raw reason/tool text.
+    // Answering calls the pending interaction's own answer(), the exact host
+    // waterfall path the native panel uses.
+    function InteractionComposerPanel(props) {
+      const openFlag = useHubOpen()
+      const uiStatus = typeof props.useSessionStatus === "function" ? props.useSessionStatus((s) => s) : null
+      const list = typeof props.useSessions === "function" ? props.useSessions((s) => s) : null
+      const ws = typeof props.useWorkspaces === "function" ? props.useWorkspaces((s) => s) : null
+      const items = ws ? ws.items : null
+      const rows = collectInteractions(uiStatus, list, items)
+      if (!openFlag) return null
+      const ot = typeof props.officialT === "function" ? props.officialT : null
+      const t = props.t
+      const close = () => setHubOpen(false)
+      return E("div", { className: "bw-hub-card", role: "group", "aria-label": t("hub.title") },
+        E("div", { className: "bw-hub-strip" },
+          E("span", { className: "bw-hub-strip-label" },
+            rows.length > 0 ? t("hub.title") + " · " + String(rows.length) : t("hub.title")),
+          E("button", { type: "button", className: "bw-hub-close", onClick: close, "aria-label": t("close") }, "✕"),
         ),
-      },
         E("div", { className: "bw-hub-list" },
-          rows.length === 0 ? E("div", { className: "bw-hub-empty" }, t("hub.empty")) : null,
-          rows.map((row) => {
-            const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
-            return E("div", { key: row.key, className: "bw-hub-item" },
-              // One info line above the native body: kind + session + workspace.
-              E("div", { className: "bw-hub-meta" },
-                E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
-                E("span", { className: "bw-hub-session", title: row.sessionTitle }, row.sessionTitle),
-                E("span", { className: "bw-hub-ws", title: row.wsPath || row.wsTitle }, row.wsTitle),
-              ),
-              row.toolName ? E("div", { className: "bw-hub-tool" }, row.toolName) : null,
-              row.reason ? E("div", { className: "bw-hub-reason" }, row.reason) : null,
-              E("div", { className: "bw-hub-actions" },
-                canAnswer && row.kind === "approval" ? [
-                  E(BTN, { key: "a", variant: "primary", onClick: () => { try { row.interaction.answer("allowed-once") } catch (e) {} } }, ot ? ot("allowOnce") : t("hub.allow")),
-                  E(BTN, { key: "r", variant: "outline", onClick: () => { try { row.interaction.answer("rejected") } catch (e) {} } }, t("hub.reject")),
-                ] : null,
-                E(BTN, { key: "go", variant: "outline", onClick: () => { try { uiWorkspace.openSession(row.sessionId) } catch (e) {} onClose() } }, t("hub.open")),
-              ),
-            )
-          }),
+          rows.length === 0
+            ? E("div", { className: "bw-hub-empty" }, t("hub.empty"))
+            : rows.map((row) => {
+              const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
+              return E("div", { key: row.key, className: "bw-hub-item" },
+                E("div", { className: "bw-hub-meta" },
+                  E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
+                  E("span", { className: "bw-hub-session", title: row.sessionTitle }, row.sessionTitle),
+                  E("span", { className: "bw-hub-ws", title: row.wsPath || row.wsTitle }, row.wsTitle),
+                ),
+                row.toolName ? E("div", { className: "bw-hub-tool" }, row.toolName) : null,
+                row.reason ? E("div", { className: "bw-hub-reason" }, row.reason) : null,
+                E("div", { className: "bw-hub-actions" },
+                  canAnswer && row.kind === "approval" ? [
+                    E(BTN, { key: "a", variant: "primary", onClick: () => { try { row.interaction.answer("allowed-once") } catch (e) {} } }, ot ? ot("allowOnce") : t("hub.allow")),
+                    E(BTN, { key: "r", variant: "outline", onClick: () => { try { row.interaction.answer("rejected") } catch (e) {} } }, t("hub.reject")),
+                  ] : null,
+                  E(BTN, { key: "go", variant: "outline", onClick: () => { try { props.uiWorkspace && props.uiWorkspace.openSession(row.sessionId) } catch (e) {} ; close() } }, t("hub.open")),
+                ),
+              )
+            }),
         ),
       )
     }
@@ -7316,6 +7350,26 @@ window.__ModuleLoader__.load({
           locale: NS,
         },
         BetterBrowser,
+      ))
+
+      // v0.22.0 NATIVE PLACEMENT: the hub occupies the SAME hole the shipped
+      // approval panel takes — `conversation.composer`, a session-scoped chain
+      // whose first non-null `select` wins. Registering here puts our card exactly
+      // where the official one appears (in the conversation column, above the
+      // composer), with the host supplying pendingInteraction and every standard
+      // prop. Priority 2 keeps us BELOW the shipped approval (priority 1) so an
+      // approval for the CURRENT session still renders the official panel; ours
+      // takes over for plan-review and question, and carries the cross-session
+      // summary line the native panels do not have.
+      slots.inject('conversation.composer', guarded(
+        'conversation.composer',
+        {
+          name: 'conversation.composer',
+          priority: 2,
+          select: ({ pendingInteraction }) => (pendingInteraction === undefined ? null : pendingInteraction),
+          locale: NS,
+        },
+        InteractionComposerPanel,
       ))
     }
 
