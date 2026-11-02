@@ -909,3 +909,12 @@ test('containment follows the title, folders drag, chains show a visual separato
   assert.match(text, /segs\.join\(' › '\)/, 'compressed chains render a visual separator, not a raw slash')
   assert.doesNotMatch(text, /const sameDisk = source\.disk/, 'disk-layer gating removed from drop commits')
 })
+
+test('interaction hub renders through the native Modal primitive (v0.21.0)', () => {
+  const text = read('src/client.js')
+  assert.match(text, /function InteractionHubModal/, 'native modal wrapper exists')
+  assert.match(text, /E\(ui\.Modal, \{\s*\n\s*open: true,/, 'hub body is a ui.Modal')
+  assert.doesNotMatch(text, /bw-hub-panel/, 'hand-rolled absolute panel is gone')
+  assert.match(text, /bw-hub-list\{[^}]*max-height:min\(52vh,520px\)/, 'list scrolls only when genuinely tall')
+  assert.match(text, /bw-hub-meta\{[^}]*flex-wrap:wrap/, 'kind/session/workspace line wraps instead of clipping')
+})

@@ -3474,20 +3474,24 @@ window.__ModuleLoader__.load({
       '.bw-plugin-head:focus-visible{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px}',
       '.bw-plugin-headtext{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}',
       '.bw-plugin-name{font-size:15px;font-weight:600;line-height:1.4;color:var(--dsw-alias-label-primary,#e6e6e6)}',
-    '.bw-hub-badge{position:absolute;top:-4px;right:-4px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#e5484d;color:#fff;font-size:10px;line-height:15px;text-align:center;font-weight:600}',
-    '.bw-hub-panel{position:absolute;top:30px;right:0;width:340px;max-height:70vh;overflow-y:auto;background:var(--dsw-alias-bg-primary,#1b1b1b);border:1px solid rgba(255,255,255,.08);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.45);z-index:60;padding:6px}',
-    '.bw-hub-head{display:flex;align-items:center;justify-content:space-between;padding:4px 6px}',
-    '.bw-hub-title{font-size:12px;font-weight:600;color:var(--dsw-alias-label-primary,#e6e6e6)}',
-    '.bw-hub-empty{padding:14px 8px;font-size:12px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
-    '.bw-hub-item{border:1px solid rgba(255,255,255,.07);border-radius:8px;margin:4px 2px;overflow:hidden}',
-    '.bw-hub-item-head{display:flex;gap:6px;align-items:center;padding:6px 8px;cursor:pointer}',
-    '.bw-hub-kind{flex:none;font-size:10px;padding:2px 6px;border-radius:999px;background:rgba(229,72,77,.15);color:#f2a0a3}',
-    '.bw-hub-session{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:var(--dsw-alias-label-primary,#e6e6e6)}',
-    '.bw-hub-ws{flex:none;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--dsw-alias-label-tertiary,#8a8a8a)}',
-    '.bw-hub-body{padding:6px 8px;border-top:1px solid rgba(255,255,255,.06)}',
-    '.bw-hub-tool{font-size:11px;color:var(--dsw-alias-brand-primary,#5b8def);margin-bottom:4px}',
-    '.bw-hub-reason{font-size:12px;color:var(--dsw-alias-label-secondary,#c9c9c9);white-space:pre-wrap;word-break:break-word;max-height:160px;overflow-y:auto}',
-    '.bw-hub-actions{display:flex;gap:6px;margin-top:8px}',
+    '.bw-hub-trigger{position:relative}',
+    '.bw-hub-badge{position:absolute;top:-3px;right:-3px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;background:var(--dsw-alias-bg-attention,#e5484d);color:var(--dsw-alias-label-on-attention,#fff);font-size:9px;line-height:14px;text-align:center;font-weight:600;pointer-events:none}',
+    // v0.21.0: the hub rides the native Modal, so the old absolutely-positioned
+    // dark panel styles are gone. What remains is list layout inside the native
+    // body, using the same alias tokens the shipped dialogs use, and an
+    // auto-sizing list (scroll appears only once genuinely tall).
+    '.bw-hub-list{display:flex;flex-direction:column;gap:8px;max-height:min(52vh,520px);overflow-y:auto}',
+    '.bw-hub-empty{padding:24px 8px;font-size:13px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
+    '.bw-hub-item{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border:1px solid var(--dsw-alias-border-subtle,rgba(255,255,255,.10));border-radius:12px;background:var(--dsw-alias-bg-layer-1,transparent)}',
+    // Kind pill + session + workspace on ONE line, wrapping instead of clipping.
+    '.bw-hub-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}',
+    '.bw-hub-kind{flex:none;font-size:11px;line-height:18px;padding:0 8px;border-radius:999px;background:var(--dsw-alias-bg-attention-subtle,rgba(229,72,77,.14));color:var(--dsw-alias-label-attention,#e5726f)}',
+    '.bw-hub-session{flex:1 1 auto;min-width:0;font-size:13px;font-weight:500;color:var(--dsw-alias-label-primary,#e6e6e6);overflow-wrap:anywhere}',
+    '.bw-hub-ws{flex:0 1 auto;font-size:12px;color:var(--dsw-alias-label-secondary,#9a9a9a);overflow-wrap:anywhere}',
+    '.bw-hub-tool{font-size:12px;color:var(--dsw-alias-brand-primary,#5b8def);overflow-wrap:anywhere}',
+    // Full reason text, no fixed cap: long commands wrap and the list scrolls.
+    '.bw-hub-reason{font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#dedede);white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}',
+    '.bw-hub-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}',
     '.bw-hub-btn{flex:none;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);cursor:pointer}',
     '.bw-hub-btn-primary{background:var(--dsw-alias-brand-primary,#5b8def);border-color:transparent;color:#fff}',
     '.bw-clamp-row{font-size:11.5px;color:var(--dsw-alias-brand-primary,#5b8def);cursor:pointer;min-height:24px}',
@@ -5219,13 +5223,21 @@ window.__ModuleLoader__.load({
 
     /* ============================= browser ============================ */
 
-    /* ==================== interaction hub (v0.20.0) ==================== */
+    /* ==================== interaction hub (v0.21.0) ==================== */
 
-    // Aggregates every pending interaction across sessions. Data source: the
-    // host uiSession status store — its values carry the interaction INSTANCE
-    // (kind/key/answerable/answer), not just a kind tag. Answering in place
-    // routes through the instance's own answer(), the same path the official
-    // composer panel uses, so the host waterfall settles identically.
+    // Aggregates every pending interaction across sessions and answers in place.
+    // Data source: the host uiSession status store — its values carry the
+    // interaction INSTANCE (kind/key/answerable/answer), not just a kind tag, so
+    // answering routes through the same host waterfall the official composer
+    // panel uses.
+    //
+    // v0.21.0 RENDER DISCIPLINE: the panel is the NATIVE ui.Modal primitive, not a
+    // hand-rolled absolutely-positioned card. That buys the shipped look for free
+    // (layer-2 background, 24px radius, elevation, blur mask, Escape, close
+    // button) and native auto-height — the old fixed-size box clipped long reason
+    // text and painted a near-black panel against the window edge, which read as
+    // "broken". The trigger stays an ordinary inline header button, so it rides
+    // the sidebar like every other control instead of floating over it.
     function collectInteractions(uiStatus, list, items) {
       const out = []
       if (!uiStatus) return out
@@ -5253,24 +5265,26 @@ window.__ModuleLoader__.load({
       return out
     }
 
+    // Header trigger: an ordinary inline button (no absolute positioning), with a
+    // count badge. Opening it raises the native modal below.
     function InteractionHubButton({ uiStatus, list, items, open, uiWorkspace, officialT, t }) {
       const [openPanel, setOpenPanel] = React.useState(false)
-      const items2 = collectInteractions(uiStatus, list, items)
-      const count = items2.length
+      const rows = collectInteractions(uiStatus, list, items)
+      const count = rows.length
       const Warning = ui.IconWarningOutline16
-      return E("div", { style: { position: "relative", display: "inline-flex" } },
+      return E(React.Fragment, null,
         E("button", {
           type: "button",
-          className: "bw-icon-btn",
-          title: t("hub.title") + (count > 0 ? " (" + count + ")" : ""),
+          className: "bw-icon-btn bw-hub-trigger",
+          title: count > 0 ? t("hub.title") + " (" + count + ")" : t("hub.title"),
           "aria-label": t("hub.title"),
-          onClick: () => setOpenPanel((v) => !v),
+          onClick: () => setOpenPanel(true),
         },
-          Warning ? E(Warning, { className: undefined }) : t("hub.title"),
+          Warning ? E(Warning, { size: 14 }) : E("span", null, "!"),
           count > 0 ? E("span", { className: "bw-hub-badge" }, String(count)) : null,
         ),
-        openPanel ? E(InteractionHubPanel, {
-          rows: items2,
+        openPanel ? E(InteractionHubModal, {
+          rows,
           onClose: () => setOpenPanel(false),
           open,
           uiWorkspace,
@@ -5280,44 +5294,43 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function InteractionHubPanel({ rows, onClose, open, uiWorkspace, officialT, t }) {
+    // Native modal body. Auto height, native chrome; the list scrolls only once it
+    // is genuinely tall (viewport-relative max), so a single approval shows at its
+    // natural size instead of being clipped by a fixed box.
+    function InteractionHubModal({ rows, onClose, open, uiWorkspace, officialT, t }) {
       const ot = typeof officialT === "function" ? officialT : null
-      const [expanded, setExpanded] = React.useState({})
-      return E("div", { className: "bw-hub-panel", role: "dialog", "aria-label": t("hub.title") },
-        E("div", { className: "bw-hub-head" },
-          E("span", { className: "bw-hub-title" }, t("hub.title")),
-          E("button", { type: "button", className: "bw-icon-btn", onClick: onClose, "aria-label": t("close") },
-            ui.IconCloseOutline16 ? E(ui.IconCloseOutline16) : "×"),
+      return E(ui.Modal, {
+        open: true,
+        onClose,
+        closeLabel: t("close"),
+        title: rows.length > 0 ? t("hub.title") + " · " + String(rows.length) : t("hub.title"),
+        footer: E("div", { className: "bw-modal-actions" },
+          E(BTN, { variant: "outline", onClick: onClose }, t("close")),
         ),
-        rows.length === 0 ? E("div", { className: "bw-hub-empty" }, t("hub.empty")) : null,
-        rows.map((row) => {
-          const isOpen = expanded[row.key] !== false
-          const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
-          return E("div", { key: row.key, className: "bw-hub-item" },
-            E("div", { className: "bw-hub-item-head", onClick: () => setExpanded((s) => ({ ...s, [row.key]: !isOpen })) },
-              E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
-              E("span", { className: "bw-hub-session" }, row.sessionTitle),
-              E("span", { className: "bw-hub-ws", title: row.wsPath }, row.wsTitle),
-            ),
-            isOpen ? E("div", { className: "bw-hub-body" },
+      },
+        E("div", { className: "bw-hub-list" },
+          rows.length === 0 ? E("div", { className: "bw-hub-empty" }, t("hub.empty")) : null,
+          rows.map((row) => {
+            const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
+            return E("div", { key: row.key, className: "bw-hub-item" },
+              // One info line above the native body: kind + session + workspace.
+              E("div", { className: "bw-hub-meta" },
+                E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
+                E("span", { className: "bw-hub-session", title: row.sessionTitle }, row.sessionTitle),
+                E("span", { className: "bw-hub-ws", title: row.wsPath || row.wsTitle }, row.wsTitle),
+              ),
               row.toolName ? E("div", { className: "bw-hub-tool" }, row.toolName) : null,
               row.reason ? E("div", { className: "bw-hub-reason" }, row.reason) : null,
               E("div", { className: "bw-hub-actions" },
                 canAnswer && row.kind === "approval" ? [
-                  E("button", { key: "a", type: "button", className: "bw-hub-btn bw-hub-btn-primary",
-                    onClick: () => { try { row.interaction.answer("allowed-once") } catch {} } },
-                    ot ? ot("status.compact.approval") && (ot("allowOnce") || t("hub.allow")) : t("hub.allow")),
-                  E("button", { key: "r", type: "button", className: "bw-hub-btn",
-                    onClick: () => { try { row.interaction.answer("rejected") } catch {} } },
-                    t("hub.reject")),
+                  E(BTN, { key: "a", variant: "primary", onClick: () => { try { row.interaction.answer("allowed-once") } catch (e) {} } }, ot ? ot("allowOnce") : t("hub.allow")),
+                  E(BTN, { key: "r", variant: "outline", onClick: () => { try { row.interaction.answer("rejected") } catch (e) {} } }, t("hub.reject")),
                 ] : null,
-                E("button", { key: "go", type: "button", className: "bw-hub-btn",
-                  onClick: () => { try { uiWorkspace.openSession(row.sessionId) } catch {} ; onClose() } },
-                  t("hub.open")),
+                E(BTN, { key: "go", variant: "outline", onClick: () => { try { uiWorkspace.openSession(row.sessionId) } catch (e) {} onClose() } }, t("hub.open")),
               ),
-            ) : null,
-          )
-        }),
+            )
+          }),
+        ),
       )
     }
 
