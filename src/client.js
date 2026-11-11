@@ -7691,7 +7691,11 @@ window.__ModuleLoader__.load({
           expanded,
           onToggle: () => { if (!searching) actions.setExpanded(idPath, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name, idPath }, e),
-          dropInto: (drag.over && drag.over.kind === 'folder' && drag.over.target === idPath && !drag.over.half) || wsDropInto(idPath),
+          // `drag` is null whenever nothing is being dragged — the previous
+          // version read `drag.over` unconditionally and threw
+          // \`TypeError: Cannot read properties of null\`, which took the WHOLE
+          // sidebar down to an empty tree (the reported "左边全没了").
+          dropInto: (drag !== null && drag.over && drag.over.kind === 'folder' && drag.over.target === idPath && !drag.over.half) || wsDropInto(idPath),
           // v0.26.0: edge bands render an insert line instead of the "move into"
           // rim, so the two gestures are visually distinct.
           dropHalf: (() => {

@@ -238,3 +238,83 @@ test('sidebar paints a "/"-grouped tree without ReferenceError (10:55 regression
   assert.ok(flat.length > 0, 'the painted tree contains elements')
   assert.ok(flat.includes('div'), 'rows are divs')
 })
+
+/**
+ * The sidebar must paint with NOTHING being dragged.
+ *
+ * `drag` is null whenever no drag is in flight. A folder-row prop read
+ * `drag.over` unconditionally and threw
+ * `TypeError: Cannot read properties of null (reading 'over')`, which the
+ * QuietBoundary around the browser degraded to an EMPTY tree — the user's
+ * "bws 左边全没了". Rendering the component is the only way to catch it, which
+ * is exactly what this file does.
+ */
+test('sidebar paints while no drag is in flight (null-drag guard)', () => {
+  const entry = loadEntry()
+  const react = fakeReact()
+  const api = entry.factory(makeRequire(react))
+
+  const registered = new Map()
+  let pendingSlot = null
+  const slots = {
+    register: (options, component) => { if (pendingSlot) registered.set(pendingSlot, component); return () => {} },
+    inject: (name, thunk) => {
+      pendingSlot = name
+      try { if (typeof thunk === 'function' && thunk.length === 0) thunk() } catch { /* other seats */ }
+      pendingSlot = null
+      return () => {}
+    },
+    entries: () => [], subscribe: () => () => {},
+  }
+  // A workspace whose sessions form a "/"-group, so the SESSION-GROUP branch and
+  // the folder-row branch both execute with drag === null.
+  const wsItems = [{ workspaceId: 'w1', title: 'Group/sub', path: 'C:/x', sessionIds: ['s1'] }]
+  const byId = { s1: { id: 's1', title: 'Group/sub/deep/leaf', updatedAt: 1 } }
+  const uiWorkspace = {
+    openSession() {}, startSession() {}, forkSession() {}, archiveSession: async () => {},
+    pinSession: async () => {}, unpinSession: async () => {},
+    pickDirectory: async () => '', listDirectory: async () => [], createDirectory: async () => '',
+  }
+  const services = {
+    slots,
+    sessions: { list: { getSnapshot: () => ({ ids: Object.keys(byId), byId }) }, searchSessions: async () => [], searchResultLimit: 20 },
+    workspaces: {
+      list: { getSnapshot: () => ({ items: wsItems, pinnedSessionIds: [], archivedSessionIds: [] }) },
+      rename: async () => {}, delete: async () => {}, create: async () => {},
+      insertBefore: () => {}, insertSessionBefore: () => {},
+    },
+    uiWorkspace,
+    locale: { register: () => () => {}, bind: () => null },
+  }
+  api.apply({ get: (n) => services[n], effect: (fn) => { try { const d = fn(); if (typeof d === 'function') d() } catch { } }, settingsScope: undefined })
+
+  const Wrapper = registered.get('sidebar.workspaces')
+  const sel = (st) => (fn) => (typeof fn === 'function' ? fn(st) : st)
+  const props = {
+    wide: true, expandSidebar: () => {},
+    useSessions: sel({ ids: Object.keys(byId), byId }),
+    useSessionPendingInteraction: sel({}),
+    useWorkspaces: sel({ items: wsItems, phase: 'ready', archivedSessionIds: [], pinnedSessionIds: [] }),
+    useSessionStatus: sel({ get: () => undefined, entries: () => [] }),
+    // Everything expanded, so no row is skipped for being collapsed.
+    useStore: sel({ expanded: {}, sessionsExpanded: { w1: true }, sessionGroups: {}, prefs: {}, styling: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page' }),
+    actions: new Proxy({}, { get: () => () => {} }),
+    startSession() {}, open() {}, renameSession: async () => {}, forkSession() {},
+    renameWorkspace: async () => {}, deleteWorkspace: async () => {}, archiveSession: async () => {},
+    createWorkspace: async () => {}, insertWorkspaceBefore() {}, insertSessionBefore() {},
+    useDirectoryFlow: () => false,
+    pickDirectory: async () => '', listDirectory: async () => [], createDirectory: async () => '',
+    officialT: null, uiWorkspace, t: (k) => String(k),
+  }
+
+  const wrapperEl = Wrapper(props)
+  const inner = wrapperEl.children[0]
+  assert.doesNotThrow(() => inner.type(inner.props),
+    'painting with drag === null must not throw (a null-drag read blanks the whole sidebar)')
+
+  // And the guard itself must be visible in the source, so a future edit that
+  // drops it fails fast even if the fixture above happens not to hit the path.
+  const source = fs.readFileSync(CLIENT, 'utf8')
+  assert.match(source, /drag !== null && drag\.over/, 'the folder-row dropInto reads drag defensively')
+  assert.doesNotMatch(source, /dropInto: \(drag\.over &&/, 'the unguarded form must never come back')
+})
