@@ -4841,7 +4841,7 @@ window.__ModuleLoader__.load({
       }
     }
 
-    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, dropInto, dragEvents, custStyle, iconMode, pulse, t }) {
+    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
       const total = countWorkspaces(node)
       const iconEl = iconOf(iconMode, expanded)
       // Hidden status dots breathe on the icon; with the icon hidden (mode
@@ -4850,7 +4850,7 @@ window.__ModuleLoader__.load({
         ? E(PulseGlow, { state: pulse }, iconEl || (typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null))
         : iconEl
       return E('div', {
-        className: cls('bw-row', dropInto && 'bw-drop-into', dropInto && 'bw-drop-into-strong'),
+        className: cls('bw-row', dropInto && 'bw-drop-into', dropInto && 'bw-drop-into-strong', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 4 + depth * 12, ...(custStyle || {}), ...(pulse ? { '--bw-pulse-color': PULSE_COLORS[pulse] || PULSE_COLORS.ongoing } : null) },
         onClick: onToggle,
         onContextMenu: onContextMenu,
@@ -6878,6 +6878,97 @@ window.__ModuleLoader__.load({
       // (workspace rows and folder rows). One merged handler per verb, so the
       // spread order can never shadow a sibling: hovering accepts whichever
       // kind is in flight, dropping routes to that kind's commit.
+      /**
+       * Where inside a folder row the pointer sits (v0.26.0).
+       * `null` = the middle (the historical "move into this group" target);
+       * 'before'/'after' = the 6px edge strips, which mean "insert beside".
+       * Edge bands are what make "put this group between those two groups"
+       * expressible at all.
+       */
+      const folderEdgeBand = (event) => {
+        try {
+          const rect = event.currentTarget.getBoundingClientRect()
+          if (event.clientY < rect.top + 6) return 'before'
+          if (event.clientY > rect.bottom - 6) return 'after'
+          return null
+        } catch { return null }
+      }
+
+      /** Flat visible sibling keys of the name level that owns `folderPath`. */
+      const siblingKeysAt = (folderPath) => {
+        const parentPath = (() => {
+          const i = String(folderPath).lastIndexOf('/')
+          return i === -1 ? '' : String(folderPath).slice(0, i)
+        })()
+        const root = (() => {
+          const found = (() => {
+            const walk = (node) => {
+              if (node.path === parentPath) return node
+              for (const f of node.folders || []) { const hit = walk(f); if (hit) return hit }
+              return null
+            }
+            return walk(tree)
+          })()
+          return found
+        })()
+        if (!root) return null
+        const folderKeys = (root.folders || []).map((f) => f.path)
+        const wsKeys = (root.workspaces || []).map((w) => 'id:' + w.workspaceId)
+        return { parentPath, folderKeys, wsKeys, all: folderKeys.concat(wsKeys) }
+      }
+
+      /** Persist a sibling order list for the level that owns `parentPath`. */
+      const writeWorkspaceOrder = (siblings, movedKey, anchorKey, half) => {
+        const without = siblings.filter((k) => k !== movedKey)
+        const idx = without.indexOf(anchorKey)
+        if (idx === -1) return
+        without.splice(half === 'after' ? idx + 1 : idx, 0, movedKey)
+        const set = new Set(siblings)
+        const rest = (Array.isArray(workspaceGroupOrder) ? workspaceGroupOrder : []).filter((k) => !set.has(k))
+        if (actions && typeof actions.setWorkspaceGroupOrder === 'function') actions.setWorkspaceGroupOrder(rest.concat(without))
+      }
+
+      /**
+       * Drag a FOLDER group beside another group (v0.26.0). Groups are a title
+       * prefix, so "moving a group" means re-prefixing every member; the sibling
+       * ORDER is then recorded locally, exactly like a workspace-row drag.
+       */
+      const commitFolderReorder = (targetIdPath, half) => {
+        const source = drag.source
+        setDrag(null)
+        const cutAt = String(targetIdPath).lastIndexOf('//')
+        const targetPath = cutAt === -1 ? String(targetIdPath) : String(targetIdPath).slice(cutAt + 2)
+        if (!source || source.folderPath === targetPath) return
+        const srcParent = (() => { const i = source.folderPath.lastIndexOf('/'); return i === -1 ? '' : source.folderPath.slice(0, i) })()
+        const tgtParent = (() => { const i = targetPath.lastIndexOf('/'); return i === -1 ? '' : targetPath.slice(0, i) })()
+        // Only a sibling reorder: moving across levels is a "move into" gesture.
+        if (srcParent !== tgtParent) return
+        const sib = siblingKeysAt(targetPath)
+        if (!sib) return
+        const movedKey = source.folderPath
+        if (!sib.all.includes(movedKey)) return
+        writeWorkspaceOrder(sib.all, movedKey, targetPath, half)
+      }
+
+      /**
+       * Drag a WORKSPACE row beside a folder group (v0.26.0). The row joins the
+       * target group's level by taking its prefix, then lands before/after the
+       * group in the local order.
+       */
+      const commitWorkspaceReorderBeside = (targetIdPath, half) => {
+        const source = drag.source
+        setDrag(null)
+        const cutAt = String(targetIdPath).lastIndexOf('//')
+        const targetPath = cutAt === -1 ? String(targetIdPath) : String(targetIdPath).slice(cutAt + 2)
+        const tgtParent = (() => { const i = targetPath.lastIndexOf('/'); return i === -1 ? '' : targetPath.slice(0, i) })()
+        const newTitle = tgtParent !== '' ? tgtParent + '/' + source.leaf : source.leaf
+        const sib = siblingKeysAt(targetPath)
+        Promise.resolve()
+          .then(() => (source.folderPath === tgtParent ? undefined : renameWorkspace(source.workspaceId, newTitle)))
+          .then(() => { if (sib) writeWorkspaceOrder(sib.all, 'id:' + source.workspaceId, targetPath, half) })
+          .catch(fail)
+      }
+
       const folderDragEvents = (path) => ({
         draggable: !searching,
         onDragStart: (event) => {
@@ -6902,15 +6993,33 @@ window.__ModuleLoader__.load({
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
-          setDrag(current => (current && current.over && current.over.kind === 'folder' && current.over.target === path)
-            ? current
-            : (current ? { ...current, over: { kind: 'folder', target: path } } : current))
+          // v0.26.0 EDGE BANDS. Before this, a folder row had exactly ONE drop
+          // meaning ("move into this group"), so a group could never be placed
+          // BEFORE another group or between two of them — the reported "cannot
+          // insert a workspace/group before or between groups". The top/bottom
+          // 6px strips now mean "insert before/after this group"; the middle
+          // keeps the old "move into" behaviour.
+          const band = folderEdgeBand(event)
+          setDrag(current => {
+            if (!current) return current
+            const same = current.over && current.over.kind === 'folder' && current.over.target === path && current.over.half === band
+            return same ? current : { ...current, over: { kind: 'folder', target: path, half: band } }
+          })
         },
         onDrop: (event) => {
           event.preventDefault()
           event.stopPropagation()
-          if (dragMatches('folder')) { commitFolderMoveInto(path); return }
-          if (dragMatches('workspace')) { commitWorkspaceMoveInto(path); return }
+          const band = folderEdgeBand(event)
+          if (dragMatches('folder')) {
+            if (band === null) { commitFolderMoveInto(path); return }
+            commitFolderReorder(path, band)
+            return
+          }
+          if (dragMatches('workspace')) {
+            if (band === null) { commitWorkspaceMoveInto(path); return }
+            commitWorkspaceReorderBeside(path, band)
+            return
+          }
         },
       })
       const commitFolderMoveInto = (targetIdPath) => {
@@ -6918,21 +7027,24 @@ window.__ModuleLoader__.load({
         setDrag(null)
         const cutAt = targetIdPath.lastIndexOf('//')
         const targetPath = cutAt === -1 ? targetIdPath : targetIdPath.slice(cutAt + 2)
-        // Root drop ('' path): strip the group prefix — the whole group moves to
-        // the root level beside the drop target.
+        // ROOT DROP IS A NO-OP (v0.26.0 BUG FIX).
+        //
+        // It used to strip the group prefix from EVERY member, one by one:
+        //   for (w of affected) rename(w, segs[segs.length - 1])
+        // Dragging the "CUMCM26" group onto the root therefore dissolved the
+        // group and scattered all of its workspaces to the top level — exactly
+        // the reported "dragging a group to the bottom made every workspace fly
+        // apart". Dropping a group onto empty root space expresses no ordering
+        // intent (there is no sibling to anchor against), so the honest answer
+        // is to do nothing. Reordering beside a sibling goes through the edge
+        // bands (commitFolderReorder); un-grouping is a rename, not a drag.
         if (targetPath === '') {
-          const affected = (items || []).filter((w) => {
-            const segs = splitTitleSegs(w.title)
-            return segs.slice(0, -1).join('/') === source.folderPath
-          })
-          Promise.resolve()
-            .then(async () => {
-              for (const w of affected) {
-                const segs = splitTitleSegs(w.title)
-                await renameWorkspace(w.workspaceId, segs[segs.length - 1])
-              }
-            })
-            .catch(fail)
+          if (dragMatches('workspace')) {
+            // A WORKSPACE dropped on the root: strip its own prefix only.
+            Promise.resolve()
+              .then(() => renameWorkspace(source.workspaceId, source.leaf))
+              .catch(fail)
+          }
           return
         }
         if (targetPath === source.folderPath) return
@@ -7579,7 +7691,14 @@ window.__ModuleLoader__.load({
           expanded,
           onToggle: () => { if (!searching) actions.setExpanded(idPath, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name, idPath }, e),
-          dropInto: wsDropInto(idPath) || (dragMatches('folder') && drag.over && drag.over.kind === 'folder' && drag.over.target === idPath),
+          dropInto: (drag.over && drag.over.kind === 'folder' && drag.over.target === idPath && !drag.over.half) || wsDropInto(idPath),
+          // v0.26.0: edge bands render an insert line instead of the "move into"
+          // rim, so the two gestures are visually distinct.
+          dropHalf: (() => {
+            if (!dragMatches('folder') && !dragMatches('workspace')) return null
+            const over = drag && drag.over
+            return over && over.kind === 'folder' && over.target === idPath ? (over.half || null) : null
+          })(),
           dragEvents: folderDragEvents(idPath),
           custStyle: rowStyleOf('folder:' + idPath),
           iconMode: (styleEntry('folder:' + idPath) || {}).icon || 'solid',

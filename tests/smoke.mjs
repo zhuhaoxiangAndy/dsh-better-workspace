@@ -939,3 +939,45 @@ test('interaction hub renders in the additive composer dock (v0.24.0)', () => {
   assert.doesNotMatch(text, /pendingInteraction === undefined \? null : pendingInteraction/,
     'select must not gate on this session having an interaction')
 })
+
+/* ---------------------------------------------------- drag fixes (v0.26.0) --
+ * Two reported defects, both rooted in the folder-row drop semantics:
+ *  1. a group could only be "moved into" — never placed BEFORE another group or
+ *     between two groups, because the row had exactly one drop meaning;
+ *  2. dropping the CUMCM26 group onto the root stripped the prefix from EVERY
+ *     member, so the whole group scattered to the top level.
+ */
+test('folder rows expose edge bands so a group can be placed beside another', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const folderEdgeBand = \(event\) => \{/, 'edge-band helper exists')
+  assert.match(text, /if \(event\.clientY < rect\.top \+ 6\) return 'before'/, 'top 6px band means insert before')
+  assert.match(text, /if \(event\.clientY > rect\.bottom - 6\) return 'after'/, 'bottom 6px band means insert after')
+  assert.match(text, /return null/, 'the middle keeps the move-into meaning')
+  // The drop must branch on the band, not always move-into.
+  assert.match(text, /const band = folderEdgeBand\(event\)/, 'drop reads the band')
+  assert.match(text, /commitFolderReorder\(path, band\)/, 'group drags beside a sibling have their own commit')
+  assert.match(text, /commitWorkspaceReorderBeside\(path, band\)/, 'workspace drags beside a group have their own commit')
+  // And the visual affordance exists: the folder row accepts dropHalf.
+  assert.match(text, /function FolderRow\(\{ node, depth, expanded, onToggle, onContextMenu, dropInto, dropHalf,/, 'folder row accepts dropHalf')
+  assert.match(text, /dropHalf === 'before' && 'bw-drop-before'/, 'before-line renders')
+  assert.match(text, /dropHalf === 'after' && 'bw-drop-after'/, 'after-line renders')
+})
+
+test('dropping a group on the root no longer scatters its members', () => {
+  const text = read('src/client.js')
+  // The old destructive loop must be gone: it renamed every member to its leaf.
+  assert.doesNotMatch(text, /for \(const w of affected\) \{\s*\n\s*const segs = splitTitleSegs\(w\.title\)\s*\n\s*await renameWorkspace\(w\.workspaceId, segs\[segs\.length - 1\]\)/,
+    'the prefix-stripping loop over every member is removed')
+  assert.match(text, /ROOT DROP IS A NO-OP \(v0\.26\.0 BUG FIX\)/, 'the fix is documented at the drop site')
+  // A workspace dropped on the root still un-groups — but only itself.
+  assert.match(text, /if \(dragMatches\('workspace'\)\) \{[\s\S]{0,220}renameWorkspace\(source\.workspaceId, source\.leaf\)/,
+    'a single workspace still un-groups itself on a root drop')
+})
+
+test('sibling order writer keeps other levels intact', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const writeWorkspaceOrder = \(siblings, movedKey, anchorKey, half\)/, 'order writer exists')
+  assert.match(text, /const rest = \(Array\.isArray\(workspaceGroupOrder\) \? workspaceGroupOrder : \[\]\)\.filter\(\(k\) => !set\.has\(k\)\)/,
+    'keys from other levels are preserved')
+  assert.match(text, /without\.splice\(half === 'after' \? idx \+ 1 : idx, 0, movedKey\)/, 'the moved key lands before/after the anchor')
+})
