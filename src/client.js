@@ -70,6 +70,10 @@ window.__ModuleLoader__.load({
       'menu.delete': '删除',
       'menu.fork': '分叉',
       'menu.archive': '归档',
+      'menu.unarchive': '取消归档',
+      'menu.pin': '置顶会话',
+      'menu.unpin': '取消置顶',
+      'menu.sessionId': '复制会话 ID',
       'menu.renameFolder': '重命名分组',
       'menu.renameSgroup': '重命名会话分组',
       'menu.moveToGroup': '移动到分组…',
@@ -166,6 +170,11 @@ window.__ModuleLoader__.load({
       'hub.allow': '允许一次',
       'hub.reject': '拒绝',
       'hub.open': '打开会话',
+      'hub.dirs': '受影响目录',
+      'hub.dirsDropped': '已剔除 {n} 条只读命令',
+      'hub.raw': '原始命令',
+      'nav.back': '后退',
+      'nav.forward': '前进',
     }
 
     const en = {
@@ -207,6 +216,10 @@ window.__ModuleLoader__.load({
       'menu.delete': 'Delete',
       'menu.fork': 'Fork',
       'menu.archive': 'Archive',
+      'menu.unarchive': 'Unarchive',
+      'menu.pin': 'Pin session',
+      'menu.unpin': 'Unpin session',
+      'menu.sessionId': 'Copy session ID',
       'menu.renameFolder': 'Rename folder',
       'menu.renameSgroup': 'Rename session group',
       'menu.moveToGroup': 'Move to group…',
@@ -303,6 +316,11 @@ window.__ModuleLoader__.load({
       'hub.allow': 'Allow once',
       'hub.reject': 'Reject',
       'hub.open': 'Open session',
+      'hub.dirs': 'Directories at risk',
+      'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+      'hub.raw': 'Raw command',
+      'nav.back': 'Back',
+      'nav.forward': 'Forward',
     }
 
     /* Third-language dictionaries, keyed by BCP 47 tag. Every entry must carry
@@ -352,6 +370,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'حذف',
         'menu.fork': 'تفريع',
         'menu.archive': 'أرشفة',
+        'menu.unarchive': 'إلغاء الأرشفة',
+        'menu.pin': 'تثبيت الجلسة',
+        'menu.unpin': 'إلغاء تثبيت الجلسة',
+        'menu.sessionId': 'نسخ معرّف الجلسة',
         'menu.renameFolder': 'إعادة تسمية المجلد',
         'menu.renameSgroup': 'إعادة تسمية مجموعة الجلسات',
         'menu.moveToGroup': 'نقل إلى مجموعة…',
@@ -442,6 +464,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'سماح مرة واحدة',
         'hub.reject': 'رفض',
         'hub.open': 'افتح الجلسة',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'الكل',
         'settings.collapseLimit.hint': 'حد أقصى لعدد الجلسات المعروضة لكل مجموعة؛ والباقي يطوى في صف "+N". فارغ = عرض الكل.',
@@ -489,6 +516,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Löschen',
         'menu.fork': 'Abzweigen',
         'menu.archive': 'Archivieren',
+        'menu.unarchive': 'Aus Archiv holen',
+        'menu.pin': 'Sitzung anheften',
+        'menu.unpin': 'Sitzung lösen',
+        'menu.sessionId': 'Sitzungs-ID kopieren',
         'menu.renameFolder': 'Ordner umbenennen',
         'menu.renameSgroup': 'Sitzungsgruppe umbenennen',
         'menu.moveToGroup': 'In Gruppe verschieben…',
@@ -579,6 +610,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Einmal erlauben',
         'hub.reject': 'Ablehnen',
         'hub.open': 'Sitzung öffnen',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alle',
         'settings.collapseLimit.hint': 'Maximal so viele Sitzungen pro Gruppe anzeigen; der Rest klappt in eine „+N“-Zeile. Leer = alles anzeigen.',
@@ -626,6 +662,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Supprimer',
         'menu.fork': 'Bifurquer',
         'menu.archive': 'Archiver',
+        'menu.unarchive': 'Unarchive',
+        'menu.pin': 'Pin session',
+        'menu.unpin': 'Unpin session',
+        'menu.sessionId': 'Copy session ID',
         'menu.renameFolder': 'Renommer le dossier',
         'menu.renameSgroup': 'Renommer le groupe de sessions',
         'menu.moveToGroup': 'Déplacer vers le groupe…',
@@ -716,6 +756,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Autoriser une fois',
         'hub.reject': 'Refuser',
         'hub.open': 'Ouvrir la session',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tout',
         'settings.collapseLimit.hint': 'Afficher au plus ce nombre de sessions par groupe ; le reste se replie en ligne « +N ». Vide = tout afficher.',
@@ -763,6 +808,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'हटाएँ',
         'menu.fork': 'शाखा बनाएँ',
         'menu.archive': 'संग्रह करें',
+        'menu.unarchive': 'Desarchivar',
+        'menu.pin': 'Fijar sesión',
+        'menu.unpin': 'Desfijar sesión',
+        'menu.sessionId': 'Copiar ID de sesión',
         'menu.renameFolder': 'फ़ोल्डर का नाम बदलें',
         'menu.renameSgroup': 'सत्र समूह का नाम बदलें',
         'menu.moveToGroup': 'समूह में ले जाएँ…',
@@ -853,6 +902,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'एक बार अनुमति दें',
         'hub.reject': 'अस्वीकार करें',
         'hub.open': 'सत्र खोलें',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'सभी',
         'settings.collapseLimit.hint': 'प्रति समूह इतने ही सत्र दिखाएँ; बाकी "+N" पंक्ति में मुड़ते हैं। खाली = सब दिखाएँ।',
@@ -900,6 +954,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Hapus',
         'menu.fork': 'Cabangkan',
         'menu.archive': 'Arsipkan',
+        'menu.unarchive': 'Désarchiver',
+        'menu.pin': 'Épingler la session',
+        'menu.unpin': 'Détacher la session',
+        'menu.sessionId': 'Copier l’ID de session',
         'menu.renameFolder': 'Ganti nama folder',
         'menu.renameSgroup': 'Ganti nama grup sesi',
         'menu.moveToGroup': 'Pindahkan ke grup…',
@@ -990,6 +1048,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Izinkan sekali',
         'hub.reject': 'Tolak',
         'hub.open': 'Buka sesi',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Semua',
         'settings.collapseLimit.hint': 'Tampilkan paling banyak sesi sebanyak ini per grup; sisanya lipat ke baris "+N". Kosong = tampilkan semua.',
@@ -1037,6 +1100,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Elimina',
         'menu.fork': 'Dirama',
         'menu.archive': 'Archivia',
+        'menu.unarchive': 'असंग्रह करें',
+        'menu.pin': 'सत्र पिन करें',
+        'menu.unpin': 'सत्र अनपिन करें',
+        'menu.sessionId': 'सत्र आईडी कॉपी करें',
         'menu.renameFolder': 'Rinomina cartella',
         'menu.renameSgroup': 'Rinomina gruppo di sessioni',
         'menu.moveToGroup': 'Sposta nel gruppo…',
@@ -1127,6 +1194,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Consenti una volta',
         'hub.reject': 'Rifiuta',
         'hub.open': 'Apri sessione',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tutti',
         'settings.collapseLimit.hint': 'Mostra al massimo queste sessioni per gruppo; il resto si ripiega in una riga "+N". Vuoto = mostra tutto.',
@@ -1174,6 +1246,10 @@ window.__ModuleLoader__.load({
         'menu.delete': '削除',
         'menu.fork': 'フォーク',
         'menu.archive': 'アーカイブ',
+        'menu.unarchive': 'Batal arsip',
+        'menu.pin': 'Sematkan sesi',
+        'menu.unpin': 'Lepas sematan sesi',
+        'menu.sessionId': 'Salin ID sesi',
         'menu.renameFolder': 'フォルダー名を変更',
         'menu.renameSgroup': 'セッショングループ名を変更',
         'menu.moveToGroup': 'グループに移動…',
@@ -1264,6 +1340,11 @@ window.__ModuleLoader__.load({
         'hub.allow': '一度だけ許可',
         'hub.reject': '拒否',
         'hub.open': 'セッションを開く',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'すべて',
         'settings.collapseLimit.hint': '各グループに表示するセッションはこの数まで。残りは「+N」行に折りたたまれます。空 = すべて表示。',
@@ -1311,6 +1392,10 @@ window.__ModuleLoader__.load({
         'menu.delete': '삭제',
         'menu.fork': '포크',
         'menu.archive': '보관',
+        'menu.unarchive': 'Rimuovi dall’archivio',
+        'menu.pin': 'Fissa sessione',
+        'menu.unpin': 'Rimuovi fissaggio',
+        'menu.sessionId': 'Copia ID sessione',
         'menu.renameFolder': '폴더 이름 바꾸기',
         'menu.renameSgroup': '세션 그룹 이름 바꾸기',
         'menu.moveToGroup': '그룹으로 이동…',
@@ -1401,6 +1486,11 @@ window.__ModuleLoader__.load({
         'hub.allow': '한 번 허용',
         'hub.reject': '거부',
         'hub.open': '세션 열기',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': '모두',
         'settings.collapseLimit.hint': '그룹당 이 수만큼 세션을 표시하고, 나머지는 "+N" 행으로 접힙니다. 비우면 = 모두 표시.',
@@ -1448,6 +1538,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Verwijderen',
         'menu.fork': 'Afsplitsen',
         'menu.archive': 'Archiveren',
+        'menu.unarchive': 'アーカイブ解除',
+        'menu.pin': 'セッションを固定',
+        'menu.unpin': '固定を解除',
+        'menu.sessionId': 'セッション ID をコピー',
         'menu.renameFolder': 'Mapnaam wijzigen',
         'menu.renameSgroup': 'Sessiegroep naam wijzigen',
         'menu.moveToGroup': 'Naar groep verplaatsen…',
@@ -1538,6 +1632,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Eén keer toestaan',
         'hub.reject': 'Weigeren',
         'hub.open': 'Sessie openen',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alles',
         'settings.collapseLimit.hint': 'Toon maximaal zoveel sessies per groep; de rest vouwt in een "+N"-rij. Leeg = alles tonen.',
@@ -1585,6 +1684,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Usuń',
         'menu.fork': 'Rozgałęź',
         'menu.archive': 'Zarchiwizuj',
+        'menu.unarchive': '보관 취소',
+        'menu.pin': '세션 고정',
+        'menu.unpin': '고정 해제',
+        'menu.sessionId': '세션 ID 복사',
         'menu.renameFolder': 'Zmień nazwę folderu',
         'menu.renameSgroup': 'Zmień nazwę grupy sesji',
         'menu.moveToGroup': 'Przenieś do grupy…',
@@ -1675,6 +1778,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Zezwól raz',
         'hub.reject': 'Odrzuć',
         'hub.open': 'Otwórz sesję',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Wszystkie',
         'settings.collapseLimit.hint': 'Pokaż co najwyżej tyle sesji w grupie; reszta zwija się do wiersza „+N”. Puste = pokaż wszystko.',
@@ -1722,6 +1830,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Excluir',
         'menu.fork': 'Bifurcar',
         'menu.archive': 'Arquivar',
+        'menu.unarchive': 'Uit archief halen',
+        'menu.pin': 'Sessie vastmaken',
+        'menu.unpin': 'Sessie losmaken',
+        'menu.sessionId': 'Sessie-ID kopiëren',
         'menu.renameFolder': 'Renomear pasta',
         'menu.renameSgroup': 'Renomear grupo de sessões',
         'menu.moveToGroup': 'Mover para o grupo…',
@@ -1812,6 +1924,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Permitir uma vez',
         'hub.reject': 'Rejeitar',
         'hub.open': 'Abrir sessão',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tudo',
         'settings.collapseLimit.hint': 'Mostrar no máximo estas sessões por grupo; o resto dobra numa linha "+N". Vazio = mostrar tudo.',
@@ -1859,6 +1976,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Удалить',
         'menu.fork': 'Ответвить',
         'menu.archive': 'В архив',
+        'menu.unarchive': 'Przywróć z archiwum',
+        'menu.pin': 'Przypnij sesję',
+        'menu.unpin': 'Odepnij sesję',
+        'menu.sessionId': 'Kopiuj ID sesji',
         'menu.renameFolder': 'Переименовать папку',
         'menu.renameSgroup': 'Переименовать группу сессий',
         'menu.moveToGroup': 'Переместить в группу…',
@@ -1949,6 +2070,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Разрешить один раз',
         'hub.reject': 'Отклонить',
         'hub.open': 'Открыть сессию',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Все',
         'settings.collapseLimit.hint': 'Показывать не более этого числа сессий в группе; остальные сворачиваются в строку «+N». Пусто = показывать все.',
@@ -1996,6 +2122,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Ta bort',
         'menu.fork': 'Förgrena',
         'menu.archive': 'Arkivera',
+        'menu.unarchive': 'Desarquivar',
+        'menu.pin': 'Fixar sessão',
+        'menu.unpin': 'Desafixar sessão',
+        'menu.sessionId': 'Copiar ID da sessão',
         'menu.renameFolder': 'Byt namn på mapp',
         'menu.renameSgroup': 'Byt namn på sessionsgrupp',
         'menu.moveToGroup': 'Flytta till grupp…',
@@ -2086,6 +2216,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Tillåt en gång',
         'hub.reject': 'Avvisa',
         'hub.open': 'Öppna session',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Alla',
         'settings.collapseLimit.hint': 'Visa högst så många sessioner per grupp; resten viks in i en "+N"-rad. Tomt = visa alla.',
@@ -2133,6 +2268,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'ลบ',
         'menu.fork': 'แยกสาย',
         'menu.archive': 'เก็บถาวร',
+        'menu.unarchive': 'Разархивировать',
+        'menu.pin': 'Закрепить сеанс',
+        'menu.unpin': 'Открепить сеанс',
+        'menu.sessionId': 'Копировать ID сеанса',
         'menu.renameFolder': 'เปลี่ยนชื่อโฟลเดอร์',
         'menu.renameSgroup': 'เปลี่ยนชื่อกลุ่มเซสชัน',
         'menu.moveToGroup': 'ย้ายไปยังกลุ่ม…',
@@ -2223,6 +2362,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'อนุญาตครั้งเดียว',
         'hub.reject': 'ปฏิเสธ',
         'hub.open': 'เปิดเซสชัน',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'ทั้งหมด',
         'settings.collapseLimit.hint': 'แสดงเซสชันต่อกลุ่มมากที่สุดเท่านี้; ส่วนที่เหลือย่อเป็นแถว "+N" ว่าง = แสดงทั้งหมด',
@@ -2270,6 +2414,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Sil',
         'menu.fork': 'Çatalla',
         'menu.archive': 'Arşivle',
+        'menu.unarchive': 'Avarkivera',
+        'menu.pin': 'Fäst sessionen',
+        'menu.unpin': 'Lossna sessionen',
+        'menu.sessionId': 'Kopiera sessions-ID',
         'menu.renameFolder': 'Klasörü yeniden adlandır',
         'menu.renameSgroup': 'Oturum grubunu yeniden adlandır',
         'menu.moveToGroup': 'Gruba taşı…',
@@ -2360,6 +2508,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Bir kez izin ver',
         'hub.reject': 'Reddet',
         'hub.open': 'Oturumu aç',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tümü',
         'settings.collapseLimit.hint': 'Grup başına en fazla bu kadar oturum göster; kalanlar "+N" satırına katlanır. Boş = tümünü göster.',
@@ -2407,6 +2560,10 @@ window.__ModuleLoader__.load({
         'menu.delete': 'Xóa',
         'menu.fork': 'Tách nhánh',
         'menu.archive': 'Lưu trữ',
+        'menu.unarchive': 'ยกเลิกการเก็บถาวร',
+        'menu.pin': 'ปักหมุดเซสชัน',
+        'menu.unpin': 'เลิกปักหมุดเซสชัน',
+        'menu.sessionId': 'คัดลอกรหัสเซสชัน',
         'menu.renameFolder': 'Đổi tên thư mục',
         'menu.renameSgroup': 'Đổi tên nhóm phiên',
         'menu.moveToGroup': 'Chuyển vào nhóm…',
@@ -2497,6 +2654,11 @@ window.__ModuleLoader__.load({
         'hub.allow': 'Cho phép một lần',
         'hub.reject': 'Từ chối',
         'hub.open': 'Mở phiên',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': 'Session collapse limit',
         'settings.collapseLimit.all': 'Tất cả',
         'settings.collapseLimit.hint': 'Hiển thị tối đa số phiên này mỗi nhóm; phần còn lại gập thành hàng "+N". Để trống = hiện tất cả.',
@@ -2544,6 +2706,10 @@ window.__ModuleLoader__.load({
         'menu.delete': '刪除',
         'menu.fork': '分叉',
         'menu.archive': '封存',
+        'menu.unarchive': 'Arşivden çıkar',
+        'menu.pin': 'Oturumu sabitle',
+        'menu.unpin': 'Oturum sabitlemeyi kaldır',
+        'menu.sessionId': 'Oturum kimliğini kopyala',
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
@@ -2634,6 +2800,11 @@ window.__ModuleLoader__.load({
         'hub.allow': '允許一次',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -2681,6 +2852,10 @@ window.__ModuleLoader__.load({
         'menu.delete': '刪除',
         'menu.fork': '分叉',
         'menu.archive': '封存',
+        'menu.unarchive': 'Bỏ lưu trữ',
+        'menu.pin': 'Ghim phiên',
+        'menu.unpin': 'Bỏ ghim phiên',
+        'menu.sessionId': 'Sao chép ID phiên',
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
@@ -2771,6 +2946,11 @@ window.__ModuleLoader__.load({
         'hub.allow': '允許一次',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -2818,6 +2998,10 @@ window.__ModuleLoader__.load({
         'menu.delete': '刪除',
         'menu.fork': '分支',
         'menu.archive': '封存',
+        'menu.unarchive': '取消归档',
+        'menu.pin': '置顶会话',
+        'menu.unpin': '取消置顶',
+        'menu.sessionId': '复制会话 ID',
         'menu.renameFolder': '重新命名群組',
         'menu.renameSgroup': '重新命名工作階段群組',
         'menu.moveToGroup': '移動到分組…',
@@ -2908,6 +3092,11 @@ window.__ModuleLoader__.load({
         'hub.allow': '允許一次',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
+        'hub.dirs': 'Directories at risk',
+        'hub.dirsDropped': 'Filtered {n} read-only statement(s)',
+        'hub.raw': 'Raw command',
+        'nav.back': 'Back',
+        'nav.forward': 'Forward',
         'settings.collapseLimit': '會話摺疊數量',
         'settings.collapseLimit.all': '全部',
         'settings.collapseLimit.hint': '每個分組最多顯示這麼多會話，超出摺疊為「+N」行。留空 = 全部顯示。',
@@ -3130,7 +3319,7 @@ window.__ModuleLoader__.load({
      * titles. Groups are virtual (projection of names). Rows keep the Host
      * workspace.sessionIds (manual) order — drag-to-reorder must be visible.
      */
-    function buildSessionTree(rows, groupBySlash) {
+    function buildSessionTree(rows, groupBySlash, groupOrder) {
       const root = { path: '', name: '', groups: [], sessions: [] }
       const byPath = new Map([['', root]])
       // Slash grouping OFF (v0.13 view option): every row lands at the
@@ -3165,8 +3354,29 @@ window.__ModuleLoader__.load({
         const leaf = segs.length > 0 ? segs[segs.length - 1] : row.title
         ensure(segs.slice(0, -1)).sessions.push({ ...row, leaf })
       }
+      // Order of sibling groups. Historically alphabetical only; v0.23.0 adds a
+      // user-dragged order per workspace. The saved list holds GROUP PATHS (not
+      // names) because two different parents can hold same-named children.
+      // Unknown/new groups keep the alphabetical order and land AFTER the known
+      // ones, so a freshly created group never jumps to the top.
+      const rank = new Map()
+      if (Array.isArray(groupOrder)) {
+        for (let i = 0; i < groupOrder.length; i++) {
+          const p = groupOrder[i]
+          if (typeof p === 'string' && !rank.has(p)) rank.set(p, i)
+        }
+      }
       const sortRec = (node) => {
-        node.groups.sort((a, b) => a.name.localeCompare(b.name, 'zh'))
+        if (rank.size === 0) {
+          node.groups.sort((a, b) => a.name.localeCompare(b.name, 'zh'))
+        } else {
+          node.groups.sort((a, b) => {
+            const ra = rank.has(a.path) ? rank.get(a.path) : Number.MAX_SAFE_INTEGER
+            const rb = rank.has(b.path) ? rank.get(b.path) : Number.MAX_SAFE_INTEGER
+            if (ra !== rb) return ra - rb
+            return a.name.localeCompare(b.name, 'zh')
+          })
+        }
         for (const group of node.groups) sortRec(group)
       }
       sortRec(root)
@@ -3252,7 +3462,7 @@ window.__ModuleLoader__.load({
       }
       return map
     }
-    function buildTree(items, groupBySlash) {
+    function buildTree(items, groupBySlash, groupOrder) {
       const list = items || []
       const diskParentOf = diskParentMapOf(list)
       const childrenOf = new Map()
@@ -3264,7 +3474,39 @@ window.__ModuleLoader__.load({
       }
       // NAME layer inside one level: SEGMENT-driven keys (never re-split a
       // joined path — URL authority segments would shred).
-      const buildLevel = (wsList, idPrefix) => {
+      // DOUBLE-PLACEMENT GUARD (v0.23.0). A workspace whose title extends another
+      // workspace's title is rendered TWICE by the naive build: once inside its
+      // own name-layer folder ("RBE999/") and once as the parent's nested child
+      // ("RBE999" -> Sim-to-Real). The user then sees the same row twice and
+      // clicking it re-opens the same single session again and again — the
+      // reported "it keeps appearing / duplicating". Nested placement wins
+      // (it carries the parent/child semantics), so the name layer must SKIP
+      // any workspace id that already went out as a child row.
+      //
+      // PRE-PASS: which workspaces are a nested child of some other workspace
+      // (by title prefix), transitively. Computed BEFORE any placement because
+      // the child may appear earlier in the list than its parent, so an
+      // in-loop decision would be order dependent.
+      const nestedIds = new Set()
+      {
+        const byTitle = new Map()
+        for (const w of list) {
+          const t = String(w.title || '')
+          if (t === '') continue
+          if (!byTitle.has(t)) byTitle.set(t, [])
+          byTitle.get(t).push(w.workspaceId)
+        }
+        for (const w of list) {
+          const t = String(w.title || '')
+          if (t === '') continue
+          for (const [title, ids] of byTitle) {
+            if (title === t) continue
+            if (!title.startsWith(t + '/')) continue
+            for (const id of ids) nestedIds.add(id)
+          }
+        }
+      }
+      const buildLevel = (wsList, idPrefix, idPrefixTitles, isRoot) => {
         const root = { path: '', name: '', folders: [], workspaces: [] }
         const byPath = new Map([['', root]])
         const ensure = (segs) => {
@@ -3294,10 +3536,23 @@ window.__ModuleLoader__.load({
           const leaf = segs.length > 0 ? segs[segs.length - 1] : (basename(workspace.path) || String(workspace.title || '') || String(workspace.workspaceId || ''))
           // v0.18.0: title-nesting — a workspace's children are the workspaces
           // whose title extends THIS workspace's full title with a '/' segment.
+          //
+          // v0.23.0 CYCLE GUARD. Nesting is derived from titles alone, and a
+          // workspace may legitimately share a name with a group ("RBE999" and
+          // "RBE999/Sim-to-Real..."), which used to make the child's stripped
+          // title ("Sim-to-Real...") match a workspace whose own title started
+          // with it again — the recursion then rebuilt the same subtree forever,
+          // which is exactly the reported "the same single session keeps
+          // reappearing / duplicating". Every title on the ancestor chain is
+          // therefore excluded from a node's children, so a title can only nest
+          // once per branch.
           const fullTitle = String(workspace.title || '')
-          const subList = fullTitle !== ''
+          const seen = Array.isArray(idPrefixTitles) ? idPrefixTitles : []
+          const subList = fullTitle !== '' && !seen.includes(fullTitle)
             ? wsList.filter((w) => w.workspaceId !== workspace.workspaceId
-              && String(w.title || '').startsWith(fullTitle + '/'))
+              && String(w.title || '') !== fullTitle
+              && String(w.title || '').startsWith(fullTitle + '/')
+              && !seen.includes(String(w.title || '')))
             : []
           const entry = {
             workspaceId: workspace.workspaceId,
@@ -3307,7 +3562,11 @@ window.__ModuleLoader__.load({
             leaf,
             folderPath,
             sub: subList && subList.length > 0
-              ? buildLevel(subList.map((w) => ({ ...w, title: String(w.title || '').slice(fullTitle.length + 1) })), (idPrefix !== '' ? idPrefix + '//' : '') + workspace.workspaceId)
+              ? buildLevel(
+                subList.map((w) => ({ ...w, title: String(w.title || '').slice(fullTitle.length + 1) })),
+                (idPrefix !== '' ? idPrefix + '//' : '') + workspace.workspaceId,
+                (Array.isArray(idPrefixTitles) ? idPrefixTitles : []).concat([fullTitle]),
+                false)
               : null,
           }
           // Slash grouping OFF (v0.13 view option): skip the name layer —
@@ -3320,10 +3579,43 @@ window.__ModuleLoader__.load({
             root.workspaces.push(entry)
             continue
           }
+          // Skip rows that already went out as a nested child (see nestedIds).
+          // ROOT LEVEL ONLY: nested levels receive prefix-STRIPPED titles, so the
+          // pre-pass keys would not match there and applying it would empty the
+          // child level (the 0.12.0 fixture catches exactly that).
+          if (isRoot && nestedIds.has(workspace.workspaceId)) continue
           ensure(segs.slice(0, -1)).workspaces.push(entry)
         }
+        // Sibling order of the workspace-name layer (folder groups AND the
+        // workspace rows sharing that level). Historically alphabetical; v0.23.0
+        // lets a drag pin an explicit order. Keys are full name paths for
+        // folders and `id:` + workspaceId for workspace rows, because two
+        // levels can hold same-named entries.
+        const wRank = new Map()
+        if (Array.isArray(groupOrder)) {
+          for (let i = 0; i < groupOrder.length; i++) {
+            const k = groupOrder[i]
+            if (typeof k === 'string' && !wRank.has(k)) wRank.set(k, i)
+          }
+        }
+        const rankOf = (key, name) => (wRank.has(key) ? wRank.get(key) : Number.MAX_SAFE_INTEGER)
         const sortRec = (node) => {
-          node.folders.sort((a, b) => a.name.localeCompare(b.name, 'zh'))
+          if (wRank.size === 0) {
+            node.folders.sort((a, b) => a.name.localeCompare(b.name, 'zh'))
+          } else {
+            node.folders.sort((a, b) => {
+              const ra = rankOf(a.path)
+              const rb = rankOf(b.path)
+              if (ra !== rb) return ra - rb
+              return a.name.localeCompare(b.name, 'zh')
+            })
+            node.workspaces.sort((a, b) => {
+              const ra = rankOf('id:' + a.workspaceId)
+              const rb = rankOf('id:' + b.workspaceId)
+              if (ra !== rb) return ra - rb
+              return String(a.leaf || '').localeCompare(String(b.leaf || ''), 'zh')
+            })
+          }
           for (const child of node.folders) sortRec(child)
         }
         sortRec(root)
@@ -3334,7 +3626,7 @@ window.__ModuleLoader__.load({
       // directory workspace is a peer whose title decides its level, so any
       // workspace can be dragged out of (or into) any group by renaming it.
       // diskParentOf stays computed for the move-dialogs' bookkeeping only.
-      return buildLevel(list, '')
+      return buildLevel(list, '', [], true)
     }
 
     const countWorkspaces = (node) => (node.kind === 'ws'
@@ -3402,6 +3694,7 @@ window.__ModuleLoader__.load({
       '.bw-header-title{flex:1;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--dsw-alias-label-secondary,#b8b8b8);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
       '.bw-icon-btn{flex:none;width:24px;height:24px;border:none;background:transparent;border-radius:6px;display:grid;place-items:center;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;padding:0}',
       '.bw-icon-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.15));color:var(--dsw-alias-label-primary,#e6e6e6)}',
+      '.bw-icon-btn:disabled{opacity:.35;cursor:default;pointer-events:none}',
       '.bw-search-row{flex:none;padding:0 10px 6px}',
       '.bw-input{width:100%;box-sizing:border-box;height:26px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;color:inherit;padding:0 8px;font-size:12px;outline:none;font-family:inherit}',
       '.bw-input:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
@@ -3496,9 +3789,24 @@ window.__ModuleLoader__.load({
     '.bw-hub-ws{flex:0 1 auto;font-size:12px;color:var(--dsw-alias-label-secondary,#9a9a9a);overflow-wrap:anywhere}',
     '.bw-hub-tool{font-size:12px;color:var(--dsw-alias-brand-primary,#5b8def);overflow-wrap:anywhere}',
     '.bw-hub-reason{font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#dedede);white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}',
+    // v0.25.0 approval directory summary: a deduped, hard-wrapped path list.
+    '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:10px;background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
+    '.bw-hub-dirs-label{font-size:12px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
+    '.bw-hub-dirs-list{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:2px}',
+    '.bw-hub-dirs-list>li{font-size:12px;line-height:18px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--dsw-alias-label-primary,#e6e6e6);overflow-wrap:anywhere;word-break:break-all}',
+    '.bw-hub-dirs-note{font-size:11px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
+    '.bw-hub-raw>summary{cursor:pointer;font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
+    '.bw-hub-raw[open]>summary{margin-bottom:4px}',
     '.bw-hub-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}',
     '.bw-hub-empty{padding:18px 8px;font-size:13px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
     '.bw-hub-trigger-on{background:var(--dsw-alias-interactive-bg-hover,rgba(255,255,255,.10))}',
+    // Sidebar INLINE variant (v0.23.0): the card sits in the sidebar's own
+    // flow, so it drops the elevation (nothing is layered over the window) and
+    // tightens spacing to survive a narrow rail.
+    '.bw-hub-inline{margin:6px 8px 8px;padding:10px 10px;border-radius:12px;box-shadow:none}',
+    '.bw-hub-inline .bw-hub-list{max-height:min(38vh,340px);gap:8px}',
+    '.bw-hub-inline .bw-hub-item{padding:8px 9px;border-radius:10px}',
+    '.bw-hub-inline .bw-hub-actions{gap:6px}',
     '.bw-hub-trigger{position:relative}',
     '.bw-hub-badge{position:absolute;top:-3px;right:-3px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;background:var(--dsw-alias-bg-attention,#e5484d);color:var(--dsw-alias-label-on-attention,#fff);font-size:9px;line-height:14px;text-align:center;font-weight:600;pointer-events:none}',
     '.bw-clamp-row{font-size:11.5px;color:var(--dsw-alias-brand-primary,#5b8def);cursor:pointer;min-height:24px}',
@@ -3595,7 +3903,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -3645,6 +3953,24 @@ window.__ModuleLoader__.load({
         setGroupBy: (d, value) => { d.groupBy = value },
       setTabCycleOrder: (d, value) => { d.tabCycleOrder = value },
         setOrderBy: (d, value) => { d.orderBy = value },
+        // Session-group order (v0.23.0): a dragged order of GROUP PATHS inside
+        // one workspace. Groups are a name projection (the "/"-prefix of
+        // titles), so there is no host object to reorder — the only durable
+        // place for their order is this per-workspace list. Empty => delete =>
+        // fall back to the historical alphabetical order.
+        setSessionGroupOrder: (d, workspaceId, order) => {
+          if (!d.sessionGroupOrder || typeof d.sessionGroupOrder !== 'object') d.sessionGroupOrder = {}
+          if (!Array.isArray(order) || order.length === 0) delete d.sessionGroupOrder[workspaceId]
+          else d.sessionGroupOrder[workspaceId] = order.slice()
+        },
+        // Workspace-layer order (v0.23.0): one global list mixing folder name
+        // paths and `id:<workspaceId>` keys. The workspace registry has no
+        // order of its own for name groups (they are pure title projections),
+        // so the only durable home for a dragged order is here. Empty => the
+        // historical alphabetical order.
+        setWorkspaceGroupOrder: (d, order) => {
+          d.workspaceGroupOrder = Array.isArray(order) ? order.slice() : []
+        },
         setSessionTitleSlash: (d, value) => { d.sessionTitleSlash = value !== false },
         setWorkspaceTitleSlash: (d, value) => { d.workspaceTitleSlash = value !== false },
       },
@@ -4574,7 +4900,7 @@ window.__ModuleLoader__.load({
             'aria-label': t('group.new'),
             title: t('group.new'),
             onClick: (e) => { e.stopPropagation(); onAddGroup() },
-          }, icon('IconFolderOutline16', 16) || icon('IconProjectAddOutline16', 16)) : null,
+          }, icon('IconFolderClose16', 16) || icon('IconProjectAddOutline16', 16)) : null,
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutline16')),
         ),
       )
@@ -4678,9 +5004,9 @@ window.__ModuleLoader__.load({
      * titles). Deliberately NOT styled like a workspace folder — no folder
      * icon, tertiary color — so a session level never reads as a workspace.
      */
-    function SessionGroupRow({ name, depth, expanded, count, onToggle, onContextMenu, dropInto, dragEvents, custStyle, pulse, t }) {
+    function SessionGroupRow({ name, depth, expanded, count, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, pulse, onStart, onAddGroup, t }) {
       return E('div', {
-        className: cls('bw-row', 'bw-sgroup-row', dropInto && 'bw-drop-into', dropInto && 'bw-drop-into-strong'),
+        className: cls('bw-row', 'bw-sgroup-row', dropInto && 'bw-drop-into', dropInto && 'bw-drop-into-strong', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 10 + depth * 12, ...(custStyle || {}) },
         onClick: onToggle,
         onContextMenu: onContextMenu,
@@ -4694,6 +5020,28 @@ window.__ModuleLoader__.load({
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
         E('span', { className: 'bw-row-label' }, name),
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
+        // v0.23.0: the SAME hover actions a workspace row carries. A session
+        // group has no host identity (it is a "/"-prefix projection), so
+        // "new session here" means "start one in this group's workspace and
+        // pre-fill the group prefix", and "new group" opens the move dialog
+        // scoped to this group. Without these, a group could only be changed
+        // by dragging rows into it one at a time.
+        E('span', { className: 'bw-row-actions', onClick: (e) => e.stopPropagation() },
+          onAddGroup ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': t('group.new'),
+            title: t('group.new'),
+            onClick: (e) => { e.stopPropagation(); onAddGroup() },
+          }, icon('IconFolderClose16', 16) || icon('IconProjectAddOutline16', 16)) : null,
+          onStart ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': t('session.new'),
+            title: t('session.new'),
+            onClick: (e) => { e.stopPropagation(); onStart() },
+          }, icon('IconPlusOutline16', 16)) : null,
+        ),
       )
     }
 
@@ -5325,6 +5673,233 @@ window.__ModuleLoader__.load({
     // carries kind, session title and workspace, then its raw reason/tool text.
     // Answering calls the pending interaction's own answer(), the exact host
     // waterfall path the native panel uses.
+    // Shared row renderer for the hub panel. Used by BOTH seats so the sidebar
+    // modal and the in-conversation composer panel can never drift apart.
+    /* ============ approval path extraction (v0.25.0) ============ */
+    // An approval panel shows the WHOLE command text — often hundreds of words
+    // where most lines are read-only probes (Get-ChildItem / Test-Path /
+    // Write-Output). The user then has to hunt for "which directories will this
+    // actually touch". These helpers hard-code a whitelist so the answer is
+    // predictable: keep only statements that use a WRITE verb, pull the absolute
+    // path literals out of them, dedupe, and drop children of an already-listed
+    // parent so the list stays short.
+    //
+    // Deliberately no variable expansion: a path that is only built from $vars
+    // is NOT reported (better to under-report than to invent a wrong directory).
+
+    const WRITE_VERBS = [
+      'new-item', 'mkdir', 'set-content', 'add-content', 'out-file', 'copy-item',
+      'move-item', 'remove-item', 'rename-item', 'set-itemproperty', 'new-itemproperty',
+      'remove-itemproperty', 'clear-content', 'expand-archive', 'compress-archive',
+      'tee-object', 'export-csv', 'export-clixml', 'start-process', 'robocopy', 'xcopy',
+      'cp', 'mv', 'rm', 'rmdir', 'del', 'erase', 'touch', 'install', 'uninstall',
+      'npm', 'pnpm', 'yarn', 'pip', 'pip3', 'git', 'cargo', 'dotnet', 'msbuild',
+      'cmake', 'make', 'tsc', 'python', 'python3', 'pwsh', 'powershell',
+      'tar', 'unzip', 'zip', 'rsync',
+    ]
+    const READ_VERBS = [
+      'get-childitem', 'get-item', 'get-content', 'get-itemproperty', 'get-process',
+      'test-path', 'select-object', 'where-object', 'foreach-object', 'measure-object',
+      'sort-object', 'format-table', 'format-list', 'write-output', 'write-host',
+      'out-string', 'select-string', 'resolve-path', 'join-path', 'split-path',
+      'compare-object', 'get-filehash', 'get-location', 'set-location', 'cd', 'pwd',
+      'ls', 'dir', 'cat', 'type', 'head', 'tail', 'grep', 'rg', 'find', 'echo', 'which',
+      'stat', 'du', 'df', 'whoami', 'netstat', 'tasklist', 'get-date', 'start-sleep',
+    ]
+    // Absolute Windows path. The character class MUST exclude whitespace, or a
+    // match runs on into the following arguments ("C:\a\b -Force" would become
+    // one path). Quoted paths are handled separately so they may contain spaces.
+    const WIN_PATH_RE = /[A-Za-z]:[\\/](?:[^\\/:*?"<>|\s'"`]+[\\/])*[^\\/:*?"<>|\s'"`]*/g
+    const WIN_PATH_QUOTED_RE = /"([A-Za-z]:[\\/][^"]*)"|'([A-Za-z]:[\\/][^']*)'/g
+
+    /** Pull absolute Windows path literals out of one string (order kept, deduped). */
+    const extractPaths = (text) => {
+      const src = String(text || '')
+      const found = []
+      // Quoted first: a quoted path may legitimately contain spaces.
+      WIN_PATH_QUOTED_RE.lastIndex = 0
+      let q
+      while ((q = WIN_PATH_QUOTED_RE.exec(src)) !== null) {
+        const raw = (q[1] || q[2] || '').replace(/[,.'"`)\]}]+$/g, '')
+        if (raw.length >= 4) found.push({ at: q.index, raw })
+      }
+      // Unquoted: whitespace-terminated.
+      WIN_PATH_RE.lastIndex = 0
+      let m
+      while ((m = WIN_PATH_RE.exec(src)) !== null) {
+        const raw = m[0].replace(/[,.'"`)\]}]+$/g, '')
+        if (raw.length >= 4) found.push({ at: m.index, raw })
+      }
+      found.sort((a, b) => a.at - b.at)
+      const out = []
+      const seen = new Set()
+      for (const item of found) {
+        const key = item.raw.toLowerCase()
+        if (seen.has(key)) continue
+        seen.add(key)
+        out.push(item.raw)
+      }
+      return out
+    }
+    const _segHead = (seg) => String(seg).trim().replace(/^[(&]\s*/, '').split(/[\s|;]/)[0].toLowerCase()
+    const isReadOnlySegment = (seg) => {
+      const head = _segHead(seg)
+      if (head === '') return true
+      if (READ_VERBS.includes(head)) return true
+      return /^get-/.test(head)
+    }
+    const isWriteSegment = (seg) => {
+      const text = String(seg).toLowerCase()
+      for (const v of WRITE_VERBS) {
+        const esc = v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        if (new RegExp('(^|[\\s(;&|])' + esc + '([\\s(;&|]|$)').test(text)) return true
+      }
+      return false
+    }
+    const _normKey = (p) => String(p).replace(/\\/g, '/').replace(/\/+$/, '').toLowerCase()
+    /** Drop paths that sit under another path already in the list. */
+    const collapseToTopLevel = (paths) => {
+      const list = Array.isArray(paths) ? paths.filter((p) => typeof p === 'string' && p !== '') : []
+      // Dedupe FIRST: the same path often appears in several statements
+      // (source and destination of a move both name it). Comparing on the
+      // normalized key keeps case- and separator-insensitive equality.
+      const uniq = []
+      const seen = new Set()
+      for (const p of list) {
+        const k = _normKey(p)
+        if (k === '' || seen.has(k)) continue
+        seen.add(k)
+        uniq.push(p)
+      }
+      const keys = uniq.map(_normKey)
+      const keep = []
+      for (let i = 0; i < uniq.length; i += 1) {
+        let covered = false
+        for (let j = 0; j < keys.length; j += 1) {
+          if (i === j || keys[j] === '') continue
+          if (keys[i] !== keys[j] && keys[i].startsWith(keys[j] + '/')) { covered = true; break }
+        }
+        if (!covered) keep.push(uniq[i])
+      }
+      return keep
+    }
+    /**
+     * Reduce a path to the DIRECTORY it lives in when its last segment looks
+     * like a file (has an extension). A summary of "directories at risk" must
+     * not list `C:\work\a.txt` as if it were a folder.
+     */
+    const dirOfPath = (p) => {
+      const text = String(p || '')
+      const cut = Math.max(text.lastIndexOf('\\'), text.lastIndexOf('/'))
+      if (cut <= 2) return text            // "C:\" style root: keep as-is
+      const leaf = text.slice(cut + 1)
+      // A dot in the leaf with 1-5 trailing word chars reads as an extension.
+      // Directory names with dots exist, but under-reporting precision here is
+      // preferable to labelling a file as a directory.
+      if (/\.[A-Za-z0-9]{1,5}$/.test(leaf)) return text.slice(0, cut)
+      return text
+    }
+    /**
+     * Directories an approval could modify. Read-only statements are dropped
+     * wholesale; only absolute path literals inside write statements survive.
+     * Returns the surviving absolute directories plus counters describing how
+     * many statements were examined, how many were writes, and how many were
+     * dropped as read-only.
+     */
+    const extractWriteDirectories = (rawText) => {
+      const segments = String(rawText || '')
+        .split(/\r?\n|;|&&|\|\|/)
+        .map((s) => s.trim())
+        .filter((s) => s !== '')
+      const writeSegs = segments.filter((s) => !isReadOnlySegment(s) && isWriteSegment(s))
+      const paths = []
+      for (const seg of writeSegs) for (const p of extractPaths(seg)) paths.push(dirOfPath(p))
+      const dirs = collapseToTopLevel(paths)
+      dirs.sort((a, b) => {
+        const da = (a.match(/[\\/]/g) || []).length
+        const db = (b.match(/[\\/]/g) || []).length
+        if (da !== db) return da - db
+        return a.localeCompare(b, 'zh')
+      })
+      return {
+        directories: dirs,
+        statements: segments.length,
+        writeStatements: writeSegs.length,
+        dropped: segments.length - writeSegs.length,
+      }
+    }
+
+    function hubRowsNode(rows, { t, officialT, uiWorkspace, close }) {
+      const ot = typeof officialT === 'function' ? officialT : null
+      if (rows.length === 0) return E('div', { className: 'bw-hub-empty' }, t('hub.empty'))
+      return rows.map((row) => {
+        const canAnswer = row.interaction && typeof row.interaction.answer === 'function' && row.interaction.answerable !== false
+        // v0.25.0: for approvals, show ONLY the directories at risk, as a
+        // deduped list, instead of making the user read the whole command.
+        const dirs = row.kind === 'approval' && row.reason ? extractWriteDirectories(row.reason) : null
+        return E('div', { key: row.key, className: 'bw-hub-item' },
+          E('div', { className: 'bw-hub-meta' },
+            E('span', { className: 'bw-hub-kind' }, row.kind === 'approval' ? t('hub.kind.approval') : row.kind === 'plan-review' ? t('hub.kind.plan') : t('hub.kind.question')),
+            E('span', { className: 'bw-hub-session', title: row.sessionTitle }, row.sessionTitle),
+            E('span', { className: 'bw-hub-ws', title: row.wsPath || row.wsTitle }, row.wsTitle),
+          ),
+          row.toolName ? E('div', { className: 'bw-hub-tool' }, row.toolName) : null,
+          dirs && dirs.directories.length > 0
+            ? E('div', { className: 'bw-hub-dirs' },
+                E('div', { className: 'bw-hub-dirs-label' }, t('hub.dirs') + ' · ' + String(dirs.directories.length)),
+                E('ul', { className: 'bw-hub-dirs-list' },
+                  dirs.directories.map((d, i) => E('li', { key: 'd' + i, title: d }, d))),
+                dirs.dropped > 0
+                  ? E('div', { className: 'bw-hub-dirs-note' }, t('hub.dirsDropped', { n: dirs.dropped }))
+                  : null,
+              )
+            : null,
+          // Keep the raw text available, collapsed, so the derivation stays auditable.
+          row.reason
+            ? E('details', { className: 'bw-hub-raw' },
+                E('summary', null, t('hub.raw')),
+                E('div', { className: 'bw-hub-reason' }, row.reason))
+            : null,
+          E('div', { className: 'bw-hub-actions' },
+            canAnswer && row.kind === 'approval' ? [
+              E(BTN, { key: 'a', variant: 'primary', onClick: () => { try { row.interaction.answer('allowed-once') } catch (e) {} } }, ot ? ot('allowOnce') : t('hub.allow')),
+              E(BTN, { key: 'r', variant: 'outline', onClick: () => { try { row.interaction.answer('rejected') } catch (e) {} } }, t('hub.reject')),
+            ] : null,
+            E(BTN, { key: 'go', variant: 'outline', onClick: () => { try { uiWorkspace && uiWorkspace.openSession(row.sessionId) } catch (e) {} ; close() } }, t('hub.open')),
+          ),
+        )
+      })
+    }
+
+    /**
+     * Sidebar-seat hub (v0.23.0). The v0.22.0 build ONLY registered the panel in
+     * the session-scoped `conversation.composer` hole, whose `select` returns null
+     * unless the CURRENT session has a pending interaction — so clicking the
+     * sidebar warning button flipped a shared flag that nothing was rendering,
+     * i.e. the button looked dead. This seat renders INLINE in the sidebar's own
+     * flow (between the header strip and the tree): no modal, no absolute
+     * positioning, nothing floating over the window — the same "native position"
+     * rule the composer seat follows, scoped to the sidebar so it is reachable
+     * whichever session is active.
+     */
+    function InteractionHubInline(props) {
+      const openFlag = useHubOpen()
+      if (!openFlag) return null
+      const rows = collectInteractions(props.uiStatus, props.list, props.items)
+      const t = props.t
+      const close = () => setHubOpen(false)
+      return E('div', { className: 'bw-hub-card bw-hub-inline', role: 'group', 'aria-label': t('hub.title') },
+        E('div', { className: 'bw-hub-strip' },
+          E('span', { className: 'bw-hub-strip-label' },
+            rows.length > 0 ? t('hub.title') + ' · ' + String(rows.length) : t('hub.title')),
+          E('button', { type: 'button', className: 'bw-hub-close', onClick: close, 'aria-label': t('close') }, '✕'),
+        ),
+        E('div', { className: 'bw-hub-list' },
+          hubRowsNode(rows, { t, officialT: props.officialT, uiWorkspace: props.uiWorkspace, close })),
+        StyleNode(),
+      )
+    }
+
     function InteractionComposerPanel(props) {
       const openFlag = useHubOpen()
       const uiStatus = typeof props.useSessionStatus === "function" ? props.useSessionStatus((s) => s) : null
@@ -5343,29 +5918,45 @@ window.__ModuleLoader__.load({
           E("button", { type: "button", className: "bw-hub-close", onClick: close, "aria-label": t("close") }, "✕"),
         ),
         E("div", { className: "bw-hub-list" },
-          rows.length === 0
-            ? E("div", { className: "bw-hub-empty" }, t("hub.empty"))
-            : rows.map((row) => {
-              const canAnswer = row.interaction && typeof row.interaction.answer === "function" && row.interaction.answerable !== false
-              return E("div", { key: row.key, className: "bw-hub-item" },
-                E("div", { className: "bw-hub-meta" },
-                  E("span", { className: "bw-hub-kind" }, row.kind === "approval" ? t("hub.kind.approval") : row.kind === "plan-review" ? t("hub.kind.plan") : t("hub.kind.question")),
-                  E("span", { className: "bw-hub-session", title: row.sessionTitle }, row.sessionTitle),
-                  E("span", { className: "bw-hub-ws", title: row.wsPath || row.wsTitle }, row.wsTitle),
-                ),
-                row.toolName ? E("div", { className: "bw-hub-tool" }, row.toolName) : null,
-                row.reason ? E("div", { className: "bw-hub-reason" }, row.reason) : null,
-                E("div", { className: "bw-hub-actions" },
-                  canAnswer && row.kind === "approval" ? [
-                    E(BTN, { key: "a", variant: "primary", onClick: () => { try { row.interaction.answer("allowed-once") } catch (e) {} } }, ot ? ot("allowOnce") : t("hub.allow")),
-                    E(BTN, { key: "r", variant: "outline", onClick: () => { try { row.interaction.answer("rejected") } catch (e) {} } }, t("hub.reject")),
-                  ] : null,
-                  E(BTN, { key: "go", variant: "outline", onClick: () => { try { props.uiWorkspace && props.uiWorkspace.openSession(row.sessionId) } catch (e) {} ; close() } }, t("hub.open")),
-                ),
-              )
-            }),
-        ),
+          hubRowsNode(rows, { t, officialT: ot, uiWorkspace: props.uiWorkspace, close })),
       )
+    }
+
+    /**
+     * Session navigation history (v0.23.0). The host's uiWorkspace exposes
+     * openSession/startSession/etc. but NO history — so back/forward has to be
+     * tracked here. Semantics mirror a browser:
+     *   * navigating to a NEW session truncates any forward entries,
+     *   * going back/forward does not touch the stack except for the cursor,
+     *   * entries are session ids only (titles/workspaces are re-read live so a
+     *     rename never leaves a stale crumb).
+     * The stack is module-level per client realm and capped, so it survives
+     * sidebar remounts within one page lifetime but never grows unbounded.
+     */
+    const NAV_LIMIT = 50
+    let navStack = []
+    let navCursor = -1
+    let navListeners = new Set()
+    const notifyNav = () => { for (const fn of [...navListeners]) { try { fn() } catch { /* one bad seat never blocks */ } } }
+    const navSnapshot = () => ({ canBack: navCursor > 0, canForward: navCursor >= 0 && navCursor < navStack.length - 1 })
+    const navPush = (sessionId) => {
+      if (typeof sessionId !== 'string' || sessionId === '') return
+      if (navCursor >= 0 && navStack[navCursor] === sessionId) return
+      navStack = navStack.slice(0, navCursor + 1)
+      navStack.push(sessionId)
+      if (navStack.length > NAV_LIMIT) navStack = navStack.slice(navStack.length - NAV_LIMIT)
+      navCursor = navStack.length - 1
+      notifyNav()
+    }
+    const useNavState = () => {
+      const [state, set] = React.useState(navSnapshot)
+      React.useEffect(() => {
+        const fn = () => set(navSnapshot())
+        navListeners.add(fn)
+        set(navSnapshot())
+        return () => { navListeners.delete(fn) }
+      }, [])
+      return state
     }
 
     function BetterBrowser(props) {
@@ -5391,6 +5982,11 @@ window.__ModuleLoader__.load({
       const items = useWorkspaces(s => s.items)
       const phase = useWorkspaces(s => s.phase)
       const archivedSessionIds = useWorkspaces(s => s.archivedSessionIds) || []
+      // Registry-global pin set (official store field, same one ui-workspace's
+      // pinInjected reads). `null` means the host does not expose it, which the
+      // menu uses to omit the pin item entirely rather than render a dead row.
+      const pinnedRaw = useWorkspaces(s => s.pinnedSessionIds)
+      const pinnedSessionIds = Array.isArray(pinnedRaw) ? pinnedRaw : null
       const list = useSessions(s => s)
       const pending = useSessionPendingInteraction ? useSessionPendingInteraction(s => s) : null
       const expandedMap = useStore ? (useStore(s => s.expanded) || {}) : {}
@@ -5399,6 +5995,13 @@ window.__ModuleLoader__.load({
       const prefsMap = useStore ? (useStore(s => s.prefs) || {}) : {}
       const stylingMap = useStore ? (useStore(s => s.styling) || {}) : {}
       const sessionOrderMap = useStore ? (useStore(s => s.sessionOrder) || {}) : {}
+      // Per-workspace dragged order of session GROUPS (v0.23.0). Same discipline
+      // as sessionOrderMap: always read through a fallback because hydration
+      // replaces the whole persisted value and older states lack this key.
+      const sessionGroupOrderMap = useStore ? (useStore(s => s.sessionGroupOrder) || {}) : {}
+      // Workspace-layer dragged order (v0.23.0): ONE global list of folder name
+      // paths plus `id:<workspaceId>` keys. Fallback discipline as above.
+      const workspaceGroupOrder = useStore ? (useStore(s => s.workspaceGroupOrder) || []) : []
       // View options (v0.13). Selector reads take fallbacks: hydration
       // replaces the whole persisted value, so states written by older
       // plugin versions lack these keys (hard store discipline).
@@ -5417,6 +6020,27 @@ window.__ModuleLoader__.load({
       const subCounts = React.useMemo(() => subagentRunningCounts(list ? list.byId : {}), [list ? list.byId : null])
       // Current session per the alpha.2 retention contract (see mainSessionIdOf).
       const currentId = React.useMemo(() => mainSessionIdOf(list), [list ? list.byId : null])
+      // ---- navigation history (v0.23.0) -----------------------------------
+      // Record every session the main view lands on. `navReplayingRef` marks the
+      // synchronous window where WE drove the change (back/forward), so the
+      // effect does not treat it as a fresh navigation and truncate the forward
+      // branch — that is the one thing a browser-like history must not do.
+      const navReplayingRef = React.useRef(false)
+      React.useEffect(() => {
+        if (currentId === undefined || currentId === null) return
+        if (navReplayingRef.current) { navReplayingRef.current = false; return }
+        navPush(currentId)
+      }, [currentId])
+      const navState = useNavState()
+      const goNav = (delta) => {
+        const next = navCursor + delta
+        if (next < 0 || next >= navStack.length) return
+        const target = navStack[next]
+        navCursor = next
+        navReplayingRef.current = true
+        notifyNav()
+        try { if (typeof open === 'function') open(target) } catch { navReplayingRef.current = false }
+      }
       // Unified UI status store (dsh 0.2.1+): per-session { running, completionUnread,
       // pendingInteraction:{kind}, runningSubagentCount } — the authoritative state the
       // official browser consumes (sessionNode: status?.running ?? s.running). The
@@ -5510,8 +6134,32 @@ window.__ModuleLoader__.load({
       }, [items, list ? list.byId : null, list ? list.ids : null, currentId, archivedSet])
       const orderedTabs = React.useMemo(() => {
         if (tabOrder === 'recent') return [...flatTabs].sort((a, b) => b.updatedAt - a.updatedAt)
+        // PAGE ORDER, grouped (v0.23.0). The flat list above walks the registry's
+        // `sessionIds`, whose order has nothing to do with the "/"-groups the
+        // sidebar renders — so Ctrl+Tab used to jump plugin2 -> (no group) ->
+        // plugin2 -> plugin -> tmp -> plugin2, i.e. the same plugin several times
+        // in a row. Users read the sidebar as groups, so tab order must be
+        // group-contiguous: stable-sort by the title's group prefix, keeping the
+        // registry order inside each group. "No group" sorts first, matching the
+        // sidebar where ungrouped rows lead.
+        const prefixOf = (tab) => {
+          const summary = list && list.byId ? list.byId[tab.id] : undefined
+          const title = summary ? String(summary.title || summary.displayTitle || '') : ''
+          const segs = splitTitleSegs(title)
+          if (segs.length <= 1) return { key: '', rank: 0 }
+          // Nesting-aware key: "plugin2/x" sorts under "plugin2", so the whole
+          // subtree of a plugin stays together (not just its top segment).
+          return { key: segs.slice(0, -1).join('/'), rank: 1 }
+        }
         return flatTabs
-      }, [flatTabs, tabOrder])
+          .map((tab, index) => ({ tab, index, ...prefixOf(tab) }))
+          .sort((a, b) => {
+            if (a.rank !== b.rank) return a.rank - b.rank
+            if (a.key !== b.key) return a.key.localeCompare(b.key, 'zh')
+            return a.index - b.index
+          })
+          .map((entry) => entry.tab)
+      }, [flatTabs, tabOrder, list ? list.byId : null])
       const cycleTabs = (dir) => {
         const tabs = orderedTabs
         if (tabs.length === 0) {
@@ -5650,8 +6298,15 @@ window.__ModuleLoader__.load({
 
       // User-driven renames funnel through here: mark first so the
       // quote-on-land effect never second-guesses a deliberate title.
-      const renameByUser = (sessionId, title) => {
-        if (humanTouchedRef.current === null) humanTouchedRef.current = new Set()
+      // "New session inside this group" intent (v0.23.0). A session group is a
+      // "/"-prefix over TITLES, so a group cannot own a session by itself; the
+      // only way to create one there is to start a session in the owning
+      // workspace and stamp the prefix on its title once the host has produced
+      // it. Keyed by workspaceId because the blank row arrives asynchronously.
+      const pendingGroupPrefixRef = React.useRef(null)
+      if (pendingGroupPrefixRef.current === null) pendingGroupPrefixRef.current = new Map()
+
+      const renameByUser = (sessionId, title) => {        if (humanTouchedRef.current === null) humanTouchedRef.current = new Set()
         humanTouchedRef.current.add(String(sessionId))
         if (autoStableRef.current) autoStableRef.current.delete(String(sessionId))
         return renameSession(sessionId, title)
@@ -5665,6 +6320,30 @@ window.__ModuleLoader__.load({
         const blankSeen = blankSeenRef.current
         const touched = humanTouchedRef.current
         const stable = autoStableRef.current
+        // Apply a pending "create inside this group" prefix (v0.23.0). Runs
+        // BEFORE the auto-name heuristics so the user's intent wins: the prefix
+        // is a deliberate grouping, exactly like a drag into the group.
+        const pend = pendingGroupPrefixRef.current
+        if (pend.size > 0) {
+          for (const [wsId, groupPath] of [...pend.entries()]) {
+            const ws = (items || []).find((w) => w.workspaceId === wsId)
+            if (!ws) { pend.delete(wsId); continue }
+            for (const sid of (ws.sessionIds || [])) {
+              const summary = list.byId[sid]
+              if (!summary) continue
+              if (summary.blank) continue
+              if (touched.has(sid)) { pend.delete(wsId); continue }
+              const cur = String(summary.title || '')
+              if (cur === '') continue        // title still pending on the wire
+              const leafSegs = splitTitleSegs(cur)
+              const leaf = leafSegs.length > 0 ? leafSegs[leafSegs.length - 1] : cur
+              const next = groupPath !== '' ? groupPath + '/' + leaf : leaf
+              if (next !== cur) { try { renameByUser(sid, next) } catch { /* best effort */ } }
+              pend.delete(wsId)
+              break
+            }
+          }
+        }
         const now = Date.now()
         const fixes = []
         let deadline = Infinity
@@ -5776,10 +6455,10 @@ window.__ModuleLoader__.load({
       // hidden, which reads as "cannot drag at all".
       const draggingWorkspace = drag !== null
       const tree = React.useMemo(() => {
-        const built = buildTree(items, workspaceSlash)
+        const built = buildTree(items, workspaceSlash, workspaceGroupOrder)
         if (!compactChains || draggingWorkspace) return built
         return { ...built, folders: built.folders.map((f) => materializeChain(compressTree(f))), workspaces: built.workspaces }
-      }, [items, compactChains, draggingWorkspace, workspaceSlash])
+      }, [items, compactChains, draggingWorkspace, workspaceSlash, workspaceGroupOrder])
       // Disk-layer ancestry for drag semantics (same derivation as buildTree).
       const diskParentMap = React.useMemo(() => diskParentMapOf(items), [items])
 
@@ -6070,7 +6749,12 @@ window.__ModuleLoader__.load({
         return event.clientY < rect.top + rect.height / 2 ? 'before' : 'after'
       }
       const dragMatches = (kind) => drag !== null && drag.kind === kind
-      const canDragWorkspace = typeof insertWorkspaceBefore === 'function'
+      // Workspace rows are ALWAYS draggable (v0.23.0). Pre-0.23 gated this on the
+      // host's insertWorkspaceBefore, so a host without that action — or one that
+      // answers {ok:false} — made every workspace row undraggable, which read as
+      // "I cannot reorder workspaces at all". The browser-local order written by
+      // commitWorkspaceDrop now covers those hosts.
+      const canDragWorkspace = true
       // Session REORDER needs the host insertSessionBefore action; dragging a
       // session onto a sub-group row (a pure rename) stays available without it.
       // Session reorder keeps working either way: the host action is preferred
@@ -6309,9 +6993,44 @@ window.__ModuleLoader__.load({
         const anchor = half === 'after'
           ? nextWorkspaceAfter(targetWorkspace.folderPath || '', targetWorkspace.workspaceId)
           : targetWorkspace.workspaceId
+        // Browser-local order fallback (v0.23.0), the workspace-layer twin of
+        // setSessionOrder: the host registry has no order for NAME groups, and
+        // some hosts answer insertWorkspaceBefore with {ok:false} or lack it
+        // entirely. Writing our own sibling order first means a drag is never a
+        // silent no-op; the host call then remains authoritative where it works.
+        const commitLocalOrder = () => {
+          const folderPath = targetWorkspace.folderPath || ''
+          // Current visible siblings at this level, as flat keys.
+          const level = folderPath === '' ? tree : (() => {
+            const find = (node) => {
+              if (node.path === folderPath) return node
+              for (const f of node.folders || []) { const hit = find(f); if (hit) return hit }
+              return null
+            }
+            return find(tree)
+          })()
+          if (!level) return
+          const folderKeys = (level.folders || []).map((f) => f.path)
+          const wsKeys = (level.workspaces || []).map((w) => 'id:' + w.workspaceId)
+          const all = folderKeys.concat(wsKeys)
+          const srcKey = 'id:' + source.workspaceId
+          const tgtKey = 'id:' + targetWorkspace.workspaceId
+          if (!all.includes(srcKey) || !all.includes(tgtKey)) return
+          const without = all.filter((k) => k !== srcKey)
+          const idx = without.indexOf(tgtKey)
+          if (idx === -1) return
+          without.splice(half === 'after' ? idx + 1 : idx, 0, srcKey)
+          // Keep keys from other levels intact; replace only this sibling set.
+          const set = new Set(all)
+          const rest = (Array.isArray(workspaceGroupOrder) ? workspaceGroupOrder : []).filter((k) => !set.has(k))
+          if (actions && typeof actions.setWorkspaceGroupOrder === 'function') actions.setWorkspaceGroupOrder(rest.concat(without))
+        }
+        commitLocalOrder()
         chain
-          .then(() => (anchor !== undefined ? insertWorkspaceBefore(source.workspaceId, anchor) : insertWorkspaceBefore(source.workspaceId)))
-          .catch(fail)
+          .then(() => (typeof insertWorkspaceBefore !== 'function'
+            ? undefined
+            : (anchor !== undefined ? insertWorkspaceBefore(source.workspaceId, anchor) : insertWorkspaceBefore(source.workspaceId))))
+          .catch((e) => { hostOrderFailedRef.current.add(targetFolder); commitLocalOrder(); fail(e) })
       }
       const commitWorkspaceMoveInto = (folderIdPath) => {
         const source = drag.source
@@ -6339,6 +7058,18 @@ window.__ModuleLoader__.load({
         return over && over.kind === 'session' && over.target === sessionId ? over.half : null
       }
       const sgroupDropInto = (workspaceId, path) => dragMatches('session') && drag.over && drag.over.kind === 'sgroup' && drag.over.target === path
+      /**
+       * Which edge of a group row the pointer is over. Only meaningful while a
+       * SIBLING GROUP is in flight: a session drag uses the whole row as a
+       * "move into this group" target, where an edge would be misleading.
+       */
+      const sgroupDropHalf = (event) => {
+        try {
+          const rect = event.currentTarget.getBoundingClientRect()
+          const mid = rect.top + rect.height / 2
+          return event.clientY > mid ? 'after' : 'before'
+        } catch { return 'before' }
+      }
       const sessionDragEvents = (session, workspaceId) => ({
         draggable: !searching,
         onDragStart: (event) => {
@@ -6369,17 +7100,88 @@ window.__ModuleLoader__.load({
           commitSessionDrop(workspaceId, session.id, half)
         },
       })
-      const sgroupDropEvents = (workspaceId, path) => ({
+      /**
+       * Session-group drag (v0.23.0). Groups are a NAME PROJECTION over titles —
+       * they have no host identity — so "reorder groups" can only mean "reorder
+       * this local list". Dragging a group row within its own workspace therefore
+       * rewrites `sessionGroupOrder[workspaceId]`; it never renames anything.
+       * The sibling-level path prefix is what gets compared, so a group can only
+       * be dropped next to its own siblings.
+       */
+      const commitSessionGroupOrder = (workspaceId, sourcePath, targetPath, half) => {
+        setDrag(null)
+        if (!workspaceId || sourcePath === targetPath) return
+        const parentOf = (p) => { const i = String(p).lastIndexOf('/'); return i === -1 ? '' : String(p).slice(0, i) }
+        if (parentOf(sourcePath) !== parentOf(targetPath)) return  // different levels: not a sibling reorder
+        const current = sessionGroupOrderMap[workspaceId]
+        // Build the CURRENT visible sibling order from the tree, so a first-ever
+        // drag starts from what the user actually sees (alphabetical) instead of
+        // an empty list.
+        const ws = (items || []).find((w) => w.workspaceId === workspaceId)
+        if (!ws) return
+        const tree = buildSessionTree(sessionsOf(ws), sessionSlash, current)
+        const parentPath = parentOf(sourcePath)
+        const findNode = (node) => {
+          if (node.path === parentPath) return node
+          for (const g of node.groups) { const hit = findNode(g); if (hit) return hit }
+          return null
+        }
+        const parent = findNode(tree)
+        if (!parent) return
+        const siblings = parent.groups.map((g) => g.path)
+        const without = siblings.filter((p) => p !== sourcePath)
+        const idx = without.indexOf(targetPath)
+        if (idx === -1) return
+        without.splice(half === 'after' ? idx + 1 : idx, 0, sourcePath)
+        // Persist the flattened full-path order (all levels), replacing the
+        // entries that belong to this sibling set.
+        const set = new Set(siblings)
+        const next = (Array.isArray(current) ? current.filter((p) => !set.has(p)) : []).concat(without)
+        if (actions && typeof actions.setSessionGroupOrder === 'function') actions.setSessionGroupOrder(workspaceId, next)
+      }
+
+      const sgroupDragEvents = (workspaceId, path) => ({
+        draggable: !searching,
+        onDragStart: (event) => {
+          if (searching) return
+          event.stopPropagation()
+          try {
+            event.dataTransfer.effectAllowed = 'move'
+            event.dataTransfer.setData('text/plain', path)
+          } catch { /* best-effort payload */ }
+          if (wsDragArmTimer.current !== null) clearTimeout(wsDragArmTimer.current)
+          wsDragArmTimer.current = setTimeout(() => {
+            wsDragArmTimer.current = null
+            setDrag({ kind: 'sgroup', source: { sgroupPath: path, workspaceId }, over: null })
+          }, 0)
+        },
+        onDragEnd: () => {
+          if (wsDragArmTimer.current !== null) { clearTimeout(wsDragArmTimer.current); wsDragArmTimer.current = null }
+          setDrag(null)
+        },
         onDragOver: (event) => {
-          if (!dragMatches('session') || drag.source.workspaceId !== workspaceId) return
+          // Two acceptable drags over a group row: a SESSION moving into the
+          // group (existing behavior) and a SIBLING GROUP being reordered (new).
+          const sessionIn = dragMatches('session') && drag.source.workspaceId === workspaceId
+          const siblingIn = dragMatches('sgroup') && drag.source.workspaceId === workspaceId && drag.source.sgroupPath !== path
+          if (!sessionIn && !siblingIn) return
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
-          setDrag(current => (current && current.over && current.over.kind === 'sgroup' && current.over.target === path)
-            ? current
-            : (current ? { ...current, over: { kind: 'sgroup', target: path } } : current))
+          const half = siblingIn ? sgroupDropHalf(event) : null
+          setDrag(current => {
+            if (!current) return current
+            const same = current.over && current.over.kind === 'sgroup' && current.over.target === path && current.over.half === half
+            return same ? current : { ...current, over: { kind: 'sgroup', target: path, half } }
+          })
         },
         onDrop: (event) => {
+          if (dragMatches('sgroup') && drag.source.workspaceId === workspaceId) {
+            event.preventDefault()
+            event.stopPropagation()
+            commitSessionGroupOrder(workspaceId, drag.source.sgroupPath, path, sgroupDropHalf(event))
+            return
+          }
           if (!dragMatches('session') || drag.source.workspaceId !== workspaceId) return
           event.preventDefault()
           event.stopPropagation()
@@ -6592,7 +7394,7 @@ window.__ModuleLoader__.load({
         if (!searching && !sessionsOpenOf(workspace.workspaceId)) return []
         const rows = sessionsOf(workspace)
         if (rows.length === 0) return []
-        return renderSessionNode(buildSessionTree(rows, sessionSlash), workspace.workspaceId, depth)
+        return renderSessionNode(buildSessionTree(rows, sessionSlash, sessionGroupOrderMap[workspace.workspaceId]), workspace.workspaceId, depth)
       }
       const searchSessionNode = (node) => {
         const groups = []
@@ -6621,8 +7423,38 @@ window.__ModuleLoader__.load({
             onToggle: () => { if (!searching) actions.setSessionGroupExpanded(key, !open) },
             onContextMenu: (e) => openCtx('sgroup', { workspaceId, path: group.path, name: group.name }, e),
             dropInto: sgroupDropInto(workspaceId, group.path),
-            dragEvents: sgroupDropEvents(workspaceId, group.path),
+            dropHalf: (() => {
+              if (!dragMatches('sgroup')) return null
+              const over = drag && drag.over
+              return over && over.kind === 'sgroup' && over.target === group.path ? over.half : null
+            })(),
+            dragEvents: sgroupDragEvents(workspaceId, group.path),
             custStyle: rowStyleOf('sgroup:' + workspaceId + '|' + group.path),
+            // The group's own hover actions (v0.23.0), matching a workspace row.
+            onStart: () => {
+              // Expand the owning workspace so the new blank row is visible,
+              // then start a session and stamp the group prefix onto its title
+              // once the host has produced it. A blank session carries no title
+              // yet, so the prefix is applied on the first snapshot that shows
+              // a title (see pendingGroupPrefix below).
+              actions.setSessionsExpanded(workspaceId, true)
+              pendingGroupPrefixRef.current.set(workspaceId, group.path)
+              startSession(workspaceId)
+            },
+            onAddGroup: countSessionTree(group) > 0 ? () => setDialog({
+              kind: 'group-move',
+              target: null,
+              targets: (() => {
+                const out2 = []
+                const walk = (node) => {
+                  for (const s of node.sessions || []) out2.push({ value: 'sess:' + s.id, label: s.title })
+                  for (const child of node.groups || []) walk(child)
+                }
+                walk(group)
+                return out2
+              })(),
+              initial: group.path + '/',
+            }) : undefined,
             t,
           }))
           if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1))
@@ -6814,11 +7646,13 @@ window.__ModuleLoader__.load({
       const ot = typeof officialT === 'function' ? officialT : null
       const menuEntries = () => {
         if (ctx === null) return []
+        const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
+        const isPinned = ctx.kind === 'session' && pinnedSet !== null && pinnedSet.has(ctx.payload.id)
         const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutline16', 16) }
         // The discoverability entry (v0.15): every row kind can be moved into
         // a name group. One shared item object, inserted after each branch's
         // official items and before the bw-only separator.
-        const groupItem = { id: 'move-group', label: t('menu.moveToGroup'), icon: icon('IconFolderOutline16', 16) }
+        const groupItem = { id: 'move-group', label: t('menu.moveToGroup'), icon: icon('IconFolderClose16', 16) }
         if (ctx.kind === 'folder') return [
           { id: 'rename-folder', label: t('menu.renameFolder'), icon: icon('IconEditOutline16', 16) },
           groupItem,
@@ -6833,12 +7667,25 @@ window.__ModuleLoader__.load({
           customizeEntry,
         ]
         if (ctx.kind === 'session') return [
+          // Item order mirrors the OFFICIAL slot registrations in
+          // ui-workspace client.js: pin(100) -> rename(200) -> fork(300)
+          // -> archive(400) -> session-id(450). Only the entries the host
+          // actually resolved are emitted, so a host that drops a service
+          // degrades to fewer items instead of a dead menu row.
+          ...(pinnedSessionIds !== null
+            ? [{
+                id: 'pin',
+                label: ot ? ot(isPinned ? 'menu.unpinSession' : 'menu.pinSession') : (isPinned ? t('menu.unpin') : t('menu.pin')),
+                icon: icon(isPinned ? 'IconPinFillRegular' : 'IconPinOutlineRegular', 16),
+              }]
+            : []),
           { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
           { id: 'fork', label: ot ? ot('menu.fork') : t('menu.fork'), icon: icon('IconBranchOutline16', 16) },
           // Official semantics (Rows.tsx): archive hides the row through the
           // registry-global archive set and never touches the session log —
           // deliberately NOT styled destructive.
           { id: 'archive', label: ot ? ot('menu.archiveSession') : t('menu.archive'), icon: icon('IconArchiveOutline20', 16) },
+          { id: 'session-id', label: ot ? ot('menu.sessionId') : t('menu.sessionId'), icon: icon('IconCopyOutline16', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -6879,6 +7726,28 @@ window.__ModuleLoader__.load({
         else if (kind === 'session' && id === 'rename') setDialog({ kind: 'sess-rename', session: payload })
         else if (kind === 'session' && id === 'fork') forkSession(payload.id)
         else if (kind === 'session' && id === 'archive') { Promise.resolve().then(() => archiveSession(payload.id)).catch(fail) }
+        else if (kind === 'session' && id === 'pin') {
+          // Official pin semantics: registry-global set, moves the row to the
+          // pinned section WITHOUT switching the sort mode (ui-workspace
+          // pin-order.js). Host failure only notifies; it never reorders here.
+          const pinnedNow = new Set(pinnedSessionIds || []).has(payload.id)
+          const fn = pinnedNow ? uiWorkspace && uiWorkspace.unpinSession : uiWorkspace && uiWorkspace.pinSession
+          if (typeof fn === 'function') {
+            Promise.resolve()
+              .then(() => fn.call(uiWorkspace, payload.id))
+              .catch(fail)
+          }
+        }
+        else if (kind === 'session' && id === 'session-id') {
+          // Mirrors the official menu item: close the menu, copy the full id,
+          // and report through the same toast channel a failure would use.
+          try {
+            const text = String(payload.id || '')
+            if (text !== '' && navigator && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+              Promise.resolve(navigator.clipboard.writeText(text)).catch(fail)
+            }
+          } catch (e) { fail(e) }
+        }
       }
 
       /* --------------------------- dialogs --------------------------- */
@@ -7006,6 +7875,26 @@ window.__ModuleLoader__.load({
             onKeyDown: (e) => { if (e.key === 'Escape') { setQuery(''); setSearchOpen(false) } },
             onBlur: () => { if (query === '') setSearchOpen(false) },
           }) : null,
+          // ---- back / forward (v0.23.0) --------------------------------
+          // Browser-like session history the host does not provide. Disabled
+          // states are real `disabled` attributes so they read as unavailable
+          // instead of dead.
+          E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            disabled: !navState.canBack,
+            'aria-label': t('nav.back'),
+            title: t('nav.back'),
+            onClick: (e) => { e.stopPropagation(); if (navState.canBack) goNav(-1) },
+          }, icon('IconChevronLeftOutline14', 16)),
+          E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            disabled: !navState.canForward,
+            'aria-label': t('nav.forward'),
+            title: t('nav.forward'),
+            onClick: (e) => { e.stopPropagation(); if (navState.canForward) goNav(1) },
+          }, icon('IconChevronRightOutline14', 16)),
           E(ViewOptionsMenu, {
             groupBy,
             orderBy,
@@ -7037,6 +7926,12 @@ window.__ModuleLoader__.load({
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
           flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutline16')) : null,
         ),
+        // v0.23.0 sidebar seat for the interaction hub: expands inline between
+        // the header strip and the tree, so the warning button always has
+        // something to show even when the active session has no interaction.
+        E(InteractionHubInline, {
+          uiStatus, list, items, uiWorkspace, officialT, t,
+        }),
         E('div', { ref: treeRef, className: 'bw-tree', role: 'tree', 'aria-label': t('title') }, bodyRows),
         // Our own occupant serves the sidebar hole (direct composition, the
         // same props conversation the official owner share defines).
@@ -7361,12 +8256,27 @@ window.__ModuleLoader__.load({
       // approval for the CURRENT session still renders the official panel; ours
       // takes over for plan-review and question, and carries the cross-session
       // summary line the native panels do not have.
-      slots.inject('conversation.composer', guarded(
-        'conversation.composer',
+      // v0.24.0 COMPOSER DOCK FIX.
+      //
+      // v0.23 registered into `conversation.composer`, a SINGLE-occupancy hole
+      // whose first non-null `select` OWNS the composer area. Making that
+      // `select` permanently non-null (so the hub could always mount) therefore
+      // evicted the shipped composer — the user's input box vanished whenever
+      // this plugin was enabled. That is the regression this block fixes.
+      //
+      // The additive strip belongs in `conversation.composer.dock`, a LIST hole
+      // (the official ui-chat package registers its ActivityPill / UsagePill
+      // there). A list hole has no `select` and no `priority`, and registering
+      // into it can never displace the composer.
+      //
+      // The panel still returns null when the hub is closed, so a closed hub
+      // contributes zero height.
+      slots.inject('conversation.composer.dock', guarded(
+        'conversation.composer.dock',
         {
-          name: 'conversation.composer',
-          priority: 2,
-          select: ({ pendingInteraction }) => (pendingInteraction === undefined ? null : pendingInteraction),
+          name: 'conversation.composer.dock',
+          id: 'interaction-hub',
+          order: 10,
           locale: NS,
         },
         InteractionComposerPanel,

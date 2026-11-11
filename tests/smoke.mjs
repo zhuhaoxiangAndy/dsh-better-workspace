@@ -141,13 +141,15 @@ test('quote-on-land effect: blank-born only, user renames pinned, stability wind
   assert.match(text, /!blankSeen\.has\(id\) \|\| touched\.has\(id\)/, 'untouched blankSeen/human guard')
   assert.doesNotMatch(text, /titledSeenRef/, '0.9.1 first-snapshot heuristic must be gone')
   // User renames route through the pinning wrapper; the automatic path alone
-  // keeps the raw injected renameSession. 7 call sites: drag-into-session-group,
+  // keeps the raw injected renameSession. 8 call sites: drag-into-session-group,
   // session rename dialog, session-group rename, the two group-move entry points
   // (single session / session-group batch), dropping a session onto a row inside
-  // another group (JOINS the group instead of flat-reordering), and the v0.18.2
-  // cross-group session move (commitSessionDrop's other-workspace branch).
+  // another group (JOINS the group instead of flat-reordering), the v0.18.2
+  // cross-group session move (commitSessionDrop's other-workspace branch), and
+  // v0.23.0 "new session inside this group" (stamps the group prefix on the
+  // freshly created session).
   assert.match(text, /const renameByUser = \(sessionId, title\) => \{/)
-  assert.equal((text.match(/renameByUser\(/g) || []).length, 7, 'exactly 7 user call sites')
+  assert.equal((text.match(/renameByUser\(/g) || []).length, 8, 'exactly 8 user call sites')
   // The automatic quote waits out a stabilization window instead of racing
   // the async LLM name.
   assert.match(text, /TITLE_STABLE_MS = 20000/)
@@ -903,19 +905,37 @@ test('client.js cycles session tabs across groups with two persisted orders (v0.
 
 test('containment follows the title, folders drag, chains show a visual separator (v0.18.0)', () => {
   const text = read('src/client.js')
-  assert.match(text, /return buildLevel\(list, ''\)/, 'tree built from ALL workspaces by title segments')
+  assert.match(text, /return buildLevel\(list, '', \[\], true\)/, 'tree built from ALL workspaces by title segments')
+  // v0.23.0 cycle guard: a workspace sharing a name with its own group used to
+  // recurse forever (the "same session keeps reappearing" bug), so every
+  // ancestor title is carried down and excluded from the child set.
+  assert.match(text, /idPrefixTitles/, 'ancestor-title chain carried through recursion')
+  assert.match(text, /!seen\.includes\(String\(w\.title \|\| ''\)\)/, 'ancestor titles excluded from children')
+  // v0.23.0 double-placement guard: a title-nested workspace must not ALSO be
+  // emitted in its own name folder (that is the duplicate row the user saw).
+  assert.match(text, /const nestedIds = new Set\(\)/, 'pre-pass collects nested workspace ids')
+  assert.match(text, /if \(isRoot && nestedIds\.has\(workspace\.workspaceId\)\) continue/, 'root level skips already-nested rows only')
   assert.match(text, /folderDragEvents/, 'folder rows are drag sources')
   assert.match(text, /commitFolderMoveInto/, 'folder drop commit')
   assert.match(text, /segs\.join\(' › '\)/, 'compressed chains render a visual separator, not a raw slash')
   assert.doesNotMatch(text, /const sameDisk = source\.disk/, 'disk-layer gating removed from drop commits')
 })
 
-test('interaction hub renders in the native composer hole (v0.22.0)', () => {
+test('interaction hub renders in the additive composer dock (v0.24.0)', () => {
   const text = read('src/client.js')
-  assert.match(text, /slots\.inject\('conversation\.composer'/, 'registers into the shipped composer chain')
+  assert.match(text, /slots\.inject\('conversation\.composer\.dock'/, 'registers into the additive dock list')
   assert.match(text, /function InteractionComposerPanel/, 'composer panel component exists')
   assert.doesNotMatch(text, /InteractionHubModal/, 'the centered-modal variant is gone')
   assert.doesNotMatch(text, /bw-hub-panel/, 'no hand-rolled absolute panel')
   assert.match(text, /useHubOpen/, 'sidebar trigger and composer panel share one open flag')
   assert.match(text, /bw-hub-card\{[^}]*border-radius:16px/, 'card follows the native approval shape')
+  // v0.24.0: an ADDITIVE strip must ride the LIST hole `composer.dock`.
+  // v0.23 wrongly took `conversation.composer`, a SINGLE-occupancy hole whose
+  // first non-null select OWNS the composer area — a permanently non-null select
+  // there evicted the shipped composer and the user's input box disappeared.
+  assert.match(text, /slots\.inject\('conversation\.composer\.dock'/, 'hub rides the additive dock list')
+  assert.doesNotMatch(text, /slots\.inject\('conversation\.composer',/, 'must never take the single-occupancy composer hole')
+  assert.doesNotMatch(text, /hubSeat/, 'the single-hole select sentinel is gone')
+  assert.doesNotMatch(text, /pendingInteraction === undefined \? null : pendingInteraction/,
+    'select must not gate on this session having an interaction')
 })
