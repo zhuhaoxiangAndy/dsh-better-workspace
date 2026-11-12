@@ -175,6 +175,9 @@ window.__ModuleLoader__.load({
       'hub.kind.plan': '计划',
       'hub.kind.question': '提问',
       'hub.allow': '允许一次',
+      'hub.submit': '提交',
+      'hub.skip': '跳过',
+      'hub.custom': '或自行输入',
       'hub.reject': '拒绝',
       'hub.open': '打开会话',
       'hub.dirs': '受影响目录',
@@ -328,6 +331,9 @@ window.__ModuleLoader__.load({
       'hub.kind.plan': 'Plan review',
       'hub.kind.question': 'Question',
       'hub.allow': 'Allow once',
+      'hub.submit': 'Submit',
+      'hub.skip': 'Skip',
+      'hub.custom': 'Or type your own',
       'hub.reject': 'Reject',
       'hub.open': 'Open session',
       'hub.dirs': 'Directories at risk',
@@ -483,6 +489,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'مراجعة الخطة',
         'hub.kind.question': 'سؤال',
         'hub.allow': 'سماح مرة واحدة',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'رفض',
         'hub.open': 'افتح الجلسة',
         'hub.dirs': 'Directories at risk',
@@ -636,6 +645,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Planprüfung',
         'hub.kind.question': 'Frage',
         'hub.allow': 'Einmal erlauben',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Ablehnen',
         'hub.open': 'Sitzung öffnen',
         'hub.dirs': 'Directories at risk',
@@ -789,6 +801,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Révision du plan',
         'hub.kind.question': 'Question',
         'hub.allow': 'Autoriser une fois',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Refuser',
         'hub.open': 'Ouvrir la session',
         'hub.dirs': 'Directories at risk',
@@ -942,6 +957,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'योजना समीक्षा',
         'hub.kind.question': 'प्रश्न',
         'hub.allow': 'एक बार अनुमति दें',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'अस्वीकार करें',
         'hub.open': 'सत्र खोलें',
         'hub.dirs': 'Directories at risk',
@@ -1095,6 +1113,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Tinjauan rencana',
         'hub.kind.question': 'Pertanyaan',
         'hub.allow': 'Izinkan sekali',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Tolak',
         'hub.open': 'Buka sesi',
         'hub.dirs': 'Directories at risk',
@@ -1248,6 +1269,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Revisione del piano',
         'hub.kind.question': 'Domanda',
         'hub.allow': 'Consenti una volta',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Rifiuta',
         'hub.open': 'Apri sessione',
         'hub.dirs': 'Directories at risk',
@@ -1401,6 +1425,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'プラン確認',
         'hub.kind.question': '質問',
         'hub.allow': '一度だけ許可',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': '拒否',
         'hub.open': 'セッションを開く',
         'hub.dirs': 'Directories at risk',
@@ -1554,6 +1581,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': '계획 검토',
         'hub.kind.question': '질문',
         'hub.allow': '한 번 허용',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': '거부',
         'hub.open': '세션 열기',
         'hub.dirs': 'Directories at risk',
@@ -1707,6 +1737,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Plancontrole',
         'hub.kind.question': 'Vraag',
         'hub.allow': 'Eén keer toestaan',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Weigeren',
         'hub.open': 'Sessie openen',
         'hub.dirs': 'Directories at risk',
@@ -1860,6 +1893,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Przegląd planu',
         'hub.kind.question': 'Pytanie',
         'hub.allow': 'Zezwól raz',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Odrzuć',
         'hub.open': 'Otwórz sesję',
         'hub.dirs': 'Directories at risk',
@@ -2013,6 +2049,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Revisão do plano',
         'hub.kind.question': 'Pergunta',
         'hub.allow': 'Permitir uma vez',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Rejeitar',
         'hub.open': 'Abrir sessão',
         'hub.dirs': 'Directories at risk',
@@ -2166,6 +2205,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Проверка плана',
         'hub.kind.question': 'Вопрос',
         'hub.allow': 'Разрешить один раз',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Отклонить',
         'hub.open': 'Открыть сессию',
         'hub.dirs': 'Directories at risk',
@@ -2319,6 +2361,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Plangranskning',
         'hub.kind.question': 'Fråga',
         'hub.allow': 'Tillåt en gång',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Avvisa',
         'hub.open': 'Öppna session',
         'hub.dirs': 'Directories at risk',
@@ -2472,6 +2517,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'ตรวจแผน',
         'hub.kind.question': 'คำถาม',
         'hub.allow': 'อนุญาตครั้งเดียว',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'ปฏิเสธ',
         'hub.open': 'เปิดเซสชัน',
         'hub.dirs': 'Directories at risk',
@@ -2625,6 +2673,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Plan incelemesi',
         'hub.kind.question': 'Soru',
         'hub.allow': 'Bir kez izin ver',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Reddet',
         'hub.open': 'Oturumu aç',
         'hub.dirs': 'Directories at risk',
@@ -2778,6 +2829,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': 'Xem xét kế hoạch',
         'hub.kind.question': 'Câu hỏi',
         'hub.allow': 'Cho phép một lần',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': 'Từ chối',
         'hub.open': 'Mở phiên',
         'hub.dirs': 'Directories at risk',
@@ -2931,6 +2985,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': '計畫確認',
         'hub.kind.question': '提問',
         'hub.allow': '允許一次',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
         'hub.dirs': 'Directories at risk',
@@ -3084,6 +3141,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': '計畫確認',
         'hub.kind.question': '提問',
         'hub.allow': '允許一次',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
         'hub.dirs': 'Directories at risk',
@@ -3237,6 +3297,9 @@ window.__ModuleLoader__.load({
         'hub.kind.plan': '計畫確認',
         'hub.kind.question': '提問',
         'hub.allow': '允許一次',
+        'hub.submit': 'Submit',
+        'hub.skip': 'Skip',
+        'hub.custom': 'Or type your own',
         'hub.reject': '拒絕',
         'hub.open': '開啟會話',
         'hub.dirs': 'Directories at risk',
@@ -3935,7 +3998,7 @@ window.__ModuleLoader__.load({
       '.bw-input:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-input::placeholder{color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
       '.bw-tree{flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 6px 12px;min-height:0}',
-      '.bw-row{display:flex;align-items:center;gap:6px;min-height:30px;padding:4px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
+      '.bw-row{display:flex;align-items:center;gap:6px;min-height:34px;padding:6px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:14px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
       '.bw-drop-before::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-after::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-into{outline:1.5px dashed var(--dsw-alias-brand-primary,#5b8def);outline-offset:-1.5px}',
@@ -4025,6 +4088,38 @@ window.__ModuleLoader__.load({
     '.bw-hub-tool{font-size:12px;color:var(--dsw-alias-brand-primary,#5b8def);overflow-wrap:anywhere}',
     '.bw-hub-reason{font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#dedede);white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}',
     // v0.25.0 approval directory summary: a deduped, hard-wrapped path list.
+    // v0.26.0 GUTTER LAYOUT (user spec): the interaction hub must be WIDER than
+    // the composer so that several interactions can stack vertically, while each
+    // individual prompt/approval bubble stays the SAME width as the composer's
+    // input bubble and grows in height with its text. Metadata lives in the
+    // left/right gutters, never inside the bubble.
+    '.bw-hub-item{display:grid;grid-template-columns:minmax(0,1fr) var(--bw-hub-bubble-w,100%) minmax(0,1fr);align-items:start;gap:10px;padding:2px 0}',
+    '.bw-hub-bubble{grid-column:2;display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-lg,16px);background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.08));font-size:14px;line-height:20px}',
+    '.bw-hub-prompt{color:var(--dsw-alias-label-primary,#e6e6e6);overflow-wrap:anywhere}',
+    '.bw-hub-question{display:flex;flex-direction:column;gap:10px}',
+    '.bw-hub-q{display:flex;flex-direction:column;gap:6px}',
+    '.bw-hub-q-header{font-size:12px;font-weight:500;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
+    '.bw-hub-q-text{font-size:14px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-opts{display:flex;flex-direction:column;gap:4px}',
+    '.bw-hub-opt{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);background:transparent;color:inherit;font-size:14px;line-height:20px;text-align:left;cursor:pointer}',
+    '.bw-hub-opt:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
+    '.bw-hub-opt-on{border-color:var(--dsw-alias-brand-primary,#5b8def);background:color-mix(in srgb,var(--dsw-alias-brand-primary,#5b8def) 12%,transparent)}',
+    '.bw-hub-opt-mark{flex:none;width:14px;height:14px;border:1.5px solid var(--dsw-alias-border-l3,rgba(127,127,127,.5));display:inline-block;position:relative}',
+    '.bw-hub-opt-dot{border-radius:50%}',
+    '.bw-hub-opt-box{border-radius:var(--dsw-radius-xs,4px)}',
+    '.bw-hub-opt-mark-on{border-color:var(--dsw-alias-brand-primary,#5b8def);background:var(--dsw-alias-brand-primary,#5b8def)}',
+    '.bw-hub-opt-text{flex:1;min-width:0;overflow-wrap:anywhere}',
+    '.bw-hub-custom{width:100%;box-sizing:border-box;height:30px;padding:0 10px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-bg-layer-1,rgba(127,127,127,.06));color:inherit;font-size:14px;outline:none;font-family:inherit}',
+    '.bw-hub-custom:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
+    '.bw-hub-gutter{display:flex;flex-direction:column;gap:2px;min-width:0;padding-top:10px;font-size:11px;line-height:16px;color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
+    '.bw-hub-gutter-left{grid-column:1;align-items:flex-end;text-align:right}',
+    '.bw-hub-gutter-right{grid-column:3;align-items:flex-start;text-align:left}',
+    '.bw-hub-session,.bw-hub-ws{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
+    '.bw-hub-tool-chip{font-family:var(--ds-font-family-code,ui-monospace,Consolas,monospace);font-size:10px;padding:1px 5px;border-radius:var(--dsw-radius-xs,4px);background:var(--dsw-alias-bg-layer-3,rgba(127,127,127,.14))}',
+    // The hub frame itself is deliberately wider than the composer: the gutters
+    // need room. 100% + 2*gutter keeps the bubble centred at composer width.
+    '.bw-hub-inline,.bw-hub-card{--bw-hub-bubble-w:100%;width:min(100%,var(--bw-hub-max-w,720px))}',
+    '.bw-hub-list{display:flex;flex-direction:column;gap:6px}',
     '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
     '.bw-hub-dirs-label{font-size:12px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
     '.bw-hub-dirs-list{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:2px}',
@@ -4955,11 +5050,20 @@ window.__ModuleLoader__.load({
      * primitives icon name, resolved through ICON_ALIASES so a value persisted
      * before a host renamed its icon set still renders something.
      */
+    /**
+     * Workspace folder glyph. The shipped browser ALWAYS shows a folder icon on
+     * a workspace row; this plugin only rendered one when the user had picked an
+     * icon in the appearance editor, so every default workspace had a blank
+     * slot — the reported "原生工作区都有一个文件夹的图标，也没有".
+     * Undefined mode now means "solid folder", matching the shipped default.
+     */
     const iconOf = (mode, expanded) => {
-      if (!mode || mode === 'none') return null
-      if (mode === 'solid') return icon(expanded ? 'IconFolderOpen16' : 'IconFolderClose16')
-      if (mode === 'outline') return icon('IconFolderOpenOutline16')
-      return icon(resolveIconName(mode))
+      if (mode === 'none') return null
+      if (!mode || mode === 'solid' || mode === 'folder') {
+        return icon(expanded ? 'IconFolderOpen16' : 'IconFolderClose16', 16)
+      }
+      if (mode === 'outline') return icon('IconFolderOpenOutline16', 16)
+      return icon(resolveIconName(mode), 16)
     }
 
     const colorToRgb = (hex) => {
@@ -5098,8 +5202,11 @@ window.__ModuleLoader__.load({
         'aria-expanded': expanded,
         ...(dragEvents || {}),
       },
+        // Shipped order is folder THEN chevron (Rows.tsx: <span folder> then
+        // <span chevron>); this plugin had them reversed and folded the pulse
+        // into the same slot, so a row showed at most one of the two.
+        E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
         E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
-        E('span', { className: 'bw-row-icon' }, iconChild),
         // A row that already carries a custom label glow breathes in sync.
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
         total > 0 ? E('span', { className: 'bw-row-count' }, String(total)) : null,
@@ -5120,8 +5227,11 @@ window.__ModuleLoader__.load({
         'aria-expanded': sessionsOpen,
         ...(dragEvents || {}),
       },
+        // Shipped order is folder THEN chevron (Rows.tsx: <span folder> then
+        // <span chevron>); this plugin had them reversed and folded the pulse
+        // into the same slot, so a row showed at most one of the two.
+        E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
         E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
-        E('span', { className: 'bw-row-icon' }, iconChild),
         E('span', {
           className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'),
           // Official parity: the official browser's hover card carries the disk
@@ -5256,7 +5366,7 @@ window.__ModuleLoader__.load({
             'aria-label': pinned ? t('menu.unpin') : t('menu.pin'),
             title: pinned ? t('menu.unpin') : t('menu.pin'),
             onClick: (e) => { e.stopPropagation(); onPinToggle() },
-          }, icon(pinned ? 'IconPinFillRegular' : 'IconPinOutlineRegular', 14)) : null,
+          }, icon('IconRightUpOutline16', 14)) : null,
         ),
       )
     }
@@ -5969,6 +6079,8 @@ window.__ModuleLoader__.load({
           // silently produced nothing. Resolve it to the active locale, then
           // fall back to the asker's own `reason` string.
           reason: resolveInteractionText(it),
+          // The host's ask-user payload: [{ id, question, header?, options?, multiSelect? }]
+          questions: Array.isArray(it.questions) ? it.questions : (it.payload && Array.isArray(it.payload.questions) ? it.payload.questions : null),
           // The command text for a tool approval lives in the tool call's
           // arguments, not in the approval event. Carry whatever the host
           // exposes so the extractor has real input.
@@ -6169,6 +6281,96 @@ window.__ModuleLoader__.load({
       }
     }
 
+    /**
+     * v0.26.0 QUESTION CARD — the interactive half of the composer hub.
+     *
+     * The host's ask-user contract (interaction/tool-ask-user) is:
+     *   ask({ questions: [{ id, question, header (optional), options (optional), multiSelect (optional) }] })
+     *   answer({ answers: [{ id, selected (array of strings), custom (optional) }] })
+     *
+     * Before this, the hub rendered a question as plain text plus "open
+     * session", so the actual options / single-vs-multi choice / submit / skip
+     * controls only existed in the shipped transcript card. The user asked for
+     * them here, so the same primitives are rebuilt on top of the same payload.
+     *
+     * Selection state is per question id; a question with multiSelect keeps an
+     * array, otherwise it stores at most one value. Custom text is appended as
+     * an extra selected entry only when the user typed something.
+     */
+    function QuestionCard({ row, t, onDone }) {
+      const questions = Array.isArray(row.questions) ? row.questions : []
+      const [picked, setPicked] = React.useState({})
+      const [custom, setCustom] = React.useState({})
+      const toggle = (qid, value, multi) => {
+        setPicked((cur) => {
+          const now = cur[qid] || []
+          if (multi) {
+            return { ...cur, [qid]: now.includes(value) ? now.filter((v) => v !== value) : now.concat(value) }
+          }
+          return { ...cur, [qid]: now.includes(value) ? [] : [value] }
+        })
+      }
+      const submit = () => {
+        try {
+          const answers = questions.map((q) => {
+            const selected = [...(picked[q.id] || [])]
+            const extra = (custom[q.id] || '').trim()
+            if (extra !== '') selected.push(extra)
+            return { id: q.id, selected }
+          })
+          row.interaction.answer(answers)
+          if (typeof onDone === 'function') onDone()
+        } catch { /* host rejected */ }
+      }
+      const skip = () => {
+        try {
+          row.interaction.answer(questions.map((q) => ({ id: q.id, selected: [] })))
+          if (typeof onDone === 'function') onDone()
+        } catch { /* host rejected */ }
+      }
+      const anyPicked = questions.some((q) => (picked[q.id] || []).length > 0 || (custom[q.id] || '').trim() !== '')
+
+      return E('div', { className: 'bw-hub-question' },
+        questions.map((q) => E('div', { key: q.id, className: 'bw-hub-q' },
+          q.header ? E('div', { className: 'bw-hub-q-header' }, q.header) : null,
+          E('div', { className: 'bw-hub-q-text' }, q.question),
+          Array.isArray(q.options) && q.options.length > 0
+            ? E('div', { className: 'bw-hub-opts', role: q.multiSelect ? 'group' : 'radiogroup' },
+                q.options.map((opt) => {
+                  const on = (picked[q.id] || []).includes(opt.value)
+                  return E('button', {
+                    key: opt.value,
+                    type: 'button',
+                    role: q.multiSelect ? 'checkbox' : 'radio',
+                    'aria-checked': on,
+                    className: cls('bw-hub-opt', on && 'bw-hub-opt-on'),
+                    // Option hint text (if the host supplied one) becomes the tooltip
+                    // so the row stays one line like the shipped card.
+                    title: opt.description || opt.hint || undefined,
+                    onClick: () => toggle(q.id, opt.value, q.multiSelect === true),
+                  },
+                    E('span', { className: cls('bw-hub-opt-mark', q.multiSelect ? 'bw-hub-opt-box' : 'bw-hub-opt-dot', on && 'bw-hub-opt-mark-on') }),
+                    E('span', { className: 'bw-hub-opt-text' }, opt.label || opt.value),
+                  )
+                }),
+              )
+            : null,
+          // Free-form reply: the host accepts a `custom` string alongside (or
+          // instead of) the options.
+          E('input', {
+            className: 'bw-hub-custom',
+            value: custom[q.id] || '',
+            placeholder: t('hub.custom'),
+            onChange: (e) => setCustom((cur) => ({ ...cur, [q.id]: e.target.value })),
+          }),
+        )),
+        E('div', { className: 'bw-hub-actions' },
+          E(BTN, { key: 's', variant: 'primary', disabled: !anyPicked, onClick: submit }, t('hub.submit')),
+          E(BTN, { key: 'k', variant: 'outline', onClick: skip }, t('hub.skip')),
+        ),
+      )
+    }
+
     function hubRowsNode(rows, { t, officialT, uiWorkspace, close }) {
       const ot = typeof officialT === 'function' ? officialT : null
       if (rows.length === 0) return E('div', { className: 'bw-hub-empty' }, t('hub.empty'))
@@ -6190,13 +6392,18 @@ window.__ModuleLoader__.load({
               return fromArgs.directories.length > 0 ? fromArgs : fromReason
             })()
           : null
+        // v0.26.0 GUTTER LAYOUT.
+        // The kind / session / workspace labels used to be stacked INSIDE the
+        // bubble, above the question. The user asked for them to sit in the
+        // left and right gutters instead, so the bubble itself holds only the
+        // prompt (and the approval details), exactly like a chat bubble.
         return E('div', { key: row.key, className: 'bw-hub-item' },
-          E('div', { className: 'bw-hub-meta' },
+          E('div', { className: 'bw-hub-gutter bw-hub-gutter-left' },
             E('span', { className: 'bw-hub-kind' }, row.kind === 'approval' ? t('hub.kind.approval') : row.kind === 'plan-review' ? t('hub.kind.plan') : t('hub.kind.question')),
-            E('span', { className: 'bw-hub-session', title: row.sessionTitle }, row.sessionTitle),
-            E('span', { className: 'bw-hub-ws', title: row.wsPath || row.wsTitle }, row.wsTitle),
+            row.toolName ? E('span', { className: 'bw-hub-tool-chip' }, row.toolName) : null,
           ),
-          row.toolName ? E('div', { className: 'bw-hub-tool' }, row.toolName) : null,
+          E('div', { className: 'bw-hub-bubble' },
+            row.reason ? E('div', { className: 'bw-hub-prompt' }, row.reason) : null,
           dirs && dirs.directories.length > 0
             ? E('div', { className: 'bw-hub-dirs' },
                 E('div', { className: 'bw-hub-dirs-label' }, t('hub.dirs') + ' · ' + String(dirs.directories.length)),
@@ -6213,12 +6420,23 @@ window.__ModuleLoader__.load({
                 E('summary', null, t('hub.raw')),
                 E('div', { className: 'bw-hub-reason' }, row.reason))
             : null,
-          E('div', { className: 'bw-hub-actions' },
-            canAnswer && row.kind === 'approval' ? [
-              E(BTN, { key: 'a', variant: 'primary', onClick: () => { try { row.interaction.answer('allowed-once') } catch (e) {} } }, ot ? ot('allowOnce') : t('hub.allow')),
-              E(BTN, { key: 'r', variant: 'outline', onClick: () => { try { row.interaction.answer('rejected') } catch (e) {} } }, t('hub.reject')),
-            ] : null,
-            E(BTN, { key: 'go', variant: 'outline', onClick: () => { try { uiWorkspace && uiWorkspace.openSession(row.sessionId) } catch (e) {} ; close() } }, t('hub.open')),
+          // Questions get the full card (options / single-vs-multi / submit /
+          // skip); approvals keep the allow-reject pair. Both keep "open".
+          canAnswer && row.kind !== 'approval' && Array.isArray(row.questions) && row.questions.length > 0
+            ? E(QuestionCard, { row, t, onDone: close })
+            : E('div', { className: 'bw-hub-actions' },
+                canAnswer && row.kind === 'approval' ? [
+                  E(BTN, { key: 'a', variant: 'primary', onClick: () => { try { row.interaction.answer('allowed-once') } catch (e) {} } }, ot ? ot('allowOnce') : t('hub.allow')),
+                  E(BTN, { key: 'r', variant: 'outline', onClick: () => { try { row.interaction.answer('rejected') } catch (e) {} } }, t('hub.reject')),
+                ] : null,
+                E(BTN, { key: 'go', variant: 'outline', onClick: () => { try { uiWorkspace && uiWorkspace.openSession(row.sessionId) } catch (e) {} ; close() } }, t('hub.open')),
+              ),
+          ),
+          // Right gutter: which session and workspace this bubble belongs to.
+          // Kept OUTSIDE the bubble so the bubble width matches the composer.
+          E('div', { className: 'bw-hub-gutter bw-hub-gutter-right' },
+            E('span', { className: 'bw-hub-session', title: row.sessionTitle }, row.sessionTitle),
+            E('span', { className: 'bw-hub-ws', title: row.wsPath || row.wsTitle }, row.wsTitle),
           ),
         )
       })
@@ -8240,7 +8458,7 @@ window.__ModuleLoader__.load({
             ? [{
                 id: 'pin',
                 label: ot ? ot(isPinned ? 'menu.unpinSession' : 'menu.pinSession') : (isPinned ? t('menu.unpin') : t('menu.pin')),
-                icon: icon(isPinned ? 'IconPinFillRegular' : 'IconPinOutlineRegular', 16),
+                icon: icon(isPinned ? 'IconRightUpOutline16' : 'IconRightUpOutline16', 16),
               }]
             : []),
           { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
@@ -8465,12 +8683,12 @@ window.__ModuleLoader__.load({
           // shape; dropping a row onto it locks that row in the same dialog.
           E('button', {
             type: 'button',
-            className: cls('bw-newgroup-btn', groupDropTarget() && 'bw-drop-into-strong'),
+            className: cls('bw-newgroup-btn', 'bw-icon-btn', groupDropTarget() && 'bw-drop-into-strong'),
             'aria-label': t('group.new'),
             title: t('group.new'),
             onClick: () => setDialog({ kind: 'group-move', target: null, targets: targetListOf(), initial: '' }),
             ...groupDropEvents,
-          }, icon('IconFolderClose16', 12), E('span', null, t('group.new'))),
+          }, icon('IconFolderClose16', 16)),
           (searchOpen || query !== '') ? E('input', {
             className: 'bw-input',
             style: { width: 130, flex: 'none' },
@@ -8510,15 +8728,11 @@ window.__ModuleLoader__.load({
             onToggle: (key, value) => { if (key === 'sessionTitleSlash') actions.setSessionTitleSlash(value); else actions.setWorkspaceTitleSlash(value) },
             t,
           }),
-          // v0.20.0 interaction hub: one button aggregating every pending
-          // interaction across all sessions (approvals, questions, plan reviews).
-          // The badge counts answerable items; the panel lists session title,
-          // workspace path, raw content, with in-place answer buttons.
-          E(InteractionHubButton, {
-            uiStatus, list, items, open, uiWorkspace,
-            officialT,
-            t,
-          }),
+          // v0.26.0: the sidebar hub button is intentionally GONE.
+          // The user's spec: the interaction hub lives ONLY in the composer dock
+          // (below the input box). The sidebar copy was redundant and, worse, it
+          // competed for attention with the tree. The composer strip keeps the
+          // full question/approval flow: options, allow/reject, directory list.
           // Tab-cycle order toggle (v0.17): page order vs recent (access) order.
           // Official primitive icons only: page = the view glyph for the current
           // grouping (tree in tree mode, flat list otherwise), recent = the clock.
@@ -8528,7 +8742,7 @@ window.__ModuleLoader__.load({
             title: tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
             'aria-label': tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
             onClick: () => { if (actions && typeof actions.setTabCycleOrder === 'function') actions.setTabCycleOrder(tabOrder === 'recent' ? 'page' : 'recent') },
-          }, icon(tabOrder === 'recent' ? 'IconClockOutline16' : (groupBy === 'workspace-tree' ? 'IconWorkspaceTreeOutline16' : 'IconFlatListOutline16'))),
+          }, icon(tabOrder === 'recent' ? 'IconClockOutline16' : (groupBy === 'workspace-tree' ? 'IconTreeCorner8x10' : 'IconListPenOutline16'))),
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
           flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutline16')) : null,
         ),

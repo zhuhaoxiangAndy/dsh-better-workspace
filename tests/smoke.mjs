@@ -1053,7 +1053,7 @@ test('every rendered button carries an icon (not just "icon(...) exists")', () =
   assert.match(row, /onArchiveToggle \? E\('button'/, 'archive hover button exists')
   assert.match(row, /onPinToggle \? E\('button'/, 'pin hover button exists')
   assert.match(row, /IconArchiveOutline20/, 'archive button carries an icon')
-  assert.match(row, /IconPinFillRegular' : 'IconPinOutlineRegular/, 'pin button carries the right icon per state')
+  assert.match(row, /icon\('IconRightUpOutline16', 14\)/, 'pin button carries a real primitives icon')
   // The header's "new group" button used to be text-only.
   assert.match(text, /bw-newgroup-btn[^]*?icon\('IconFolderClose16'/, 'new-group button carries an icon')
   // Hover reveal, mirroring the official row.
@@ -1220,4 +1220,45 @@ test('registry never registers a session without an archive file', () => {
     }
   }
   assert.deepEqual(ghosts, [], 'no registered session may lack an archive file')
+})
+
+test('every icon name exists in the real primitives export list', () => {
+  // The previous icon test used a Proxy that answered for ANY `Icon*` name, so
+  // it passed while four names did not exist and rendered as null — buttons
+  // looked iconless. This one compares against the authoritative export list in
+  // the dsh source checkout (packages/client/ui-primitives/src/icons/index.tsx).
+  const ICONS_SRC = 'C:/Users/Andy/dsh/deepseek-harness/packages/client/ui-primitives/src/icons/index.tsx'
+  if (!existsSync(ICONS_SRC)) return   // source checkout absent on this host
+  const real = new Set(
+    [...readFileSync(ICONS_SRC, 'utf8').matchAll(/export const (Icon[A-Za-z0-9]+)/g)].map((m) => m[1]),
+  )
+  assert.ok(real.size > 50, 'the export list parsed correctly')
+  const text = read('src/client.js')
+  const used = new Set()
+  for (const m of text.matchAll(/icon\('([A-Za-z0-9]+)'/g)) used.add(m[1])
+  for (const m of text.matchAll(/\bui\.(Icon[A-Za-z0-9]+)/g)) used.add(m[1])
+  const missing = [...used].filter((n) => !real.has(n))
+  assert.deepEqual(missing, [], 'no icon name may be absent from primitives (it renders as null)')
+})
+
+test('workspace rows always show a folder icon, and folder precedes the chevron', () => {
+  const text = read('src/client.js')
+  // The shipped row renders <span folder><span chevron>; a workspace with no
+  // user-picked icon must still get the default folder glyph.
+  assert.match(text, /if \(!mode \|\| mode === 'solid' \|\| mode === 'folder'\)/, 'an unset mode means the solid folder')
+  assert.match(text, /icon\(expanded \? 'IconFolderOpen16' : 'IconFolderClose16', 16\)/, 'the folder glyph is actually produced')
+  // Order: folder slot first, chevron second.
+  const row = text.slice(text.indexOf('function WorkspaceRow('), text.indexOf('function SessionGroupRow('))
+  const folderAt = row.indexOf("'bw-row-icon', 'bw-folder-slot'")
+  const chevronAt = row.indexOf("'bw-chevron'")
+  assert.ok(folderAt > 0 && chevronAt > 0, 'both slots exist')
+  assert.ok(folderAt < chevronAt, 'folder comes before the chevron, like the shipped row')
+})
+
+test('row typography matches the shipped 14px/34px metrics', () => {
+  const text = read('src/client.js')
+  // Rows.module.css: font-size 14px, line-height 20px, height 34px.
+  assert.match(text, /\.bw-row\{[^}]*font-size:14px/, 'row text is 14px, not the 13px that read as too small')
+  assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height is 20px')
+  assert.match(text, /\.bw-row\{[^}]*min-height:34px/, 'row height is the shipped 34px')
 })
