@@ -1095,6 +1095,13 @@ test('native style values are taken from the shipped bundle, not invented', () =
   assert.match(text, /--bw-ease:var\(--ds-ease-in-out,cubic-bezier\(\.4,0,\.2,1\)\)/, 'shared easing curve')
   // Row geometry matches the shipped row.
   assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height matches the shipped 20px')
+  // Shadows: the shipped overlay uses --dsw-elevation-prominent, whose real
+  // value is a .5px stroke plus very faint (0.04/0.05) blurs. A hand-rolled
+  // 0 8px 24px rgba(0,0,0,.35) is about seven times heavier and reads as a
+  // different design language.
+  assert.doesNotMatch(text, /box-shadow:0 8px 24px rgba\(0,0,0,\.35\)/, 'no hand-rolled heavy overlay shadow')
+  assert.match(text, /\.bw-ctx-menu\{[^}]*box-shadow:var\(--dsw-elevation-prominent/, 'context menu uses the shipped elevation token')
+  assert.match(text, /--dsw-elevation-prominent,0 0 0 \.5px/, 'the fallback mirrors the shipped stroke + faint blur')
 })
 
 test('one-click native reset clears every visual knob but no data', () => {
