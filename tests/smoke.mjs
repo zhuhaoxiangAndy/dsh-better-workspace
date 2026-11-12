@@ -1,7 +1,7 @@
 // Smoke tests: pure helper/file-level, no Cordis runtime, no network.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -1194,4 +1194,30 @@ test('directory extraction drops read-only statements from a realistic script', 
   assert.equal(r.dropped, 4, 'four read-only statements are dropped')
   assert.ok(r.directories.length > 0, 'directories were extracted')
   assert.ok(r.directories.every((x) => !x.includes('Recurse')), 'no flag leaked into a path')
+})
+
+
+test('registry never registers a session without an archive file', () => {
+  // Data invariant proven against the live registry after the cleanup: every
+  // registered id must have a real session.v4.jsonl.zstd. A cache entry alone
+  // is not enough — that is what produced rows opening to an empty transcript.
+  const REG = 'C:/Users/Andy/.dsh/storages/workspace.json'
+  const ROOT = 'C:/Users/Andy/.dsh/sessions'
+  if (!existsSync(REG)) return               // registry not present on this host
+  const reg = JSON.parse(readFileSync(REG, 'utf8'))
+  const present = new Set()
+  for (const slug of readdirSync(ROOT)) {
+    const sd = join(ROOT, slug)
+    if (!statSync(sd).isDirectory()) continue
+    for (const sid of readdirSync(sd)) {
+      if (existsSync(join(sd, sid, 'session.v4.jsonl.zstd'))) present.add(sid)
+    }
+  }
+  const ghosts = []
+  for (const [wid, rec] of Object.entries(reg.tables.workspaces)) {
+    for (const sid of rec.sessionIds || []) {
+      if (!present.has(sid)) ghosts.push(wid + '/' + sid)
+    }
+  }
+  assert.deepEqual(ghosts, [], 'no registered session may lack an archive file')
 })
