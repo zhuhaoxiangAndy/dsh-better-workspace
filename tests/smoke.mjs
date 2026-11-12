@@ -1036,3 +1036,39 @@ test('host half can delete an archive and moves it aside by default', () => {
   assert.match(host, /req\.method !== 'POST'/, 'the route refuses non-POST')
   assert.match(host, /invalid sessionId/, 'the session id is validated before touching the filesystem')
 })
+
+/* ---------------------------------------------- behaviour, not presence ---
+ * The rules in the workspace's DONE-CRITERIA.md: a UI task is only done when it
+ * was actually RENDERED and the resulting behaviour was observed. These two
+ * tests exist because the previous round reported both features as complete on
+ * the strength of grep matches, and the user found neither worked.
+ */
+test('every rendered button carries an icon (not just "icon(...) exists")', () => {
+  const text = read('src/client.js')
+  // Session rows must own the two official row-action occupants. Before this,
+  // SessionRow had NO action span at all — the buttons did not exist, so there
+  // was nothing to give an icon to, and every grep still looked fine.
+  const row = text.slice(text.indexOf('function SessionRow('), text.indexOf('function ViewOptionsMenu'))
+  assert.match(row, /className: 'bw-row-actions'/, 'session rows own a hover action span')
+  assert.match(row, /onArchiveToggle \? E\('button'/, 'archive hover button exists')
+  assert.match(row, /onPinToggle \? E\('button'/, 'pin hover button exists')
+  assert.match(row, /IconArchiveOutline20/, 'archive button carries an icon')
+  assert.match(row, /IconPinFillRegular' : 'IconPinOutlineRegular/, 'pin button carries the right icon per state')
+  // The header's "new group" button used to be text-only.
+  assert.match(text, /bw-newgroup-btn[^]*?icon\('IconFolderClose16'/, 'new-group button carries an icon')
+  // Hover reveal, mirroring the official row.
+  assert.match(text, /\.bw-row:hover \.bw-row-actions/, 'row actions are revealed on hover')
+})
+
+test('pinning reorders the rows, it does not just flip a flag', () => {
+  const text = read('src/client.js')
+  // The partition helper must exist AND both order branches must use it,
+  // otherwise a pinned id changes nothing visible (the reported "名存实亡").
+  assert.match(text, /const withPinned = \(rows\) => \{/, 'pin partition helper exists')
+  assert.match(text, /return withPinned\(sorted\)/, 'recency order applies the partition')
+  assert.match(text, /return withPinned\(out\)/, 'manual order applies the partition')
+  assert.match(text, /return withPinned\(rows\)/, 'the untouched order applies the partition')
+  // Pinned ids lead in their own stored order, like the official pin-order.js.
+  assert.match(text, /for \(const id of pinnedSessionIds\)/, 'pinned lead order follows the host array')
+  assert.match(text, /const rest = rows\.filter\(\(row\) => !taken\.has\(row\.id\)\)/, 'the rest keeps its order')
+})

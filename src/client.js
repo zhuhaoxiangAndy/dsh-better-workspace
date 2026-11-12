@@ -3805,7 +3805,7 @@ window.__ModuleLoader__.load({
       // rim + a tinted wash so "this drop joins a group" reads stronger than
       // the reorder dashes above.
       '.bw-drop-into-strong{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px;background:color-mix(in srgb, var(--dsw-alias-brand-primary,#5b8def) 16%, transparent)}',
-      '.bw-newgroup-btn{flex:none;width:auto;padding:0 6px;font-size:12px;height:20px;border-radius:6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));color:inherit;cursor:pointer}',
+      '.bw-newgroup-btn{flex:none;display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-size:12px;height:20px;border-radius:6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));color:inherit;cursor:pointer}',
       '.bw-row:hover{background:var(--dsw-specific-sidebar-nav-item-hover,var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12)))}',
       '.bw-row:hover{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-hover,rgba(127,127,127,.14)) 50%,transparent)}',
       '.bw-row-current{background:var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.15))}',
@@ -5049,7 +5049,7 @@ window.__ModuleLoader__.load({
       return s === 'ongoing' ? null : s
     }
 
-    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, now, dropHalf, dragEvents, custStyle, breathing, t }) {
+    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, onArchiveToggle, onPinToggle, pinned, now, dropHalf, dragEvents, custStyle, breathing, t }) {
       const state = sessionStateOf(node)
       // Official copy when available (the bound 'workspace' dictionary carries the
       // exact shipped strings: 等待审批 / 待审批 / 计划待审 / 待回答 / 进行中 / 已完成).
@@ -5098,6 +5098,28 @@ window.__ModuleLoader__.load({
         // Official trailing contract: the compact pending text REPLACES the
         // relative time while waiting (official Rows: trailingLabel ?? timeLabel).
         E('span', { className: 'bw-row-time' }, status && status.trailing ? status.trailing : timeLabel(node.updatedAt, now, t)),
+        // v0.24.0 HOVER ACTIONS. The shipped row carries the two
+        // `sidebar.workspaces.session.row.action` occupants (archive, pin) as
+        // hover buttons; this row had NONE, which is why the user reported
+        // "几个按键都没有图标" — the buttons did not exist at all, so there was
+        // nothing to put an icon on. Both are icon-only, icon-bearing buttons
+        // that only appear on hover/focus, exactly like the official row.
+        E('span', { className: 'bw-row-actions', onClick: (e) => e.stopPropagation() },
+          onArchiveToggle ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': archived ? t('menu.unarchive') : t('menu.archive'),
+            title: archived ? t('menu.unarchive') : t('menu.archive'),
+            onClick: (e) => { e.stopPropagation(); onArchiveToggle() },
+          }, icon('IconArchiveOutline20', 14)) : null,
+          onPinToggle ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': pinned ? t('menu.unpin') : t('menu.pin'),
+            title: pinned ? t('menu.unpin') : t('menu.pin'),
+            onClick: (e) => { e.stopPropagation(); onPinToggle() },
+          }, icon(pinned ? 'IconPinFillRegular' : 'IconPinOutlineRegular', 14)) : null,
+        ),
       )
     }
 
@@ -6621,6 +6643,36 @@ window.__ModuleLoader__.load({
         return Array.isArray(list) ? list : []
       }
 
+      /**
+       * v0.24.0 PIN ACTUALLY REORDERS.
+       *
+       * Before this, `pinnedSessionIds` was only read for the menu label and a
+       * row marker — it never participated in ordering, so pinning a session
+       * changed a flag and nothing visible happened ("pin session 名存实亡").
+       *
+       * Official semantics (ui-workspace pin-order.js): pinned sessions lead
+       * their section in the order the pinned array stores them, and pinning
+       * does NOT switch the chosen sort mode. So this is a stable PARTITION,
+       * applied after whichever order the current mode produced:
+       *   [ pinned..., rest... ]
+       * Pinned rows missing from this workspace are simply absent here; extras
+       * are appended after the known ones so a stale id cannot hide a row.
+       */
+      const withPinned = (rows) => {
+        if (pinnedSessionIds === null || pinnedSessionIds.length === 0) return rows
+        if (!Array.isArray(rows) || rows.length === 0) return rows
+        const byId = new Map(rows.map((row) => [row.id, row]))
+        const lead = []
+        const taken = new Set()
+        for (const id of pinnedSessionIds) {
+          const row = byId.get(id)
+          if (row && !taken.has(id)) { lead.push(row); taken.add(id) }
+        }
+        if (lead.length === 0) return rows
+        const rest = rows.filter((row) => !taken.has(row.id))
+        return lead.concat(rest)
+      }
+
       const sessionsOf = (workspace) => {
         const rows = []
         for (const id of workspace.sessionIds || []) {
@@ -6654,12 +6706,12 @@ window.__ModuleLoader__.load({
             const at = sorted.indexOf(pin)
             if (at > 0) { sorted.splice(at, 1); sorted.unshift(pin) }
           }
-          return sorted
+          return withPinned(sorted)
         }
         const local = typeof insertSessionBefore === 'function' && !hostOrderFailed(workspace.workspaceId)
           ? []
           : sessionOrderOf(workspace.workspaceId)
-        if (local.length === 0) return rows
+        if (local.length === 0) return withPinned(rows)
         const remaining = new Map(rows.map((row) => [row.id, row]))
         const out = []
         for (const id of local) {
@@ -6667,7 +6719,7 @@ window.__ModuleLoader__.load({
           if (row) { out.push(row); remaining.delete(id) }
         }
         for (const row of rows) if (remaining.has(row.id)) out.push(row)
-        return out
+        return withPinned(out)
       }
 
       // Search flattens BOTH layers depth-first: every workspace (top level,
@@ -7735,6 +7787,20 @@ window.__ModuleLoader__.load({
         // v0.27.0: archived rows stay visible when the user asks for them; the
         // marker is what tells them apart from live rows.
         archived: archivedSet.has(session.id),
+        pinned: pinnedSessionIds !== null && pinnedSessionIds.includes(session.id),
+        // v0.24.0: the two official row-action occupants (archive + pin) as
+        // hover buttons. Feature-probed: a host without unarchiveSession simply
+        // yields the archive direction only.
+        onArchiveToggle: () => {
+          const fn = archivedSet.has(session.id) ? unarchiveSession : archiveSession
+          if (typeof fn === 'function') Promise.resolve().then(() => fn(session.id)).catch(fail)
+        },
+        onPinToggle: () => {
+          if (pinnedSessionIds === null) return
+          const nowPinned = pinnedSessionIds.includes(session.id)
+          const fn = nowPinned ? (uiWorkspace && uiWorkspace.unpinSession) : (uiWorkspace && uiWorkspace.pinSession)
+          if (typeof fn === 'function') Promise.resolve().then(() => fn.call(uiWorkspace, session.id)).catch(fail)
+        },
         now,
         onOpen: (id) => open(id),
         onContextMenu: (e) => openCtx('session', session, e),
@@ -8185,7 +8251,7 @@ window.__ModuleLoader__.load({
             title: t('group.new'),
             onClick: () => setDialog({ kind: 'group-move', target: null, targets: targetListOf(), initial: '' }),
             ...groupDropEvents,
-          }, t('group.new')),
+          }, icon('IconFolderClose16', 12), E('span', null, t('group.new'))),
           (searchOpen || query !== '') ? E('input', {
             className: 'bw-input',
             style: { width: 130, flex: 'none' },
