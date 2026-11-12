@@ -1137,3 +1137,54 @@ test('ghost rows (cache entry, no archive file) never render', () => {
   assert.match(host, /export function auditSessionArchives/, 'host can report which sessions really exist')
   assert.match(host, /SESSION_ROUTE \+ '\/archives'/, 'the audit is exposed as a route')
 })
+
+test('approval directory extraction handles the REAL interaction shape', () => {
+  const text = read('src/client.js')
+  // The approval contract declares displayReason as a LOCALE MAP, not a string.
+  // Assigning it straight to a React child rendered "[object Object]", so the
+  // extractor never received a command and the summary was silently empty —
+  // that is why the user reported this feature as not done at all.
+  assert.match(text, /function resolveInteractionText/, 'a locale-map resolver exists')
+  assert.match(text, /for \(const key of \[lang, short, 'zh', 'en'\]\)/, 'it resolves the active locale then falls back')
+  assert.match(text, /reason: resolveInteractionText\(it\)/, 'collectInteractions uses the resolver')
+  assert.doesNotMatch(text, /reason: it\.displayReason \|\| it\.reason/, 'the raw object is never passed through')
+  // The command text for a tool approval lives in the tool call's arguments.
+  assert.match(text, /rawArguments: it\.arguments \|\| it\.rawArguments/, 'tool-call arguments are carried')
+  assert.match(text, /const fromArgs = extractWriteDirectories\(text\)/, 'the extractor runs on those arguments')
+})
+
+test('directory extraction drops read-only statements from a realistic script', () => {
+  const text = read('src/client.js')
+  const start = text.indexOf('const WRITE_VERBS = [')
+  const em = 'const extractWriteDirectories = (rawText) => {'
+  const e = text.indexOf(em)
+  // bracket-match the arrow function body
+  let i = text.indexOf('{', e)
+  let d = 0
+  let j = i
+  for (; j < text.length; j += 1) {
+    if (text[j] === '{') d += 1
+    else if (text[j] === '}') { d -= 1; if (d === 0) { j += 1; break } }
+  }
+  const fn = new Function(text.slice(start, j) + ';\nreturn extractWriteDirectories;')()
+
+  const B = String.fromCharCode(92)
+  const NL = String.fromCharCode(10)
+  const p = (...parts) => parts.join(B)
+  const script = [
+    'Write-Output "scan"',
+    `Get-ChildItem ${p('C:', 'work')} -Recurse | Measure-Object`,
+    `Test-Path ${p('C:', 'work', 'target')}`,
+    `Get-Process | Where-Object { $_.ProcessName -match "node" }`,
+    `New-Item -ItemType Directory -Path ${p('C:', 'work', 'target')} -Force`,
+    `Copy-Item ${p('C:', 'work', 'a.txt')} ${p('C:', 'work', 'target', '')}`,
+    `Remove-Item -LiteralPath ${p('C:', 'work', 'old')} -Recurse -Force`,
+  ].join(NL)
+
+  const r = fn(script)
+  assert.equal(r.statements, 7, 'every statement is examined')
+  assert.equal(r.writeStatements, 3, 'exactly the three write statements survive')
+  assert.equal(r.dropped, 4, 'four read-only statements are dropped')
+  assert.ok(r.directories.length > 0, 'directories were extracted')
+  assert.ok(r.directories.every((x) => !x.includes('Recurse')), 'no flag leaked into a path')
+})

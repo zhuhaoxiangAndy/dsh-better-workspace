@@ -5920,6 +5920,30 @@ window.__ModuleLoader__.load({
       return open
     }
 
+    /**
+     * Resolve an interaction's human-readable text.
+     *
+     * `displayReason` is a locale MAP (an object keyed by language) per the contract,
+     * while `reason` is a plain string. Anything object-shaped is resolved
+     * against the current language, then English, then the first value that is
+     * a string — never `String(object)`, which yields "[object Object]".
+     */
+    function resolveInteractionText(it) {
+      const pick = (value) => {
+        if (typeof value === 'string') return value
+        if (value && typeof value === 'object') {
+          const lang = (typeof navigator !== 'undefined' && navigator && navigator.language) || 'en'
+          const short = String(lang).split('-')[0]
+          for (const key of [lang, short, 'zh', 'en']) {
+            if (typeof value[key] === 'string' && value[key] !== '') return value[key]
+          }
+          for (const v of Object.values(value)) if (typeof v === 'string' && v !== '') return v
+        }
+        return ''
+      }
+      return pick(it && it.displayReason) || pick(it && it.reason) || ''
+    }
+
     function collectInteractions(uiStatus, list, items) {
       const out = []
       if (!uiStatus) return out
@@ -5938,7 +5962,17 @@ window.__ModuleLoader__.load({
           kind: String(it.kind || "interaction"),
           key: String(it.key || sessionId),
           toolName: it.toolName,
-          reason: it.displayReason || it.reason || "",
+          // displayReason is NOT a string: the approval contract declares it as a
+          // locale MAP (an object keyed by language) for localized presentation.
+          // the object straight to React rendered "[object Object]", so the
+          // path extractor below never saw a command and the directory summary
+          // silently produced nothing. Resolve it to the active locale, then
+          // fall back to the asker's own `reason` string.
+          reason: resolveInteractionText(it),
+          // The command text for a tool approval lives in the tool call's
+          // arguments, not in the approval event. Carry whatever the host
+          // exposes so the extractor has real input.
+          rawArguments: it.arguments || it.rawArguments || it.toolArguments || undefined,
           sessionTitle: summary ? (summary.title || summary.displayTitle || sessionId) : sessionId,
           wsTitle: ws ? String(ws.title || ws.leaf || ws.workspaceId) : "(未分组)",
           wsPath: ws ? String(ws.path || "") : "",
@@ -6142,7 +6176,20 @@ window.__ModuleLoader__.load({
         const canAnswer = row.interaction && typeof row.interaction.answer === 'function' && row.interaction.answerable !== false
         // v0.25.0: for approvals, show ONLY the directories at risk, as a
         // deduped list, instead of making the user read the whole command.
-        const dirs = row.kind === 'approval' && row.reason ? extractWriteDirectories(row.reason) : null
+        // The command text may live in the interaction's reason OR in the tool
+        // call's raw arguments (that is where a shell command actually is).
+        // Try both, preferring whichever yields directories.
+        const dirs = row.kind === 'approval'
+          ? (() => {
+              const fromReason = row.reason ? extractWriteDirectories(row.reason) : null
+              if (fromReason && fromReason.directories.length > 0) return fromReason
+              const raw = row.rawArguments
+              const text = typeof raw === 'string' ? raw : raw && typeof raw === 'object' ? JSON.stringify(raw) : ''
+              if (text === '') return fromReason
+              const fromArgs = extractWriteDirectories(text)
+              return fromArgs.directories.length > 0 ? fromArgs : fromReason
+            })()
+          : null
         return E('div', { key: row.key, className: 'bw-hub-item' },
           E('div', { className: 'bw-hub-meta' },
             E('span', { className: 'bw-hub-kind' }, row.kind === 'approval' ? t('hub.kind.approval') : row.kind === 'plan-review' ? t('hub.kind.plan') : t('hub.kind.question')),
