@@ -1072,3 +1072,68 @@ test('pinning reorders the rows, it does not just flip a flag', () => {
   assert.match(text, /for \(const id of pinnedSessionIds\)/, 'pinned lead order follows the host array')
   assert.match(text, /const rest = rows\.filter\(\(row\) => !taken\.has\(row\.id\)\)/, 'the rest keeps its order')
 })
+
+/* --------------------------------------- native fidelity + ghosts (v0.26) ---
+ * Everything here follows DONE-CRITERIA.md: assert the OBSERVABLE behaviour,
+ * not the presence of a string. The previous round reported the style and
+ * Ctrl+Tab work as done on grep evidence and both were wrong.
+ */
+test('native style values are taken from the shipped bundle, not invented', () => {
+  const text = read('src/client.js')
+  // Font: the plugin declared NO font-family at all, so the sidebar inherited
+  // the browser default while the app uses this token — the reported 字体不对.
+  assert.match(text, /font-family:var\(--dsw-font-family,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC"/,
+    'root inherits the shipped font token with a CJK fallback chain')
+  assert.match(text, /Microsoft YaHei/, 'the CJK face the app relies on is present')
+  // Official rule: intermediate weights normalise to 500.
+  assert.match(text, /font-weight:500;/, 'the header weight is the shipped 500, not 600')
+  assert.doesNotMatch(text, /\.bw-header-title\{[^}]*font-weight:600/, 'no 600 in the header title')
+  // Radius ladder: xs4 sm8 md12 lg16 xl20 panel28 — 6px is not on it.
+  assert.match(text, /--bw-radius-ctl:var\(--dsw-radius-sm,8px\)/, 'control radius maps to the sm token')
+  assert.doesNotMatch(text, /border-radius:6px/, 'no off-ladder 6px radius remains')
+  // Motion curve from the same bundle.
+  assert.match(text, /--bw-ease:var\(--ds-ease-in-out,cubic-bezier\(\.4,0,\.2,1\)\)/, 'shared easing curve')
+  // Row geometry matches the shipped row.
+  assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height matches the shipped 20px')
+})
+
+test('one-click native reset clears every visual knob but no data', () => {
+  const text = read('src/client.js')
+  assert.match(text, /settings\.nativeReset/, 'the reset control exists')
+  // It must clear per-row styling AND the presentation preferences.
+  // Locate the button BLOCK (the dictionaries also mention these keys, so
+  // anchor on the render site, not the first occurrence).
+  const blockStart = text.indexOf("t('settings.nativeReset.action')")
+  const block = text.slice(Math.max(0, blockStart - 900), blockStart + 200)
+  assert.match(block, /setStyling\(key, null\)/, 'per-row customizations are cleared')
+  assert.match(block, /setPref\('appearance'/, 'appearance is reset')
+  assert.match(block, /setPref\('compactChains'/, 'chain compression is reset')
+  assert.match(block, /setPref\('statusPulse'/, 'status pulse is reset')
+  // And it must NOT touch workspace or session data.
+  assert.doesNotMatch(block, /renameWorkspace|renameSession|archiveSession|deleteSession/,
+    'the reset never mutates workspaces or sessions')
+})
+
+test('Ctrl+Tab groups by WORKSPACE, not by title prefix', () => {
+  const text = read('src/client.js')
+  // v0.23 grouped by the title's "/" prefix, which still split one workspace's
+  // sessions across prefix runs — the reported "直接跨工作区切换".
+  assert.match(text, /const wsRank = new Map\(\)/, 'workspaces are ranked by sidebar order')
+  assert.match(text, /rank: tab\.workspaceId && wsRank\.has\(tab\.workspaceId\)/, 'the sort key is the workspace id')
+  assert.doesNotMatch(text, /const prefixOf = \(tab\) =>/, 'the title-prefix grouping is gone')
+  assert.match(text, /Number\.MAX_SAFE_INTEGER/, 'workspace-less sessions sort last')
+})
+
+test('ghost rows (cache entry, no archive file) never render', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const hasArchive = \(sessionId\) => archiveIds === null \|\| archiveIds\.has/, 'archive presence gates visibility')
+  assert.match(text, /&& hasArchive\(summary\.id\)/, 'sessionVisible consults it')
+  assert.match(text, /refreshArchiveIds/, 'the host audit is fetched')
+  assert.match(text, /useArchiveIds\(\)/, 'the component subscribes to it')
+  // Unknown must NEVER hide real rows.
+  assert.match(text, /archiveIds === null \|\|/, 'unknown archive set stands down')
+  // Host side must expose the audit.
+  const host = read('src/delete-session.mjs')
+  assert.match(host, /export function auditSessionArchives/, 'host can report which sessions really exist')
+  assert.match(host, /SESSION_ROUTE \+ '\/archives'/, 'the audit is exposed as a route')
+})

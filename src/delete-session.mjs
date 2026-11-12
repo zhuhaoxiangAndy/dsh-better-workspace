@@ -158,6 +158,41 @@ export function deleteSessionArchive(sessionId, options = {}) {
 }
 
 /**
+ * Which session ids actually have an archive file on disk.
+ *
+ * WHY THE BROWSER CANNOT DO THIS ITSELF
+ * `sessionController.list()` serves the PROJECTION CACHE. A session whose log
+ * was deleted (or never written) still has a cache entry, so it appears in the
+ * list, occupies a sidebar row and opens to an empty transcript — the reported
+ * "未分组里有一堆点进去没历史的会话". Only the host can stat the filesystem, so
+ * the browser asks here.
+ *
+ * @param {{dshHome?: string}} [options]
+ * @returns {{present: string[], missing: string[]}}
+ */
+export function auditSessionArchives(options = {}) {
+  const dshHome = options.dshHome || process.env.DSH_HOME || path.join(os.homedir(), '.dsh')
+  const sessionsRoot = path.join(dshHome, 'sessions')
+  const present = []
+  const missing = []
+  let slugs = []
+  try { slugs = fs.readdirSync(sessionsRoot, { withFileTypes: true }) } catch { return { present, missing } }
+  for (const slug of slugs) {
+    if (!slug.isDirectory()) continue
+    const dir = path.join(sessionsRoot, slug.name)
+    let entries = []
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }) } catch { continue }
+    for (const e of entries) {
+      if (!e.isDirectory()) continue
+      const log = path.join(dir, e.name, SESSION_LOG_NAME)
+      if (fs.existsSync(log)) present.push(e.name)
+      else missing.push(e.name)
+    }
+  }
+  return { present, missing }
+}
+
+/**
  * Register the delete route on the host web server.
  *
  * The browser cannot touch the filesystem, so the tree's "delete forever" menu
@@ -206,13 +241,30 @@ export function registerDeleteRoute(ctx, log) {
     req.on('error', () => send(400, { ok: false, error: 'request error' }))
   }
 
+  const auditHandler = (req, res) => {
+    const send = (code, body) => {
+      try {
+        res.statusCode = code
+        res.setHeader('content-type', 'application/json; charset=utf-8')
+        res.end(JSON.stringify(body))
+      } catch { /* client went away */ }
+    }
+    try {
+      send(200, auditSessionArchives())
+    } catch (error) {
+      send(500, { present: [], missing: [], error: error instanceof Error ? error.message : String(error) })
+    }
+  }
+
   try {
     const off = webServer.register({ kind: 'exact', path: SESSION_ROUTE + '/delete', handler })
     if (typeof off === 'function' && typeof ctx.effect === 'function') ctx.effect(() => off)
-    log('[dsh-better-workspace] permanent-delete route registered at ' + SESSION_ROUTE + '/delete')
+    const off2 = webServer.register({ kind: 'exact', path: SESSION_ROUTE + '/archives', handler: auditHandler })
+    if (typeof off2 === 'function' && typeof ctx.effect === 'function') ctx.effect(() => off2)
+    log('[dsh-better-workspace] routes registered: ' + SESSION_ROUTE + '/delete, ' + SESSION_ROUTE + '/archives')
     return true
   } catch (error) {
-    log('[dsh-better-workspace] permanent-delete route registration failed: ' + (error && error.message))
+    log('[dsh-better-workspace] route registration failed: ' + (error && error.message))
     return false
   }
 }

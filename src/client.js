@@ -92,6 +92,9 @@ window.__ModuleLoader__.load({
       'settings.appearance': '默认外观',
       'settings.appearance.hint': '没有单独自定义过的行使用这套外观;字体描边默认开启——背景画面下不描边文字常常看不清。字体颜色留空即跟随主题。',
       'settings.appearance.reset': '恢复默认外观',
+      'settings.nativeReset': '恢复原生样式',
+      'settings.nativeReset.action': '一键恢复',
+      'settings.nativeReset.hint': '把本插件所有视觉设置（每行自定义外观、描边、折叠、状态灯、斜杠分组、显示归档）恢复为 DSH 原生默认。不触碰任何工作区、会话或标题。',
       'custom.title': '自定义外观',
       'custom.color': '颜色',
       'custom.glow': '发光',
@@ -242,6 +245,9 @@ window.__ModuleLoader__.load({
       'settings.appearance': 'Default appearance',
       'settings.appearance.hint': 'Rows that were never customized use this appearance; the outline is on by default — text without it is often unreadable over a background image. Leave the color empty to follow the theme.',
       'settings.appearance.reset': 'Reset to default',
+      'settings.nativeReset': 'Restore native look',
+      'settings.nativeReset.action': 'Restore now',
+      'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
       'custom.title': 'Customize',
       'custom.color': 'Color',
       'custom.glow': 'Glow',
@@ -400,6 +406,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'المظهر الافتراضي',
         'settings.appearance.hint': 'تستخدم الأسطر غير المخصصة هذا المظهر؛ حدّ النص مفعّل افتراضياً — فبدونه يصعب قراءة النص فوق صورة خلفية. اترك اللون فارغاً لاتباع السمة.',
         'settings.appearance.reset': 'استعادة المظهر الافتراضي',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'تخصيص المظهر',
         'custom.color': 'اللون',
         'custom.glow': 'التوهج',
@@ -550,6 +559,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Standardaussehen',
         'settings.appearance.hint': 'Zeilen ohne eigene Anpassung nutzen dieses Aussehen; die Textkontur ist standardmäßig an – ohne sie ist Text über einem Hintergrundbild oft kaum lesbar. Bleibt die Farbe leer, folgt sie dem Thema.',
         'settings.appearance.reset': 'Standard wiederherstellen',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Aussehen anpassen',
         'custom.color': 'Farbe',
         'custom.glow': 'Leuchten',
@@ -700,6 +712,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Apparence par défaut',
         'settings.appearance.hint': 'Les lignes sans personnalisation utilisent cette apparence; le contour du texte est activé par défaut — sans lui, le texte reste souvent illisible sur une image de fond. Laissez la couleur vide pour suivre le thème.',
         'settings.appearance.reset': 'Rétablir l\'apparence par défaut',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Personnaliser l\'apparence',
         'custom.color': 'Couleur',
         'custom.glow': 'Lueur',
@@ -850,6 +865,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'डिफ़ॉल्ट रूप',
         'settings.appearance.hint': 'जिन पंक्तियों को अलग से अनुकूलित नहीं किया गया वे यह रूप इस्तेमाल करती हैं; पाठ की रूपरेखा डिफ़ॉल्ट रूप से चालू है — पृष्ठभूमि छवि पर बिना रूपरेखा वाला पाठ अक्सर पढ़ा नहीं जाता। रंग खाली छोड़ने पर वह थीम का अनुसरण करता है।',
         'settings.appearance.reset': 'डिफ़ॉल्ट रूप पर लौटें',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'रूप अनुकूलित करें',
         'custom.color': 'रंग',
         'custom.glow': 'चमक',
@@ -1000,6 +1018,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Tampilan bawaan',
         'settings.appearance.hint': 'Baris yang belum disesuaikan memakai tampilan ini; garis luar teks aktif secara bawaan — tanpa itu teks sering tak terbaca di atas gambar latar. Biarkan warna kosong agar mengikuti tema.',
         'settings.appearance.reset': 'Kembalikan tampilan bawaan',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Sesuaikan tampilan',
         'custom.color': 'Warna',
         'custom.glow': 'Pendar',
@@ -1150,6 +1171,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Aspetto predefinito',
         'settings.appearance.hint': 'Le righe mai personalizzate usano questo aspetto; il contorno del testo è attivo per impostazione predefinita — senza di esso il testo è spesso illeggibile sopra un\'immagine di sfondo. Lascia il colore vuoto per seguire il tema.',
         'settings.appearance.reset': 'Ripristina l\'aspetto predefinito',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Personalizza aspetto',
         'custom.color': 'Colore',
         'custom.glow': 'Bagliore',
@@ -1300,6 +1324,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': '既定の外観',
         'settings.appearance.hint': '個別にカスタマイズしていない行に適用される外観です;文字の縁取りは既定でオンです——背景画像の上では縁取りのない文字が読みにくいためです。色を空にするとテーマに従います。',
         'settings.appearance.reset': '既定の外観に戻す',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': '外観をカスタマイズ',
         'custom.color': '色',
         'custom.glow': 'グロー',
@@ -1450,6 +1477,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': '기본 모양',
         'settings.appearance.hint': '따로 지정하지 않은 행에 적용되는 모양입니다; 글자 외곽선은 기본으로 켜져 있습니다——배경 이미지 위에서는 외곽선 없는 글자가 잘 보이지 않기 때문입니다. 색을 비우면 테마를 따릅니다.',
         'settings.appearance.reset': '기본 모양으로 되돌리기',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': '모양 사용자 지정',
         'custom.color': '색',
         'custom.glow': '글로우',
@@ -1600,6 +1630,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Standaarduiterlijk',
         'settings.appearance.hint': 'Regels zonder eigen aanpassing gebruiken dit uiterlijk; de tekstomtrek staat standaard aan — zonder omtrek is tekst op een achtergrondafbeelding vaak slecht leesbaar. Laat de kleur leeg om het thema te volgen.',
         'settings.appearance.reset': 'Standaarduiterlijk herstellen',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Uiterlijk aanpassen',
         'custom.color': 'Kleur',
         'custom.glow': 'Gloed',
@@ -1750,6 +1783,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Domyślny wygląd',
         'settings.appearance.hint': 'Wiersze bez własnych ustawień używają tego wyglądu; obrys tekstu jest domyślnie włączony — bez niego tekst na obrazie tła bywa nieczytelny. Puste pole koloru oznacza podążanie za motywem.',
         'settings.appearance.reset': 'Przywróć domyślny wygląd',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Dostosuj wygląd',
         'custom.color': 'Kolor',
         'custom.glow': 'Poświata',
@@ -1900,6 +1936,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Aparência padrão',
         'settings.appearance.hint': 'Linhas sem personalização usam esta aparência; o contorno do texto vem ativado por padrão — sem ele, o texto costuma ficar ilegível sobre uma imagem de fundo. Deixe a cor vazia para seguir o tema.',
         'settings.appearance.reset': 'Restaurar aparência padrão',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Personalizar aparência',
         'custom.color': 'Cor',
         'custom.glow': 'Brilho',
@@ -2050,6 +2089,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Оформление по умолчанию',
         'settings.appearance.hint': 'Строки без своей настройки используют это оформление; обводка текста включена по умолчанию — без неё текст на фоновом изображении часто нечитаем. Пустой цвет означает следование теме.',
         'settings.appearance.reset': 'Вернуть оформление по умолчанию',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Настроить оформление',
         'custom.color': 'Цвет',
         'custom.glow': 'Свечение',
@@ -2200,6 +2242,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Standardutseende',
         'settings.appearance.hint': 'Rader utan egen anpassning använder detta utseende; textkonturen är på som standard — utan den är texten ofta oläslig ovanpå en bakgrundsbild. Lämna färgen tom för att följa temat.',
         'settings.appearance.reset': 'Återställ standardutseende',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Anpassa utseende',
         'custom.color': 'Färg',
         'custom.glow': 'Glöd',
@@ -2350,6 +2395,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'รูปลักษณ์เริ่มต้น',
         'settings.appearance.hint': 'แถวที่ยังไม่ได้กำหนดเองจะใช้รูปลักษณ์นี้ เส้นขอบตัวอักษรเปิดไว้เป็นค่าเริ่มต้น — บนภาพพื้นหลัง ตัวอักษรที่ไม่มีเส้นขอบมักอ่านยาก เว้นสีว่างไว้เพื่อตามธีม',
         'settings.appearance.reset': 'คืนค่ารูปลักษณ์เริ่มต้น',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'ปรับแต่งรูปลักษณ์',
         'custom.color': 'สี',
         'custom.glow': 'การเรืองแสง',
@@ -2500,6 +2548,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Varsayılan görünüm',
         'settings.appearance.hint': 'Özel olarak uyarlanmamış satırlar bu görünümü kullanır; metin konturu varsayılan olarak açıktır — arka plan görseli üzerinde kontursuz metin çoğu zaman okunmaz. Rengi boş bırakırsanız temayı izler.',
         'settings.appearance.reset': 'Varsayılan görünüme dön',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Görünümü özelleştir',
         'custom.color': 'Renk',
         'custom.glow': 'Işıma',
@@ -2650,6 +2701,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': 'Giao diện mặc định',
         'settings.appearance.hint': 'Những hàng chưa tùy chỉnh riêng dùng giao diện này; viền chữ mặc định bật — trên ảnh nền, chữ không viền thường khó đọc. Để trống màu để theo chủ đề.',
         'settings.appearance.reset': 'Khôi phục giao diện mặc định',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': 'Tùy chỉnh giao diện',
         'custom.color': 'Màu',
         'custom.glow': 'Phát sáng',
@@ -2800,6 +2854,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未單獨自訂過嘅行會用呢套外觀;字體描邊預設開啟——有背景圖嗰陣唔描邊嘅字經常睇唔清。字體顏色留空就會跟主題。',
         'settings.appearance.reset': '還原預設外觀',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -2950,6 +3007,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未單獨自訂過嘅行會用呢套外觀;字體描邊預設開啟——有背景圖嗰陣唔描邊嘅字經常睇唔清。字體顏色留空就會跟主題。',
         'settings.appearance.reset': '還原預設外觀',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -3100,6 +3160,9 @@ window.__ModuleLoader__.load({
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未個別自訂過的列會使用這套外觀;字型外框預設開啟——在背景圖片上沒有外框的文字常常看不清楚。字型顏色留空即跟隨佈景主題。',
         'settings.appearance.reset': '還原預設外觀',
+        'settings.nativeReset': 'Restore native look',
+        'settings.nativeReset.action': 'Restore now',
+        'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -3343,10 +3406,62 @@ window.__ModuleLoader__.load({
      * that is the CURRENT session is always kept so opening one cannot make the
      * sidebar look like it lost the selection.
      */
+    /**
+     * v0.26.0 GHOST FILTER.
+     *
+     * `sessionController.list()` serves the projection cache, so a session whose
+     * archive file was deleted still appears — it occupies a sidebar row and
+     * opens to an empty transcript. The user sees this as "未分组里一堆点进去
+     * 没历史的会话", and it is also why the Andy(~) workspace looked like it
+     * duplicated the ungrouped pool.
+     *
+     * The browser cannot stat files, so the host answers at
+     * GET /api/better-workspace/archives with the ids that really have a log.
+     * The result is cached per session lifetime and refreshed at most once a
+     * minute; on ANY failure the filter stands down (an unknown set must never
+     * hide real sessions).
+     */
+    let archiveIds = null            // Set<string> | null  (null = unknown)
+    let archiveFetchedAt = 0
+    let archiveInFlight = false
+    const ARCHIVE_TTL_MS = 60_000
+    let archiveListeners = new Set()
+    const notifyArchive = () => { for (const fn of [...archiveListeners]) { try { fn() } catch { /* one seat */ } } }
+    const refreshArchiveIds = (force = false) => {
+      if (archiveInFlight) return
+      if (!force && archiveIds !== null && Date.now() - archiveFetchedAt < ARCHIVE_TTL_MS) return
+      archiveInFlight = true
+      Promise.resolve()
+        .then(() => fetch('/api/better-workspace/archives'))
+        .then((res) => (res.ok ? res.json() : null))
+        .then((body) => {
+          if (!body || !Array.isArray(body.present)) return
+          archiveIds = new Set(body.present.map(String))
+          archiveFetchedAt = Date.now()
+          notifyArchive()
+        })
+        .catch(() => { /* keep whatever we had; unknown must not hide rows */ })
+        .finally(() => { archiveInFlight = false })
+    }
+    const useArchiveIds = () => {
+      const [, setTick] = React.useState(0)
+      React.useEffect(() => {
+        const fn = () => setTick((n) => n + 1)
+        archiveListeners.add(fn)
+        refreshArchiveIds(false)
+        return () => { archiveListeners.delete(fn) }
+      }, [])
+      return archiveIds
+    }
+    /** A session is shown only if it has a real archive (or we do not know yet). */
+    const hasArchive = (sessionId) => archiveIds === null || archiveIds.has(String(sessionId))
+
     const sessionVisible = (summary, current, archivedSet, showArchived) => !!summary
       && summary.origin !== 'subagent'
       && (showArchived === true || !(archivedSet && archivedSet.has(summary.id)) || summary.id === current)
       && (!summary.blank || summary.id === current)
+      // Ghost rows (cache entry, no archive file) never render.
+      && hasArchive(summary.id)
 
     /**
      * dsh 0.1.6-alpha.2 dropped SessionListState.current: the "open" session
@@ -3786,18 +3901,41 @@ window.__ModuleLoader__.load({
     /* ============================== styles ============================ */
 
     const CSS_TEXT = [
+      // ============================================================
+      // v0.25.0 NATIVE FIDELITY LAYER.
+      //
+      // Every value below was read out of the shipped bundle
+      // (packages/client/ui-theme/src/styles/base.css.mjs, design-platform.css,
+      // and the ui-workspace inline CSS) — see recon/native-sidebar-spec.md.
+      //
+      // The single biggest visual defect was the FONT: this plugin never
+      // declared a font-family anywhere, so the sidebar inherited the browser
+      // default while the rest of the app uses the token below. On Windows that
+      // lands on a different CJK face, which is the "字体不对" the user saw on
+      // BOTH surfaces.
+      '.bw-root{font-family:var(--dsw-font-family,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif)}',
+      // Official rule (design-platform.css header comment): intermediate weights
+      // such as 510 are unstable in non-variable webfonts and are normalised to
+      // 500. Anything above 500 here would look bolder than the surrounding UI.
+      '.bw-root,.bw-root *{font-weight:inherit}',
+      '.bw-root{font-weight:400}',
+      // Radius ladder from the same bundle: xs4 sm8 md12 lg16 xl20 panel28.
+      // 6px is not on the ladder, so every 6px in this file is remapped below.
+      '.bw-root{--bw-radius-row:var(--dsw-radius-md,12px);--bw-radius-ctl:var(--dsw-radius-sm,8px);--bw-radius-chip:var(--dsw-radius-xs,4px)}',
+      // Shared motion curve + durations.
+      '.bw-root{--bw-ease:var(--ds-ease-in-out,cubic-bezier(.4,0,.2,1));--bw-dur-fast:var(--ds-transition-duration-fast,.1s);--bw-dur:var(--ds-transition-duration,.2s)}',
       '.bw-root{height:100%;display:flex;flex-direction:column;min-height:0;position:relative;color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-header{display:flex;align-items:center;gap:2px;padding:10px 10px 4px;flex:none}',
-      '.bw-header-title{flex:1;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--dsw-alias-label-secondary,#b8b8b8);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
-      '.bw-icon-btn{flex:none;width:24px;height:24px;border:none;background:transparent;border-radius:6px;display:grid;place-items:center;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;padding:0}',
+      '.bw-header-title{flex:1;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--dsw-alias-label-secondary,#b8b8b8);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
+      '.bw-icon-btn{flex:none;width:24px;height:24px;border:none;background:transparent;border-radius:var(--bw-radius-ctl,8px);display:grid;place-items:center;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;padding:0}',
       '.bw-icon-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.15));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-icon-btn:disabled{opacity:.35;cursor:default;pointer-events:none}',
       '.bw-search-row{flex:none;padding:0 10px 6px}',
-      '.bw-input{width:100%;box-sizing:border-box;height:26px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;color:inherit;padding:0 8px;font-size:12px;outline:none;font-family:inherit}',
+      '.bw-input{width:100%;box-sizing:border-box;height:26px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);color:inherit;padding:0 8px;font-size:12px;outline:none;font-family:inherit}',
       '.bw-input:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-input::placeholder{color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
       '.bw-tree{flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 6px 12px;min-height:0}',
-      '.bw-row{display:flex;align-items:center;gap:6px;min-height:28px;padding:0 6px;border-radius:6px;cursor:pointer;user-select:none;font-size:13px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative}',
+      '.bw-row{display:flex;align-items:center;gap:6px;min-height:30px;padding:4px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
       '.bw-drop-before::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-after::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-into{outline:1.5px dashed var(--dsw-alias-brand-primary,#5b8def);outline-offset:-1.5px}',
@@ -3805,7 +3943,7 @@ window.__ModuleLoader__.load({
       // rim + a tinted wash so "this drop joins a group" reads stronger than
       // the reorder dashes above.
       '.bw-drop-into-strong{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px;background:color-mix(in srgb, var(--dsw-alias-brand-primary,#5b8def) 16%, transparent)}',
-      '.bw-newgroup-btn{flex:none;display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-size:12px;height:20px;border-radius:6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));color:inherit;cursor:pointer}',
+      '.bw-newgroup-btn{flex:none;display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-size:12px;height:20px;border-radius:var(--dsw-radius-sm,8px);border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));color:inherit;cursor:pointer}',
       '.bw-row:hover{background:var(--dsw-specific-sidebar-nav-item-hover,var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12)))}',
       '.bw-row:hover{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-hover,rgba(127,127,127,.14)) 50%,transparent)}',
       '.bw-row-current{background:var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.15))}',
@@ -3833,26 +3971,26 @@ window.__ModuleLoader__.load({
       '.bw-sgroup-row:hover{color:var(--dsw-alias-label-secondary,#b8b8b8)}',
       '.bw-session-row:hover{color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-empty{padding:28px 12px;text-align:center;font-size:12px;color:var(--dsw-alias-label-dimmed,#7a7a7a)}',
-      '.bw-swatch{width:20px;height:20px;border-radius:6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));cursor:pointer;flex:none;background:transparent;padding:0}',
+      '.bw-swatch{width:20px;height:20px;border-radius:var(--dsw-radius-sm,8px);border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));cursor:pointer;flex:none;background:transparent;padding:0}',
       '.bw-swatch-wide{width:auto;min-width:38px;padding:0 8px;font-size:11px;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
       '.bw-swatch-active{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:1px}',
-      '.bw-color-input{width:36px;height:26px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;background:transparent;cursor:pointer;padding:0}',
+      '.bw-color-input{width:36px;height:26px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);background:transparent;cursor:pointer;padding:0}',
       '.bw-seg{display:flex;gap:6px;flex-wrap:wrap}',
-      '.bw-seg-btn{height:24px;padding:0 10px;border-radius:6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font-size:12px;cursor:pointer;font-family:inherit}',
+      '.bw-seg-btn{height:24px;padding:0 10px;border-radius:var(--dsw-radius-sm,8px);border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font-size:12px;cursor:pointer;font-family:inherit}',
       '.bw-seg-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
       '.bw-seg-btn-active{background:var(--dsw-alias-brand-primary,#5b8def);border-color:transparent;color:var(--dsw-alias-brand-text,#fff)}',
       '.bw-seg-btn-active:hover{background:var(--dsw-alias-button-primary-hover,var(--dsw-alias-brand-primary,#5b8def));border-color:transparent}',
       '.bw-icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));gap:4px}',
-      '.bw-icon-cell{height:30px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;background:transparent;display:grid;place-items:center;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;padding:0}',
+      '.bw-icon-cell{height:30px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);background:transparent;display:grid;place-items:center;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;padding:0}',
       '.bw-icon-cell:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-icon-cell-active{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6);outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px}',
       '.bw-icon-none{width:12px;height:2px;background:currentColor;border-radius:1px;opacity:.7}',
       '.bw-rgb-row{display:flex;gap:10px;align-items:center}',
       '.bw-rgb-label{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
-      '.bw-rgb-input{width:52px;height:26px;box-sizing:border-box;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;color:inherit;font-size:12px;padding:0 6px;font-family:inherit}',
+      '.bw-rgb-input{width:52px;height:26px;box-sizing:border-box;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-sm,8px);color:inherit;font-size:12px;padding:0 6px;font-family:inherit}',
       '.bw-ctx-overlay{position:fixed;inset:0;z-index:40}',
       '.bw-ctx-menu{position:fixed;min-width:170px;background:var(--dsw-specific-menu,var(--dsw-alias-bg-overlay,rgba(28,28,32,.72)));-webkit-backdrop-filter:var(--dsh-any-blur-card-panels,blur(12px) saturate(1.15));backdrop-filter:var(--dsh-any-blur-card-panels,blur(12px) saturate(1.15));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.3));border-radius:8px;padding:4px;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;flex-direction:column}',
-      '.bw-ctx-item{display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border:none;background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font-size:12.5px;border-radius:6px;cursor:pointer;text-align:left;font-family:inherit}',
+      '.bw-ctx-item{display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border:none;background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font-size:12.5px;border-radius:var(--dsw-radius-sm,8px);cursor:pointer;text-align:left;font-family:inherit}',
       '.bw-ctx-item:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.14))}',
       '.bw-ctx-danger{color:var(--dsw-alias-state-error-primary,#f85149)}',
       '.bw-ctx-sep{height:1px;background:var(--dsw-alias-border-l1,rgba(127,127,127,.2));margin:4px 6px}',
@@ -3876,7 +4014,7 @@ window.__ModuleLoader__.load({
     '.bw-hub-card{display:flex;flex-direction:column;gap:10px;margin:0 0 10px;padding:12px 14px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.12));border-radius:16px;background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04));box-shadow:var(--dsw-elevation-prominent,0 6px 18px rgba(0,0,0,.28))}',
     '.bw-hub-strip{display:flex;align-items:center;justify-content:space-between;gap:8px}',
     '.bw-hub-strip-label{display:flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
-    '.bw-hub-close{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);cursor:pointer;font-size:12px;line-height:1}',
+    '.bw-hub-close{flex:none;width:22px;height:22px;border:none;border-radius:var(--dsw-radius-sm,8px);background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);cursor:pointer;font-size:12px;line-height:1}',
     '.bw-hub-close:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(255,255,255,.08))}',
     '.bw-hub-list{display:flex;flex-direction:column;gap:10px;padding:2px;max-height:min(46vh,460px);overflow-y:auto;overscroll-behavior:contain}',
     '.bw-hub-item{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:12px}',
@@ -3887,7 +4025,7 @@ window.__ModuleLoader__.load({
     '.bw-hub-tool{font-size:12px;color:var(--dsw-alias-brand-primary,#5b8def);overflow-wrap:anywhere}',
     '.bw-hub-reason{font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary,#dedede);white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}',
     // v0.25.0 approval directory summary: a deduped, hard-wrapped path list.
-    '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:10px;background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
+    '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
     '.bw-hub-dirs-label{font-size:12px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
     '.bw-hub-dirs-list{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:2px}',
     '.bw-hub-dirs-list>li{font-size:12px;line-height:18px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--dsw-alias-label-primary,#e6e6e6);overflow-wrap:anywhere;word-break:break-all}',
@@ -3907,7 +4045,7 @@ window.__ModuleLoader__.load({
     // tightens spacing to survive a narrow rail.
     '.bw-hub-inline{margin:6px 8px 8px;padding:10px 10px;border-radius:12px;box-shadow:none}',
     '.bw-hub-inline .bw-hub-list{max-height:min(38vh,340px);gap:8px}',
-    '.bw-hub-inline .bw-hub-item{padding:8px 9px;border-radius:10px}',
+    '.bw-hub-inline .bw-hub-item{padding:8px 9px;border-radius:var(--dsw-radius-sm,8px)}',
     '.bw-hub-inline .bw-hub-actions{gap:6px}',
     '.bw-hub-trigger{position:relative}',
     '.bw-hub-badge{position:absolute;top:-3px;right:-3px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;background:var(--dsw-alias-bg-attention,#e5484d);color:var(--dsw-alias-label-on-attention,#fff);font-size:9px;line-height:14px;text-align:center;font-weight:600;pointer-events:none}',
@@ -3918,7 +4056,7 @@ window.__ModuleLoader__.load({
       '.bw-plugin-body{border-top:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.18));margin:0 16px;padding:12px 0 16px}',
       '.bw-setting-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;font-size:13px;line-height:1.5;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
       '.bw-setting-label{flex:1;min-width:0;font-size:13px;line-height:1.5;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
-      '.bw-switch{box-sizing:border-box;position:relative;flex:0 0 auto;width:36px;height:20px;padding:2px;border:0;border-radius:10px;background:var(--dsw-alias-border-l3,rgba(127,127,127,.3));cursor:pointer;transition:background 120ms ease}',
+      '.bw-switch{box-sizing:border-box;position:relative;flex:0 0 auto;width:36px;height:20px;padding:2px;border:0;border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-border-l3,rgba(127,127,127,.3));cursor:pointer;transition:background 120ms ease}',
       '.bw-switch:hover{background:var(--dsw-alias-label-dimmed,#7a7a7a)}',
       '.bw-switch-on{background:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-switch:focus-visible{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:2px}',
@@ -3934,7 +4072,7 @@ window.__ModuleLoader__.load({
       '.bw-appearance-box{margin-top:8px;padding:10px 12px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.22));border-radius:8px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.06))}',
       '.bw-hint{font-size:11px;color:var(--dsw-alias-label-quaternary,#8a8a8a);line-height:1.5;white-space:normal;word-break:break-word}',
       '.bw-modal-actions{display:flex;justify-content:flex-end;gap:8px}',
-      '.bw-btn{height:28px;padding:0 14px;border-radius:6px;font-size:12.5px;cursor:pointer;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font-family:inherit}',
+      '.bw-btn{height:28px;padding:0 14px;border-radius:var(--dsw-radius-sm,8px);font-size:12.5px;cursor:pointer;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font-family:inherit}',
       '.bw-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
       '.bw-btn-primary{background:var(--dsw-alias-brand-primary,#5b8def);border-color:transparent;color:var(--dsw-alias-brand-text,#fff)}',
       '.bw-btn-primary:hover{background:var(--dsw-alias-button-primary-hover,var(--dsw-alias-brand-primary,#5b8def))}',
@@ -3947,20 +4085,20 @@ window.__ModuleLoader__.load({
       '.bw-browse-crumb:disabled{opacity:.4;cursor:default}',
       '.bw-browse-current{color:var(--dsw-alias-label-primary,#e6e6e6);font-size:12px;padding:2px 5px;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
       '.bw-browse-nav{font-size:13px;line-height:1}',
-      '.bw-browse-edit{flex:none;display:grid;place-items:center;width:24px;height:24px;padding:0;border:none;border-radius:5px;background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);cursor:pointer}',
+      '.bw-browse-edit{flex:none;display:grid;place-items:center;width:24px;height:24px;padding:0;border:none;border-radius:var(--dsw-radius-xs,4px);background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);cursor:pointer}',
       '.bw-browse-edit:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-browse-edit svg{width:14px;height:14px}',
       '.bw-browse-edit-row{display:flex;gap:6px;align-items:center}',
       '.bw-browse-list{display:flex;flex-direction:column;gap:1px;height:240px;overflow:auto;padding:4px;box-sizing:border-box;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.22));border-radius:8px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.06))}',
-      '.bw-browse-row{display:flex;align-items:center;gap:8px;width:100%;flex:none;text-align:left;border:none;background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font:inherit;font-size:12.5px;padding:5px 8px;border-radius:6px;cursor:pointer;user-select:none}',
+      '.bw-browse-row{display:flex;align-items:center;gap:8px;width:100%;flex:none;text-align:left;border:none;background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font:inherit;font-size:12.5px;padding:5px 8px;border-radius:var(--dsw-radius-sm,8px);cursor:pointer;user-select:none}',
       '.bw-browse-row:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
       '.bw-browse-row:focus-visible{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px}',
       '.bw-browse-row svg{width:15px;height:15px;flex:none;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
       '.bw-browse-row-on{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));box-shadow:inset 0 0 0 1px var(--dsw-alias-brand-primary,#5b8def)}',
-      '.bw-browse-open{flex:none;width:22px;height:22px;padding:0;border:none;border-radius:5px;background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);font:inherit;font-size:15px;line-height:1;cursor:pointer}',
+      '.bw-browse-open{flex:none;width:22px;height:22px;padding:0;border:none;border-radius:var(--dsw-radius-xs,4px);background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);font:inherit;font-size:15px;line-height:1;cursor:pointer}',
       '.bw-browse-open:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.16));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-browse-drives{display:flex;align-items:center;gap:4px;margin-left:auto}',
-      '.bw-browse-drive{min-width:30px;padding:3px 6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:5px;background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:11.5px;cursor:pointer}',
+      '.bw-browse-drive{min-width:30px;padding:3px 6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:var(--dsw-radius-xs,4px);background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:11.5px;cursor:pointer}',
       '.bw-browse-drive:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-browse-drive-on{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-browse-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
@@ -3968,7 +4106,7 @@ window.__ModuleLoader__.load({
       '.bw-browse-new-row{display:flex;gap:6px;align-items:center}',
       '.bw-browse-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}',
       '.bw-browse-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}',
-      '.bw-browse-tool{border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:12px;padding:4px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}',
+      '.bw-browse-tool{border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:12px;padding:4px 10px;border-radius:var(--dsw-radius-sm,8px);cursor:pointer;white-space:nowrap}',
       '.bw-browse-tool:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-browse-tool:disabled{opacity:.45;cursor:default}',
       '.bw-browse-tool-on{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6)}',
@@ -3977,7 +4115,7 @@ window.__ModuleLoader__.load({
       '.bw-glow-row{display:flex;align-items:center;gap:10px}',
       '.bw-slider{flex:1;accent-color:var(--dsw-alias-brand-primary,#5b8def);height:22px}',
       '.bw-glow-value{min-width:44px;text-align:right;font-size:12px;color:var(--dsw-alias-label-secondary,#b8b8b8);font-variant-numeric:tabular-nums}',
-      '.bw-preview{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px dashed var(--dsw-alias-border-l2,rgba(127,127,127,.3));border-radius:6px;min-height:28px}',
+      '.bw-preview{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px dashed var(--dsw-alias-border-l2,rgba(127,127,127,.3));border-radius:var(--dsw-radius-sm,8px);min-height:28px}',
       '.bw-preview-icon{flex:none;display:grid;place-items:center;width:20px;height:20px;color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-preview-icon svg{width:18px;height:18px}',
       '.bw-preview-label{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:18px;padding:3px;margin:-3px}',
@@ -3986,10 +4124,10 @@ window.__ModuleLoader__.load({
       '.bw-pulse-text{animation:bw-breathe-text 1.8s ease-in-out infinite}',
       '@keyframes bw-breathe-text{0%,100%{text-shadow:0 0 1px var(--bw-pulse-color);opacity:.65}50%{text-shadow:0 0 7px var(--bw-pulse-color);opacity:1}}',
       '.bw-sync-modes{display:flex;gap:6px;margin-top:8px}',
-      '.bw-sync-mode{flex:1;padding:5px 10px;border-radius:6px;border:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.3));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:12px}',
+      '.bw-sync-mode{flex:1;padding:5px 10px;border-radius:var(--dsw-radius-sm,8px);border:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.3));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:12px}',
       '.bw-sync-mode-on{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6);background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.12))}',
       '.bw-sync-actions{display:flex;gap:8px;margin-top:8px}',
-      '.bw-sync-btn{padding:5px 12px;border-radius:6px;border:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.3));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:12px}',
+      '.bw-sync-btn{padding:5px 12px;border-radius:var(--dsw-radius-sm,8px);border:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.3));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:12px}',
       '.bw-sync-btn:disabled{opacity:.45;cursor:default}',
       '.bw-sync-btn-primary{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6)}',
       /*
@@ -5658,6 +5796,33 @@ window.__ModuleLoader__.load({
             E(BTN, { variant: 'outline', onClick: () => setAppearance(DEFAULT_APPEARANCE) }, t('settings.appearance.reset')),
           ),
         ),
+        // v0.25.0 ONE-CLICK NATIVE RESET.
+        // The per-row appearance editor only touches `appearance`. This button
+        // resets EVERY visual knob this plugin owns back to the shipped look:
+        // all per-row styling entries are dropped, the outline/appearance block
+        // returns to its default, and the two presentation toggles that change
+        // how the tree looks are restored. Nothing about the user's data
+        // (workspaces, sessions, titles, order) is touched.
+        E('div', { className: 'bw-setting-row', style: { marginTop: 12 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.nativeReset')),
+          E(BTN, {
+            variant: 'outline',
+            onClick: () => {
+              // Clear every per-row customization first, then the defaults.
+              if (actions && typeof actions.setStyling === 'function') {
+                for (const key of Object.keys(localStyling || {})) actions.setStyling(key, null)
+              }
+              setPref('appearance', readAppearance(undefined))
+              setPref('compactChains', true)
+              setPref('statusPulse', true)
+              setPref('sessionTitleSlash', true)
+              setPref('workspaceTitleSlash', true)
+              setPref('collapseLimit', undefined)
+              setPref('showArchived', false)
+            },
+          }, t('settings.nativeReset.action')),
+        ),
+        E('div', { className: 'bw-hint' }, t('settings.nativeReset.hint')),
         E('div', { className: 'bw-setting-label', style: { marginTop: 16 } }, t('sync.title')),
         E('div', { className: 'bw-hint' }, t('sync.desc')),
         E('div', { className: 'bw-sync-modes' },
@@ -6161,6 +6326,8 @@ window.__ModuleLoader__.load({
       // can be revealed without leaving the tree.
       const showArchived = prefsMap.showArchived === true
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
+      // v0.26.0: subscribes to the host's archive audit so ghost rows disappear.
+      useArchiveIds()
       const subCounts = React.useMemo(() => subagentRunningCounts(list ? list.byId : {}), [list ? list.byId : null])
       // Current session per the alpha.2 retention contract (see mainSessionIdOf).
       const currentId = React.useMemo(() => mainSessionIdOf(list), [list ? list.byId : null])
@@ -6278,28 +6445,33 @@ window.__ModuleLoader__.load({
       }, [items, list ? list.byId : null, list ? list.ids : null, currentId, archivedSet])
       const orderedTabs = React.useMemo(() => {
         if (tabOrder === 'recent') return [...flatTabs].sort((a, b) => b.updatedAt - a.updatedAt)
-        // PAGE ORDER, grouped (v0.23.0). The flat list above walks the registry's
-        // `sessionIds`, whose order has nothing to do with the "/"-groups the
-        // sidebar renders — so Ctrl+Tab used to jump plugin2 -> (no group) ->
-        // plugin2 -> plugin -> tmp -> plugin2, i.e. the same plugin several times
-        // in a row. Users read the sidebar as groups, so tab order must be
-        // group-contiguous: stable-sort by the title's group prefix, keeping the
-        // registry order inside each group. "No group" sorts first, matching the
-        // sidebar where ungrouped rows lead.
-        const prefixOf = (tab) => {
-          const summary = list && list.byId ? list.byId[tab.id] : undefined
-          const title = summary ? String(summary.title || summary.displayTitle || '') : ''
-          const segs = splitTitleSegs(title)
-          if (segs.length <= 1) return { key: '', rank: 0 }
-          // Nesting-aware key: "plugin2/x" sorts under "plugin2", so the whole
-          // subtree of a plugin stays together (not just its top segment).
-          return { key: segs.slice(0, -1).join('/'), rank: 1 }
-        }
+        // PAGE ORDER — GROUPED BY WORKSPACE (v0.26.0).
+        //
+        // v0.23 grouped by the TITLE's "/" prefix, which was the wrong axis: a
+        // single workspace holds sessions whose titles start with different
+        // prefixes (dsh/…, plugin2/…, pluginLegacy/…), so Ctrl+Tab still jumped
+        // between workspaces mid-run. The user's report is explicit: the order
+        // must be "all sessions of one workspace together", with workspaces in
+        // the sidebar's own order.
+        //
+        // The new key is therefore the workspace, not the title:
+        //   1. sessions sit in their workspace's run;
+        //   2. runs follow `items` order, i.e. exactly what the tree shows;
+        //   3. inside a run, the registry order is preserved;
+        //   4. sessions with no workspace (the ungrouped pool) come LAST, because
+        //      the sidebar renders them after every workspace;
+        //   5. archived-but-shown sessions still participate (they are real rows).
+        const wsRank = new Map()
+        ;(items || []).forEach((w, i) => { if (w && w.workspaceId) wsRank.set(w.workspaceId, i) })
         return flatTabs
-          .map((tab, index) => ({ tab, index, ...prefixOf(tab) }))
+          .map((tab, index) => ({
+            tab,
+            index,
+            // workspaceId is already carried on each tab by flatTabs.
+            rank: tab.workspaceId && wsRank.has(tab.workspaceId) ? wsRank.get(tab.workspaceId) : Number.MAX_SAFE_INTEGER,
+          }))
           .sort((a, b) => {
             if (a.rank !== b.rank) return a.rank - b.rank
-            if (a.key !== b.key) return a.key.localeCompare(b.key, 'zh')
             return a.index - b.index
           })
           .map((entry) => entry.tab)
