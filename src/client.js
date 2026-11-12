@@ -74,6 +74,8 @@ window.__ModuleLoader__.load({
       'menu.pin': '置顶会话',
       'menu.unpin': '取消置顶',
       'menu.sessionId': '复制会话 ID',
+      'menu.deleteForever': '彻底删除会话（不可恢复）',
+      'sess.delete.body': '确定彻底删除「{name}」？会话档案会移入 .del 回收区（可手工恢复），并从侧栏移除。归档只隐藏不删除，此操作不同。',
       'menu.renameFolder': '重命名分组',
       'menu.renameSgroup': '重命名会话分组',
       'menu.moveToGroup': '移动到分组…',
@@ -83,6 +85,8 @@ window.__ModuleLoader__.load({
       'settings.collapse': '收起',
       'settings.compactChains': '单链分组折叠显示',
       'settings.compactChains.hint': '单层链合并为一行,出现多个子级时自动展开为树状;拖拽工作区期间单链临时展开回文件夹树,可放入任意一级;展开状态与自定义外观保存在当前浏览器。',
+      'settings.showArchived': '显示归档会话',
+      'settings.showArchived.hint': '归档只把会话从列表里隐藏，不删除任何内容。开启后归档行会置灰显示，并可右键「取消归档」或「彻底删除」。',
       'settings.statusPulse': '状态呼吸灯',
       'settings.statusPulse.hint': '被折叠藏起的状态灯(完成绿 / 运行蓝 / 待交互琥珀)沿层级向外冒泡:工作区与分组行以图标呼吸发光(颜色随状态,自定义过发光的标题一起呼吸),会话分组行显示呼吸状态灯;默认开启,可在此关闭。',
       'settings.appearance': '默认外观',
@@ -220,6 +224,8 @@ window.__ModuleLoader__.load({
       'menu.pin': 'Pin session',
       'menu.unpin': 'Unpin session',
       'menu.sessionId': 'Copy session ID',
+      'menu.deleteForever': 'Delete session permanently',
+      'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
       'menu.renameFolder': 'Rename folder',
       'menu.renameSgroup': 'Rename session group',
       'menu.moveToGroup': 'Move to group…',
@@ -229,6 +235,8 @@ window.__ModuleLoader__.load({
       'settings.collapse': 'Collapse',
       'settings.compactChains': 'Merge single-child chains',
       'settings.compactChains.hint': 'Single-child chains merge into one row; levels with multiple children expand as a tree. Chains re-expand into folder rows while you drag a workspace, so it can drop into any level. State and custom styling persist in this browser.',
+      'settings.showArchived': 'Show archived sessions',
+      'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
       'settings.statusPulse': 'Status breathing light',
       'settings.statusPulse.hint': 'Status dots hidden by collapse (done green / running blue / pending amber) bubble outward: workspace and folder rows breathe on their icon in the status color (custom-glow labels breathe along), session-group rows show a breathing dot; on by default, turn it off here.',
       'settings.appearance': 'Default appearance',
@@ -374,6 +382,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'تثبيت الجلسة',
         'menu.unpin': 'إلغاء تثبيت الجلسة',
         'menu.sessionId': 'نسخ معرّف الجلسة',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'إعادة تسمية المجلد',
         'menu.renameSgroup': 'إعادة تسمية مجموعة الجلسات',
         'menu.moveToGroup': 'نقل إلى مجموعة…',
@@ -383,6 +393,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'طيّ',
         'settings.compactChains': 'دمج السلاسل ذات الفرع الواحد',
         'settings.compactChains.hint': 'تُدمج المستويات ذات الفرع الواحد في سطر واحد، وتتوسع الشجرة تلقائياً عند وجود أكثر من فرع؛ أثناء سحب مساحة عمل تُفكّ السلاسل مؤقتاً إلى مجلدات ليصبح الإفلات ممكناً في أي مستوى؛ تُحفظ حالة التوسيع والمظهر المخصص في هذا المتصفح.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'مؤشر حالة نابض',
         'settings.statusPulse.hint': 'مؤشرات الحالة التي يخفيها الطيّ (مكتمل أخضر / قيد التشغيل أزرق / بانتظار تفاعل كهرماني) تتصاعد عبر المستويات: تصدر أسطر مساحات العمل والمجلدات وميضاً نابضاً للأيقونة بلون الحالة (وتنبض معها العناوين ذات التوهج المخصص)، وتعرض أسطر مجموعات الجلسات نقطة حالة نابضة؛ مفعّل افتراضياً ويمكن إيقافه هنا.',
         'settings.appearance': 'المظهر الافتراضي',
@@ -520,6 +532,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Sitzung anheften',
         'menu.unpin': 'Sitzung lösen',
         'menu.sessionId': 'Sitzungs-ID kopieren',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Ordner umbenennen',
         'menu.renameSgroup': 'Sitzungsgruppe umbenennen',
         'menu.moveToGroup': 'In Gruppe verschieben…',
@@ -529,6 +543,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Einklappen',
         'settings.compactChains': 'Einzelketten zusammenfassen',
         'settings.compactChains.hint': 'Ebenen mit genau einem Kind werden zu einer Zeile zusammengefasst; bei mehreren Kindern klappt der Baum auf; beim Ziehen eines Arbeitsbereichs klappen die Ketten vorübergehend zum Ordnerbaum auf, sodass jede Ebene als Ziel dient; Klappzustand und eigenes Aussehen bleiben in diesem Browser gespeichert.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Status-Pulslicht',
         'settings.statusPulse.hint': 'Vom Einklappen verdeckte Statuspunkte (fertig grün / läuft blau / wartet amber) steigen die Hierarchie hinauf: Arbeitsbereich- und Ordnerzeilen lassen ihr Symbol in der Statusfarbe pulsieren (eigens gefärbte Titel pulsieren mit), Sitzungsgruppen zeigen einen pulsierenden Statuspunkt; standardmäßig an, hier abschaltbar.',
         'settings.appearance': 'Standardaussehen',
@@ -666,6 +682,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Pin session',
         'menu.unpin': 'Unpin session',
         'menu.sessionId': 'Copy session ID',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Renommer le dossier',
         'menu.renameSgroup': 'Renommer le groupe de sessions',
         'menu.moveToGroup': 'Déplacer vers le groupe…',
@@ -675,6 +693,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Réduire',
         'settings.compactChains': 'Fusionner les chaînes à un seul enfant',
         'settings.compactChains.hint': 'Les niveaux à un seul enfant se fusionnent en une ligne; dès qu\'il y a plusieurs enfants, l\'arborescence se déploie; pendant le glisser-déposer d\'un espace de travail, les chaînes se déploient temporairement en dossiers pour permettre le dépôt à n\'importe quel niveau; l\'état déplié et l\'apparence personnalisée sont conservés dans ce navigateur.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Voyant d\'état pulsant',
         'settings.statusPulse.hint': 'Les voyants masqués par le repli (terminé vert / en cours bleu / en attente ambre) remontent la hiérarchie: les lignes d\'espace de travail et de dossier font pulser leur icône dans la couleur d\'état (les titres à lueur personnalisée pulsent aussi), les lignes de groupe de sessions affichent un voyant pulsant; activé par défaut, désactivable ici.',
         'settings.appearance': 'Apparence par défaut',
@@ -812,6 +832,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Fijar sesión',
         'menu.unpin': 'Desfijar sesión',
         'menu.sessionId': 'Copiar ID de sesión',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'फ़ोल्डर का नाम बदलें',
         'menu.renameSgroup': 'सत्र समूह का नाम बदलें',
         'menu.moveToGroup': 'समूह में ले जाएँ…',
@@ -821,6 +843,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'समेटें',
         'settings.compactChains': 'एकल-संतान श्रृंखलाएँ मिलाएँ',
         'settings.compactChains.hint': 'जिन स्तरों पर केवल एक संतान होती है वे एक पंक्ति में मिल जाते हैं; कई संतानें होने पर वृक्ष खुल जाता है; कार्यस्थान खींचते समय श्रृंखलाएँ अस्थायी रूप से फ़ोल्डरों में खुल जाती हैं ताकि किसी भी स्तर पर छोड़ा जा सके; खुलने की स्थिति और अनुकूलित रूप इसी ब्राउज़र में सहेजे जाते हैं।',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'स्थिति की साँस लेती बत्ती',
         'settings.statusPulse.hint': 'समेटने से छिपी स्थिति बत्तियाँ (पूर्ण हरी / चल रहा नीली / प्रतीक्षारत अंबर) पदानुक्रम में ऊपर उठती हैं: कार्यस्थान और फ़ोल्डर पंक्तियों का चिह्न स्थिति के रंग में साँस लेता है (अनुकूलित चमक वाले शीर्षक भी साथ साँस लेते हैं), सत्र समूह पंक्तियों पर साँस लेता स्थिति बिंदु दिखता है; डिफ़ॉल्ट रूप से चालू, यहाँ बंद किया जा सकता है।',
         'settings.appearance': 'डिफ़ॉल्ट रूप',
@@ -958,6 +982,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Épingler la session',
         'menu.unpin': 'Détacher la session',
         'menu.sessionId': 'Copier l’ID de session',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Ganti nama folder',
         'menu.renameSgroup': 'Ganti nama grup sesi',
         'menu.moveToGroup': 'Pindahkan ke grup…',
@@ -967,6 +993,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Ciutkan',
         'settings.compactChains': 'Gabungkan rantai beranak tunggal',
         'settings.compactChains.hint': 'Tingkat yang hanya punya satu anak digabung jadi satu baris; bila anaknya banyak, pohon terbentang; saat menyeret ruang kerja, rantai sementara terbentang kembali jadi folder sehingga bisa dijatuhkan di tingkat mana pun; status terbentang dan tampilan khusus disimpan di browser ini.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Lampu status bernapas',
         'settings.statusPulse.hint': 'Lampu status yang tersembunyi karena pelipatan (selesai hijau / berjalan biru / menunggu kuning) menggelembung ke tingkat atas: baris ruang kerja dan folder membuat ikonnya bernapas dalam warna status (judul dengan pendar khusus ikut bernapas), baris grup sesi menampilkan titik status yang bernapas; aktif secara bawaan, bisa dimatikan di sini.',
         'settings.appearance': 'Tampilan bawaan',
@@ -1104,6 +1132,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'सत्र पिन करें',
         'menu.unpin': 'सत्र अनपिन करें',
         'menu.sessionId': 'सत्र आईडी कॉपी करें',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Rinomina cartella',
         'menu.renameSgroup': 'Rinomina gruppo di sessioni',
         'menu.moveToGroup': 'Sposta nel gruppo…',
@@ -1113,6 +1143,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Comprimi',
         'settings.compactChains': 'Unisci le catene a figlio unico',
         'settings.compactChains.hint': 'I livelli con un solo figlio si fondono in una riga; con più figli l\'albero si espande; durante il trascinamento di un\'area di lavoro le catene si riespandono temporaneamente in cartelle, così puoi rilasciare su qualsiasi livello; stato di espansione e aspetto personalizzato restano in questo browser.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Spia di stato pulsante',
         'settings.statusPulse.hint': 'Le spie nascoste dalla compressione (completato verde / in esecuzione blu / in attesa ambra) risalgono la gerarchia: le righe di aree di lavoro e cartelle fanno pulsare l\'icona nel colore di stato (anche i titoli con bagliore personalizzato pulsano), le righe dei gruppi di sessioni mostrano una spia pulsante; attiva per impostazione predefinita, disattivabile qui.',
         'settings.appearance': 'Aspetto predefinito',
@@ -1250,6 +1282,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Sematkan sesi',
         'menu.unpin': 'Lepas sematan sesi',
         'menu.sessionId': 'Salin ID sesi',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'フォルダー名を変更',
         'menu.renameSgroup': 'セッショングループ名を変更',
         'menu.moveToGroup': 'グループに移動…',
@@ -1259,6 +1293,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': '折りたたむ',
         'settings.compactChains': '一本鎖の階層を 1 行にまとめる',
         'settings.compactChains.hint': '子が 1 つだけの階層は 1 行にまとまり,複数の子がある階層はツリーとして展開されます;ワークスペースのドラッグ中は一時的にフォルダーツリーへ戻り,どの階層にもドロップできます;展開状態とカスタム外観はこのブラウザーに保存されます。',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'ステータス表示灯',
         'settings.statusPulse.hint': '折りたたみで隠れたステータス表示(完了は緑 / 実行中は青 / 操作待ちは琥珀)が上位の階層へ伝わります:ワークスペースとフォルダーの行はアイコンがステータス色で明滅し(グローを設定したタイトルも連動),セッショングループの行には明滅するステータスドットが出ます;既定はオンで,ここでオフにできます。',
         'settings.appearance': '既定の外観',
@@ -1396,6 +1432,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Fissa sessione',
         'menu.unpin': 'Rimuovi fissaggio',
         'menu.sessionId': 'Copia ID sessione',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': '폴더 이름 바꾸기',
         'menu.renameSgroup': '세션 그룹 이름 바꾸기',
         'menu.moveToGroup': '그룹으로 이동…',
@@ -1405,6 +1443,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': '접기',
         'settings.compactChains': '단일 체인을 한 줄로 접기',
         'settings.compactChains.hint': '자식이 하나뿐인 단계는 한 줄로 합쳐지고, 자식이 여러 개면 트리로 펼쳐집니다; 워크스페이스를 끌어 놓는 동안에는 체인이 잠시 폴더 트리로 펼쳐져 어느 단계에나 놓을 수 있습니다; 펼침 상태와 사용자 지정 모양은 이 브라우저에 저장됩니다.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': '상태 표시등',
         'settings.statusPulse.hint': '접혀서 가려진 상태 표시(완료는 초록 / 실행은 파랑 / 대기는 호박색)가 상위 단계로 번집니다: 워크스페이스와 폴더 행은 아이콘이 상태 색으로 깜빡이고(글로우를 지정한 제목도 함께 깜빡임), 세션 그룹 행에는 깜빡이는 상태 점이 표시됩니다; 기본값은 켜짐이며 여기서 끌 수 있습니다.',
         'settings.appearance': '기본 모양',
@@ -1542,6 +1582,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'セッションを固定',
         'menu.unpin': '固定を解除',
         'menu.sessionId': 'セッション ID をコピー',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Mapnaam wijzigen',
         'menu.renameSgroup': 'Sessiegroep naam wijzigen',
         'menu.moveToGroup': 'Naar groep verplaatsen…',
@@ -1551,6 +1593,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Inklappen',
         'settings.compactChains': 'Enkelvoudige ketens samenvoegen',
         'settings.compactChains.hint': 'Niveaus met één kind worden tot één regel samengevoegd; bij meerdere kinderen klapt de boom open; tijdens het slepen van een werkruimte klappen de ketens tijdelijk terug naar mappen, zodat je op elk niveau kunt neerzetten; de uitgeklapte staat en het eigen uiterlijk blijven in deze browser bewaard.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Pulserend statuslampje',
         'settings.statusPulse.hint': 'Statuslampjes die door het inklappen verborgen zijn (voltooid groen / actief blauw / wachtend amber) borrelen door de hiërarchie omhoog: werkruimte- en mapregels laten hun pictogram in de statuskleur pulseren (titels met eigen gloed pulseren mee), sessiegroepregels tonen een pulserend statusstipje; standaard aan, hier uit te zetten.',
         'settings.appearance': 'Standaarduiterlijk',
@@ -1688,6 +1732,8 @@ window.__ModuleLoader__.load({
         'menu.pin': '세션 고정',
         'menu.unpin': '고정 해제',
         'menu.sessionId': '세션 ID 복사',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Zmień nazwę folderu',
         'menu.renameSgroup': 'Zmień nazwę grupy sesji',
         'menu.moveToGroup': 'Przenieś do grupy…',
@@ -1697,6 +1743,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Zwiń',
         'settings.compactChains': 'Scal łańcuchy z jednym dzieckiem',
         'settings.compactChains.hint': 'Poziomy z jednym dzieckiem scalają się w jeden wiersz; przy większej liczbie dzieci drzewo się rozwija; podczas przeciągania obszaru roboczego łańcuchy tymczasowo rozwijają się do folderów, więc upuszczenie działa na każdym poziomie; stan rozwinięcia i własny wygląd są zapisywane w tej przeglądarce.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Pulsująca lampka stanu',
         'settings.statusPulse.hint': 'Lampki ukryte przez zwinięcie (ukończono zielona / trwa niebieska / czeka bursztynowa) bąbelkują w górę hierarchii: wiersze obszarów roboczych i folderów pulsują ikoną w kolorze stanu (tytuły z własną poświatą pulsują razem), wiersze grup sesji pokazują pulsującą kropkę stanu; domyślnie włączone, tutaj można wyłączyć.',
         'settings.appearance': 'Domyślny wygląd',
@@ -1834,6 +1882,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Sessie vastmaken',
         'menu.unpin': 'Sessie losmaken',
         'menu.sessionId': 'Sessie-ID kopiëren',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Renomear pasta',
         'menu.renameSgroup': 'Renomear grupo de sessões',
         'menu.moveToGroup': 'Mover para o grupo…',
@@ -1843,6 +1893,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Recolher',
         'settings.compactChains': 'Mesclar cadeias de filho único',
         'settings.compactChains.hint': 'Níveis com um único filho viram uma linha; com vários filhos a árvore se expande; ao arrastar um espaço de trabalho, as cadeias voltam temporariamente a pastas, permitindo soltar em qualquer nível; o estado de expansão e o estilo personalizado ficam neste navegador.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Luz de status pulsante',
         'settings.statusPulse.hint': 'As luzes escondidas pelo recolhimento (concluído verde / em execução azul / aguardando âmbar) sobem pela hierarquia: linhas de espaço de trabalho e pasta pulsam o ícone na cor do status (títulos com brilho personalizado pulsam junto), linhas de grupo de sessões mostram um ponto pulsante; ativado por padrão, pode ser desligado aqui.',
         'settings.appearance': 'Aparência padrão',
@@ -1980,6 +2032,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Przypnij sesję',
         'menu.unpin': 'Odepnij sesję',
         'menu.sessionId': 'Kopiuj ID sesji',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Переименовать папку',
         'menu.renameSgroup': 'Переименовать группу сессий',
         'menu.moveToGroup': 'Переместить в группу…',
@@ -1989,6 +2043,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Свернуть',
         'settings.compactChains': 'Объединять цепочки с одним потомком',
         'settings.compactChains.hint': 'Уровни с единственным потомком сливаются в одну строку; при нескольких потомках дерево разворачивается; во время перетаскивания рабочей области цепочки временно разворачиваются в папки, чтобы можно было положить элемент на любой уровень; состояние сворачивания и оформление хранятся в этом браузере.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Пульсирующий индикатор состояния',
         'settings.statusPulse.hint': 'Индикаторы, скрытые сворачиванием (завершено — зелёный / выполняется — синий / ожидает — янтарный), всплывают вверх по иерархии: строки рабочих областей и папок пульсируют значком в цвете состояния (заголовки со своим свечением пульсируют вместе с ними), строки групп сессий показывают пульсирующую точку; включено по умолчанию, здесь можно отключить.',
         'settings.appearance': 'Оформление по умолчанию',
@@ -2126,6 +2182,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Fixar sessão',
         'menu.unpin': 'Desafixar sessão',
         'menu.sessionId': 'Copiar ID da sessão',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Byt namn på mapp',
         'menu.renameSgroup': 'Byt namn på sessionsgrupp',
         'menu.moveToGroup': 'Flytta till grupp…',
@@ -2135,6 +2193,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Fäll ihop',
         'settings.compactChains': 'Slå ihop enkelkedjor',
         'settings.compactChains.hint': 'Nivåer med ett enda barn slås ihop till en rad; med flera barn fälls trädet ut; medan du drar en arbetsyta fälls kedjorna tillfälligt ut till mappar så att du kan släppa på vilken nivå som helst; utfällt läge och eget utseende sparas i den här webbläsaren.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Pulserande statuslampa',
         'settings.statusPulse.hint': 'Statuslampor som döljs av ihopfällningen (klart grön / körs blå / väntar bärnsten) bubblar uppåt i hierarkin: rader för arbetsytor och mappar pulserar ikonen i statusfärgen (titlar med egen glöd pulserar med), sessionsgrupper visar en pulserande prick; på som standard, stängs av här.',
         'settings.appearance': 'Standardutseende',
@@ -2272,6 +2332,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Закрепить сеанс',
         'menu.unpin': 'Открепить сеанс',
         'menu.sessionId': 'Копировать ID сеанса',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'เปลี่ยนชื่อโฟลเดอร์',
         'menu.renameSgroup': 'เปลี่ยนชื่อกลุ่มเซสชัน',
         'menu.moveToGroup': 'ย้ายไปยังกลุ่ม…',
@@ -2281,6 +2343,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'ย่อ',
         'settings.compactChains': 'รวมสายที่มีลูกเดียว',
         'settings.compactChains.hint': 'ระดับที่มีลูกเพียงหนึ่งจะถูกรวมเป็นบรรทัดเดียว เมื่อมีลูกหลายตัวต้นไม้จะขยายออก ขณะลากพื้นที่ทำงาน สายจะขยายกลับเป็นโฟลเดอร์ชั่วคราวเพื่อให้วางได้ทุกระดับ สถานะการขยายและรูปลักษณ์ที่กำหนดเองจะถูกเก็บไว้ในเบราว์เซอร์นี้',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'ไฟสถานะหายใจ',
         'settings.statusPulse.hint': 'ไฟสถานะที่ถูกย่อซ่อนไว้ (เสร็จแล้วสีเขียว / กำลังทำงานสีน้ำเงิน / รอตอบสนองสีเหลืองอำพัน) จะลอยขึ้นตามลำดับชั้น: แถวพื้นที่ทำงานและโฟลเดอร์จะให้ไอคอนหายใจเป็นสีตามสถานะ (ชื่อที่มีการเรืองแสงกำหนดเองก็หายใจตาม) แถวกลุ่มเซสชันจะแสดงจุดสถานะที่หายใจ เปิดไว้เป็นค่าเริ่มต้น ปิดได้ที่นี่',
         'settings.appearance': 'รูปลักษณ์เริ่มต้น',
@@ -2418,6 +2482,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Fäst sessionen',
         'menu.unpin': 'Lossna sessionen',
         'menu.sessionId': 'Kopiera sessions-ID',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Klasörü yeniden adlandır',
         'menu.renameSgroup': 'Oturum grubunu yeniden adlandır',
         'menu.moveToGroup': 'Gruba taşı…',
@@ -2427,6 +2493,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Daralt',
         'settings.compactChains': 'Tek çocuklu zincirleri birleştir',
         'settings.compactChains.hint': 'Tek çocuklu düzeyler tek satırda birleşir; birden çok çocuk olduğunda ağaç açılır; bir çalışma alanını sürüklerken zincirler geçici olarak klasörlere açılır, böylece her düzeye bırakabilirsiniz; açılma durumu ve özel görünüm bu tarayıcıda saklanır.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Nefes alan durum ışığı',
         'settings.statusPulse.hint': 'Daraltmayla gizlenen durum ışıkları (tamamlandı yeşil / çalışıyor mavi / bekliyor amber) hiyerarşide yukarı taşar: çalışma alanı ve klasör satırlarının simgesi durum renginde nefes alır (özel ışıması olan başlıklar da birlikte nefes alır), oturum grubu satırları nefes alan bir durum noktası gösterir; varsayılan olarak açık, buradan kapatılabilir.',
         'settings.appearance': 'Varsayılan görünüm',
@@ -2564,6 +2632,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'ปักหมุดเซสชัน',
         'menu.unpin': 'เลิกปักหมุดเซสชัน',
         'menu.sessionId': 'คัดลอกรหัสเซสชัน',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': 'Đổi tên thư mục',
         'menu.renameSgroup': 'Đổi tên nhóm phiên',
         'menu.moveToGroup': 'Chuyển vào nhóm…',
@@ -2573,6 +2643,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': 'Thu gọn',
         'settings.compactChains': 'Gộp chuỗi một nhánh',
         'settings.compactChains.hint': 'Các tầng chỉ có một nhánh con được gộp thành một dòng; khi có nhiều nhánh con, cây tự mở ra; khi kéo không gian làm việc, chuỗi tạm mở lại thành thư mục để có thể thả vào bất kỳ tầng nào; trạng thái mở và giao diện tùy chỉnh được lưu trong trình duyệt này.',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': 'Đèn trạng thái nhấp nháy',
         'settings.statusPulse.hint': 'Những đèn trạng thái bị thu gọn che đi (xong màu xanh lá / đang chạy màu xanh dương / đang chờ màu hổ phách) sẽ nổi dần lên các tầng trên: hàng không gian làm việc và thư mục cho biểu tượng nhấp nháy theo màu trạng thái (tiêu đề có đặt phát sáng cũng nhấp nháy theo), hàng nhóm phiên hiện một chấm trạng thái nhấp nháy; mặc định bật, có thể tắt tại đây.',
         'settings.appearance': 'Giao diện mặc định',
@@ -2710,6 +2782,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Oturumu sabitle',
         'menu.unpin': 'Oturum sabitlemeyi kaldır',
         'menu.sessionId': 'Oturum kimliğini kopyala',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
@@ -2719,6 +2793,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': '收起',
         'settings.compactChains': '單鏈分組摺疊顯示',
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子級就會自動展開成樹狀;拖拽工作區期間單鏈會臨時展開返做文件夾樹,可以放入任何一級;展開狀態同自訂外觀會喺呢個瀏覽器保存。',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
@@ -2856,6 +2932,8 @@ window.__ModuleLoader__.load({
         'menu.pin': 'Ghim phiên',
         'menu.unpin': 'Bỏ ghim phiên',
         'menu.sessionId': 'Sao chép ID phiên',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
@@ -2865,6 +2943,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': '收起',
         'settings.compactChains': '單鏈分組摺疊顯示',
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子級就會自動展開成樹狀;拖拽工作區期間單鏈會臨時展開返做文件夾樹,可以放入任何一級;展開狀態同自訂外觀會喺呢個瀏覽器保存。',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
@@ -3002,6 +3082,8 @@ window.__ModuleLoader__.load({
         'menu.pin': '置顶会话',
         'menu.unpin': '取消置顶',
         'menu.sessionId': '复制会话 ID',
+        'menu.deleteForever': 'Delete session permanently',
+        'sess.delete.body': 'Permanently delete "{name}"? Its archive is moved into .del (recoverable by hand) and the row is removed. Archiving only hides a session; this is different.',
         'menu.renameFolder': '重新命名群組',
         'menu.renameSgroup': '重新命名工作階段群組',
         'menu.moveToGroup': '移動到分組…',
@@ -3011,6 +3093,8 @@ window.__ModuleLoader__.load({
         'settings.collapse': '收合',
         'settings.compactChains': '單鏈群組合併顯示',
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子層級時自動展開為樹狀;拖曳工作區期間單鏈會暫時展開回資料夾樹,可放入任一層級;展開狀態與自訂外觀會保存在本瀏覽器。',
+        'settings.showArchived': 'Show archived sessions',
+        'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被收合藏起的狀態燈(完成綠 / 執行藍 / 待互動琥珀)會沿著層級向外冒出:工作區與群組列以圖示呼吸發光(顏色隨狀態,自訂過發光的標題一起呼吸),工作階段群組列則顯示呼吸狀態燈;預設開啟,可在此關閉。',
         'settings.appearance': '預設外觀',
@@ -3246,9 +3330,22 @@ window.__ModuleLoader__.load({
      * live in their parent's catalog, archived sessions are visible nowhere,
      * and a blank row is the provisional New Session of the current selection.
      */
-    const sessionVisible = (summary, current, archivedSet) => !!summary
+    /**
+     * v0.27.0 — archived rows become VISIBLE on request.
+     *
+     * Archiving only adds the id to the registry-global `archivedSessionIds`;
+     * it never touches the session log. So an archived session is perfectly
+     * openable — it was just unconditionally filtered out before, which made
+     * "archive" feel like a one-way black hole with no way to look inside or
+     * undo it.
+     *
+     * `showArchived` (a preference) switches the behaviour, and an archived row
+     * that is the CURRENT session is always kept so opening one cannot make the
+     * sidebar look like it lost the selection.
+     */
+    const sessionVisible = (summary, current, archivedSet, showArchived) => !!summary
       && summary.origin !== 'subagent'
-      && !(archivedSet && archivedSet.has(summary.id))
+      && (showArchived === true || !(archivedSet && archivedSet.has(summary.id)) || summary.id === current)
       && (!summary.blank || summary.id === current)
 
     /**
@@ -3797,6 +3894,11 @@ window.__ModuleLoader__.load({
     '.bw-hub-dirs-note{font-size:11px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
     '.bw-hub-raw>summary{cursor:pointer;font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
     '.bw-hub-raw[open]>summary{margin-bottom:4px}',
+    // v0.27.0: an archived session that the user chose to reveal is dimmed and
+    // carries a dashed left rail, so it can never be mistaken for a live row.
+    '.bw-row-archived{opacity:.62}',
+    '.bw-row-archived .bw-row-label{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:var(--dsw-alias-label-quaternary,rgba(150,150,150,.6))}',
+    '.bw-row-archived::before{content:"";position:absolute;left:2px;top:6px;bottom:6px;width:2px;border-radius:1px;background:var(--dsw-alias-label-quaternary,rgba(150,150,150,.5))}',
     '.bw-hub-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}',
     '.bw-hub-empty{padding:18px 8px;font-size:13px;color:var(--dsw-alias-label-secondary,#9a9a9a);text-align:center}',
     '.bw-hub-trigger-on{background:var(--dsw-alias-interactive-bg-hover,rgba(255,255,255,.10))}',
@@ -4947,7 +5049,7 @@ window.__ModuleLoader__.load({
       return s === 'ongoing' ? null : s
     }
 
-    function SessionRow({ node, depth, current, onOpen, onContextMenu, now, dropHalf, dragEvents, custStyle, breathing, t }) {
+    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, now, dropHalf, dragEvents, custStyle, breathing, t }) {
       const state = sessionStateOf(node)
       // Official copy when available (the bound 'workspace' dictionary carries the
       // exact shipped strings: 等待审批 / 待审批 / 计划待审 / 待回答 / 进行中 / 已完成).
@@ -4972,7 +5074,7 @@ window.__ModuleLoader__.load({
           : undefined,
       }
       return E('div', {
-        className: cls('bw-row', 'bw-session-row', current && 'bw-row-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
+        className: cls('bw-row', 'bw-session-row', current && 'bw-row-current', archived && 'bw-row-archived', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 8 + depth * 12, ...(custStyle || {}) },
         onClick: () => onOpen(node.id),
         onContextMenu: onContextMenu,
@@ -5420,6 +5522,8 @@ window.__ModuleLoader__.load({
       const localStyling = useStore ? (useStore(s => s.styling) || {}) : {}
       const compactChains = prefs.compactChains !== false
       const statusPulse = prefs.statusPulse !== false
+      // v0.27.0: archived sessions are hidden by default; this reveals them.
+      const showArchived = prefs.showArchived === true
       // Default appearance: the base every row inherits unless it carries its
       // own per-row entry. The outline ships ON — text over a background image
       // is often unreadable without it.
@@ -5475,6 +5579,21 @@ window.__ModuleLoader__.load({
           }, E('span', { className: 'bw-switch-thumb' })),
         ),
         E('div', { className: 'bw-hint' }, t('settings.compactChains.hint')),
+        // v0.27.0 — reveal archived rows. Archiving never touches the log, so an
+        // archived session is still fully openable; without this switch it was
+        // simply invisible, which made the feature feel destructive.
+        E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.showArchived')),
+          E('button', {
+            type: 'button',
+            role: 'switch',
+            'aria-checked': showArchived,
+            'aria-label': t('settings.showArchived'),
+            className: cls('bw-switch', showArchived && 'bw-switch-on'),
+            onClick: () => { setPref('showArchived', !showArchived) },
+          }, E('span', { className: 'bw-switch-thumb' })),
+        ),
+        E('div', { className: 'bw-hint' }, t('settings.showArchived.hint')),
         E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
           E('div', { className: 'bw-setting-label' }, t('settings.statusPulse')),
           E('button', {
@@ -5965,7 +6084,7 @@ window.__ModuleLoader__.load({
         useSessions, useSessionPendingInteraction, useWorkspaces, useSessionStatus,
         useStore, actions,
         startSession, open, renameSession, forkSession, renameWorkspace, deleteWorkspace,
-        archiveSession, createWorkspace,
+        archiveSession, unarchiveSession, createWorkspace,
         insertWorkspaceBefore, insertSessionBefore,
         useDirectoryFlow,
         pickDirectory, listDirectory, createDirectory,
@@ -6016,6 +6135,9 @@ window.__ModuleLoader__.load({
       const shared = makeSharedWrites(actions, stylingMap)
       const compactChains = prefsMap.compactChains !== false
       const statusPulse = prefsMap.statusPulse !== false
+      // v0.27.0: archived rows are hidden by default (official behaviour) but
+      // can be revealed without leaving the tree.
+      const showArchived = prefsMap.showArchived === true
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
       const subCounts = React.useMemo(() => subagentRunningCounts(list ? list.byId : {}), [list ? list.byId : null])
       // Current session per the alpha.2 retention contract (see mainSessionIdOf).
@@ -6118,14 +6240,14 @@ window.__ModuleLoader__.load({
           if (!w || !w.workspaceId) continue
           for (const id of w.sessionIds || []) {
             const summary = list && list.byId ? list.byId[id] : undefined
-            if (!sessionVisible(summary, currentId, archivedSet)) continue
+            if (!sessionVisible(summary, currentId, archivedSet, showArchived)) continue
             tabs.push({ id, workspaceId: w.workspaceId, updatedAt: (summary && summary.updatedAt) || 0 })
           }
         }
         if (list && Array.isArray(list.ids)) {
           for (const id of list.ids) {
             const summary = list && list.byId ? list.byId[id] : undefined
-            if (!sessionVisible(summary, currentId, archivedSet)) continue
+            if (!sessionVisible(summary, currentId, archivedSet, showArchived)) continue
             const owned = (items || []).some((w) => w && (w.sessionIds || []).includes(id))
             if (!owned) tabs.push({ id, workspaceId: null, updatedAt: (summary && summary.updatedAt) || 0 })
           }
@@ -6247,6 +6369,10 @@ window.__ModuleLoader__.load({
         if (flowOpen && !flowAvailable) setFlowOpen(false)
       }, [flowOpen, flowAvailable])
       const [dialog, setDialog] = React.useState(null) // { kind, ... }
+      // v0.27.0 permanent-delete confirmation ({ session } | null). Kept apart
+      // from `dialog` because deleting is asynchronous and needs its own busy
+      // and error state inside the confirm box.
+      const [deleteSession, setDeleteSession] = React.useState(null)
       const [ctx, setCtx] = React.useState(null) // context menu { kind, payload, x, y }
       const [customize, setCustomize] = React.useState(null) // { kind, entryKey, name }
       const [errorText, setErrorText] = React.useState(null)
@@ -6305,6 +6431,32 @@ window.__ModuleLoader__.load({
       // it. Keyed by workspaceId because the blank row arrives asynchronously.
       const pendingGroupPrefixRef = React.useRef(null)
       if (pendingGroupPrefixRef.current === null) pendingGroupPrefixRef.current = new Map()
+
+      /**
+       * Call the host's permanent-delete route (v0.27.0).
+       * The browser cannot touch the filesystem, so this is a fetch to the
+       * route the host half registers. The route MOVES the archive into
+       * <DSH_HOME>/.del/sessions-deleted-* by default — reversible — and only
+       * unlinks when the caller explicitly asks for keepCopy:false.
+       */
+      const submitSessionDelete = (session) => {
+        setDeleteSession({ session, busy: true, error: null })
+        Promise.resolve()
+          .then(() => fetch('/api/better-workspace/delete', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ sessionId: session.id, keepCopy: true }),
+          }))
+          .then((res) => res.json().then((body) => ({ ok: res.ok, body })))
+          .then(({ ok, body }) => {
+            if (!ok || !body.ok) throw new Error((body && body.error) || 'delete failed')
+            setDeleteSession(null)
+            setErrorText(null)
+          })
+          .catch((error) => {
+            setDeleteSession((cur) => (cur ? { ...cur, busy: false, error: String(error && error.message || error) } : cur))
+          })
+      }
 
       const renameByUser = (sessionId, title) => {        if (humanTouchedRef.current === null) humanTouchedRef.current = new Set()
         humanTouchedRef.current.add(String(sessionId))
@@ -6429,7 +6581,7 @@ window.__ModuleLoader__.load({
       if (list && Array.isArray(list.ids)) {
         for (const id of list.ids) {
           const summary = list.byId[id]
-          if (accounted.has(id) || !sessionVisible(summary, currentId, archivedSet)) continue
+          if (accounted.has(id) || !sessionVisible(summary, currentId, archivedSet, showArchived)) continue
           ungrouped.push({
             id,
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
@@ -6473,7 +6625,7 @@ window.__ModuleLoader__.load({
         const rows = []
         for (const id of workspace.sessionIds || []) {
           const summary = list && list.byId ? list.byId[id] : undefined
-          if (!sessionVisible(summary, currentId, archivedSet)) continue
+          if (!sessionVisible(summary, currentId, archivedSet, showArchived)) continue
           rows.push({
             id,
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
@@ -7580,6 +7732,9 @@ window.__ModuleLoader__.load({
         node: session,
         depth,
         current: currentId === session.id,
+        // v0.27.0: archived rows stay visible when the user asks for them; the
+        // marker is what tells them apart from live rows.
+        archived: archivedSet.has(session.id),
         now,
         onOpen: (id) => open(id),
         onContextMenu: (e) => openCtx('session', session, e),
@@ -7771,6 +7926,7 @@ window.__ModuleLoader__.load({
         if (ctx === null) return []
         const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
         const isPinned = ctx.kind === 'session' && pinnedSet !== null && pinnedSet.has(ctx.payload.id)
+        const isArchived = ctx.kind === 'session' && archivedSet.has(ctx.payload.id)
         const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutline16', 16) }
         // The discoverability entry (v0.15): every row kind can be moved into
         // a name group. One shared item object, inserted after each branch's
@@ -7807,8 +7963,17 @@ window.__ModuleLoader__.load({
           // Official semantics (Rows.tsx): archive hides the row through the
           // registry-global archive set and never touches the session log —
           // deliberately NOT styled destructive.
-          { id: 'archive', label: ot ? ot('menu.archiveSession') : t('menu.archive'), icon: icon('IconArchiveOutline20', 16) },
+          // v0.27.0: an ARCHIVED row gets the inverse item instead, so archiving
+          // is finally reversible from the same place it was applied.
+          isArchived
+            ? { id: 'unarchive', label: ot ? ot('menu.unarchiveSession') : t('menu.unarchive'), icon: icon('IconArchiveOutline20', 16) }
+            : { id: 'archive', label: ot ? ot('menu.archiveSession') : t('menu.archive'), icon: icon('IconArchiveOutline20', 16) },
           { id: 'session-id', label: ot ? ot('menu.sessionId') : t('menu.sessionId'), icon: icon('IconCopyOutline16', 16) },
+          // v0.27.0 DELETE-FOREVER: leaves the menu's normal group entirely and
+          // sits last, destructive-styled, behind a confirmation dialog that
+          // spells out what is destroyed. Archiving is reversible; this is not.
+          { type: 'separator', id: 'bw-del-sep' },
+          { id: 'delete-forever', label: t('menu.deleteForever'), icon: icon('IconTrashOutline16', 16), danger: true },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -7849,6 +8014,14 @@ window.__ModuleLoader__.load({
         else if (kind === 'session' && id === 'rename') setDialog({ kind: 'sess-rename', session: payload })
         else if (kind === 'session' && id === 'fork') forkSession(payload.id)
         else if (kind === 'session' && id === 'archive') { Promise.resolve().then(() => archiveSession(payload.id)).catch(fail) }
+        else if (kind === 'session' && id === 'unarchive') { Promise.resolve().then(() => unarchiveSession(payload.id)).catch(fail) }
+        // v0.27.0: permanent deletion is NOT archiving. Archive only flips a
+        // registry flag; this removes the archive directory from disk. It goes
+        // through the host's own session service when the host exposes one, and
+        // otherwise through the plugin's delete verb, so the two never disagree.
+        else if (kind === 'session' && id === 'delete-forever') {
+          setDeleteSession({ session: payload })
+        }
         else if (kind === 'session' && id === 'pin') {
           // Official pin semantics: registry-global set, moves the row to the
           // pinned section WITHOUT switching the sort mode (ui-workspace
@@ -7906,6 +8079,31 @@ window.__ModuleLoader__.load({
           onClose: () => setDialog(null),
           t,
         })
+        // v0.27.0: permanent delete gets its own confirm surface (not the shared
+        // ConfirmDialog) because it must show the archive destination, an inline
+        // error, and a busy state while the host route works.
+        if (deleteSession !== null) {
+          const name = deleteSession.session.title || deleteSession.session.id
+          return E(ui.Modal, {
+            key: 'sess-delete',
+            open: true,
+            onClose: () => setDeleteSession(null),
+            closeLabel: t('close'),
+            title: t('menu.deleteForever'),
+            footer: E('div', { className: 'bw-modal-actions' },
+              E(BTN, { variant: 'outline', onClick: () => setDeleteSession(null) }, t('cancel')),
+              E(BTN, { variant: 'primary', onClick: () => { if (!deleteSession.busy) submitSessionDelete(deleteSession.session) } },
+                deleteSession.busy ? t('flow.creating') : t('confirm')),
+            ),
+          },
+            E('div', { className: 'bw-modal-body' },
+              E('div', { className: 'bw-field' },
+                E('div', { className: 'bw-hint' }, t('sess.delete.body', { name })),
+                deleteSession.error ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-attention,#e5726f)' } }, deleteSession.error) : null,
+              )),
+            StyleNode(),
+          )
+        }
         if (dialog.kind === 'sess-rename') return E(TextDialog, {
           key: 'sess-rename',
           title: t('menu.rename'),
@@ -8247,6 +8445,12 @@ window.__ModuleLoader__.load({
           ? (workspaceId, sessionId, beforeSessionId) => workspaces.insertSessionBefore(workspaceId, sessionId, beforeSessionId)
           : undefined,
         archiveSession: (sessionId) => uiWorkspace.archiveSession(sessionId),
+        // v0.27.0: the inverse of archive, feature-probed like every other host
+        // action so a host without it degrades to a missing menu item instead of
+        // a dead one.
+        unarchiveSession: typeof uiWorkspace.unarchiveSession === 'function'
+          ? (sessionId) => uiWorkspace.unarchiveSession(sessionId)
+          : undefined,
         createWorkspace: (input) => workspaces.create(input),
         pickDirectory: () => uiWorkspace.pickDirectory(),
         // Browse-side primitives: the in-app dialog needs them whenever the

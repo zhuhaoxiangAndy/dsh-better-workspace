@@ -869,7 +869,9 @@ test('client.js registers Ctrl+Tab / Ctrl+Shift+Tab tab cycling (v0.17)', () => 
   assert.match(text, /e\.ctrlKey/, 'Ctrl modifier required')
   assert.match(text, /e\.shiftKey \? -1 : 1/, 'Shift reverses direction')
   assert.match(text, /e\.preventDefault\(\)/, 'prevent the browser tab switch')
-  assert.match(text, /sessionVisible\(summary, currentId, archivedSet\)/, 'tabs must be visibility-filtered')
+  // v0.27.0 added the showArchived argument, so the call now passes a fourth
+  // parameter; assert the call shape loosely so either form is accepted.
+  assert.match(text, /sessionVisible\(summary, currentId, archivedSet[,)]/, 'tabs must be visibility-filtered')
 })
 
 test('client.js does not hard-inject settingsScope (desktop 0.2.x compat, v0.15.1)', () => {
@@ -980,4 +982,57 @@ test('sibling order writer keeps other levels intact', () => {
   assert.match(text, /const rest = \(Array\.isArray\(workspaceGroupOrder\) \? workspaceGroupOrder : \[\]\)\.filter\(\(k\) => !set\.has\(k\)\)/,
     'keys from other levels are preserved')
   assert.match(text, /without\.splice\(half === 'after' \? idx \+ 1 : idx, 0, movedKey\)/, 'the moved key lands before/after the anchor')
+})
+
+/* ------------------------------------------- archive & delete (v0.27.0) ---
+ * Two capabilities the plugin was missing:
+ *  - archived sessions were filtered out unconditionally, so "archive" looked
+ *    like a one-way black hole with no way to look inside or undo;
+ *  - there was no way to delete a session for good (the host exposes none).
+ */
+test('archived rows can be revealed and carry a visual marker', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const sessionVisible = \(summary, current, archivedSet, showArchived\)/,
+    'visibility accepts the showArchived flag')
+  assert.match(text, /showArchived === true \|\| !\(archivedSet && archivedSet\.has\(summary\.id\)\)/,
+    'the flag bypasses the archive filter')
+  assert.match(text, /const showArchived = prefsMap\.showArchived === true/, 'preference is read defensively')
+  assert.match(text, /archived: archivedSet\.has\(session\.id\)/, 'row is told it is archived')
+  assert.match(text, /archived && 'bw-row-archived'/, 'archived rows get their own class')
+  assert.match(text, /\.bw-row-archived\{opacity:\.62\}/, 'dimmed styling exists')
+})
+
+test('archived rows offer unarchive, others offer archive', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const isArchived = ctx\.kind === 'session' && archivedSet\.has\(ctx\.payload\.id\)/,
+    'menu knows whether the row is archived')
+  assert.match(text, /isArchived\s*\n\s*\? \{ id: 'unarchive'/, 'archived rows swap in unarchive')
+  assert.match(text, /id === 'unarchive'[\s\S]{0,120}unarchiveSession\(payload\.id\)/, 'unarchive calls the host')
+  assert.match(text, /unarchiveSession: typeof uiWorkspace\.unarchiveSession === 'function'/, 'host action is feature-probed')
+})
+
+test('permanent delete exists, is destructive, and confirms first', () => {
+  const text = read('src/client.js')
+  assert.match(text, /id: 'delete-forever'/, 'a delete-forever menu item exists')
+  assert.match(text, /label: t\('menu\.deleteForever'\),[^}]*danger: true/, 'it is styled destructive')
+  assert.match(text, /setDeleteSession\(\{ session: payload \}\)/, 'selecting it opens a confirmation')
+  assert.match(text, /submitSessionDelete/, 'the delete submit path exists')
+  assert.match(text, /fetch\('\/api\/better-workspace\/delete'/, 'it calls the host route')
+  // Archiving must stay reversible-looking; the destructive action is separate.
+  assert.ok(text.includes("id === 'archive') { Promise.resolve().then(() => archiveSession(payload.id))"),
+    'archive remains the non-destructive path')
+})
+
+test('host half can delete an archive and moves it aside by default', () => {
+  // v0.27.0 keeps this in its own module so the host entry stays tiny.
+  const host = read('src/delete-session.mjs') + read('src/index.js')
+  assert.match(host, /export function deleteSessionArchive/, 'host delete helper exists')
+  assert.match(host, /keepCopy === false/, 'an explicit opt-out exists for unlinking')
+  assert.match(host, /sessions-deleted-/, 'the default destination is a dated .del folder')
+  assert.match(host, /fs\.renameSync\(dir, dest\)/, 'default path MOVES rather than removes')
+  assert.match(host, /export function encodeSegment/, 'session id encoder is re-implemented')
+  assert.match(host, /export function projectKey/, 'project key encoder is re-implemented')
+  assert.match(host, /SESSION_ROUTE \+ '\/delete'/, 'route path is built from one constant')
+  assert.match(host, /req\.method !== 'POST'/, 'the route refuses non-POST')
+  assert.match(host, /invalid sessionId/, 'the session id is validated before touching the filesystem')
 })

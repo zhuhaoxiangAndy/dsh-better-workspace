@@ -8,6 +8,8 @@
  * (host-persisted folder registry, a settings-page backend) a home. It is
  * intentionally side-effect free.
  */
+import { registerDeleteRoute } from './delete-session.mjs'
+
 export const name = 'dsh-better-workspace'
 
 export function apply(ctx) {
@@ -16,6 +18,12 @@ export function apply(ctx) {
     : (msg) => console.log(msg)
   log('[dsh-better-workspace] host half loaded; UI runs in the browser (client half)')
   if (!ctx || typeof ctx.inject !== 'function') return
+  // v0.27.0: the one capability the browser half cannot provide — removing a
+  // session archive from disk. Feature-probed: a host without a web server
+  // simply never grows the route, and the menu item stays absent.
+  try { registerDeleteRoute(ctx, log) } catch (error) {
+    log('[dsh-better-workspace] delete route failed: ' + (error && error.message))
+  }
   // Register the settings namespace so the browser card appears in
   // Settings → Plugins. The tab dispatches the intersection of served
   // namespaces and settings.plugin.item cards, and `settings` is a
