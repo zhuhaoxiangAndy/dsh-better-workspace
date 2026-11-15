@@ -4,3 +4,6 @@ node_modules/
 .npmrc
 .env
 .DS_Store
+src/*.bak-*
+tests/*.bak-*
+*.bak-2*
