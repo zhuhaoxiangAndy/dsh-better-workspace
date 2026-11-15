@@ -51,6 +51,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '会话按"/"分组',
         'viewOptions.workspaceSlash': '工作区按"/"分组',
       'group.ungrouped': '未分组',
+      'group.pinned': '置顶',
+      'launcher.plugins': '插件',
       'sessions.expand': '展开 {n} 个会话',
       'sessions.collapse': '收起',
       'time.now': '刚刚',
@@ -87,6 +89,8 @@ window.__ModuleLoader__.load({
       'settings.compactChains.hint': '单层链合并为一行,出现多个子级时自动展开为树状;拖拽工作区期间单链临时展开回文件夹树,可放入任意一级;展开状态与自定义外观保存在当前浏览器。',
       'settings.showArchived': '显示归档会话',
       'settings.showArchived.hint': '归档只把会话从列表里隐藏，不删除任何内容。开启后归档行会置灰显示，并可右键「取消归档」或「彻底删除」。',
+      'settings.groupIcon': '会话组图标用文件夹',
+      'settings.groupIcon.hint': '关闭时用浏览器标签页组那种彩色竖线（更窄、能看出嵌套）；开启时用文件夹图标。',
       'settings.statusPulse': '状态呼吸灯',
       'settings.statusPulse.hint': '被折叠藏起的状态灯(完成绿 / 运行蓝 / 待交互琥珀)沿层级向外冒泡:工作区与分组行以图标呼吸发光(颜色随状态,自定义过发光的标题一起呼吸),会话分组行显示呼吸状态灯;默认开启,可在此关闭。',
       'settings.appearance': '默认外观',
@@ -95,6 +99,10 @@ window.__ModuleLoader__.load({
       'settings.nativeReset': '恢复原生样式',
       'settings.nativeReset.action': '一键恢复',
       'settings.nativeReset.hint': '把本插件所有视觉设置（每行自定义外观、描边、折叠、状态灯、斜杠分组、显示归档）恢复为 DSH 原生默认。不触碰任何工作区、会话或标题。',
+      'settings.diag.title': '图标诊断',
+      'settings.diag.icons': '运行中的宿主共导出 {n} 个图标',
+      'settings.diag.missing': '本插件请求但宿主未提供的图标：{list}',
+      'settings.diag.allOk': '本插件请求的图标全部可用',
       'custom.title': '自定义外观',
       'custom.color': '颜色',
       'custom.glow': '发光',
@@ -207,6 +215,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Group sessions by "/"',
         'viewOptions.workspaceSlash': 'Group workspaces by "/"',
       'group.ungrouped': 'Ungrouped',
+      'group.pinned': 'Pinned',
+      'launcher.plugins': 'Plugins',
       'sessions.expand': 'Show {n} more sessions',
       'sessions.collapse': 'Collapse',
       'time.now': 'now',
@@ -243,6 +253,8 @@ window.__ModuleLoader__.load({
       'settings.compactChains.hint': 'Single-child chains merge into one row; levels with multiple children expand as a tree. Chains re-expand into folder rows while you drag a workspace, so it can drop into any level. State and custom styling persist in this browser.',
       'settings.showArchived': 'Show archived sessions',
       'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+      'settings.groupIcon': 'Folder icon for session groups',
+      'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
       'settings.statusPulse': 'Status breathing light',
       'settings.statusPulse.hint': 'Status dots hidden by collapse (done green / running blue / pending amber) bubble outward: workspace and folder rows breathe on their icon in the status color (custom-glow labels breathe along), session-group rows show a breathing dot; on by default, turn it off here.',
       'settings.appearance': 'Default appearance',
@@ -251,6 +263,10 @@ window.__ModuleLoader__.load({
       'settings.nativeReset': 'Restore native look',
       'settings.nativeReset.action': 'Restore now',
       'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+      'settings.diag.title': '图标诊断',
+      'settings.diag.icons': '运行中的宿主共导出 {n} 个图标',
+      'settings.diag.missing': '本插件请求但宿主未提供的图标：{list}',
+      'settings.diag.allOk': '本插件请求的图标全部可用',
       'custom.title': 'Customize',
       'custom.color': 'Color',
       'custom.glow': 'Glow',
@@ -371,6 +387,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'تجميع الجلسات حسب "/"',
         'viewOptions.workspaceSlash': 'تجميع مساحات العمل حسب "/"',
         'group.ungrouped': 'بلا مجموعة',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'عرض {n} جلسات إضافية',
         'sessions.collapse': 'طيّ',
         'time.now': 'الآن',
@@ -407,6 +425,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'تُدمج المستويات ذات الفرع الواحد في سطر واحد، وتتوسع الشجرة تلقائياً عند وجود أكثر من فرع؛ أثناء سحب مساحة عمل تُفكّ السلاسل مؤقتاً إلى مجلدات ليصبح الإفلات ممكناً في أي مستوى؛ تُحفظ حالة التوسيع والمظهر المخصص في هذا المتصفح.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'مؤشر حالة نابض',
         'settings.statusPulse.hint': 'مؤشرات الحالة التي يخفيها الطيّ (مكتمل أخضر / قيد التشغيل أزرق / بانتظار تفاعل كهرماني) تتصاعد عبر المستويات: تصدر أسطر مساحات العمل والمجلدات وميضاً نابضاً للأيقونة بلون الحالة (وتنبض معها العناوين ذات التوهج المخصص)، وتعرض أسطر مجموعات الجلسات نقطة حالة نابضة؛ مفعّل افتراضياً ويمكن إيقافه هنا.',
         'settings.appearance': 'المظهر الافتراضي',
@@ -415,6 +435,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'تخصيص المظهر',
         'custom.color': 'اللون',
         'custom.glow': 'التوهج',
@@ -527,6 +551,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Sitzungen nach "/" gruppieren',
         'viewOptions.workspaceSlash': 'Arbeitsbereiche nach "/" gruppieren',
         'group.ungrouped': 'Ohne Gruppe',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} Sitzungen einblenden',
         'sessions.collapse': 'Einklappen',
         'time.now': 'gerade eben',
@@ -563,6 +589,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Ebenen mit genau einem Kind werden zu einer Zeile zusammengefasst; bei mehreren Kindern klappt der Baum auf; beim Ziehen eines Arbeitsbereichs klappen die Ketten vorübergehend zum Ordnerbaum auf, sodass jede Ebene als Ziel dient; Klappzustand und eigenes Aussehen bleiben in diesem Browser gespeichert.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Status-Pulslicht',
         'settings.statusPulse.hint': 'Vom Einklappen verdeckte Statuspunkte (fertig grün / läuft blau / wartet amber) steigen die Hierarchie hinauf: Arbeitsbereich- und Ordnerzeilen lassen ihr Symbol in der Statusfarbe pulsieren (eigens gefärbte Titel pulsieren mit), Sitzungsgruppen zeigen einen pulsierenden Statuspunkt; standardmäßig an, hier abschaltbar.',
         'settings.appearance': 'Standardaussehen',
@@ -571,6 +599,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Aussehen anpassen',
         'custom.color': 'Farbe',
         'custom.glow': 'Leuchten',
@@ -683,6 +715,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Grouper les sessions par « / »',
         'viewOptions.workspaceSlash': 'Grouper les espaces par « / »',
         'group.ungrouped': 'Sans groupe',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Afficher {n} sessions',
         'sessions.collapse': 'Réduire',
         'time.now': 'à l\'instant',
@@ -719,6 +753,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Les niveaux à un seul enfant se fusionnent en une ligne; dès qu\'il y a plusieurs enfants, l\'arborescence se déploie; pendant le glisser-déposer d\'un espace de travail, les chaînes se déploient temporairement en dossiers pour permettre le dépôt à n\'importe quel niveau; l\'état déplié et l\'apparence personnalisée sont conservés dans ce navigateur.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Voyant d\'état pulsant',
         'settings.statusPulse.hint': 'Les voyants masqués par le repli (terminé vert / en cours bleu / en attente ambre) remontent la hiérarchie: les lignes d\'espace de travail et de dossier font pulser leur icône dans la couleur d\'état (les titres à lueur personnalisée pulsent aussi), les lignes de groupe de sessions affichent un voyant pulsant; activé par défaut, désactivable ici.',
         'settings.appearance': 'Apparence par défaut',
@@ -727,6 +763,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Personnaliser l\'apparence',
         'custom.color': 'Couleur',
         'custom.glow': 'Lueur',
@@ -839,6 +879,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'सत्रों को "/" से समूहित करें',
         'viewOptions.workspaceSlash': 'कार्यक्षेत्रों को "/" से समूहित करें',
         'group.ungrouped': 'बिना समूह',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} सत्र दिखाएँ',
         'sessions.collapse': 'समेटें',
         'time.now': 'अभी-अभी',
@@ -875,6 +917,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'जिन स्तरों पर केवल एक संतान होती है वे एक पंक्ति में मिल जाते हैं; कई संतानें होने पर वृक्ष खुल जाता है; कार्यस्थान खींचते समय श्रृंखलाएँ अस्थायी रूप से फ़ोल्डरों में खुल जाती हैं ताकि किसी भी स्तर पर छोड़ा जा सके; खुलने की स्थिति और अनुकूलित रूप इसी ब्राउज़र में सहेजे जाते हैं।',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'स्थिति की साँस लेती बत्ती',
         'settings.statusPulse.hint': 'समेटने से छिपी स्थिति बत्तियाँ (पूर्ण हरी / चल रहा नीली / प्रतीक्षारत अंबर) पदानुक्रम में ऊपर उठती हैं: कार्यस्थान और फ़ोल्डर पंक्तियों का चिह्न स्थिति के रंग में साँस लेता है (अनुकूलित चमक वाले शीर्षक भी साथ साँस लेते हैं), सत्र समूह पंक्तियों पर साँस लेता स्थिति बिंदु दिखता है; डिफ़ॉल्ट रूप से चालू, यहाँ बंद किया जा सकता है।',
         'settings.appearance': 'डिफ़ॉल्ट रूप',
@@ -883,6 +927,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'रूप अनुकूलित करें',
         'custom.color': 'रंग',
         'custom.glow': 'चमक',
@@ -995,6 +1043,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Kelompokkan sesi per "/"',
         'viewOptions.workspaceSlash': 'Kelompokkan ruang kerja per "/"',
         'group.ungrouped': 'Tanpa grup',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Tampilkan {n} sesi',
         'sessions.collapse': 'Ciutkan',
         'time.now': 'baru saja',
@@ -1031,6 +1081,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Tingkat yang hanya punya satu anak digabung jadi satu baris; bila anaknya banyak, pohon terbentang; saat menyeret ruang kerja, rantai sementara terbentang kembali jadi folder sehingga bisa dijatuhkan di tingkat mana pun; status terbentang dan tampilan khusus disimpan di browser ini.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Lampu status bernapas',
         'settings.statusPulse.hint': 'Lampu status yang tersembunyi karena pelipatan (selesai hijau / berjalan biru / menunggu kuning) menggelembung ke tingkat atas: baris ruang kerja dan folder membuat ikonnya bernapas dalam warna status (judul dengan pendar khusus ikut bernapas), baris grup sesi menampilkan titik status yang bernapas; aktif secara bawaan, bisa dimatikan di sini.',
         'settings.appearance': 'Tampilan bawaan',
@@ -1039,6 +1091,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Sesuaikan tampilan',
         'custom.color': 'Warna',
         'custom.glow': 'Pendar',
@@ -1151,6 +1207,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Raggruppa sessioni per "/"',
         'viewOptions.workspaceSlash': 'Raggruppa aree per "/"',
         'group.ungrouped': 'Senza gruppo',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Mostra {n} sessioni',
         'sessions.collapse': 'Comprimi',
         'time.now': 'adesso',
@@ -1187,6 +1245,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'I livelli con un solo figlio si fondono in una riga; con più figli l\'albero si espande; durante il trascinamento di un\'area di lavoro le catene si riespandono temporaneamente in cartelle, così puoi rilasciare su qualsiasi livello; stato di espansione e aspetto personalizzato restano in questo browser.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Spia di stato pulsante',
         'settings.statusPulse.hint': 'Le spie nascoste dalla compressione (completato verde / in esecuzione blu / in attesa ambra) risalgono la gerarchia: le righe di aree di lavoro e cartelle fanno pulsare l\'icona nel colore di stato (anche i titoli con bagliore personalizzato pulsano), le righe dei gruppi di sessioni mostrano una spia pulsante; attiva per impostazione predefinita, disattivabile qui.',
         'settings.appearance': 'Aspetto predefinito',
@@ -1195,6 +1255,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Personalizza aspetto',
         'custom.color': 'Colore',
         'custom.glow': 'Bagliore',
@@ -1307,6 +1371,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'セッションを「/」でグループ化',
         'viewOptions.workspaceSlash': 'ワークスペースを「/」でグループ化',
         'group.ungrouped': '未分類',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} 件のセッションを展開',
         'sessions.collapse': '折りたたむ',
         'time.now': 'たった今',
@@ -1343,6 +1409,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': '子が 1 つだけの階層は 1 行にまとまり,複数の子がある階層はツリーとして展開されます;ワークスペースのドラッグ中は一時的にフォルダーツリーへ戻り,どの階層にもドロップできます;展開状態とカスタム外観はこのブラウザーに保存されます。',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ステータス表示灯',
         'settings.statusPulse.hint': '折りたたみで隠れたステータス表示(完了は緑 / 実行中は青 / 操作待ちは琥珀)が上位の階層へ伝わります:ワークスペースとフォルダーの行はアイコンがステータス色で明滅し(グローを設定したタイトルも連動),セッショングループの行には明滅するステータスドットが出ます;既定はオンで,ここでオフにできます。',
         'settings.appearance': '既定の外観',
@@ -1351,6 +1419,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': '外観をカスタマイズ',
         'custom.color': '色',
         'custom.glow': 'グロー',
@@ -1463,6 +1535,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '세션을 "/"로 그룹화',
         'viewOptions.workspaceSlash': '작업 공간을 "/"로 그룹화',
         'group.ungrouped': '미분류',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '세션 {n}개 펼치기',
         'sessions.collapse': '접기',
         'time.now': '방금',
@@ -1499,6 +1573,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': '자식이 하나뿐인 단계는 한 줄로 합쳐지고, 자식이 여러 개면 트리로 펼쳐집니다; 워크스페이스를 끌어 놓는 동안에는 체인이 잠시 폴더 트리로 펼쳐져 어느 단계에나 놓을 수 있습니다; 펼침 상태와 사용자 지정 모양은 이 브라우저에 저장됩니다.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '상태 표시등',
         'settings.statusPulse.hint': '접혀서 가려진 상태 표시(완료는 초록 / 실행은 파랑 / 대기는 호박색)가 상위 단계로 번집니다: 워크스페이스와 폴더 행은 아이콘이 상태 색으로 깜빡이고(글로우를 지정한 제목도 함께 깜빡임), 세션 그룹 행에는 깜빡이는 상태 점이 표시됩니다; 기본값은 켜짐이며 여기서 끌 수 있습니다.',
         'settings.appearance': '기본 모양',
@@ -1507,6 +1583,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': '모양 사용자 지정',
         'custom.color': '색',
         'custom.glow': '글로우',
@@ -1619,6 +1699,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Sessies groeperen op "/"',
         'viewOptions.workspaceSlash': 'Werkruimtes groeperen op "/"',
         'group.ungrouped': 'Zonder groep',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} sessies uitklappen',
         'sessions.collapse': 'Inklappen',
         'time.now': 'zojuist',
@@ -1655,6 +1737,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Niveaus met één kind worden tot één regel samengevoegd; bij meerdere kinderen klapt de boom open; tijdens het slepen van een werkruimte klappen de ketens tijdelijk terug naar mappen, zodat je op elk niveau kunt neerzetten; de uitgeklapte staat en het eigen uiterlijk blijven in deze browser bewaard.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserend statuslampje',
         'settings.statusPulse.hint': 'Statuslampjes die door het inklappen verborgen zijn (voltooid groen / actief blauw / wachtend amber) borrelen door de hiërarchie omhoog: werkruimte- en mapregels laten hun pictogram in de statuskleur pulseren (titels met eigen gloed pulseren mee), sessiegroepregels tonen een pulserend statusstipje; standaard aan, hier uit te zetten.',
         'settings.appearance': 'Standaarduiterlijk',
@@ -1663,6 +1747,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Uiterlijk aanpassen',
         'custom.color': 'Kleur',
         'custom.glow': 'Gloed',
@@ -1775,6 +1863,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Grupuj sesje po "/"',
         'viewOptions.workspaceSlash': 'Grupuj obszary po "/"',
         'group.ungrouped': 'Bez grupy',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Pokaż {n} sesji',
         'sessions.collapse': 'Zwiń',
         'time.now': 'przed chwilą',
@@ -1811,6 +1901,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Poziomy z jednym dzieckiem scalają się w jeden wiersz; przy większej liczbie dzieci drzewo się rozwija; podczas przeciągania obszaru roboczego łańcuchy tymczasowo rozwijają się do folderów, więc upuszczenie działa na każdym poziomie; stan rozwinięcia i własny wygląd są zapisywane w tej przeglądarce.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulsująca lampka stanu',
         'settings.statusPulse.hint': 'Lampki ukryte przez zwinięcie (ukończono zielona / trwa niebieska / czeka bursztynowa) bąbelkują w górę hierarchii: wiersze obszarów roboczych i folderów pulsują ikoną w kolorze stanu (tytuły z własną poświatą pulsują razem), wiersze grup sesji pokazują pulsującą kropkę stanu; domyślnie włączone, tutaj można wyłączyć.',
         'settings.appearance': 'Domyślny wygląd',
@@ -1819,6 +1911,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Dostosuj wygląd',
         'custom.color': 'Kolor',
         'custom.glow': 'Poświata',
@@ -1931,6 +2027,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Agrupar sessões por "/"',
         'viewOptions.workspaceSlash': 'Agrupar áreas por "/"',
         'group.ungrouped': 'Sem grupo',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Mostrar {n} sessões',
         'sessions.collapse': 'Recolher',
         'time.now': 'agora mesmo',
@@ -1967,6 +2065,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Níveis com um único filho viram uma linha; com vários filhos a árvore se expande; ao arrastar um espaço de trabalho, as cadeias voltam temporariamente a pastas, permitindo soltar em qualquer nível; o estado de expansão e o estilo personalizado ficam neste navegador.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Luz de status pulsante',
         'settings.statusPulse.hint': 'As luzes escondidas pelo recolhimento (concluído verde / em execução azul / aguardando âmbar) sobem pela hierarquia: linhas de espaço de trabalho e pasta pulsam o ícone na cor do status (títulos com brilho personalizado pulsam junto), linhas de grupo de sessões mostram um ponto pulsante; ativado por padrão, pode ser desligado aqui.',
         'settings.appearance': 'Aparência padrão',
@@ -1975,6 +2075,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Personalizar aparência',
         'custom.color': 'Cor',
         'custom.glow': 'Brilho',
@@ -2087,6 +2191,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Группировать сессии по «/»',
         'viewOptions.workspaceSlash': 'Группировать области по «/»',
         'group.ungrouped': 'Без группы',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Показать ещё {n} сессий',
         'sessions.collapse': 'Свернуть',
         'time.now': 'только что',
@@ -2123,6 +2229,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Уровни с единственным потомком сливаются в одну строку; при нескольких потомках дерево разворачивается; во время перетаскивания рабочей области цепочки временно разворачиваются в папки, чтобы можно было положить элемент на любой уровень; состояние сворачивания и оформление хранятся в этом браузере.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Пульсирующий индикатор состояния',
         'settings.statusPulse.hint': 'Индикаторы, скрытые сворачиванием (завершено — зелёный / выполняется — синий / ожидает — янтарный), всплывают вверх по иерархии: строки рабочих областей и папок пульсируют значком в цвете состояния (заголовки со своим свечением пульсируют вместе с ними), строки групп сессий показывают пульсирующую точку; включено по умолчанию, здесь можно отключить.',
         'settings.appearance': 'Оформление по умолчанию',
@@ -2131,6 +2239,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Настроить оформление',
         'custom.color': 'Цвет',
         'custom.glow': 'Свечение',
@@ -2243,6 +2355,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Gruppera sessioner efter "/"',
         'viewOptions.workspaceSlash': 'Gruppera arbetsytor efter "/"',
         'group.ungrouped': 'Utan grupp',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Visa {n} sessioner',
         'sessions.collapse': 'Fäll ihop',
         'time.now': 'nyss',
@@ -2279,6 +2393,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Nivåer med ett enda barn slås ihop till en rad; med flera barn fälls trädet ut; medan du drar en arbetsyta fälls kedjorna tillfälligt ut till mappar så att du kan släppa på vilken nivå som helst; utfällt läge och eget utseende sparas i den här webbläsaren.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserande statuslampa',
         'settings.statusPulse.hint': 'Statuslampor som döljs av ihopfällningen (klart grön / körs blå / väntar bärnsten) bubblar uppåt i hierarkin: rader för arbetsytor och mappar pulserar ikonen i statusfärgen (titlar med egen glöd pulserar med), sessionsgrupper visar en pulserande prick; på som standard, stängs av här.',
         'settings.appearance': 'Standardutseende',
@@ -2287,6 +2403,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Anpassa utseende',
         'custom.color': 'Färg',
         'custom.glow': 'Glöd',
@@ -2399,6 +2519,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'จัดกลุ่มเซสชันตาม "/"',
         'viewOptions.workspaceSlash': 'จัดกลุ่มพื้นที่ทำงานตาม "/"',
         'group.ungrouped': 'ไม่มีกลุ่ม',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'แสดงอีก {n} เซสชัน',
         'sessions.collapse': 'ย่อ',
         'time.now': 'เมื่อสักครู่',
@@ -2435,6 +2557,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'ระดับที่มีลูกเพียงหนึ่งจะถูกรวมเป็นบรรทัดเดียว เมื่อมีลูกหลายตัวต้นไม้จะขยายออก ขณะลากพื้นที่ทำงาน สายจะขยายกลับเป็นโฟลเดอร์ชั่วคราวเพื่อให้วางได้ทุกระดับ สถานะการขยายและรูปลักษณ์ที่กำหนดเองจะถูกเก็บไว้ในเบราว์เซอร์นี้',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ไฟสถานะหายใจ',
         'settings.statusPulse.hint': 'ไฟสถานะที่ถูกย่อซ่อนไว้ (เสร็จแล้วสีเขียว / กำลังทำงานสีน้ำเงิน / รอตอบสนองสีเหลืองอำพัน) จะลอยขึ้นตามลำดับชั้น: แถวพื้นที่ทำงานและโฟลเดอร์จะให้ไอคอนหายใจเป็นสีตามสถานะ (ชื่อที่มีการเรืองแสงกำหนดเองก็หายใจตาม) แถวกลุ่มเซสชันจะแสดงจุดสถานะที่หายใจ เปิดไว้เป็นค่าเริ่มต้น ปิดได้ที่นี่',
         'settings.appearance': 'รูปลักษณ์เริ่มต้น',
@@ -2443,6 +2567,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'ปรับแต่งรูปลักษณ์',
         'custom.color': 'สี',
         'custom.glow': 'การเรืองแสง',
@@ -2555,6 +2683,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Oturumları "/" ile gruplandır',
         'viewOptions.workspaceSlash': 'Çalışma alanlarını "/" ile gruplandır',
         'group.ungrouped': 'Grubusuz',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} oturumu göster',
         'sessions.collapse': 'Daralt',
         'time.now': 'az önce',
@@ -2591,6 +2721,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Tek çocuklu düzeyler tek satırda birleşir; birden çok çocuk olduğunda ağaç açılır; bir çalışma alanını sürüklerken zincirler geçici olarak klasörlere açılır, böylece her düzeye bırakabilirsiniz; açılma durumu ve özel görünüm bu tarayıcıda saklanır.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Nefes alan durum ışığı',
         'settings.statusPulse.hint': 'Daraltmayla gizlenen durum ışıkları (tamamlandı yeşil / çalışıyor mavi / bekliyor amber) hiyerarşide yukarı taşar: çalışma alanı ve klasör satırlarının simgesi durum renginde nefes alır (özel ışıması olan başlıklar da birlikte nefes alır), oturum grubu satırları nefes alan bir durum noktası gösterir; varsayılan olarak açık, buradan kapatılabilir.',
         'settings.appearance': 'Varsayılan görünüm',
@@ -2599,6 +2731,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Görünümü özelleştir',
         'custom.color': 'Renk',
         'custom.glow': 'Işıma',
@@ -2711,6 +2847,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Nhóm phiên theo "/"',
         'viewOptions.workspaceSlash': 'Nhóm khu vực theo "/"',
         'group.ungrouped': 'Chưa phân nhóm',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': 'Hiện thêm {n} phiên',
         'sessions.collapse': 'Thu gọn',
         'time.now': 'vừa xong',
@@ -2747,6 +2885,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': 'Các tầng chỉ có một nhánh con được gộp thành một dòng; khi có nhiều nhánh con, cây tự mở ra; khi kéo không gian làm việc, chuỗi tạm mở lại thành thư mục để có thể thả vào bất kỳ tầng nào; trạng thái mở và giao diện tùy chỉnh được lưu trong trình duyệt này.',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Đèn trạng thái nhấp nháy',
         'settings.statusPulse.hint': 'Những đèn trạng thái bị thu gọn che đi (xong màu xanh lá / đang chạy màu xanh dương / đang chờ màu hổ phách) sẽ nổi dần lên các tầng trên: hàng không gian làm việc và thư mục cho biểu tượng nhấp nháy theo màu trạng thái (tiêu đề có đặt phát sáng cũng nhấp nháy theo), hàng nhóm phiên hiện một chấm trạng thái nhấp nháy; mặc định bật, có thể tắt tại đây.',
         'settings.appearance': 'Giao diện mặc định',
@@ -2755,6 +2895,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': 'Tùy chỉnh giao diện',
         'custom.color': 'Màu',
         'custom.glow': 'Phát sáng',
@@ -2867,6 +3011,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '對話按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -2903,6 +3049,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子級就會自動展開成樹狀;拖拽工作區期間單鏈會臨時展開返做文件夾樹,可以放入任何一級;展開狀態同自訂外觀會喺呢個瀏覽器保存。',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
@@ -2911,6 +3059,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -3023,6 +3175,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '對話按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -3059,6 +3213,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子級就會自動展開成樹狀;拖拽工作區期間單鏈會臨時展開返做文件夾樹,可以放入任何一級;展開狀態同自訂外觀會喺呢個瀏覽器保存。',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
@@ -3067,6 +3223,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -3179,6 +3339,8 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '工作階段按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
+        'group.pinned': 'Pinned',
+        'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個工作階段',
         'sessions.collapse': '收合',
         'time.now': '剛剛',
@@ -3215,6 +3377,8 @@ window.__ModuleLoader__.load({
         'settings.compactChains.hint': '單層鏈會合併成一行,出現多個子層級時自動展開為樹狀;拖曳工作區期間單鏈會暫時展開回資料夾樹,可放入任一層級;展開狀態與自訂外觀會保存在本瀏覽器。',
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
+        'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被收合藏起的狀態燈(完成綠 / 執行藍 / 待互動琥珀)會沿著層級向外冒出:工作區與群組列以圖示呼吸發光(顏色隨狀態,自訂過發光的標題一起呼吸),工作階段群組列則顯示呼吸狀態燈;預設開啟,可在此關閉。',
         'settings.appearance': '預設外觀',
@@ -3223,6 +3387,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset': 'Restore native look',
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
+        'settings.diag.title': 'Icon diagnostics',
+        'settings.diag.icons': 'The running host exports {n} icons',
+        'settings.diag.missing': 'Requested but not provided by this host: {list}',
+        'settings.diag.allOk': 'All icons this plugin requests are available',
         'custom.title': '自訂外觀',
         'custom.color': '顏色',
         'custom.glow': '發光',
@@ -3412,10 +3580,75 @@ window.__ModuleLoader__.load({
       return ''
     }
 
-    /** Render a primitives icon by name; unknown names degrade to null, never crash. */
+    /** Render a primitives icon by name (v0.27.0: a miss is visible, not silent). */
+    const iconMisses = new Set()
     const icon = (name, size) => {
-      const C = ui[name]
-      return C ? E(C, { size: size || 16 }) : null
+      // An unknown name used to return null SILENTLY, which is how four bad
+      // names shipped as iconless buttons with nothing to see or log. A miss is
+      // now counted once per name, warned about, and drawn as a small box so the
+      // defect is obvious instead of invisible.
+      // v0.27.1: the host may expose primitives as a flat namespace, as a
+      // nested `icons` map, or behind a CJS `default`. Asking only the flat top
+      // level made EVERY icon look missing on a host that nests them, which is
+      // exactly what "missing icon: IconFolderClose16" on the shipped folder
+      // glyph proves. Probe all three shapes.
+      const C = typeof name === 'string'
+        ? (ui && (ui[name] || (ui.icons && ui.icons[name]) || (ui.default && (ui.default[name] || (ui.default.icons && ui.default.icons[name])))))
+        : undefined
+      if (typeof C === 'function') return E(C, { size: size || 16 })
+      if (typeof name === 'string' && !iconMisses.has(name)) {
+        iconMisses.add(name)
+        try {
+          if (typeof console !== 'undefined' && console.warn) {
+            console.warn('[dsh-better-workspace] primitives has no icon "' + name + '"; rendering a placeholder.')
+          }
+        } catch { }
+      }
+      // Visible placeholder: a hollow square the size of the requested glyph.
+      const px = size || 16
+      return E('span', {
+        className: 'bw-icon-missing',
+        style: { width: px + 'px', height: px + 'px' },
+        'aria-hidden': 'true',
+        title: 'missing icon: ' + String(name),
+      })
+    }
+
+    /**
+     * List the icon names the LOADED primitives actually exports.
+     *
+     * This is the only reliable source of truth: the shipped desktop bundle
+     * minifies every identifier, so no static list (neither this repo's source
+     * checkout nor app.asar) can tell us what the running build supports. The
+     * settings page calls this to show "N icons available" and to flag any
+     * configured icon that the running host cannot resolve.
+     */
+    /** Every primitives icon name this client asks for (used by the settings diagnostics). */
+    const CSS_ICON_NAMES = [
+      'IconAlarmClockOutline16',
+      'IconArchiveOutline20',
+      'IconBranchOutline16',
+      'IconChevronDownOutline14',
+      'IconChevronLeftOutline14',
+      'IconChevronRightOutline14',
+      'IconCopyOutline16',
+      'IconEditOutline16',
+      'IconFolderClose16',
+      'IconFolderOpenOutline16',
+      'IconPersonalizationOutline16',
+      'IconPlusOutline16',
+      'IconProjectAddOutline16',
+      'IconRightUpOutline16',
+      'IconSearchOutline16',
+      'IconTrashOutline16',
+      'IconTriangleRightFill14',
+      'IconWarningOutline16',
+    ]
+
+    const availableIcons = () => {
+      try {
+        return Object.keys(ui || {}).filter((k) => /^Icon[A-Za-z0-9]+$/.test(k) && typeof ui[k] === 'function').sort()
+      } catch { return [] }
     }
 
     const FALLBACK_UNITS = { minutes: 'm', hours: 'h', days: 'd', months: 'mo', years: 'y' }
@@ -4012,6 +4245,23 @@ window.__ModuleLoader__.load({
       '.bw-row-current{background:var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.15))}',
       '.bw-row-current{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.16)) 40%,transparent)}',
       '.bw-row-icon{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
+    // v0.28.0 tab-group rail: a 3px coloured bar, deliberately narrow so a
+    // deeply nested group does not push the label right the way a folder icon did.
+    // v0.28.0 pinned block: the row plus a small owner chip on the right, so a
+    // pinned session still says which workspace it came from.
+    // v0.28.0 settings-launcher addition (sits beside the shipped trigger).
+    '.bw-launcher-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:none;border-radius:var(--dsw-radius-sm,8px);background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:13px}',
+    '.bw-launcher-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-launcher-label{white-space:nowrap}',
+    '.bw-pin-row{position:relative}',
+    '.bw-pin-owner{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;line-height:14px;padding:0 5px;border-radius:var(--dsw-radius-xs,4px);background:var(--dsw-alias-bg-layer-3,rgba(127,127,127,.16));color:var(--dsw-alias-label-quaternary,#8a8a8a);max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}',
+    '.bw-pin-label{padding:10px 6px 2px}',
+    '.bw-group-rail{flex:none;width:3px;align-self:stretch;margin:2px 2px 2px 0;border-radius:2px;opacity:.9}',
+    '.bw-group-rail-pulse{animation:bw-rail-breathe 1.8s ease-in-out infinite}',
+    '@keyframes bw-rail-breathe{0%,100%{opacity:.9}50%{opacity:.4}}',
+    // Folder-glyph variant keeps the old look for users who prefer it.
+    '.bw-sgroup-folder{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
+    '.bw-icon-missing{display:inline-block;border:1px dashed var(--dsw-alias-label-error,#e5726f);border-radius:2px;flex:none}',
       '.bw-chevron{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .15s ease}',
       '.bw-chevron-open{transform:rotate(90deg)}',
       // overflow:hidden (needed for the ellipsis) clips the outline: 3px of
@@ -5057,6 +5307,23 @@ window.__ModuleLoader__.load({
      * slot — the reported "原生工作区都有一个文件夹的图标，也没有".
      * Undefined mode now means "solid folder", matching the shipped default.
      */
+    /**
+     * v0.28.0 TAB-GROUP COLORS.
+     *
+     * A session group is a "/"-prefix projection, not a host entity, so it has
+     * no identity to colour by. Hashing the group name gives every group a
+     * stable colour across reloads — the same idea Edge/Chrome use for tab
+     * groups: a thin coloured rail instead of a big folder icon, which keeps the
+     * row narrow and makes nesting readable.
+     */
+    const TAB_GROUP_COLORS = ['#5b8def', '#e5726f', '#3fb950', '#d29922', '#a371f7', '#39c5cf', '#f778ba', '#8b949e']
+    const tabGroupColor = (name) => {
+      const text = String(name || '')
+      let h = 0
+      for (let i = 0; i < text.length; i += 1) h = (h * 31 + text.charCodeAt(i)) >>> 0
+      return TAB_GROUP_COLORS[h % TAB_GROUP_COLORS.length]
+    }
+
     const iconOf = (mode, expanded) => {
       if (mode === 'none') return null
       if (!mode || mode === 'solid' || mode === 'folder') {
@@ -5387,8 +5654,14 @@ window.__ModuleLoader__.load({
         ...(dragEvents || {}),
       },
         E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
-        // Session groups have no icon slot: a collapsed group with hidden
-        // status relays through a breathing official StateDot instead.
+        // v0.28.0: a tab-group RAIL instead of a folder glyph. One vertical bar
+        // in the group's own colour — narrow, nestable, and instantly readable
+        // as "this is a group", which a folder icon never was.
+        E('span', {
+          className: cls('bw-group-rail', pulse && 'bw-group-rail-pulse'),
+          style: { background: tabGroupColor(name) },
+          'aria-hidden': 'true',
+        }),
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
         E('span', { className: 'bw-row-label' }, name),
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
@@ -5864,6 +6137,19 @@ window.__ModuleLoader__.load({
           }, E('span', { className: 'bw-switch-thumb' })),
         ),
         E('div', { className: 'bw-hint' }, t('settings.showArchived.hint')),
+        // v0.28.0 session-group glyph style.
+        E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.groupIcon')),
+          E('button', {
+            type: 'button',
+            role: 'switch',
+            'aria-checked': groupIcon === 'folder',
+            'aria-label': t('settings.groupIcon'),
+            className: cls('bw-switch', groupIcon === 'folder' && 'bw-switch-on'),
+            onClick: () => { setPref('groupIcon', groupIcon === 'folder' ? 'tab' : 'folder') },
+          }, E('span', { className: 'bw-switch-thumb' })),
+        ),
+        E('div', { className: 'bw-hint' }, t('settings.groupIcon.hint')),
         E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
           E('div', { className: 'bw-setting-label' }, t('settings.statusPulse')),
           E('button', {
@@ -5933,6 +6219,21 @@ window.__ModuleLoader__.load({
           }, t('settings.nativeReset.action')),
         ),
         E('div', { className: 'bw-hint' }, t('settings.nativeReset.hint')),
+        // v0.27.0 DIAGNOSTICS: what the RUNNING host actually exports. Every
+        // icon problem so far came from guessing the icon set; this shows the
+        // truth instead, including any name this plugin asks for and cannot get.
+        (() => {
+          const avail = availableIcons()
+          const wanted = Array.from(new Set((CSS_ICON_NAMES || [])))
+          const missing = wanted.filter((n) => !avail.includes(n))
+          return E('div', { className: 'bw-setting-row', style: { marginTop: 12, flexDirection: 'column', alignItems: 'flex-start', gap: 4 } },
+            E('div', { className: 'bw-setting-label' }, t('settings.diag.title')),
+            E('div', { className: 'bw-hint' }, t('settings.diag.icons', { n: avail.length })),
+            missing.length > 0
+              ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } }, t('settings.diag.missing', { list: missing.join(', ') }))
+              : E('div', { className: 'bw-hint' }, t('settings.diag.allOk')),
+          )
+        })(),
         E('div', { className: 'bw-setting-label', style: { marginTop: 16 } }, t('sync.title')),
         E('div', { className: 'bw-hint' }, t('sync.desc')),
         E('div', { className: 'bw-sync-modes' },
@@ -6590,6 +6891,9 @@ window.__ModuleLoader__.load({
       // v0.27.0: archived rows are hidden by default (official behaviour) but
       // can be revealed without leaving the tree.
       const showArchived = prefsMap.showArchived === true
+      // v0.28.0: session-group glyph style — 'tab' (coloured rail, default) or
+      // 'folder' (the previous folder icon).
+      const groupIcon = prefsMap.groupIcon === 'folder' ? 'folder' : 'tab'
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
       // v0.26.0: subscribes to the host's archive audit so ghost rows disappear.
       useArchiveIds()
@@ -7003,6 +7307,28 @@ window.__ModuleLoader__.load({
       const now = Date.now()
 
       const fail = (text) => { setFlowOpen(false); setDialog(null); setErrorText(String(text || 'unknown error')) }
+
+      /**
+       * v0.28.0 DRAG SAFETY.
+       *
+       * A drag commit runs inside a DOM event handler, outside React's render
+       * tree — so a throw there is NOT caught by the QuietBoundary around the
+       * sidebar. The user hit exactly this: dragging CUMCM into Modelling made a
+       * plugin error out and the whole sidebar stopped accepting drags. Every
+       * commit now goes through this wrapper: the failure is surfaced in the
+       * existing inline error strip, the drag state is cleared, and the rest of
+       * the app keeps working. One bad gesture must never take the UI down.
+       */
+      const safeCommit = (label, fn) => (...args) => {
+        try {
+          return fn(...args)
+        } catch (error) {
+          try { setDrag(null) } catch { }
+          fail((label || 'drag') + ': ' + (error && error.message ? error.message : String(error)))
+          return undefined
+        }
+      }
+
 
       const styleEntry = (key) => stylingMap[key] || null
       // Effective appearance = the settings card's default, overridden field by
@@ -7574,7 +7900,7 @@ window.__ModuleLoader__.load({
        * prefix, so "moving a group" means re-prefixing every member; the sibling
        * ORDER is then recorded locally, exactly like a workspace-row drag.
        */
-      const commitFolderReorder = (targetIdPath, half) => {
+      const commitFolderReorder = safeCommit('commitFolderReorder', (targetIdPath, half) => {
         const source = drag.source
         setDrag(null)
         const cutAt = String(targetIdPath).lastIndexOf('//')
@@ -7589,26 +7915,34 @@ window.__ModuleLoader__.load({
         const movedKey = source.folderPath
         if (!sib.all.includes(movedKey)) return
         writeWorkspaceOrder(sib.all, movedKey, targetPath, half)
-      }
+      })
 
       /**
        * Drag a WORKSPACE row beside a folder group (v0.26.0). The row joins the
        * target group's level by taking its prefix, then lands before/after the
        * group in the local order.
        */
-      const commitWorkspaceReorderBeside = (targetIdPath, half) => {
-        const source = drag.source
+      const commitWorkspaceReorderBeside = safeCommit('commitWorkspaceReorderBeside', (targetIdPath, half) => {
+        const source = drag && drag.source
         setDrag(null)
+        // Guard the whole gesture: a drag that started from a different row kind
+        // carries no workspaceId/leaf, and the old code happily built the title
+        // "undefined/undefined" from them, which then hit renameWorkspace and
+        // threw inside the drag handler — one of the ways a drag could kill the
+        // renderer. Refuse the gesture instead of sending a malformed rename.
+        if (!source || drag.kind !== 'workspace' || source.workspaceId === undefined) return
+        const leaf = String(source.leaf || source.title || '').trim()
+        if (leaf === '') return
         const cutAt = String(targetIdPath).lastIndexOf('//')
         const targetPath = cutAt === -1 ? String(targetIdPath) : String(targetIdPath).slice(cutAt + 2)
         const tgtParent = (() => { const i = targetPath.lastIndexOf('/'); return i === -1 ? '' : targetPath.slice(0, i) })()
-        const newTitle = tgtParent !== '' ? tgtParent + '/' + source.leaf : source.leaf
+        const newTitle = tgtParent !== '' ? tgtParent + '/' + leaf : leaf
         const sib = siblingKeysAt(targetPath)
         Promise.resolve()
           .then(() => (source.folderPath === tgtParent ? undefined : renameWorkspace(source.workspaceId, newTitle)))
           .then(() => { if (sib) writeWorkspaceOrder(sib.all, 'id:' + source.workspaceId, targetPath, half) })
           .catch(fail)
-      }
+      })
 
       const folderDragEvents = (path) => ({
         draggable: !searching,
@@ -8385,6 +8719,61 @@ window.__ModuleLoader__.load({
         rows.push(...ungrouped)
         return rows.map((s) => renderSessionRow({ ...s, leaf: s.title }, 0, undefined))
       }
+      /**
+       * v0.28.0 GLOBAL PINNED BLOCK.
+       *
+       * The user's rule: a pinned session must sit ABOVE every workspace and
+       * every session group — pinned in `resume-harness` should be the first
+       * thing in the whole sidebar, higher than the `legacy` tab group.
+       * Before this, `withPinned` only sorted WITHIN a workspace, so a pin was
+       * invisible unless you already looked inside that workspace.
+       *
+       * Pinned rows render at depth 0 with a workspace chip so the user still
+       * knows where each one belongs; the workspace chip is also what makes the
+       * group ("pinned") readable rather than a mystery list.
+       */
+      const renderPinnedBlock = () => {
+        if (pinnedSessionIds === null || pinnedSessionIds.length === 0) return []
+        if (searching) return []            // search results have their own order
+        const rows = []
+        const seen = new Set()
+        for (const id of pinnedSessionIds) {
+          if (seen.has(id)) continue
+          seen.add(id)
+          // Find this session wherever it lives so the row keeps real status.
+          let found = null
+          let ownerTitle = ''
+          for (const w of items || []) {
+            const hit = (w.sessionIds || []).includes(id)
+            if (!hit) continue
+            const summary = list && list.byId ? list.byId[id] : undefined
+            if (!sessionVisible(summary, currentId, archivedSet, showArchived)) continue
+            found = {
+              id,
+              title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
+              leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
+              blank: !!summary.blank,
+              ...statusFaceOf(id, summary),
+              hasActiveSchedule: hasActiveScheduleOf(summary),
+              updatedAt: summary.updatedAt || 0,
+            }
+            ownerTitle = w.title || w.leaf || ''
+            break
+          }
+          if (found === null) continue
+          const row = renderSessionRow(found, 0)
+          rows.push(E('div', { key: 'pin-wrap-' + id, className: 'bw-pin-row' },
+            row,
+            ownerTitle ? E('span', { className: 'bw-pin-owner', title: ownerTitle }, ownerTitle) : null,
+          ))
+        }
+        if (rows.length === 0) return []
+        return [
+          E('div', { key: 'pinned-label', className: 'bw-header-title bw-pin-label' }, t('group.pinned')),
+          ...rows,
+        ]
+      }
+
       const renderUngroupedBlock = () => {
         const rows = []
         if (ungrouped.length > 0) {
@@ -8409,6 +8798,11 @@ window.__ModuleLoader__.load({
         for (const folder of tree.folders) bodyRows.push(...renderPlainFolder(folder, 0))
         for (const workspace of tree.workspaces) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
         bodyRows.push(...renderUngroupedBlock())
+      }
+      // Pinned rows lead the whole tree, above workspaces and groups.
+      if (!searching) {
+        const pinBlock = renderPinnedBlock()
+        if (pinBlock.length > 0) bodyRows = [...pinBlock, ...bodyRows]
       }
       const isEmpty = bodyRows.length === 0
       if (isEmpty) {
@@ -9028,6 +9422,42 @@ window.__ModuleLoader__.load({
       // served namespaces — registered host-side — and settings.plugin.item
       // cards). The old left-nav settings.section entry was removed: the
       // plugins-section card is the single settings surface now.
+      /**
+       * v0.28.0 SETTINGS LAUNCHER ADDITIONS.
+       *
+       * The user's workflow after a crash: open Settings → check presets /
+       * language / theme. But what they usually WANT is to open a plugin
+       * (ofm / bws) — so Settings is a detour. This registers an extra launcher
+       * next to the shipped Settings trigger that opens the PLUGINS page
+       * directly, and toggles back to the previously shown view on a second
+       * click (the history stack lives in the shell, see useNavState).
+       *
+       * The shipped settings button itself is shell chrome and must NOT be
+       * reimplemented inside the sidebar — that is what made it disappear when
+       * this plugin took over `sidebar.workspaces`.
+       */
+      const labelsLauncher = () => {
+        try { return t('launcher.plugins') } catch { return '插件' }
+      }
+
+      slots.inject('settings.launcher', guarded(
+        'settings.launcher',
+        { name: 'settings.launcher', key: 'better-workspace:plugins', locale: NS, store: viewStore },
+        (props) => E('button', {
+          type: 'button',
+          className: 'bw-launcher-btn',
+          title: labelsLauncher(),
+          'aria-label': labelsLauncher(),
+          onClick: () => {
+            // Straight to the PLUGINS page — the reason the user opens settings
+            // after a crash is to inspect plugins, not to browse settings.
+            try {
+              if (props && typeof props.openSettings === 'function') props.openSettings({ page: 'plugins' })
+            } catch { }
+          },
+        }, icon('IconCordisPluginOutline14', 16), props && props.wide ? E('span', { className: 'bw-launcher-label' }, labelsLauncher()) : null),
+      ))
+
       slots.inject('settings.plugin.item', guarded(
         'settings.plugin.item',
         {

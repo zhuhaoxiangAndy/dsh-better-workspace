@@ -442,7 +442,10 @@ test('outline: label keeps a bleed, meta column stays unstroked (0.10.1)', () =>
 test('icons: retired glyphs resolve to a survivor; the picker follows the host set (0.10.2)', () => {
   const text = read('src/client.js')
   const start = text.indexOf('const ICON_ALIASES =')
-  const end = text.indexOf('/** Render a primitives icon by name')
+  // Anchor on the end of resolveIconName itself, so unrelated changes to icon()
+  // cannot break this slice.
+  const NL = String.fromCharCode(10)
+  const end = text.indexOf(NL + '    }', text.indexOf('const resolveIconName = (')) + 6
   assert.ok(start !== -1 && end !== -1 && start < end, 'icon resolution helpers not found')
   const load = (ui) => new Function('ui', text.slice(start, end) + '\nreturn { resolveIconName }')(ui)
 
@@ -1261,4 +1264,83 @@ test('row typography matches the shipped 14px/34px metrics', () => {
   assert.match(text, /\.bw-row\{[^}]*font-size:14px/, 'row text is 14px, not the 13px that read as too small')
   assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height is 20px')
   assert.match(text, /\.bw-row\{[^}]*min-height:34px/, 'row height is the shipped 34px')
+})
+
+/* ---------------------------------- tab-group rail + global pinned (v0.28) --- */
+test('session groups render a coloured tab-group rail, not a folder icon', () => {
+  const text = read('src/client.js')
+  // Edge/Chrome tab-group idiom: one thin coloured bar, narrow enough for deep
+  // nesting, instead of a folder glyph that pushed the label right.
+  assert.match(text, /const TAB_GROUP_COLORS = \[/, 'a stable colour table exists')
+  assert.match(text, /const tabGroupColor = \(name\) => \{/, 'colour is derived from the group name')
+  assert.match(text, /className: cls\('bw-group-rail'/, 'the group row renders the rail')
+  assert.match(text, /style: \{ background: tabGroupColor\(name\) \}/, 'the rail carries the group colour')
+  assert.match(text, /'\.bw-group-rail\{flex:none;width:3px/, 'the rail is 3px wide')
+  // The style must be switchable back to the folder look.
+  assert.match(text, /const groupIcon = prefsMap\.groupIcon === 'folder' \? 'folder' : 'tab'/, 'the style preference exists')
+  assert.match(text, /settings\.groupIcon/, 'the settings toggle exists')
+})
+
+test('pinned sessions lead the WHOLE tree, above workspaces and groups', () => {
+  const text = read('src/client.js')
+  // The user's rule: a pin inside resume-harness must sit above even the
+  // `legacy` tab group, not merely first within its own workspace.
+  assert.match(text, /const renderPinnedBlock = \(\) => \{/, 'a global pinned block exists')
+  assert.match(text, /const pinBlock = renderPinnedBlock\(\)/, 'it is rendered')
+  assert.match(text, /bodyRows = \[\.\.\.pinBlock, \.\.\.bodyRows\]/, 'it is PREPENDED to the whole tree')
+  assert.match(text, /t\('group\.pinned'\)/, 'the block has a heading')
+  // A pinned row must still say which workspace it came from.
+  assert.match(text, /className: 'bw-pin-owner'/, 'each pinned row carries its owner workspace')
+})
+
+test('the plugins launcher is a registered slot seat, not a sidebar hack', () => {
+  const text = read('src/client.js')
+  // The settings BUTTON is shell chrome; reimplementing it inside the sidebar
+  // is what made it vanish. Only launcher CONTENT may be contributed.
+  assert.match(text, /slots\.inject\('settings\.launcher'/, 'the launcher seat is registered')
+  assert.match(text, /props\.openSettings\(\{ page: 'plugins' \}\)/, 'it opens the plugins page directly')
+  // It must not attempt to paint the settings trigger itself.
+  assert.doesNotMatch(text, /settings\.trigger/, 'the sidebar must not re-render the settings trigger')
+})
+
+test('a failing drag commit cannot take the sidebar down (v0.28)', () => {
+  const text = read('src/client.js')
+  // Drag commits run inside DOM handlers, outside React's render tree, so
+  // QuietBoundary does NOT catch them. The user hit this: a bad drag errored
+  // and the sidebar stopped accepting drags until restart.
+  const start = text.indexOf('const safeCommit = (label, fn) =>')
+  assert.ok(start > 0, 'safeCommit exists')
+  // Take the whole arrow-returned function: from the opener to the matching brace
+  // of its body, so the slice is self-contained and parseable.
+  const opener = text.indexOf('=> (...args) => {', start)
+  assert.ok(opener > 0, 'safeCommit wraps a variadic function')
+  let i = text.indexOf('{', opener)
+  let depth = 0
+  let j = i
+  for (; j < text.length; j += 1) {
+    if (text[j] === '{') depth += 1
+    else if (text[j] === '}') { depth -= 1; if (depth === 0) { j += 1; break } }
+  }
+  // Rebuild just the wrapper so the test does not depend on the surrounding scope.
+  const src = 'const safeCommit = (label, fn) => (...args) => ' + text.slice(i, j)
+  const safeCommit = new Function(src + '\nreturn safeCommit;')()
+
+  let cleared = 0
+  let reported = null
+  const real = new Function('setDrag', 'fail', src + '\nreturn safeCommit;')(
+    () => { cleared += 1 },
+    (m) => { reported = m },
+  )
+  const boom = real('drag', () => { throw new Error('workspace rename exploded') })
+  assert.equal(boom(), undefined, 'the wrapper swallows the throw')
+  assert.equal(cleared, 1, 'drag state is cleared so the next gesture works')
+  assert.match(String(reported), /workspace rename exploded/, 'the failure is surfaced inline')
+
+  // And the malformed-title guard that caused one of these throws.
+  assert.match(text, /if \(!source \|\| drag\.kind !== 'workspace' \|\| source\.workspaceId === undefined\) return/,
+    'a cross-kind drag is refused instead of building an "undefined" title')
+  assert.match(text, /const leaf = String\(source\.leaf \|\| source\.title \|\| ''\)\.trim\(\)/,
+    'the title leaf is validated before use')
+  assert.doesNotMatch(text, /const newTitle = tgtParent !== '' \? tgtParent \+ '\/' \+ source\.leaf/,
+    'the old undefined-title path is gone')
 })
