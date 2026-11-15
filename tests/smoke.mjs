@@ -1402,3 +1402,44 @@ test('archived rows can be revealed, unarchived, and deleted for good', () => {
   assert.match(host, /sessions-deleted-/, 'default is a dated .del folder')
   assert.match(host, /keepCopy === false/, 'unlinking requires an explicit opt-out')
 })
+
+/* ------------------------- approval ordering + collapsible (v0.30.4) --- */
+test('approval directory extraction: source excluded, command order kept', () => {
+  const text = read('src/client.js')
+  // A copy/move marks its FIRST path as a source (read-only). Listing it as a
+  // directory the approval modifies was wrong.
+  assert.match(text, /const SOURCE_FIRST_VERBS = \/\^\(cp\|copy\|copy-item/, 'source-first verbs are recognised')
+  assert.match(text, /if \(sourceFirst && index === 0\) return/, 'the source path is skipped')
+  // The list must follow the order the commands appear, not an alphabetical sort.
+  assert.match(text, /const ordered = \[\]/, 'an ordered accumulator exists')
+  assert.match(text, /dirs\.sort\(\(a, b\) => \(firstAt\.get\(a\.toLowerCase\(\)\) \?\? 0\) - \(firstAt\.get\(b\.toLowerCase\(\)\) \?\? 0\)\)/,
+    'final order follows first-seen position')
+  // Siblings still collapse to their common parent, which keeps the answer short.
+  assert.match(text, /Pass 2: repeatedly lift SIBLINGS to their common parent/, 'sibling collapsing exists')
+})
+
+test('levels get a configurable collapse count', () => {
+  const text = read('src/client.js')
+  // Menu entries on a workspace and on a name group.
+  const wsMenu = text.slice(text.indexOf("if (ctx.kind === 'workspace') return ["), text.indexOf("if (ctx.kind === 'session') return ["))
+  assert.match(wsMenu, /id: 'watermark'/, 'a workspace can set the count')
+  const folderMenu = text.slice(text.indexOf("if (ctx.kind === 'folder') return ["), text.indexOf("if (ctx.kind === 'session') return ["))
+  assert.match(folderMenu, /id: 'watermark'/, 'a name group can set the count')
+  // Dialog writes through the store action used by the renderer.
+  assert.match(text, /dialog\.kind === 'watermark'/, 'the numeric dialog exists')
+  assert.match(text, /actions\.setSessionWatermark\(dialog\.levelKey, Math\.floor\(n\)\)/, 'it persists the value')
+  // Workspace-level value is the default for every group inside it.
+  assert.match(text, /const wmWsKey = \(workspaceId \|\| ''\) \+ '\|'/, 'a workspace-level key exists')
+  assert.match(text, /Number\.isFinite\(wmExact\) \? wmExact : \(Number\.isFinite\(wmInherited\)/, 'group falls back to workspace')
+})
+
+test('a session can collapse or expand its own group', () => {
+  const text = read('src/client.js')
+  const sessMenu = text.slice(text.indexOf("if (ctx.kind === 'session') return ["), text.indexOf('if (ctx.kind === \'sgroup\''))
+  assert.match(sessMenu, /id: 'toggle-group'/, 'the menu item exists')
+  assert.match(text, /id === 'toggle-group'/, 'it is handled')
+  // It flips the same expanded state the group row toggles.
+  assert.match(text, /actions\.setSessionGroupExpanded\(key, !open\)/, 'it flips the group expansion')
+  // A session outside any group must be told so, not silently ignored.
+  assert.match(text, /menu\.toggleGroupNoGroup/, 'an ungrouped session gets an explanation')
+})

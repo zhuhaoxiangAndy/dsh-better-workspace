@@ -84,6 +84,10 @@ window.__ModuleLoader__.load({
       'menu.renameFolder': '重命名分组',
       'menu.renameSgroup': '重命名会话分组',
       'menu.moveToGroup': '移动到分组…',
+      'menu.watermark': '折叠会话个数…',
+      'menu.watermark.hint': '「{label}」每层最多显示多少个会话，其余收进「展开其余 N 个会话」。',
+      'menu.toggleGroup': '折叠/展开本会话所在的组',
+      'menu.toggleGroupNoGroup': '这个会话不属于任何会话组',
       'settings.title': '更好的工作区',
       'settings.desc': '工作区树的外观与折叠偏好',
       'settings.expand': '展开',
@@ -251,6 +255,10 @@ window.__ModuleLoader__.load({
       'menu.renameFolder': 'Rename folder',
       'menu.renameSgroup': 'Rename session group',
       'menu.moveToGroup': 'Move to group…',
+      'menu.watermark': 'Collapse sessions after…',
+      'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+      'menu.toggleGroup': 'Collapse or expand the group this session is in',
+      'menu.toggleGroupNoGroup': 'This session is not inside a session group',
       'settings.title': 'Better Workspaces',
       'settings.desc': 'Workspace tree appearance and folding preferences',
       'settings.expand': 'Expand',
@@ -426,6 +434,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'إعادة تسمية المجلد',
         'menu.renameSgroup': 'إعادة تسمية مجموعة الجلسات',
         'menu.moveToGroup': 'نقل إلى مجموعة…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'مساحات عمل أفضل',
         'settings.desc': 'مظهر شجرة مساحات العمل وتفضيلات الطيّ',
         'settings.expand': 'توسيع',
@@ -593,6 +605,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Ordner umbenennen',
         'menu.renameSgroup': 'Sitzungsgruppe umbenennen',
         'menu.moveToGroup': 'In Gruppe verschieben…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Bessere Arbeitsbereiche',
         'settings.desc': 'Aussehen und Einklappverhalten des Arbeitsbereich-Baums',
         'settings.expand': 'Ausklappen',
@@ -760,6 +776,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Renommer le dossier',
         'menu.renameSgroup': 'Renommer le groupe de sessions',
         'menu.moveToGroup': 'Déplacer vers le groupe…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Espaces de travail améliorés',
         'settings.desc': 'Apparence et repli de l\'arborescence des espaces de travail',
         'settings.expand': 'Développer',
@@ -927,6 +947,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'फ़ोल्डर का नाम बदलें',
         'menu.renameSgroup': 'सत्र समूह का नाम बदलें',
         'menu.moveToGroup': 'समूह में ले जाएँ…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'बेहतर कार्यस्थान',
         'settings.desc': 'कार्यस्थान वृक्ष का रूप और समेटने की प्राथमिकताएँ',
         'settings.expand': 'फैलाएँ',
@@ -1094,6 +1118,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Ganti nama folder',
         'menu.renameSgroup': 'Ganti nama grup sesi',
         'menu.moveToGroup': 'Pindahkan ke grup…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Ruang kerja yang lebih baik',
         'settings.desc': 'Tampilan dan pelipatan pohon ruang kerja',
         'settings.expand': 'Bentangkan',
@@ -1261,6 +1289,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Rinomina cartella',
         'menu.renameSgroup': 'Rinomina gruppo di sessioni',
         'menu.moveToGroup': 'Sposta nel gruppo…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Aree di lavoro migliori',
         'settings.desc': 'Aspetto e compressione dell\'albero delle aree di lavoro',
         'settings.expand': 'Espandi',
@@ -1428,6 +1460,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'フォルダー名を変更',
         'menu.renameSgroup': 'セッショングループ名を変更',
         'menu.moveToGroup': 'グループに移動…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'より良いワークスペース',
         'settings.desc': 'ワークスペースツリーの外観と折りたたみ設定',
         'settings.expand': '展開',
@@ -1595,6 +1631,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': '폴더 이름 바꾸기',
         'menu.renameSgroup': '세션 그룹 이름 바꾸기',
         'menu.moveToGroup': '그룹으로 이동…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': '더 나은 워크스페이스',
         'settings.desc': '워크스페이스 트리의 모양과 접기 설정',
         'settings.expand': '펼치기',
@@ -1762,6 +1802,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Mapnaam wijzigen',
         'menu.renameSgroup': 'Sessiegroep naam wijzigen',
         'menu.moveToGroup': 'Naar groep verplaatsen…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Betere werkruimten',
         'settings.desc': 'Uiterlijk en inklapgedrag van de werkruimteboom',
         'settings.expand': 'Uitklappen',
@@ -1929,6 +1973,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Zmień nazwę folderu',
         'menu.renameSgroup': 'Zmień nazwę grupy sesji',
         'menu.moveToGroup': 'Przenieś do grupy…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Lepsze obszary robocze',
         'settings.desc': 'Wygląd i zwijanie drzewa obszarów roboczych',
         'settings.expand': 'Rozwiń',
@@ -2096,6 +2144,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Renomear pasta',
         'menu.renameSgroup': 'Renomear grupo de sessões',
         'menu.moveToGroup': 'Mover para o grupo…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Espaços de trabalho melhores',
         'settings.desc': 'Aparência e recolhimento da árvore de espaços de trabalho',
         'settings.expand': 'Expandir',
@@ -2263,6 +2315,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Переименовать папку',
         'menu.renameSgroup': 'Переименовать группу сессий',
         'menu.moveToGroup': 'Переместить в группу…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Улучшенные рабочие области',
         'settings.desc': 'Внешний вид и сворачивание дерева рабочих областей',
         'settings.expand': 'Развернуть',
@@ -2430,6 +2486,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Byt namn på mapp',
         'menu.renameSgroup': 'Byt namn på sessionsgrupp',
         'menu.moveToGroup': 'Flytta till grupp…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Bättre arbetsytor',
         'settings.desc': 'Utseende och ihopfällning för arbetsyteträdet',
         'settings.expand': 'Fäll ut',
@@ -2597,6 +2657,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'เปลี่ยนชื่อโฟลเดอร์',
         'menu.renameSgroup': 'เปลี่ยนชื่อกลุ่มเซสชัน',
         'menu.moveToGroup': 'ย้ายไปยังกลุ่ม…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'พื้นที่ทำงานที่ดีขึ้น',
         'settings.desc': 'รูปลักษณ์และการย่อของต้นไม้พื้นที่ทำงาน',
         'settings.expand': 'ขยาย',
@@ -2764,6 +2828,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Klasörü yeniden adlandır',
         'menu.renameSgroup': 'Oturum grubunu yeniden adlandır',
         'menu.moveToGroup': 'Gruba taşı…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Daha iyi çalışma alanları',
         'settings.desc': 'Çalışma alanı ağacının görünümü ve daraltma tercihleri',
         'settings.expand': 'Genişlet',
@@ -2931,6 +2999,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': 'Đổi tên thư mục',
         'menu.renameSgroup': 'Đổi tên nhóm phiên',
         'menu.moveToGroup': 'Chuyển vào nhóm…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': 'Không gian làm việc tốt hơn',
         'settings.desc': 'Giao diện và cách thu gọn của cây không gian làm việc',
         'settings.expand': 'Mở rộng',
@@ -3098,6 +3170,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': '更好嘅工作區',
         'settings.desc': '工作區樹嘅外觀同收起偏好',
         'settings.expand': '展開',
@@ -3265,6 +3341,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': '重新命名分組',
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': '更好嘅工作區',
         'settings.desc': '工作區樹嘅外觀同收起偏好',
         'settings.expand': '展開',
@@ -3432,6 +3512,10 @@ window.__ModuleLoader__.load({
         'menu.renameFolder': '重新命名群組',
         'menu.renameSgroup': '重新命名工作階段群組',
         'menu.moveToGroup': '移動到分組…',
+        'menu.watermark': 'Collapse sessions after…',
+        'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
+        'menu.toggleGroup': 'Collapse or expand the group this session is in',
+        'menu.toggleGroupNoGroup': 'This session is not inside a session group',
         'settings.title': '更好的工作區',
         'settings.desc': '工作區樹的外觀與收合偏好',
         'settings.expand': '展開',
@@ -6679,30 +6763,92 @@ window.__ModuleLoader__.load({
     }
     const _normKey = (p) => String(p).replace(/\\/g, '/').replace(/\/+$/, '').toLowerCase()
     /** Drop paths that sit under another path already in the list. */
+    /**
+     * Reduce a list of written directories to the shortest equivalent list.
+     *
+     * Two reductions, both of which shorten the summary without hiding a
+     * distinct target:
+     *   1. a path already covered by a listed ancestor is dropped
+     *      (`C:\work` + `C:\work\target` -> `C:\work`);
+     *   2. SIBLINGS under one parent collapse to that parent
+     *      (`C:\work\target` + `C:\work\old` -> `C:\work`),
+     *      which is what makes the answer short enough to read at a glance.
+     * The input order is preserved: a collapsed parent takes the position of
+     * its first child, so the list still reads in command order.
+     *
+     * @param {string[]} paths
+     * @returns {string[]}
+     */
     const collapseToTopLevel = (paths) => {
       const list = Array.isArray(paths) ? paths.filter((p) => typeof p === 'string' && p !== '') : []
-      // Dedupe FIRST: the same path often appears in several statements
-      // (source and destination of a move both name it). Comparing on the
-      // normalized key keeps case- and separator-insensitive equality.
+      // Dedupe first, keeping the first position.
       const uniq = []
       const seen = new Set()
-      for (const p of list) {
-        const k = _normKey(p)
-        if (k === '' || seen.has(k)) continue
-        seen.add(k)
-        uniq.push(p)
+      for (const pathText of list) {
+        const key = _normKey(pathText)
+        if (key === '' || seen.has(key)) continue
+        seen.add(key)
+        uniq.push(pathText)
       }
+      // Pass 1: drop anything already covered by a listed ancestor.
       const keys = uniq.map(_normKey)
       const keep = []
-      for (let i = 0; i < uniq.length; i += 1) {
+      for (let a = 0; a < uniq.length; a += 1) {
         let covered = false
-        for (let j = 0; j < keys.length; j += 1) {
-          if (i === j || keys[j] === '') continue
-          if (keys[i] !== keys[j] && keys[i].startsWith(keys[j] + '/')) { covered = true; break }
+        for (let b = 0; b < keys.length; b += 1) {
+          if (a === b || keys[b] === '') continue
+          if (keys[a] !== keys[b] && keys[a].startsWith(keys[b] + '/')) { covered = true; break }
         }
-        if (!covered) keep.push(uniq[i])
+        if (!covered) keep.push(uniq[a])
       }
-      return keep
+      // Pass 2: repeatedly lift SIBLINGS to their common parent. Two passes
+      // are enough in practice (one lift can enable another), so this loops
+      // until stable with a small cap to stay predictable.
+      const parentOf = (p) => {
+        const cut = Math.max(p.lastIndexOf('\\'), p.lastIndexOf('/'))
+        return cut <= 2 ? '' : p.slice(0, cut)
+      }
+      let current = keep
+      for (let round = 0; round < 4; round += 1) {
+        const byParent = new Map()
+        const next = []
+        const lifted = new Set()
+        for (const item of current) {
+          const parent = parentOf(item)
+          if (parent === '') { next.push(item); continue }
+          const bucket = byParent.get(parent) || []
+          bucket.push(item)
+          byParent.set(parent, bucket)
+        }
+        for (const [parent, bucket] of byParent) {
+          if (bucket.length >= 2) lifted.add(parent)
+        }
+        if (lifted.size === 0) break
+        // Rebuild in the original order: a lifted parent takes the slot of
+        // its first child; a lone child stays where it was.
+        const emitted = new Set()
+        for (const item of current) {
+          const parent = parentOf(item)
+          if (lifted.has(parent)) {
+            if (emitted.has(parent)) continue
+            emitted.add(parent)
+            next.push(parent)
+          } else {
+            next.push(item)
+          }
+        }
+        // De-dupe again: a lifted parent may equal an existing entry.
+        const out = []
+        const seenKeys = new Set()
+        for (const item of next) {
+          const key = _normKey(item)
+          if (seenKeys.has(key)) continue
+          seenKeys.add(key)
+          out.push(item)
+        }
+        current = out
+      }
+      return current
     }
     /**
      * Reduce a path to the DIRECTORY it lives in when its last segment looks
@@ -6727,21 +6873,52 @@ window.__ModuleLoader__.load({
      * many statements were examined, how many were writes, and how many were
      * dropped as read-only.
      */
+    /**
+     * Commands whose FIRST path argument is a SOURCE, not a destination.
+     * The source of a copy/move is only read, so listing it under "directories
+     * this approval modifies" is wrong — it is why the source folder of a
+     * Copy-Item appeared in the list.
+     */
+    const SOURCE_FIRST_VERBS = /^(cp|copy|copy-item|xcopy|robocopy|mv|move|move-item|rsync|ln|mklink)$/i
+
+    /**
+     * Directories an approval could modify.
+     *
+     * Ordering matters as much as content: the list is read top-to-bottom while
+     * deciding, so it follows the ORDER THE COMMANDS APPEAR, not an alphabetical
+     * sort. Same-directory repeats are folded, keeping the first position.
+     *
+     * @param {string} rawText command text from the approval
+     */
     const extractWriteDirectories = (rawText) => {
       const segments = String(rawText || '')
-        .split(/\r?\n|;|&&|\|\|/)
+        .split(new RegExp('\\r?\\n|;|&&|\\|\\|'))
         .map((s) => s.trim())
         .filter((s) => s !== '')
       const writeSegs = segments.filter((s) => !isReadOnlySegment(s) && isWriteSegment(s))
-      const paths = []
-      for (const seg of writeSegs) for (const p of extractPaths(seg)) paths.push(dirOfPath(p))
-      const dirs = collapseToTopLevel(paths)
-      dirs.sort((a, b) => {
-        const da = (a.match(/[\\/]/g) || []).length
-        const db = (b.match(/[\\/]/g) || []).length
-        if (da !== db) return da - db
-        return a.localeCompare(b, 'zh')
-      })
+      /** Ordered, de-duplicated list of directories actually written to. */
+      const ordered = []
+      const seen = new Set()
+      for (const seg of writeSegs) {
+        const parts = extractPaths(seg)
+        // A copy/move marks its first path as a SOURCE: read-only, skip it.
+        const verb = (seg.match(new RegExp('^\\s*([A-Za-z][\\w-]*)')) || [])[1] || ''
+        const sourceFirst = SOURCE_FIRST_VERBS.test(verb) && parts.length > 1
+        parts.forEach((pathText, index) => {
+          if (sourceFirst && index === 0) return
+          const dir = dirOfPath(pathText)
+          const key = dir.toLowerCase()
+          if (seen.has(key)) return
+          seen.add(key)
+          ordered.push(dir)
+        })
+      }
+      // Fold a child into its parent ONLY when the parent is itself listed,
+      // then restore the order the commands established.
+      const dirs = collapseToTopLevel(ordered)
+      const firstAt = new Map()
+      ordered.forEach((dir, index) => { const k = dir.toLowerCase(); if (!firstAt.has(k)) firstAt.set(k, index) })
+      dirs.sort((a, b) => (firstAt.get(a.toLowerCase()) ?? 0) - (firstAt.get(b.toLowerCase()) ?? 0))
       return {
         directories: dirs,
         statements: segments.length,
@@ -8975,8 +9152,16 @@ window.__ModuleLoader__.load({
         // for the rest with one small "expand N more" row, exactly like the
         // shipped browser. Without this a collapsed group kept painting every
         // following row (and, before v0.30.1, its sibling pills as well).
+        // Exact key is workspace + this group's path. The WORKSPACE-level entry
+        // (workspaceId + '|') acts as the default for every group inside it, so
+        // right-clicking the workspace sets the count for all of its levels at
+        // once, while a group's own menu can still override it.
         const wmKey = (workspaceId || '') + '|' + (view.path || '')
-        const wm = Math.max(SESSION_WATERMARK_BASE, watermarkOf(wmKey))
+        const wmWsKey = (workspaceId || '') + '|'
+        const wmExact = sessionWatermarksMap ? sessionWatermarksMap[wmKey] : undefined
+        const wmInherited = sessionWatermarksMap ? sessionWatermarksMap[wmWsKey] : undefined
+        const wmRaw = Number.isFinite(wmExact) ? wmExact : (Number.isFinite(wmInherited) ? wmInherited : SESSION_WATERMARK_BASE)
+        const wm = Math.max(1, wmRaw)
         const { rows: shown, hiddenCount } = watermarkRows(trailing, wm)
         for (const s of shown) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
         if (hiddenCount > 0) {
@@ -9287,12 +9472,14 @@ window.__ModuleLoader__.load({
         const groupItem = { id: 'move-group', label: t('menu.moveToGroup'), icon: icon('IconFolderClose16', 16) }
         if (ctx.kind === 'folder') return [
           { id: 'rename-folder', label: t('menu.renameFolder'), icon: icon('IconEditOutline16', 16) },
+          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
         ]
         if (ctx.kind === 'workspace') return [
           { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
+          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
           { id: 'delete', label: ot ? ot('delete.workspace') : t('menu.delete'), icon: icon('IconTrashOutline16', 16), danger: true },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
@@ -9327,6 +9514,10 @@ window.__ModuleLoader__.load({
           // spells out what is destroyed. Archiving is reversible; this is not.
           { type: 'separator', id: 'bw-del-sep' },
           { id: 'delete-forever', label: t('menu.deleteForever'), icon: icon('IconTrashOutline16', 16), danger: true },
+          // v0.30.4: collapse/expand the group this session belongs to, without
+          // having to find and click the group row.
+          { type: 'separator', id: 'bw-grp-sep' },
+          { id: 'toggle-group', label: t('menu.toggleGroup'), icon: icon('IconTriangleRightFill14', 14) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -9361,6 +9552,33 @@ window.__ModuleLoader__.load({
           setDialog({ kind: 'group-move', target, initial: groupPrefixOf(target.title) })
         }
         else if (kind === 'folder' && id === 'rename-folder') setDialog({ kind: 'folder-rename', path: payload.path })
+        // v0.30.4 collapsible counts. The dialog edits the watermark for one
+        // level (a workspace, or one name group), which is what decides how many
+        // session rows that level reveals before the "expand N more" row.
+        else if (id === 'watermark' && (kind === 'workspace' || kind === 'folder')) {
+          // Must match the keys the renderer reads:
+          //   workspace level -> "<workspaceId>|"          (default for all groups)
+          //   group level     -> "<workspaceId>|<groupPath>"
+          const key = kind === 'workspace'
+            ? String(payload.workspaceId || '') + '|'
+            : String(payload.workspaceId || '') + '|' + String(payload.folderPath || '')
+          setDialog({
+            kind: 'watermark',
+            levelKey: key,
+            label: kind === 'workspace' ? (payload.title || payload.leaf || '') : (payload.name || ''),
+          })
+        }
+        // v0.30.4: collapse/expand the group owning this session.
+        else if (kind === 'session' && id === 'toggle-group') {
+          const segs = splitTitleSegs(sessionTitleOf(list && list.byId ? list.byId[payload.id] : undefined, t, rememberedTitleOf(payload.id)))
+          const groupPath = segs.slice(0, -1).join('/')
+          if (groupPath === '') { fail(t('menu.toggleGroupNoGroup')); return }
+          const wsId = payload.workspaceId
+          const key = String(wsId || '') + '|' + groupPath
+          const open = sessionGroupOpen(key)
+          if (actions && typeof actions.setSessionGroupExpanded === 'function') actions.setSessionGroupExpanded(key, !open)
+          return
+        }
         else if (kind === 'workspace' && id === 'rename') setDialog({ kind: 'ws-rename', workspace: payload })
         else if (kind === 'workspace' && id === 'delete') setDialog({ kind: 'ws-delete', workspace: payload })
         else if (kind === 'sgroup' && id === 'rename-sgroup') setDialog({ kind: 'sgroup-rename', target: payload })
@@ -9457,6 +9675,24 @@ window.__ModuleLoader__.load({
             StyleNode(),
           )
         }
+        // v0.30.4: how many session rows this level reveals before "expand N more".
+        if (dialog.kind === 'watermark') return E(TextDialog, {
+          key: 'watermark',
+          title: t('menu.watermark'),
+          hint: t('menu.watermark.hint', { label: dialog.label }),
+          initial: String(watermarkOf(dialog.levelKey)),
+          confirmLabel: t('confirm'),
+          onConfirm: (v) => {
+            const n = Number(String(v).trim())
+            if (!Number.isFinite(n) || n < 1) { setDialog(null); return }
+            if (actions && typeof actions.setSessionWatermark === 'function') {
+              actions.setSessionWatermark(dialog.levelKey, Math.floor(n))
+            }
+            setDialog(null)
+          },
+          onClose: () => setDialog(null),
+          t,
+        })
         if (dialog.kind === 'sess-rename') return E(TextDialog, {
           key: 'sess-rename',
           title: t('menu.rename'),
