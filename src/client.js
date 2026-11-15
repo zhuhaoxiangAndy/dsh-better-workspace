@@ -3890,9 +3890,30 @@ window.__ModuleLoader__.load({
       if (archiveInFlight) return
       if (!force && archiveIds !== null && Date.now() - archiveFetchedAt < ARCHIVE_TTL_MS) return
       archiveInFlight = true
+      // v0.30.5 AUTHENTICATION.
+      // The host gateway rejects an unauthenticated fetch with 401, which is why
+      // the ghost audit never produced data and the filter silently stood down
+      // (by design: an unknown set must not hide real rows). The gateway session
+      // is cookie/token based, so same-origin credentials must be included and
+      // the page token (present in the URL the shell was opened with) forwarded
+      // as both a query parameter and the Authorization header.
+      const pageToken = (() => {
+        try {
+          const m = /[?&]token=([^&#]+)/.exec(String(window.location.search || ''))
+          return m ? decodeURIComponent(m[1]) : ''
+        } catch { return '' }
+      })()
+      const url = '/api/better-workspace/archives' + (pageToken !== '' ? '?token=' + encodeURIComponent(pageToken) : '')
+      const headers = pageToken !== '' ? { authorization: 'Bearer ' + pageToken } : undefined
       Promise.resolve()
-        .then(() => fetch('/api/better-workspace/archives'))
-        .then((res) => (res.ok ? res.json() : null))
+        .then(() => fetch(url, { credentials: 'include', headers }))
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            try { if (console && console.info) console.info('[dsh-better-workspace] archives audit needs authentication; ghost filter stays off') } catch { }
+            return null
+          }
+          return res.ok ? res.json() : null
+        })
         .then((body) => {
           if (!body || !Array.isArray(body.present)) return
           archiveIds = new Set(body.present.map(String))
@@ -4463,7 +4484,11 @@ window.__ModuleLoader__.load({
     '.bw-column-nav{flex:0 0 42%;border-right:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.2));padding-right:4px}',
     '.bw-column-sessions{flex:1}',
     '.bw-col-nav-row{min-height:32px}',
-      '.bw-row{display:flex;align-items:center;gap:6px;min-height:34px;padding:6px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:14px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
+    // v0.30.5 row density: the user found 34px rows too tall for a dense tree.
+    // Sessions sit at 28px; a group pill row is tighter still because the pill
+    // already carries the visual weight.
+    '.bw-sgroup-row{min-height:26px;padding-top:2px;padding-bottom:2px}',
+      '.bw-row{display:flex;align-items:center;gap:6px;min-height:28px;padding:3px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:14px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
       '.bw-drop-before::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-after::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-into{outline:1.5px dashed var(--dsw-alias-brand-primary,#5b8def);outline-offset:-1.5px}',

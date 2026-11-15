@@ -1228,12 +1228,15 @@ test('workspace rows always show a folder icon, and folder precedes the chevron'
   assert.ok(folderAt < chevronAt, 'folder comes before the chevron, like the shipped row')
 })
 
-test('row typography matches the shipped 14px/34px metrics', () => {
+test('row typography: shipped font size, user-chosen density', () => {
   const text = read('src/client.js')
-  // Rows.module.css: font-size 14px, line-height 20px, height 34px.
-  assert.match(text, /\.bw-row\{[^}]*font-size:14px/, 'row text is 14px, not the 13px that read as too small')
+  // Font size follows the shipped Rows.module.css (14px); the row HEIGHT does
+  // not: the user explicitly found 34px too tall for a dense tree and asked for
+  // tighter rows, so density is their call and the type scale is the bundle's.
+  assert.match(text, /\.bw-row\{[^}]*font-size:14px/, 'row text is 14px')
   assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height is 20px')
-  assert.match(text, /\.bw-row\{[^}]*min-height:34px/, 'row height is the shipped 34px')
+  assert.match(text, /\.bw-row\{[^}]*min-height:28px/, 'rows are 28px tall by user preference')
+  assert.match(text, /'\.bw-sgroup-row\{min-height:26px/, 'group rows are slightly tighter still')
 })
 
 /* ---------------------------------- tab-group rail + global pinned (v0.28) --- */
