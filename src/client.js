@@ -113,6 +113,10 @@ window.__ModuleLoader__.load({
       'settings.nativeReset.action': '一键恢复',
       'settings.nativeReset.hint': '把本插件所有视觉设置（每行自定义外观、描边、折叠、状态灯、斜杠分组、显示归档）恢复为 DSH 原生默认。不触碰任何工作区、会话或标题。',
       'settings.diag.title': '图标诊断',
+      'settings.iconDiag': '图标诊断',
+      'settings.iconDiag.count': '运行中的宿主共导出 {n} 个图标',
+      'settings.iconDiag.missing': '本插件请求但宿主没有：{list}',
+      'settings.iconDiag.ok': '本插件请求的图标全部可用',
       'settings.diag.icons': '运行中的宿主共导出 {n} 个图标',
       'settings.diag.missing': '本插件请求但宿主未提供的图标：{list}',
       'settings.diag.allOk': '本插件请求的图标全部可用',
@@ -290,6 +294,10 @@ window.__ModuleLoader__.load({
       'settings.nativeReset.action': 'Restore now',
       'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
       'settings.diag.title': '图标诊断',
+      'settings.iconDiag': 'Icon diagnostics',
+      'settings.iconDiag.count': 'The running host exports {n} icons',
+      'settings.iconDiag.missing': 'Requested but not provided: {list}',
+      'settings.iconDiag.ok': 'All requested icons are available',
       'settings.diag.icons': '运行中的宿主共导出 {n} 个图标',
       'settings.diag.missing': '本插件请求但宿主未提供的图标：{list}',
       'settings.diag.allOk': '本插件请求的图标全部可用',
@@ -475,6 +483,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -652,6 +664,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -829,6 +845,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1006,6 +1026,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1183,6 +1207,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1360,6 +1388,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1537,6 +1569,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1714,6 +1750,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -1891,6 +1931,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2068,6 +2112,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2245,6 +2293,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2422,6 +2474,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2599,6 +2655,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2776,6 +2836,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -2953,6 +3017,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -3130,6 +3198,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -3307,6 +3379,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -3484,6 +3560,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -3661,6 +3741,10 @@ window.__ModuleLoader__.load({
         'settings.nativeReset.action': 'Restore now',
         'settings.nativeReset.hint': 'Resets every visual setting this plugin owns (per-row appearance, outline, chain compression, status pulse, slash grouping, show-archived) to the DSH defaults. Workspaces, sessions and titles are untouched.',
         'settings.diag.title': 'Icon diagnostics',
+        'settings.iconDiag': 'Icon diagnostics',
+        'settings.iconDiag.count': 'The running host exports {n} icons',
+        'settings.iconDiag.missing': 'Requested but not provided: {list}',
+        'settings.iconDiag.ok': 'All requested icons are available',
         'settings.diag.icons': 'The running host exports {n} icons',
         'settings.diag.missing': 'Requested but not provided by this host: {list}',
         'settings.diag.allOk': 'All icons this plugin requests are available',
@@ -3855,15 +3939,36 @@ window.__ModuleLoader__.load({
 
     /** Render a primitives icon by name (v0.27.0: a miss is visible, not silent). */
     const iconMisses = new Set()
+    /** Names the loaded primitives actually exposes (filled on first icon() call). */
+    let iconAvailableNames = null
+    /** Snapshot of what went missing, for the settings diagnostic. */
+    const iconDiagnostics = () => ({
+      available: iconAvailableNames ? iconAvailableNames.length : -1,
+      missing: [...iconMisses],
+      sample: iconAvailableNames ? iconAvailableNames.slice(0, 12) : [],
+    })
     /** True when the primitives module actually arrived (one log line, not per icon). */
     let iconModuleChecked = false
     const icon = (name, size) => {
       if (!iconModuleChecked) {
         iconModuleChecked = true
-        const count = ui ? Object.keys(ui).filter((k) => /^Icon/.test(k)).length : -1
+        // Collect the icon names the running host actually exposes, probing the
+        // same three shapes the lookup below uses. This is the only reliable
+        // source of truth: the shipped bundle minifies identifiers, so no static
+        // list (source checkout or app.asar grep) can tell us what is available.
+        const collected = new Set()
+        const harvest = (obj) => {
+          if (!obj || typeof obj !== 'object') return
+          for (const k of Object.keys(obj)) if (/^Icon/.test(k) && typeof obj[k] === 'function') collected.add(k)
+        }
+        harvest(ui)
+        if (ui && ui.icons) harvest(ui.icons)
+        if (ui && ui.default) { harvest(ui.default); if (ui.default.icons) harvest(ui.default.icons) }
+        iconAvailableNames = [...collected].sort()
         try {
           if (typeof console !== 'undefined' && console.info) {
-            console.info('[dsh-better-workspace] primitives loaded, icon exports: ' + count)
+            console.info('[dsh-better-workspace] primitives icon exports: ' + iconAvailableNames.length
+              + (iconAvailableNames.length ? ' (e.g. ' + iconAvailableNames.slice(0, 5).join(', ') + ')' : ' — NONE'))
           }
         } catch { }
       }
@@ -6636,6 +6741,23 @@ window.__ModuleLoader__.load({
           }, t('settings.nativeReset.action')),
         ),
         E('div', { className: 'bw-hint' }, t('settings.nativeReset.hint')),
+        // v0.30.9 ICON DIAGNOSTIC — visible in the UI, not just the console.
+        // "占位图标" means icon() fell through to the placeholder, so the host
+        // is not exposing the names this plugin asks for. Show the real numbers
+        // so the cause is diagnosable without opening devtools.
+        (() => {
+          const d = iconDiagnostics()
+          return E('div', { style: { marginTop: 12 } },
+            E('div', { className: 'bw-setting-label' }, t('settings.iconDiag')),
+            E('div', { className: 'bw-hint' }, t('settings.iconDiag.count', { n: d.available })),
+            d.missing.length > 0
+              ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } }, t('settings.iconDiag.missing', { list: d.missing.slice(0, 8).join(', ') }))
+              : E('div', { className: 'bw-hint' }, t('settings.iconDiag.ok')),
+            d.sample.length > 0
+              ? E('div', { className: 'bw-hint', style: { opacity: .7 } }, 'sample: ' + d.sample.join(', '))
+              : null,
+          )
+        })(),
         // v0.27.0 DIAGNOSTICS: what the RUNNING host actually exports. Every
         // icon problem so far came from guessing the icon set; this shows the
         // truth instead, including any name this plugin asks for and cannot get.
@@ -9790,6 +9912,13 @@ window.__ModuleLoader__.load({
       const handleCtxPick = (id) => {
         const current = ctx
         if (current === null) return
+        // v0.30.9 FIX: groupKey used to be declared inside menuEntries(), but the
+        // click handler is a SIBLING scope, so referencing it threw
+        // ReferenceError and the menu item did nothing. Recompute it here from
+        // the same payload the menu item was built from.
+        const pickGroupKey = current.kind === 'sgroup'
+          ? String(current.payload.workspaceId || '') + '|' + String(current.payload.path || '')
+          : ''
         if (id === 'customize') {
           const payload = current.payload
           const name = current.kind === 'workspace' ? (payload.title || payload.leaf)
@@ -9845,11 +9974,11 @@ window.__ModuleLoader__.load({
         else if (kind === 'workspace' && id === 'rename') setDialog({ kind: 'ws-rename', workspace: payload })
         else if (kind === 'workspace' && id === 'delete') setDialog({ kind: 'ws-delete', workspace: payload })
         else if (kind === 'sgroup' && id === 'hide-sgroup') {
-          if (groupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(groupKey, true)
+          if (pickGroupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(pickGroupKey, true)
           return
         }
         else if (kind === 'sgroup' && id === 'unhide-sgroup') {
-          if (groupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(groupKey, false)
+          if (pickGroupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(pickGroupKey, false)
           return
         }
         else if (kind === 'sgroup' && id === 'rename-sgroup') setDialog({ kind: 'sgroup-rename', target: payload })
