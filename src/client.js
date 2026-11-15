@@ -45,6 +45,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': '按工作区',
         'viewOptions.byWorkspaceTree': '按工作区树',
         'viewOptions.flat': '单列表',
+        'viewOptions.columns': '分栏显示',
         'viewOptions.orderBy': '排序方式',
         'viewOptions.manualOrder': '手动排序',
         'viewOptions.updatedOrder': '最近更新',
@@ -208,6 +209,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Workspaces',
         'viewOptions.byWorkspaceTree': 'Workspace tree',
         'viewOptions.flat': 'In one list',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Order by',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Last updated',
@@ -379,6 +381,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'مساحات العمل',
         'viewOptions.byWorkspaceTree': 'شجرة مساحات العمل',
         'viewOptions.flat': 'قائمة واحدة',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'الترتيب حسب',
         'viewOptions.manualOrder': 'يدوي',
         'viewOptions.updatedOrder': 'آخر تحديث',
@@ -542,6 +545,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Arbeitsbereiche',
         'viewOptions.byWorkspaceTree': 'Arbeitsbereichsbaum',
         'viewOptions.flat': 'In einer Liste',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortieren',
         'viewOptions.manualOrder': 'Manuell',
         'viewOptions.updatedOrder': 'Zuletzt aktualisiert',
@@ -705,6 +709,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Espaces de travail',
         'viewOptions.byWorkspaceTree': 'Arborescence des espaces',
         'viewOptions.flat': 'En une liste',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Trier par',
         'viewOptions.manualOrder': 'Manuel',
         'viewOptions.updatedOrder': 'Dernière mise à jour',
@@ -868,6 +873,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'कार्यक्षेत्र अनुसार',
         'viewOptions.byWorkspaceTree': 'कार्यक्षेत्र ट्री अनुसार',
         'viewOptions.flat': 'एक सूची में',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'क्रम',
         'viewOptions.manualOrder': 'मैन्युअल',
         'viewOptions.updatedOrder': 'हाल का अपडेट',
@@ -1031,6 +1037,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Ruang kerja',
         'viewOptions.byWorkspaceTree': 'Pohon ruang kerja',
         'viewOptions.flat': 'Satu daftar',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Urutkan',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Terakhir diperbarui',
@@ -1194,6 +1201,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Aree di lavoro',
         'viewOptions.byWorkspaceTree': 'Albero aree di lavoro',
         'viewOptions.flat': 'In un elenco',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Ordina per',
         'viewOptions.manualOrder': 'Manuale',
         'viewOptions.updatedOrder': 'Ultimo aggiornamento',
@@ -1357,6 +1365,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'ワークスペースごと',
         'viewOptions.byWorkspaceTree': 'ワークスペースツリーごと',
         'viewOptions.flat': '1 つのリスト',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '並べ替え',
         'viewOptions.manualOrder': '手動',
         'viewOptions.updatedOrder': '最近の更新',
@@ -1520,6 +1529,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': '작업 공간별',
         'viewOptions.byWorkspaceTree': '작업 공간 트리별',
         'viewOptions.flat': '하나의 목록',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '정렬',
         'viewOptions.manualOrder': '수동',
         'viewOptions.updatedOrder': '최근 업데이트',
@@ -1683,6 +1693,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Werkruimtes',
         'viewOptions.byWorkspaceTree': 'Werkruimteboom',
         'viewOptions.flat': 'In één lijst',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sorteren op',
         'viewOptions.manualOrder': 'Handmatig',
         'viewOptions.updatedOrder': 'Laatst bijgewerkt',
@@ -1846,6 +1857,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Obszary robocze',
         'viewOptions.byWorkspaceTree': 'Drzewo obszarów',
         'viewOptions.flat': 'Jedna lista',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortuj według',
         'viewOptions.manualOrder': 'Ręcznie',
         'viewOptions.updatedOrder': 'Ostatnia aktualizacja',
@@ -2009,6 +2021,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Áreas de trabalho',
         'viewOptions.byWorkspaceTree': 'Árvore de áreas',
         'viewOptions.flat': 'Numa lista',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Ordenar por',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Atualização recente',
@@ -2172,6 +2185,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'По рабочим областям',
         'viewOptions.byWorkspaceTree': 'По дереву областей',
         'viewOptions.flat': 'Одним списком',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Сортировка',
         'viewOptions.manualOrder': 'Вручную',
         'viewOptions.updatedOrder': 'По обновлению',
@@ -2335,6 +2349,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Arbetsytor',
         'viewOptions.byWorkspaceTree': 'Arbetsyta-träd',
         'viewOptions.flat': 'I en lista',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortera efter',
         'viewOptions.manualOrder': 'Manuellt',
         'viewOptions.updatedOrder': 'Senast uppdaterad',
@@ -2498,6 +2513,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'ตามพื้นที่ทำงาน',
         'viewOptions.byWorkspaceTree': 'ตามแผนผังพื้นที่ทำงาน',
         'viewOptions.flat': 'รายการเดียว',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'เรียงตาม',
         'viewOptions.manualOrder': 'ด้วยตนเอง',
         'viewOptions.updatedOrder': 'อัปเดตล่าสุด',
@@ -2661,6 +2677,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Çalışma alanları',
         'viewOptions.byWorkspaceTree': 'Çalışma alanı ağacı',
         'viewOptions.flat': 'Tek liste',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sırala',
         'viewOptions.manualOrder': 'El ile',
         'viewOptions.updatedOrder': 'Son güncelleme',
@@ -2824,6 +2841,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': 'Theo khu vực làm việc',
         'viewOptions.byWorkspaceTree': 'Theo cây khu vực',
         'viewOptions.flat': 'Một danh sách',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sắp xếp theo',
         'viewOptions.manualOrder': 'Thủ công',
         'viewOptions.updatedOrder': 'Cập nhật gần đây',
@@ -2987,6 +3005,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': '按工作區',
         'viewOptions.byWorkspaceTree': '按工作區樹',
         'viewOptions.flat': '單一列表',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
@@ -3150,6 +3169,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': '按工作區',
         'viewOptions.byWorkspaceTree': '按工作區樹',
         'viewOptions.flat': '單一列表',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
@@ -3313,6 +3333,7 @@ window.__ModuleLoader__.load({
         'viewOptions.byWorkspace': '按工作區',
         'viewOptions.byWorkspaceTree': '按工作區樹',
         'viewOptions.flat': '單一列表',
+        'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
@@ -4239,6 +4260,12 @@ window.__ModuleLoader__.load({
       '.bw-input:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-input::placeholder{color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
       '.bw-tree{flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 6px 12px;min-height:0}',
+    // v0.30.0 column view: two independently scrolling panes.
+    '.bw-columns{flex:1;display:flex;min-height:0;gap:4px;padding:2px 4px 8px}',
+    '.bw-column{overflow-y:auto;overflow-x:hidden;min-height:0;min-width:0}',
+    '.bw-column-nav{flex:0 0 42%;border-right:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.2));padding-right:4px}',
+    '.bw-column-sessions{flex:1}',
+    '.bw-col-nav-row{min-height:32px}',
       '.bw-row{display:flex;align-items:center;gap:6px;min-height:34px;padding:6px 8px;border-radius:var(--bw-radius-ctl,8px);cursor:pointer;user-select:none;font-size:14px;line-height:20px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative;transition:background-color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1)),color var(--bw-dur-fast,.1s) var(--bw-ease,cubic-bezier(.4,0,.2,1))}',
       '.bw-drop-before::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
       '.bw-drop-after::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
@@ -5718,6 +5745,7 @@ window.__ModuleLoader__.load({
           { id: 'workspace', label: t('viewOptions.byWorkspace') },
           { id: 'workspace-tree', label: t('viewOptions.byWorkspaceTree') },
           { id: 'flat', label: t('viewOptions.flat') },
+          { id: 'columns', label: t('viewOptions.columns') },
           { type: 'separator', id: 'bw-order-sep' },
           { type: 'label', id: 'bw-order-by', text: t('viewOptions.orderBy') },
           { id: 'manual', label: t('viewOptions.manualOrder') },
@@ -5730,7 +5758,7 @@ window.__ModuleLoader__.load({
           .concat(sessionSlash ? ['session-slash'] : [])
           .concat(workspaceSlash ? ['workspace-slash'] : []),
         onSelect: (id) => {
-          if (id === 'workspace' || id === 'workspace-tree' || id === 'flat') { onPick('groupBy', id); setOpen(false); return }
+          if (id === 'workspace' || id === 'workspace-tree' || id === 'flat' || id === 'columns') { onPick('groupBy', id); setOpen(false); return }
           if (id === 'manual' || id === 'updated') { onPick('orderBy', id); setOpen(false); return }
           if (id === 'session-slash') { onToggle('sessionTitleSlash', !sessionSlash); return }
           if (id === 'workspace-slash') { onToggle('workspaceTitleSlash', !workspaceSlash); return }
@@ -8885,6 +8913,73 @@ window.__ModuleLoader__.load({
         rows.push(...ungrouped)
         return rows.map((s) => renderSessionRow({ ...s, leaf: s.title }, 0, undefined))
       }
+      /**
+       * v0.30.0 COLUMN VIEW — split the sidebar into two panes.
+       *
+       * Why: a deep tree (workspaces -> name groups -> disk nesting -> session
+       * groups -> sessions) forces a lot of horizontal indentation and scrolling.
+       * "Columns" borrows the Finder/VS Code idiom instead: the LEFT pane lists
+       * workspaces only (one flat, scannable picker), the RIGHT pane lists that
+       * workspace's sessions with grouping still applied. Selecting a workspace
+       * on the left swaps the right pane.
+       *
+       * Nothing about the data model changes: both panes read the same `items`,
+       * `sessionsOf`, grouping and pin logic the tree uses, so a fix in one view
+       * applies to both.
+       */
+      const columnsActiveId = (() => {
+        // Keep the same "which workspace am I looking at" rule the tree uses:
+        // the current session's owner, else the first workspace that has rows.
+        for (const w of items || []) {
+          if ((w.sessionIds || []).includes(currentId)) return w.workspaceId
+        }
+        const stored = prefsMap.columnsActiveWorkspace
+        if (typeof stored === 'string' && (items || []).some((w) => w.workspaceId === stored)) return stored
+        return (items && items[0] && items[0].workspaceId) || null
+      })()
+
+      /** LEFT pane: one row per workspace, with its session count. */
+      const renderColumnsNav = () => {
+        const rows = []
+        for (const workspace of items || []) {
+          const visible = sessionsOf(workspace)
+          const active = workspace.workspaceId === columnsActiveId
+          rows.push(E('div', {
+            key: 'col-nav-' + workspace.workspaceId,
+            className: cls('bw-row', 'bw-col-nav-row', active && 'bw-row-current'),
+            title: workspace.path || workspace.title,
+            onClick: () => {
+              if (actions && typeof actions.setPref === 'function') actions.setPref('columnsActiveWorkspace', workspace.workspaceId)
+              scopeSet('columnsActiveWorkspace', workspace.workspaceId)
+            },
+            onContextMenu: (e) => openCtx('workspace', workspace, e),
+            role: 'treeitem',
+            'aria-selected': active,
+          },
+            E('span', { className: 'bw-row-icon' }, iconOf('solid', false)),
+            E('span', { className: 'bw-row-label' }, workspace.title || workspace.leaf),
+            visible.length > 0 ? E('span', { className: 'bw-row-count' }, String(visible.length)) : null,
+          ))
+        }
+        if (rows.length === 0) rows.push(E('div', { key: 'col-empty', className: 'bw-empty' }, t('empty')))
+        return rows
+      }
+
+      /** RIGHT pane: the selected workspace's sessions, grouping still applied. */
+      const renderColumnsSessions = () => {
+        const workspace = (items || []).find((w) => w.workspaceId === columnsActiveId)
+        if (!workspace) return [E('div', { key: 'col-none', className: 'bw-empty' }, t('empty'))]
+        const rows = sessionsOf(workspace)
+        if (rows.length === 0) return [E('div', { key: 'col-nosess', className: 'bw-empty' }, t('empty'))]
+        // Reuse the exact tree the single-column view builds, so session groups,
+        // pinning and ordering behave identically.
+        return [renderSessionNode(
+          buildSessionTree(rows, sessionSlash, sessionGroupOrderMap[workspace.workspaceId], pinnedSetForTree, pinRankForTree),
+          workspace.workspaceId,
+          0,
+        )]
+      }
+
       const renderUngroupedBlock = () => {
         const rows = []
         if (ungrouped.length > 0) {
@@ -8898,6 +8993,9 @@ window.__ModuleLoader__.load({
         for (const entry of searched) bodyRows.push(...renderWorkspaceEntry(entry, 0))
       } else if (groupBy === 'flat') {
         bodyRows.push(...renderFlatRows())
+      } else if (groupBy === 'columns') {
+        // v0.30.0 COLUMN VIEW — handled by its own renderer below; bodyRows
+        // stays empty here so the single-column tree does not double-render.
       } else if (groupBy === 'workspace') {
         // Official 'workspace' mode (v0.13): one level — every workspace at
         // the root, no name groups, no disk nesting, no chain compression.
@@ -9252,7 +9350,14 @@ window.__ModuleLoader__.load({
         E(InteractionHubInline, {
           uiStatus, list, items, uiWorkspace, officialT, t,
         }),
-        E('div', { ref: treeRef, className: 'bw-tree', role: 'tree', 'aria-label': t('title') }, bodyRows),
+        groupBy === 'columns'
+          ? E('div', { ref: treeRef, className: 'bw-columns', role: 'tree', 'aria-label': t('title') },
+              // LEFT column: every workspace (and name group) as a compact picker.
+              E('div', { className: 'bw-column bw-column-nav' }, renderColumnsNav()),
+              // RIGHT column: the sessions of the selected workspace.
+              E('div', { className: 'bw-column bw-column-sessions' }, renderColumnsSessions()),
+            )
+          : E('div', { ref: treeRef, className: 'bw-tree', role: 'tree', 'aria-label': t('title') }, bodyRows),
         // Our own occupant serves the sidebar hole (direct composition, the
         // same props conversation the official owner share defines).
         E(BetterFlow, {

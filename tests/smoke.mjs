@@ -1340,3 +1340,41 @@ test('every group-drag call site uses the grouping path', () => {
   const dBody = text.slice(dStart, dStart + 400)
   assert.match(dBody, /renameByUser\(/, 'the rename dialog still uses the user path')
 })
+
+/* ------------------------------------------- column view + archive (v0.30) --- */
+test('column view splits workspaces and sessions into two panes', () => {
+  const text = read('src/client.js')
+  // A fourth grouping mode beside workspace / workspace-tree / flat.
+  assert.match(text, /id: 'columns', label: t\('viewOptions\.columns'\)/, 'the menu entry exists')
+  assert.match(text, /id === 'flat' \|\| id === 'columns'/, 'selecting it switches groupBy')
+  assert.match(text, /const renderColumnsNav = \(\) => \{/, 'left pane renderer exists')
+  assert.match(text, /const renderColumnsSessions = \(\) => \{/, 'right pane renderer exists')
+  // Both panes must read the SAME data path as the tree, so a fix applies to both.
+  assert.match(text, /const visible = sessionsOf\(workspace\)/, 'the nav pane counts through sessionsOf')
+  assert.match(text, /pinnedSetForTree, pinRankForTree/, 'the session pane reuses the grouped tree, pinning included')
+  // Two independent scroll regions.
+  assert.match(text, /'\.bw-columns\{flex:1;display:flex/, 'the panes sit side by side')
+  assert.match(text, /'\.bw-column\{overflow-y:auto/, 'each pane scrolls independently')
+  // Selecting on the left persists, so reopening keeps the same workspace.
+  assert.match(text, /columnsActiveWorkspace/, 'the active pane selection persists')
+})
+
+test('archived rows can be revealed, unarchived, and deleted for good', () => {
+  const text = read('src/client.js')
+  // Reveal
+  assert.match(text, /const showArchived = prefsMap\.showArchived === true/, 'reveal preference is read')
+  assert.match(text, /settings\.showArchived/, 'the settings switch exists')
+  assert.match(text, /'\.bw-row-archived\{opacity/, 'revealed rows are visually distinct')
+  // Unarchive in place
+  assert.match(text, /id: 'unarchive'/, 'an unarchive menu item exists')
+  assert.match(text, /unarchiveSession: typeof uiWorkspace\.unarchiveSession === 'function'/, 'host action is feature-probed')
+  // Permanent delete, destructive and confirmed
+  assert.match(text, /id: 'delete-forever'/, 'a delete-forever item exists')
+  assert.match(text, /danger: true/, 'it is styled destructive')
+  assert.match(text, /better-workspace\/delete/, 'it calls the host route')
+  // Host side moves aside by default rather than unlinking.
+  const host = read('src/delete-session.mjs')
+  assert.match(host, /export function deleteSessionArchive/, 'host delete helper exists')
+  assert.match(host, /sessions-deleted-/, 'default is a dated .del folder')
+  assert.match(host, /keepCopy === false/, 'unlinking requires an explicit opt-out')
+})
