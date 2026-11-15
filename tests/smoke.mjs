@@ -1256,14 +1256,33 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   assert.match(text, /settings\.groupIcon/, 'the settings toggle exists')
 })
 
-test('the plugins launcher is a registered slot seat, not a sidebar hack', () => {
+test('settings entries live in OUR header and never occupy a shell single-slot', () => {
   const text = read('src/client.js')
-  // The settings BUTTON is shell chrome; reimplementing it inside the sidebar
-  // is what made it vanish. Only launcher CONTENT may be contributed.
-  assert.match(text, /slots\.inject\('settings\.launcher'/, 'the launcher seat is registered')
-  assert.match(text, /props\.openSettings\(\{ page: 'plugins' \}\)/, 'it opens the plugins page directly')
-  // It must not attempt to paint the settings trigger itself.
-  assert.doesNotMatch(text, /settings\.trigger/, 'the sidebar must not re-render the settings trigger')
+  // `settings.launcher` is kind:"single": occupying it REPLACES the shipped
+  // Settings button (that is exactly how the user lost it at v0.28.0). So the
+  // plugin must never register that hole.
+  assert.doesNotMatch(text, /slots\.inject\('settings\.launcher'/, 'never take the launcher single-slot')
+  assert.doesNotMatch(text, /slots\.inject\('settings\.trigger'/, 'never take the trigger single-slot')
+
+  // Instead: our own buttons in our own header.
+  assert.match(text, /const labelsSettings = \(\) => \{/, 'a settings label helper exists')
+  assert.match(text, /const openSettingsPage = \(page\) => \{/, 'a settings opener exists')
+  assert.match(text, /'aria-label': labelsSettings\(\)/, 'the header renders a Settings button')
+  assert.match(text, /'aria-label': labelsLauncher\(\)/, 'the header renders a Plugins button')
+
+  // The opener dispatches the shell's own settings.open shortcut (Ctrl+,).
+  assert.match(text, /key: ','/, 'it dispatches the comma key')
+  assert.match(text, /ctrlKey: true/, 'with the primary modifier')
+  assert.match(text, /document\.dispatchEvent\(ev\)/, 'on document, where the shell listens')
+
+  // It must be defined BEFORE the component that uses it, or painting throws
+  // ReferenceError (this actually happened and the paint test caught it).
+  const defAt = text.indexOf('const labelsSettings = () => {')
+  const useAt = text.indexOf("'aria-label': labelsSettings()")
+  assert.ok(defAt > 0 && useAt > 0 && defAt < useAt, 'the helper is defined before its use')
+
+  // And a settings page can be contributed safely: settings.section is a list.
+  assert.match(text, /slots\.inject\('settings\.section'/, 'a settings page is registered on the LIST slot')
 })
 
 test('a failing drag commit cannot take the sidebar down (v0.28)', () => {

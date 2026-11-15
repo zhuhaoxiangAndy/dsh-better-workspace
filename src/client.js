@@ -53,6 +53,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': '工作区按"/"分组',
       'group.ungrouped': '未分组',
       'launcher.plugins': '插件',
+      'launcher.settings': '设置',
+      'sessions.expand': '展开其余 {n} 个会话',
+      'sessions.collapse': '收起',
       'sessions.expand': '展开 {n} 个会话',
       'sessions.collapse': '收起',
       'time.now': '刚刚',
@@ -217,6 +220,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Group workspaces by "/"',
       'group.ungrouped': 'Ungrouped',
       'launcher.plugins': 'Plugins',
+      'launcher.settings': 'Settings',
+      'sessions.expand': 'Show {n} more sessions',
+      'sessions.collapse': 'Collapse',
       'sessions.expand': 'Show {n} more sessions',
       'sessions.collapse': 'Collapse',
       'time.now': 'now',
@@ -389,6 +395,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'تجميع مساحات العمل حسب "/"',
         'group.ungrouped': 'بلا مجموعة',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'عرض {n} جلسات إضافية',
         'sessions.collapse': 'طيّ',
         'time.now': 'الآن',
@@ -553,6 +562,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Arbeitsbereiche nach "/" gruppieren',
         'group.ungrouped': 'Ohne Gruppe',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '{n} Sitzungen einblenden',
         'sessions.collapse': 'Einklappen',
         'time.now': 'gerade eben',
@@ -717,6 +729,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Grouper les espaces par « / »',
         'group.ungrouped': 'Sans groupe',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Afficher {n} sessions',
         'sessions.collapse': 'Réduire',
         'time.now': 'à l\'instant',
@@ -881,6 +896,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'कार्यक्षेत्रों को "/" से समूहित करें',
         'group.ungrouped': 'बिना समूह',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '{n} सत्र दिखाएँ',
         'sessions.collapse': 'समेटें',
         'time.now': 'अभी-अभी',
@@ -1045,6 +1063,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Kelompokkan ruang kerja per "/"',
         'group.ungrouped': 'Tanpa grup',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Tampilkan {n} sesi',
         'sessions.collapse': 'Ciutkan',
         'time.now': 'baru saja',
@@ -1209,6 +1230,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Raggruppa aree per "/"',
         'group.ungrouped': 'Senza gruppo',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Mostra {n} sessioni',
         'sessions.collapse': 'Comprimi',
         'time.now': 'adesso',
@@ -1373,6 +1397,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'ワークスペースを「/」でグループ化',
         'group.ungrouped': '未分類',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '{n} 件のセッションを展開',
         'sessions.collapse': '折りたたむ',
         'time.now': 'たった今',
@@ -1537,6 +1564,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': '작업 공간을 "/"로 그룹화',
         'group.ungrouped': '미분류',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '세션 {n}개 펼치기',
         'sessions.collapse': '접기',
         'time.now': '방금',
@@ -1701,6 +1731,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Werkruimtes groeperen op "/"',
         'group.ungrouped': 'Zonder groep',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '{n} sessies uitklappen',
         'sessions.collapse': 'Inklappen',
         'time.now': 'zojuist',
@@ -1865,6 +1898,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Grupuj obszary po "/"',
         'group.ungrouped': 'Bez grupy',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Pokaż {n} sesji',
         'sessions.collapse': 'Zwiń',
         'time.now': 'przed chwilą',
@@ -2029,6 +2065,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Agrupar áreas por "/"',
         'group.ungrouped': 'Sem grupo',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Mostrar {n} sessões',
         'sessions.collapse': 'Recolher',
         'time.now': 'agora mesmo',
@@ -2193,6 +2232,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Группировать области по «/»',
         'group.ungrouped': 'Без группы',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Показать ещё {n} сессий',
         'sessions.collapse': 'Свернуть',
         'time.now': 'только что',
@@ -2357,6 +2399,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Gruppera arbetsytor efter "/"',
         'group.ungrouped': 'Utan grupp',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Visa {n} sessioner',
         'sessions.collapse': 'Fäll ihop',
         'time.now': 'nyss',
@@ -2521,6 +2566,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'จัดกลุ่มพื้นที่ทำงานตาม "/"',
         'group.ungrouped': 'ไม่มีกลุ่ม',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'แสดงอีก {n} เซสชัน',
         'sessions.collapse': 'ย่อ',
         'time.now': 'เมื่อสักครู่',
@@ -2685,6 +2733,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Çalışma alanlarını "/" ile gruplandır',
         'group.ungrouped': 'Grubusuz',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '{n} oturumu göster',
         'sessions.collapse': 'Daralt',
         'time.now': 'az önce',
@@ -2849,6 +2900,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': 'Nhóm khu vực theo "/"',
         'group.ungrouped': 'Chưa phân nhóm',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': 'Hiện thêm {n} phiên',
         'sessions.collapse': 'Thu gọn',
         'time.now': 'vừa xong',
@@ -3013,6 +3067,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -3177,6 +3234,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -3341,6 +3401,9 @@ window.__ModuleLoader__.load({
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
         'launcher.plugins': 'Plugins',
+        'launcher.settings': 'Settings',
+        'sessions.expand': 'Show {n} more sessions',
+        'sessions.collapse': 'Collapse',
         'sessions.expand': '展開 {n} 個工作階段',
         'sessions.collapse': '收合',
         'time.now': '剛剛',
@@ -3850,6 +3913,37 @@ window.__ModuleLoader__.load({
      * @param pinnedIds   Set of pinned session ids, or null when the host exposes none
      * @param pinRank     Map id -> index in the host's pinnedSessionIds array
      */
+    /**
+     * v0.30.3 SESSION WATERMARK — ported from the shipped browser.
+     *
+     * Read out of @deepseek-ai/dsh-client-ui-workspace/lib/client.js:
+     *   const SESSION_WATERMARK_BASE = 5;
+     *   function watermarkRows(sessions, watermark) {
+     *     let count = 0
+     *     const rows = sessions.filter((s) => { if (s.blank) return true; count += 1; return count <= watermark })
+     *     return { rows, hiddenCount: sessions.length - rows.length }
+     *   }
+     * …and the reveal label is t('sessions.expand', { n }) = "展开其余 {n} 个会话",
+     * collapsing back with t('sessions.collapse') = "收起".
+     *
+     * The point the user made: when a group is COLLAPSED, the rows after the
+     * limit must NOT render as further group pills. They are simply hidden, and
+     * one small "expand N more" text row stands in for them.
+     */
+    const SESSION_WATERMARK_BASE = 5
+    const SESSION_WATERMARK_AUTO_MAX = 50
+
+    /** Show the blank row plus the first `watermark` non-blank rows, in order. */
+    const watermarkRows = (sessions, watermark) => {
+      let count = 0
+      const rows = (sessions || []).filter((session) => {
+        if (session.blank) return true
+        count += 1
+        return count <= watermark
+      })
+      return { rows, hiddenCount: (sessions || []).length - rows.length }
+    }
+
     function buildSessionTree(rows, groupBySlash, groupOrder, pinnedIds, pinRank) {
       const root = { path: '', name: '', groups: [], sessions: [] }
       const byPath = new Map([['', root]])
@@ -4277,6 +4371,9 @@ window.__ModuleLoader__.load({
       '.bw-input::placeholder{color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
       '.bw-tree{flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 6px 12px;min-height:0}',
     // v0.30.0 column view: two independently scrolling panes.
+    // v0.30.3 "expand N more" — a small text row, not a pill.
+    '.bw-watermark{display:block;width:100%;text-align:left;border:none;background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);font-size:12px;line-height:18px;padding:3px 8px;cursor:pointer;border-radius:var(--dsw-radius-xs,4px)}',
+    '.bw-watermark:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-columns{flex:1;display:flex;min-height:0;gap:4px;padding:2px 4px 8px}',
     '.bw-column{overflow-y:auto;overflow-x:hidden;min-height:0;min-width:0}',
     '.bw-column-nav{flex:0 0 42%;border-right:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.2));padding-right:4px}',
@@ -4307,8 +4404,6 @@ window.__ModuleLoader__.load({
     '.bw-group-pill{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:100%;height:22px;padding:0 9px 0 6px;border-radius:11px;color:#fff;font-size:12px;line-height:22px;overflow:hidden}',
     '.bw-group-pill-pulse{animation:bw-pill-breathe 1.8s ease-in-out infinite}',
     '@keyframes bw-pill-breathe{0%,100%{opacity:1}50%{opacity:.62}}',
-    // The little white notch on the pill's left edge, like Chrome's group marker.
-    '.bw-group-pill-rail{flex:none;width:3px;height:12px;border-radius:2px;background:rgba(255,255,255,.85)}',
     '.bw-group-pill-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
     // Members under a group draw the SAME colour rail down their left edge, so
     // the group's extent is visible like a tab strip's coloured spine.
@@ -4547,7 +4642,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], sessionWatermarks: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -4578,6 +4673,8 @@ window.__ModuleLoader__.load({
         setExpanded: (d, key, value) => { if (!d.expanded) d.expanded = {}; d.expanded[key] = value },
         setSessionsExpanded: (d, key, value) => { if (!d.sessionsExpanded) d.sessionsExpanded = {}; d.sessionsExpanded[key] = value },
         setSessionGroupExpanded: (d, key, value) => { if (!d.sessionGroups) d.sessionGroups = {}; d.sessionGroups[key] = value },
+        // v0.30.3: reveal N more sessions at one level (shipped `sessions.expand`).
+        setSessionWatermark: (d, key, value) => { if (!d.sessionWatermarks) d.sessionWatermarks = {}; d.sessionWatermarks[key] = value },
         setPref: (d, key, value) => { if (!d.prefs) d.prefs = {}; d.prefs[key] = value },
         setStyling: (d, key, value) => { if (!d.styling) d.styling = {}; if (value === null) delete d.styling[key]; else d.styling[key] = value },
         // Browser-local session order (v0.10.2): the fallback channel for
@@ -5722,12 +5819,14 @@ window.__ModuleLoader__.load({
         // v0.30.1 Edge/Chrome tab-group look: a coloured PILL carrying the group
         // name, plus a rail in the SAME colour that continues down through every
         // member. The colour is hashed from the group name so it is stable.
+        // v0.30.3: the little notch inside the pill was redundant — the user
+        // asked for it to go. The pill itself carries the group colour, and the
+        // MEMBER rail below carries it down the subtree.
         E('span', {
           className: cls('bw-group-pill', pulse && 'bw-group-pill-pulse'),
           style: { background: tabGroupColor(name) },
           title: name,
         },
-          E('span', { className: 'bw-group-pill-rail', 'aria-hidden': 'true' }),
           E('span', { className: 'bw-group-pill-text' }, name),
         ),
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
@@ -6900,6 +6999,48 @@ window.__ModuleLoader__.load({
       return state
     }
 
+      /**
+       * Open the shipped Settings panel from inside this plugin.
+       *
+       * WHY A SYNTHETIC KEY EVENT
+       * The settings shell (dsh-client-ui-settings-general) keeps its store and
+       * its `registry.invoke('settings.open')` inside a closure nobody else can
+       * reach, and `settings.launcher` is a single-occupancy hole we must NOT
+       * take (taking it is what deleted the user's Settings button). The shell
+       * DOES register the `settings.open` command with Ctrl+, and its keyboard
+       * adapter has no `isTrusted` check, so dispatching that exact keydown is
+       * the supported-by-behaviour way to open it from another plugin.
+       *
+       * @param {'settings'|'plugins'} page
+       */
+    const openSettingsPage = (page) => {
+        try {
+          const ev = new KeyboardEvent('keydown', {
+            key: ',',
+            code: 'Comma',
+            ctrlKey: true,
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+          })
+          document.dispatchEvent(ev)
+          // The shortcuts adapter listens on document in the capture phase, so a
+          // second dispatch on window covers hosts that bubble-only.
+          if (!ev.defaultPrevented) window.dispatchEvent(ev.cloneNode ? ev : ev)
+        } catch { /* older engines without KeyboardEvent constructor */ }
+        // Best-effort deep link: once the panel is open, select the page.
+        if (page === 'plugins') {
+          try { window.__dshOpenSettingsPage = 'plugins' } catch { }
+        }
+      }
+
+    const labelsLauncher = () => {
+        return '插件'
+      }
+    const labelsSettings = () => {
+        return '设置'
+      }
+
     function BetterBrowser(props) {
       const {
         wide, expandSidebar,
@@ -6951,6 +7092,8 @@ window.__ModuleLoader__.load({
       // as sessionOrderMap: always read through a fallback because hydration
       // replaces the whole persisted value and older states lack this key.
       const sessionGroupOrderMap = useStore ? (useStore(s => s.sessionGroupOrder) || {}) : {}
+      // v0.30.3: per-level session watermark (how many rows are revealed).
+      const sessionWatermarksMap = useStore ? (useStore(s => s.sessionWatermarks) || {}) : {}
       // Workspace-layer dragged order (v0.23.0): ONE global list of folder name
       // paths plus `id:<workspaceId>` keys. Fallback discipline as above.
       const workspaceGroupOrder = useStore ? (useStore(s => s.workspaceGroupOrder) || []) : []
@@ -8752,6 +8895,18 @@ window.__ModuleLoader__.load({
         if (groups.length === 0 && sessions.length === 0) return null
         return { path: node.path, name: node.name, groups, sessions }
       }
+      /**
+       * Per-level watermark: how many sessions this level currently reveals.
+       * Stored in the view store so the reveal survives a re-render, keyed by
+       * workspace + group path (the same identity the shipped browser uses for
+       * its `watermarks` map).
+       */
+      const watermarkOf = (key) => {
+        const map = (typeof sessionWatermarksMap === 'object' && sessionWatermarksMap) ? sessionWatermarksMap : null
+        const v = map ? map[key] : undefined
+        return Number.isFinite(v) ? v : SESSION_WATERMARK_BASE
+      }
+
       const renderSessionNode = (node, workspaceId, depth, inheritedColor) => {
         const view = searching ? searchSessionNode(node) : node
         if (!view) return []
@@ -8816,7 +8971,27 @@ window.__ModuleLoader__.load({
           }))
           if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1, tabGroupColor(group.name)))
         }
-        for (const s of trailing) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
+        // v0.30.3 WATERMARK: keep the first N sessions at this level and stand in
+        // for the rest with one small "expand N more" row, exactly like the
+        // shipped browser. Without this a collapsed group kept painting every
+        // following row (and, before v0.30.1, its sibling pills as well).
+        const wmKey = (workspaceId || '') + '|' + (view.path || '')
+        const wm = Math.max(SESSION_WATERMARK_BASE, watermarkOf(wmKey))
+        const { rows: shown, hiddenCount } = watermarkRows(trailing, wm)
+        for (const s of shown) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
+        if (hiddenCount > 0) {
+          out.push(E('button', {
+            key: 'wm-' + wmKey,
+            type: 'button',
+            className: 'bw-watermark',
+            style: { paddingLeft: 8 + depth * 12 },
+            onClick: () => {
+              if (typeof actions.setSessionWatermark === 'function') {
+                actions.setSessionWatermark(wmKey, wm + SESSION_WATERMARK_BASE)
+              }
+            },
+          }, t('sessions.expand', { n: hiddenCount })))
+        }
         return out
       }
 
@@ -9353,6 +9528,23 @@ window.__ModuleLoader__.load({
         StyleNode(),
         E('div', { className: 'bw-header' },
           E('div', { className: 'bw-header-title' }, t('title')),
+          // v0.30.2 Our own Settings / Plugins entries. They live in OUR header,
+          // so they cannot displace a shell seat (taking settings.launcher is
+          // what removed the shipped Settings button at v0.28.0).
+          E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': labelsSettings(),
+            title: labelsSettings(),
+            onClick: () => openSettingsPage('settings'),
+          }, icon('IconSettingsOutline16', 16)),
+          E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': labelsLauncher(),
+            title: labelsLauncher(),
+            onClick: () => openSettingsPage('plugins'),
+          }, icon('IconCordisPluginOutline14', 16)),
           // Group discoverability (v0.15): a visible "New group" entry point
           // that doubles as the row-drop zone. Clicking opens the picker
           // shape; dropping a row onto it locks that row in the same dialog.
@@ -9724,26 +9916,43 @@ window.__ModuleLoader__.load({
        * reimplemented inside the sidebar — that is what made it disappear when
        * this plugin took over `sidebar.workspaces`.
        */
-      const labelsLauncher = () => {
-        try { return t('launcher.plugins') } catch { return '插件' }
-      }
 
-      slots.inject('settings.launcher', guarded(
-        'settings.launcher',
-        { name: 'settings.launcher', key: 'better-workspace:plugins', locale: NS, store: viewStore },
-        (props) => E('button', {
-          type: 'button',
-          className: 'bw-launcher-btn',
-          title: labelsLauncher(),
-          'aria-label': labelsLauncher(),
-          onClick: () => {
-            // Straight to the PLUGINS page — the reason the user opens settings
-            // after a crash is to inspect plugins, not to browse settings.
-            try {
-              if (props && typeof props.openSettings === 'function') props.openSettings({ page: 'plugins' })
-            } catch { }
-          },
-        }, icon('IconCordisPluginOutline14', 16), props && props.wide ? E('span', { className: 'bw-launcher-label' }, labelsLauncher()) : null),
+      // v0.30.2: REMOVED the settings.launcher registration.
+      //
+      // `settings.launcher` is declared `kind: "single"` (sidebar.settings slot
+      // family). Registering a seat there does not add a button beside the
+      // shipped one — it REPLACES it, because a single-occupancy hole keeps one
+      // occupant and `renderSlot(..., { fallback })` only falls back when the
+      // hole is empty. That is exactly why the user lost the Settings button
+      // after v0.28.0: this plugin took the hole that belongs to the shell.
+      //
+      // The plugin entry point now lives INSIDE our own sidebar chrome
+      // (see the header buttons), which cannot collide with shell seats.
+
+      /**
+       * v0.30.2 SETTINGS ENTRY THAT CANNOT COLLIDE WITH THE SHELL.
+       *
+       * Two facts from the shipped bundle (dsh-client-ui-settings-general):
+       *   - `settings.launcher` is kind:"single", so occupying it REPLACES the
+       *     shell's own Settings button (that is how the button disappeared);
+       *   - `settings.section` is kind:"list", rendered with `{ only: active }`,
+       *     so an extra seat there appears as one more settings page beside the
+       *     shipped ones and can never displace them.
+       *
+       * Therefore this plugin contributes a SETTINGS PAGE (list seat) and opens
+       * settings through the shell's own state, instead of playing with the
+       * launcher hole.
+       */
+      slots.inject('settings.section', guarded(
+        'settings.section',
+        {
+          name: 'settings.section',
+          key: 'better-workspace',
+          locale: NS,
+          store: viewStore,
+          options: { id: 'better-workspace', order: 90, label: 'Better Workspace' },
+        },
+        BetterWorkspaceSettings,
       ))
 
       slots.inject('settings.plugin.item', guarded(
