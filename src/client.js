@@ -8478,7 +8478,11 @@ window.__ModuleLoader__.load({
           setDrag(null)
         },
         onDragOver: (event) => {
-          if (!dragMatches('workspace') && !dragMatches('folder')) return
+          // v0.30.6: a SESSION may also be dropped on a workspace or group row —
+          // that is how an ungrouped session joins a workspace. Before this the
+          // handler ignored session drags entirely, so dropping one on a
+          // workspace highlighted nothing and did nothing.
+          if (!dragMatches('workspace') && !dragMatches('folder') && !dragMatches('session')) return
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
@@ -8498,6 +8502,9 @@ window.__ModuleLoader__.load({
         onDrop: (event) => {
           event.preventDefault()
           event.stopPropagation()
+          // A session dropped on a workspace/group row JOINS that workspace and
+          // takes the group prefix (empty prefix at workspace level).
+          if (dragMatches('session')) { commitSessionJoinWorkspace(path); return }
           const band = folderEdgeBand(event)
           if (dragMatches('folder')) {
             if (band === null) { commitFolderMoveInto(path); return }
@@ -8633,6 +8640,41 @@ window.__ModuleLoader__.load({
             : (anchor !== undefined ? insertWorkspaceBefore(source.workspaceId, anchor) : insertWorkspaceBefore(source.workspaceId))))
           .catch((e) => { hostOrderFailedRef.current.add(targetFolder); commitLocalOrder(); fail(e) })
       }
+      /**
+       * v0.30.6 A session dropped on a WORKSPACE or GROUP row joins it.
+       *
+       * This is the missing half of the ungrouped pool: before this, a session in
+       * "未分组" could only be reordered inside itself — dropping it on a
+       * workspace row highlighted nothing because the row handler ignored
+       * `session` drags, which the user read as "the mover plugin crashed".
+       *
+       * The id path is `[<workspaceId>//]*<namePath>`; everything after the last
+       * `//` is the target group path. The session joins the workspace by taking
+       * that prefix on its title, then the host re-anchors it.
+       *
+       * @param {string} idPath the drop target's composite id path
+       */
+      const commitSessionJoinWorkspace = (idPath) => {
+        const source = drag && drag.source
+        setDrag(null)
+        if (!source || !source.sessionId) return
+        const text = String(idPath || '')
+        const cutAt = text.lastIndexOf('//')
+        const groupPath = cutAt === -1 ? text : text.slice(cutAt + 2)
+        // Which workspace owns this row? Prefer the id embedded in the path;
+        // fall back to the row's own workspaceId.
+        const wsMatch = /^([0-9a-fA-F-]{8,})\//.exec(text)
+        const targetWs = wsMatch ? wsMatch[1] : source.workspaceId
+        if (!targetWs) return
+        const leaf = String(source.leaf || source.title || source.sessionId)
+        const nextTitle = groupPath === '' ? leaf : groupPath + '/' + leaf
+        Promise.resolve()
+          // A grouping change must not claim the title, or automatic titles stop
+          // for this session (see renameForGrouping).
+          .then(() => renameForGrouping(source.sessionId, nextTitle))
+          .catch(fail)
+      }
+
       const commitWorkspaceMoveInto = (folderIdPath) => {
         const source = drag.source
         setDrag(null)

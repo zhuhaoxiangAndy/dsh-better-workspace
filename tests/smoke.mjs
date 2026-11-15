@@ -1446,3 +1446,24 @@ test('a session can collapse or expand its own group', () => {
   // A session outside any group must be told so, not silently ignored.
   assert.match(text, /menu\.toggleGroupNoGroup/, 'an ungrouped session gets an explanation')
 })
+
+test('an ungrouped session can be dropped onto a workspace (v0.30.6)', () => {
+  const text = read('src/client.js')
+  // The row handler used to ignore `session` drags entirely, which is why an
+  // ungrouped session could only be reordered inside the ungrouped pool.
+  const dragEvents = text.slice(
+    text.indexOf('const folderDragEvents = (path) =>'),
+    text.indexOf('const commitFolderMoveInto = (targetIdPath) =>'),
+  )
+  assert.match(dragEvents, /!dragMatches\('session'\)/, 'the row accepts session drags')
+  assert.match(dragEvents, /if \(dragMatches\('session'\)\) \{ commitSessionJoinWorkspace\(path\); return \}/,
+    'a session drop joins the target')
+  // The commit must use the grouping path so auto-titles keep working.
+  const join = text.slice(
+    text.indexOf('const commitSessionJoinWorkspace = (idPath) => {'),
+    text.indexOf('const commitWorkspaceMoveInto = (folderIdPath) => {'),
+  )
+  assert.match(join, /renameForGrouping\(source\.sessionId, nextTitle\)/, 'it renames through the grouping path')
+  assert.match(join, /const groupPath = cutAt === -1 \? text : text\.slice\(cutAt \+ 2\)/, 'it reads the group prefix from the id path')
+  assert.match(join, /groupPath === '' \? leaf : groupPath \+ '\/' \+ leaf/, 'workspace-level drop keeps the bare leaf')
+})
