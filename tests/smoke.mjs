@@ -1484,3 +1484,21 @@ test('a workstation or workspace group can be pinned (v0.30.7)', () => {
   assert.match(text, /for \(const folder of restFolders\)/, 'remaining groups follow')
   assert.match(text, /for \(const workspace of restWs\)/, 'remaining workspaces last')
 })
+
+test('a session group can be hidden and found again (v0.30.8)', () => {
+  const text = read('src/client.js')
+  // A group is a "/"-prefix projection with no host identity, so hiding is a
+  // pure view choice stored locally.
+  assert.match(text, /hiddenSessionGroups: \{\}/, 'the store holds hidden groups')
+  assert.ok(text.includes('setSessionGroupHidden: (d, key, hidden) => {'), 'an action toggles it')
+  // Menu entry, with the inverse when already hidden.
+  assert.match(text, /id: 'hide-sgroup'/, 'a hide entry exists')
+  assert.match(text, /id: 'unhide-sgroup'/, 'an unhide entry exists')
+  // Hidden groups must not render, but search must still find their sessions.
+  assert.ok(text.includes('hiddenSessionGroupsMap[key] === true) continue'), 'hidden groups are skipped during render')
+  // (search still shows their sessions)
+  // Hiding must be reversible: a recovery row restores every hidden group.
+  assert.match(text, /unhide-all-groups/, 'a recovery row exists')
+  assert.ok(text.includes('actions.setSessionGroupHidden(k, false)'), 'it unhides them all')
+
+})

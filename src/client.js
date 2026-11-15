@@ -86,6 +86,10 @@ window.__ModuleLoader__.load({
       'menu.moveToGroup': '移动到分组…',
       'menu.watermark': '折叠会话个数…',
       'menu.pinWorkspace': '置顶这个工作区/组',
+      'menu.hideGroup': '隐藏这个会话组',
+      'menu.unhideGroup': '取消隐藏会话组',
+      'settings.showHiddenGroups': '显示已隐藏的会话组',
+      'settings.showHiddenGroups.hint': '隐藏的会话组不会出现在树里；开启此项可重新看到它们并取消隐藏。',
       'menu.unpinWorkspace': '取消置顶',
       'menu.watermark.hint': '「{label}」每层最多显示多少个会话，其余收进「展开其余 N 个会话」。',
       'menu.toggleGroup': '折叠/展开本会话所在的组',
@@ -259,6 +263,10 @@ window.__ModuleLoader__.load({
       'menu.moveToGroup': 'Move to group…',
       'menu.watermark': 'Collapse sessions after…',
       'menu.pinWorkspace': 'Pin this workspace / group',
+      'menu.hideGroup': 'Hide this session group',
+      'menu.unhideGroup': 'Unhide session group',
+      'settings.showHiddenGroups': 'Show hidden session groups',
+      'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
       'menu.unpinWorkspace': 'Unpin',
       'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
       'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -440,6 +448,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'نقل إلى مجموعة…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -613,6 +625,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'In Gruppe verschieben…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -786,6 +802,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Déplacer vers le groupe…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -959,6 +979,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'समूह में ले जाएँ…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1132,6 +1156,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Pindahkan ke grup…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1305,6 +1333,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Sposta nel gruppo…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1478,6 +1510,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'グループに移動…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1651,6 +1687,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': '그룹으로 이동…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1824,6 +1864,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Naar groep verplaatsen…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -1997,6 +2041,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Przenieś do grupy…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -2170,6 +2218,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Mover para o grupo…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -2343,6 +2395,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Переместить в группу…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -2516,6 +2572,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Flytta till grupp…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -2689,6 +2749,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'ย้ายไปยังกลุ่ม…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -2862,6 +2926,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Gruba taşı…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -3035,6 +3103,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': 'Chuyển vào nhóm…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -3208,6 +3280,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -3381,6 +3457,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -3554,6 +3634,10 @@ window.__ModuleLoader__.load({
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.hideGroup': 'Hide this session group',
+        'menu.unhideGroup': 'Unhide session group',
+        'settings.showHiddenGroups': 'Show hidden session groups',
+        'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
         'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
@@ -4793,7 +4877,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], sessionWatermarks: {}, pinnedWorkspaceIds: [], prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], sessionWatermarks: {}, hiddenSessionGroups: {}, pinnedWorkspaceIds: [], prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -4824,6 +4908,13 @@ window.__ModuleLoader__.load({
         setExpanded: (d, key, value) => { if (!d.expanded) d.expanded = {}; d.expanded[key] = value },
         setSessionsExpanded: (d, key, value) => { if (!d.sessionsExpanded) d.sessionsExpanded = {}; d.sessionsExpanded[key] = value },
         setSessionGroupExpanded: (d, key, value) => { if (!d.sessionGroups) d.sessionGroups = {}; d.sessionGroups[key] = value },
+        // v0.30.8 hide/show a session group. Groups have no host identity (a group
+        // is a "/"-prefix projection), so hiding is purely a local view choice.
+        setSessionGroupHidden: (d, key, hidden) => {
+          if (!d.hiddenSessionGroups) d.hiddenSessionGroups = {}
+          if (hidden) d.hiddenSessionGroups[key] = true
+          else delete d.hiddenSessionGroups[key]
+        },
         // v0.30.3: reveal N more sessions at one level (shipped `sessions.expand`).
         setSessionWatermark: (d, key, value) => { if (!d.sessionWatermarks) d.sessionWatermarks = {}; d.sessionWatermarks[key] = value },
         // v0.30.7 workspace-level pin: a pinned WORKSPACE (or workspace group)
@@ -7345,6 +7436,8 @@ window.__ModuleLoader__.load({
       const sessionGroupOrderMap = useStore ? (useStore(s => s.sessionGroupOrder) || {}) : {}
       // v0.30.3: per-level session watermark (how many rows are revealed).
       const sessionWatermarksMap = useStore ? (useStore(s => s.sessionWatermarks) || {}) : {}
+      // v0.30.8: groups the user chose to hide from the tree.
+      const hiddenSessionGroupsMap = useStore ? (useStore(s => s.hiddenSessionGroups) || {}) : {}
       // v0.30.7: pinned WORKSPACES / workspace groups lead their siblings.
       const pinnedWorkspaceIds = useStore ? (useStore(s => s.pinnedWorkspaceIds) || []) : []
       // Workspace-layer dragged order (v0.23.0): ONE global list of folder name
@@ -9219,6 +9312,10 @@ window.__ModuleLoader__.load({
         for (const s of hoisted) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
         for (const group of view.groups) {
           const key = workspaceId + '|' + group.path
+          // v0.30.8: a hidden group is not rendered at all (its sessions go with
+          // it). Search still shows matches, so hiding cannot make a session
+          // unreachable.
+          if (!searching && hiddenSessionGroupsMap[key] === true) continue
           const open = searching || sessionGroupOpen(key)
           out.push(E(SessionGroupRow, {
             key: 'sg-' + key,
@@ -9573,6 +9670,23 @@ window.__ModuleLoader__.load({
         for (const workspace of restWs) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
         bodyRows.push(...renderUngroupedBlock())
       }
+      // v0.30.8: if any session group is hidden, show one recovery row at the end.
+      // Without this a hidden group is unreachable — hiding must be reversible.
+      if (!searching) {
+        const hiddenKeys = Object.keys(hiddenSessionGroupsMap || {}).filter((k) => hiddenSessionGroupsMap[k] === true)
+        if (hiddenKeys.length > 0) {
+          bodyRows.push(E('button', {
+            key: 'unhide-all-groups',
+            type: 'button',
+            className: 'bw-watermark',
+            onClick: () => {
+              if (actions && typeof actions.setSessionGroupHidden === 'function') {
+                for (const k of hiddenKeys) actions.setSessionGroupHidden(k, false)
+              }
+            },
+          }, t('menu.unhideGroup') + ' (' + String(hiddenKeys.length) + ')'))
+        }
+      }
       const isEmpty = bodyRows.length === 0
       if (isEmpty) {
         bodyRows = [E('div', { key: 'empty', className: 'bw-empty' }, searching ? t('empty.search') : (phase === 'pending' ? '…' : t('empty')))]
@@ -9599,6 +9713,11 @@ window.__ModuleLoader__.load({
           ? String(ctx.payload.workspaceId || '')
           : ctx.kind === 'folder' ? 'folder:' + String(ctx.payload.folderPath || '') : ''
         const isWsPinned = wsPinId !== '' && pinnedWorkspaceIds.includes(wsPinId)
+        // v0.30.8: is the session group under this cursor hidden?
+        const groupKey = ctx.kind === 'sgroup'
+          ? String(ctx.payload.workspaceId || '') + '|' + String(ctx.payload.path || '')
+          : ''
+        const isGroupHidden = groupKey !== '' && hiddenSessionGroupsMap[groupKey] === true
         const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutline16', 16) }
         // The discoverability entry (v0.15): every row kind can be moved into
         // a name group. One shared item object, inserted after each branch's
@@ -9660,6 +9779,9 @@ window.__ModuleLoader__.load({
         ]
         return [
           { id: 'rename-sgroup', label: t('menu.renameSgroup'), icon: icon('IconEditOutline16', 16) },
+          isGroupHidden
+            ? { id: 'unhide-sgroup', label: t('menu.unhideGroup'), icon: icon('IconFolderOpen16', 16) }
+            : { id: 'hide-sgroup', label: t('menu.hideGroup'), icon: icon('IconFolderClose16', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -9722,6 +9844,14 @@ window.__ModuleLoader__.load({
         }
         else if (kind === 'workspace' && id === 'rename') setDialog({ kind: 'ws-rename', workspace: payload })
         else if (kind === 'workspace' && id === 'delete') setDialog({ kind: 'ws-delete', workspace: payload })
+        else if (kind === 'sgroup' && id === 'hide-sgroup') {
+          if (groupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(groupKey, true)
+          return
+        }
+        else if (kind === 'sgroup' && id === 'unhide-sgroup') {
+          if (groupKey !== '' && actions && typeof actions.setSessionGroupHidden === 'function') actions.setSessionGroupHidden(groupKey, false)
+          return
+        }
         else if (kind === 'sgroup' && id === 'rename-sgroup') setDialog({ kind: 'sgroup-rename', target: payload })
         else if (kind === 'session' && id === 'rename') setDialog({ kind: 'sess-rename', session: payload })
         else if (kind === 'session' && id === 'fork') forkSession(payload.id)
