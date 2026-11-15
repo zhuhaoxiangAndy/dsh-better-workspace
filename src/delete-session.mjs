@@ -204,17 +204,24 @@ export function auditSessionArchives(options = {}) {
  * @returns {boolean} whether the route was registered
  */
 export function registerDeleteRoute(ctx, log) {
-  const webServer = (() => {
-    try {
-      if (typeof ctx.get === 'function') {
-        const svc = ctx.get('webServer')
-        if (svc) return svc
-      }
-      return ctx.webServer
-    } catch { return undefined }
-  })()
-  if (!webServer || typeof webServer.register !== 'function') {
-    log('[dsh-better-workspace] webServer unavailable; permanent delete stays disabled')
+  /**
+   * Locate the web server through every shape a cordis context exposes it in.
+   *
+   * v0.30.0: the previous version only checked `ctx.get('webServer')` and
+   * `ctx.webServer`. Called from inside `ctx.inject(['webServer'], ...)` the
+   * service can also arrive as (a) a bare argument, (b) `ctx.webServer` on the
+   * injected child context, or (c) a property bag under `ctx.services`. Missing
+   * all three meant the route was never registered and BOTH the ghost audit and
+   * permanent delete silently did nothing.
+   */
+  const candidates = []
+  try { if (typeof ctx.get === 'function') candidates.push(ctx.get('webServer')) } catch { /* not a service name */ }
+  candidates.push(ctx && ctx.webServer)
+  candidates.push(ctx && ctx.services && ctx.services.webServer)
+  candidates.push(ctx && ctx.inject && ctx.inject.webServer)
+  const webServer = candidates.find((c) => c && typeof c.register === 'function')
+  if (!webServer) {
+    log('[dsh-better-workspace] webServer unavailable (tried get/webServer/services); routes stay disabled')
     return false
   }
 

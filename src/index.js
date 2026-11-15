@@ -19,10 +19,23 @@ export function apply(ctx) {
   log('[dsh-better-workspace] host half loaded; UI runs in the browser (client half)')
   if (!ctx || typeof ctx.inject !== 'function') return
   // v0.27.0: the one capability the browser half cannot provide — removing a
-  // session archive from disk. Feature-probed: a host without a web server
-  // simply never grows the route, and the menu item stays absent.
-  try { registerDeleteRoute(ctx, log) } catch (error) {
-    log('[dsh-better-workspace] delete route failed: ' + (error && error.message))
+  // session archive from disk, plus the audit that tells the browser which
+  // sessions still have a log (the ghost filter).
+  //
+  // v0.30.0 FIX: the web server is a SERVICE, not a plain property. Calling
+  // registerDeleteRoute(ctx) directly found no `ctx.webServer`, so every route
+  // registration silently failed and both features stayed dead — the ghost
+  // filter's fetch got a 401/404 and the delete menu item had nothing to call.
+  // The correct shape is `ctx.inject(['webServer'], ...)`, the same pattern the
+  // settings namespace below already uses.
+  if (typeof ctx.inject === 'function') {
+    ctx.inject(['webServer'], (wsCtx) => {
+      try {
+        registerDeleteRoute(wsCtx, log)
+      } catch (error) {
+        log('[dsh-better-workspace] delete route failed: ' + (error && error.message))
+      }
+    })
   }
   // Register the settings namespace so the browser card appears in
   // Settings → Plugins. The tab dispatches the intersection of served

@@ -3582,7 +3582,18 @@ window.__ModuleLoader__.load({
 
     /** Render a primitives icon by name (v0.27.0: a miss is visible, not silent). */
     const iconMisses = new Set()
+    /** True when the primitives module actually arrived (one log line, not per icon). */
+    let iconModuleChecked = false
     const icon = (name, size) => {
+      if (!iconModuleChecked) {
+        iconModuleChecked = true
+        const count = ui ? Object.keys(ui).filter((k) => /^Icon/.test(k)).length : -1
+        try {
+          if (typeof console !== 'undefined' && console.info) {
+            console.info('[dsh-better-workspace] primitives loaded, icon exports: ' + count)
+          }
+        } catch { }
+      }
       // An unknown name used to return null SILENTLY, which is how four bad
       // names shipped as iconless buttons with nothing to see or log. A miss is
       // now counted once per name, warned about, and drawn as a small box so the
@@ -3604,13 +3615,18 @@ window.__ModuleLoader__.load({
           }
         } catch { }
       }
-      // Visible placeholder: a hollow square the size of the requested glyph.
+      // v0.30.1 DEGRADE QUIETLY when the whole module is missing.
+      // A red box per icon was correct while debugging (it exposed that NO icon
+      // resolved), but shipping it paints the entire sidebar red. Distinguish
+      // the two cases: a single unknown name is a real bug worth showing; a
+      // module-wide miss is an environment problem and gets a neutral gap.
+      const moduleMissing = !ui || Object.keys(ui).filter((k) => /^Icon/.test(k)).length === 0
       const px = size || 16
       return E('span', {
-        className: 'bw-icon-missing',
+        className: moduleMissing ? 'bw-icon-absent' : 'bw-icon-missing',
         style: { width: px + 'px', height: px + 'px' },
         'aria-hidden': 'true',
-        title: 'missing icon: ' + String(name),
+        title: moduleMissing ? '' : 'missing icon: ' + String(name),
       })
     }
 
@@ -4287,12 +4303,24 @@ window.__ModuleLoader__.load({
     '.bw-launcher-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:none;border-radius:var(--dsw-radius-sm,8px);background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:13px}',
     '.bw-launcher-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-launcher-label{white-space:nowrap}',
+    // v0.30.1 Edge/Chrome tab group: coloured pill + matching rail.
+    '.bw-group-pill{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:100%;height:22px;padding:0 9px 0 6px;border-radius:11px;color:#fff;font-size:12px;line-height:22px;overflow:hidden}',
+    '.bw-group-pill-pulse{animation:bw-pill-breathe 1.8s ease-in-out infinite}',
+    '@keyframes bw-pill-breathe{0%,100%{opacity:1}50%{opacity:.62}}',
+    // The little white notch on the pill's left edge, like Chrome's group marker.
+    '.bw-group-pill-rail{flex:none;width:3px;height:12px;border-radius:2px;background:rgba(255,255,255,.85)}',
+    '.bw-group-pill-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
+    // Members under a group draw the SAME colour rail down their left edge, so
+    // the group's extent is visible like a tab strip's coloured spine.
+    '.bw-sgroup-member-rail{position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:1px;opacity:.75}',
     '.bw-group-rail{flex:none;width:3px;align-self:stretch;margin:2px 2px 2px 0;border-radius:2px;opacity:.9}',
     '.bw-group-rail-pulse{animation:bw-rail-breathe 1.8s ease-in-out infinite}',
     '@keyframes bw-rail-breathe{0%,100%{opacity:.9}50%{opacity:.4}}',
     // Folder-glyph variant keeps the old look for users who prefer it.
     '.bw-sgroup-folder{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
     '.bw-icon-missing{display:inline-block;border:1px dashed var(--dsw-alias-label-error,#e5726f);border-radius:2px;flex:none}',
+    // Whole-module miss: an invisible gap of the right size, no red box.
+    '.bw-icon-absent{display:inline-block;flex:none}',
       '.bw-chevron{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .15s ease}',
       '.bw-chevron-open{transform:rotate(90deg)}',
       // overflow:hidden (needed for the ellipsis) clips the outline: 3px of
@@ -5595,7 +5623,7 @@ window.__ModuleLoader__.load({
       return s === 'ongoing' ? null : s
     }
 
-    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, onArchiveToggle, onPinToggle, pinned, now, dropHalf, dragEvents, custStyle, breathing, t }) {
+    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, onArchiveToggle, onPinToggle, pinned, now, dropHalf, dragEvents, custStyle, breathing, railColor, t }) {
       const state = sessionStateOf(node)
       // Official copy when available (the bound 'workspace' dictionary carries the
       // exact shipped strings: 等待审批 / 待审批 / 计划待审 / 待回答 / 进行中 / 已完成).
@@ -5627,6 +5655,9 @@ window.__ModuleLoader__.load({
         role: 'treeitem',
         ...(dragEvents || {}),
       },
+        // v0.30.1: a member of a session group inherits that group's colour as a
+        // thin left rail, so the group's extent reads like a browser tab strip.
+        railColor ? E('span', { className: 'bw-sgroup-member-rail', style: { background: railColor }, 'aria-hidden': 'true' }) : null,
         E('span', { className: 'bw-row-icon', title: status ? status.title : undefined },
           status && state !== 'idle' && typeof ui.StateDot === 'function'
             ? (state === 'ongoing' && breathing
@@ -5688,13 +5719,19 @@ window.__ModuleLoader__.load({
         // v0.28.0: a tab-group RAIL instead of a folder glyph. One vertical bar
         // in the group's own colour — narrow, nestable, and instantly readable
         // as "this is a group", which a folder icon never was.
+        // v0.30.1 Edge/Chrome tab-group look: a coloured PILL carrying the group
+        // name, plus a rail in the SAME colour that continues down through every
+        // member. The colour is hashed from the group name so it is stable.
         E('span', {
-          className: cls('bw-group-rail', pulse && 'bw-group-rail-pulse'),
+          className: cls('bw-group-pill', pulse && 'bw-group-pill-pulse'),
           style: { background: tabGroupColor(name) },
-          'aria-hidden': 'true',
-        }),
+          title: name,
+        },
+          E('span', { className: 'bw-group-pill-rail', 'aria-hidden': 'true' }),
+          E('span', { className: 'bw-group-pill-text' }, name),
+        ),
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
-        E('span', { className: 'bw-row-label' }, name),
+        // (the name lives inside the pill above)
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
         // v0.23.0: the SAME hover actions a workspace row carries. A session
         // group has no host identity (it is a "/"-prefix projection), so
@@ -7520,6 +7557,24 @@ window.__ModuleLoader__.load({
        * Inside `leading` the shipped order follows the host's pinnedSessionIds
        * array, so that order is preserved here too.
        */
+      /**
+       * v0.30.1 PIN IS SIBLING-LOCAL, and a pinned session outranks a sibling group.
+       *
+       * The user's rule, stated precisely: "置顶是组内同级置顶…如果有并列同级的
+       * 会话和会话组，那么置顶会话放在会话组之前". So at ONE level:
+       *
+       *   [blank]                        provisional New Session
+       *   [pinned sessions]              pinned AND not archived
+       *   [sibling session groups]       the "/"-prefix groups at this level
+       *   [remaining sessions]           everything else
+       *
+       * A separate top-of-sidebar pinned AREA is a different feature (pinning a
+       * WORKSPACE or a workspace group); it is not session pinning and is not
+       * implemented here.
+       *
+       * Inside the pinned run, the host's `pinnedSessionIds` array order wins,
+       * matching how the shipped sectionMembers() consumes that array.
+       */
       const withPinned = (rows) => {
         if (!Array.isArray(rows) || rows.length === 0) return rows
         const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
@@ -7532,12 +7587,22 @@ window.__ModuleLoader__.load({
           else rest.push(row)
         }
         if (pinnedSet !== null && leading.length > 1) {
-          // Keep the host array's order, like the shipped implementation feeds
-          // `pinnedSessionIds` straight into the loop.
           const rank = new Map(pinnedSessionIds.map((id, i) => [id, i]))
           leading.sort((a, b) => (rank.get(a.id) ?? 0) - (rank.get(b.id) ?? 0))
         }
         return placeholders.concat(leading, rest)
+      }
+
+      /**
+       * The same rule applied to a LEVEL that mixes BOTH session rows and child
+       * group nodes (the tree's node shape `{ groups, sessions }`). Groups keep
+       * their relative order; the whole pinned run is hoisted above them.
+       *
+       * @param {{groups: any[], sessions: any[]}} node
+       */
+      const applySiblingPin = (node) => {
+        if (!node) return
+        node.sessions = withPinned(node.sessions || [])
       }
 
       const sessionsOf = (workspace) => {
@@ -8687,10 +8752,21 @@ window.__ModuleLoader__.load({
         if (groups.length === 0 && sessions.length === 0) return null
         return { path: node.path, name: node.name, groups, sessions }
       }
-      const renderSessionNode = (node, workspaceId, depth) => {
+      const renderSessionNode = (node, workspaceId, depth, inheritedColor) => {
         const view = searching ? searchSessionNode(node) : node
         if (!view) return []
         const out = []
+        // v0.30.1 SIBLING PIN: a pinned session at this level is hoisted ABOVE
+        // the sibling session groups. `view.sessions` is already ordered by
+        // withPinned (blank -> pinned -> rest); split at the pinned boundary so
+        // the pinned run can be emitted before the groups while the rest keeps
+        // its usual place after them.
+        const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
+        const isPinned = (s) => pinnedSet !== null && pinnedSet.has(s.id) && !archivedSet.has(s.id)
+        const hoisted = []
+        const trailing = []
+        for (const s of view.sessions) { if (isPinned(s)) hoisted.push(s); else trailing.push(s) }
+        for (const s of hoisted) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
         for (const group of view.groups) {
           const key = workspaceId + '|' + group.path
           const open = searching || sessionGroupOpen(key)
@@ -8738,13 +8814,14 @@ window.__ModuleLoader__.load({
             }) : undefined,
             t,
           }))
-          if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1))
+          if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1, tabGroupColor(group.name)))
         }
-        for (const s of view.sessions) out.push(renderSessionRow(s, depth, workspaceId))
+        for (const s of trailing) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
         return out
       }
 
-      const renderSessionRow = (session, depth, workspaceId) => E(SessionRow, {
+      const renderSessionRow = (session, depth, workspaceId, railColor) => E(SessionRow, {
+        railColor: railColor || null,
         key: session.id,
         node: session,
         depth,

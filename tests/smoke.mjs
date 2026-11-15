@@ -1243,9 +1243,14 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   // nesting, instead of a folder glyph that pushed the label right.
   assert.match(text, /const TAB_GROUP_COLORS = \[/, 'a stable colour table exists')
   assert.match(text, /const tabGroupColor = \(name\) => \{/, 'colour is derived from the group name')
-  assert.match(text, /className: cls\('bw-group-rail'/, 'the group row renders the rail')
-  assert.match(text, /style: \{ background: tabGroupColor\(name\) \}/, 'the rail carries the group colour')
-  assert.match(text, /'\.bw-group-rail\{flex:none;width:3px/, 'the rail is 3px wide')
+  // v0.30.1 uses the Edge/Chrome idiom properly: a coloured PILL with the group
+  // name, plus a rail in the same colour continuing through the members.
+  assert.match(text, /className: cls\('bw-group-pill'/, 'the group row renders a coloured pill')
+  assert.match(text, /style: \{ background: tabGroupColor\(name\) \}/, 'the pill carries the group colour')
+  assert.match(text, /'\.bw-group-pill\{[^']*border-radius:11px/, 'the pill is a rounded capsule')
+  assert.match(text, /bw-sgroup-member-rail/, 'members draw the same colour as a left rail')
+  assert.match(text, /renderSessionNode\(group, workspaceId, depth \+ 1, tabGroupColor\(group\.name\)\)/,
+    'the colour is inherited down the whole subtree')
   // The style must be switchable back to the folder look.
   assert.match(text, /const groupIcon = prefsMap\.groupIcon === 'folder' \? 'folder' : 'tab'/, 'the style preference exists')
   assert.match(text, /settings\.groupIcon/, 'the settings toggle exists')
