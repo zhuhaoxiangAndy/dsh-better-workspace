@@ -85,6 +85,8 @@ window.__ModuleLoader__.load({
       'menu.renameSgroup': '重命名会话分组',
       'menu.moveToGroup': '移动到分组…',
       'menu.watermark': '折叠会话个数…',
+      'menu.pinWorkspace': '置顶这个工作区/组',
+      'menu.unpinWorkspace': '取消置顶',
       'menu.watermark.hint': '「{label}」每层最多显示多少个会话，其余收进「展开其余 N 个会话」。',
       'menu.toggleGroup': '折叠/展开本会话所在的组',
       'menu.toggleGroupNoGroup': '这个会话不属于任何会话组',
@@ -256,6 +258,8 @@ window.__ModuleLoader__.load({
       'menu.renameSgroup': 'Rename session group',
       'menu.moveToGroup': 'Move to group…',
       'menu.watermark': 'Collapse sessions after…',
+      'menu.pinWorkspace': 'Pin this workspace / group',
+      'menu.unpinWorkspace': 'Unpin',
       'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
       'menu.toggleGroup': 'Collapse or expand the group this session is in',
       'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -435,6 +439,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'إعادة تسمية مجموعة الجلسات',
         'menu.moveToGroup': 'نقل إلى مجموعة…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -606,6 +612,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Sitzungsgruppe umbenennen',
         'menu.moveToGroup': 'In Gruppe verschieben…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -777,6 +785,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Renommer le groupe de sessions',
         'menu.moveToGroup': 'Déplacer vers le groupe…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -948,6 +958,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'सत्र समूह का नाम बदलें',
         'menu.moveToGroup': 'समूह में ले जाएँ…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1119,6 +1131,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Ganti nama grup sesi',
         'menu.moveToGroup': 'Pindahkan ke grup…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1290,6 +1304,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Rinomina gruppo di sessioni',
         'menu.moveToGroup': 'Sposta nel gruppo…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1461,6 +1477,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'セッショングループ名を変更',
         'menu.moveToGroup': 'グループに移動…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1632,6 +1650,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': '세션 그룹 이름 바꾸기',
         'menu.moveToGroup': '그룹으로 이동…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1803,6 +1823,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Sessiegroep naam wijzigen',
         'menu.moveToGroup': 'Naar groep verplaatsen…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -1974,6 +1996,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Zmień nazwę grupy sesji',
         'menu.moveToGroup': 'Przenieś do grupy…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -2145,6 +2169,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Renomear grupo de sessões',
         'menu.moveToGroup': 'Mover para o grupo…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -2316,6 +2342,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Переименовать группу сессий',
         'menu.moveToGroup': 'Переместить в группу…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -2487,6 +2515,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Byt namn på sessionsgrupp',
         'menu.moveToGroup': 'Flytta till grupp…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -2658,6 +2688,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'เปลี่ยนชื่อกลุ่มเซสชัน',
         'menu.moveToGroup': 'ย้ายไปยังกลุ่ม…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -2829,6 +2861,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Oturum grubunu yeniden adlandır',
         'menu.moveToGroup': 'Gruba taşı…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -3000,6 +3034,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': 'Đổi tên nhóm phiên',
         'menu.moveToGroup': 'Chuyển vào nhóm…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -3171,6 +3207,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -3342,6 +3380,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': '重新命名對話分組',
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -3513,6 +3553,8 @@ window.__ModuleLoader__.load({
         'menu.renameSgroup': '重新命名工作階段群組',
         'menu.moveToGroup': '移動到分組…',
         'menu.watermark': 'Collapse sessions after…',
+        'menu.pinWorkspace': 'Pin this workspace / group',
+        'menu.unpinWorkspace': 'Unpin',
         'menu.watermark.hint': 'How many sessions "{label}" reveals per level; the rest collapse into "show N more".',
         'menu.toggleGroup': 'Collapse or expand the group this session is in',
         'menu.toggleGroupNoGroup': 'This session is not inside a session group',
@@ -4751,7 +4793,7 @@ window.__ModuleLoader__.load({
     /* ========================== view store =========================== */
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], sessionWatermarks: {}, prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
+      init: () => ({ expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, sessionGroupOrder: {}, workspaceGroupOrder: [], sessionWatermarks: {}, pinnedWorkspaceIds: [], prefs: { compactChains: true }, styling: {}, groupBy: 'workspace-tree', orderBy: 'manual', sessionTitleSlash: true, workspaceTitleSlash: true, tabCycleOrder: 'page', collapseLimit: undefined }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -4784,6 +4826,13 @@ window.__ModuleLoader__.load({
         setSessionGroupExpanded: (d, key, value) => { if (!d.sessionGroups) d.sessionGroups = {}; d.sessionGroups[key] = value },
         // v0.30.3: reveal N more sessions at one level (shipped `sessions.expand`).
         setSessionWatermark: (d, key, value) => { if (!d.sessionWatermarks) d.sessionWatermarks = {}; d.sessionWatermarks[key] = value },
+        // v0.30.7 workspace-level pin: a pinned WORKSPACE (or workspace group)
+        // leads its siblings. This is a different feature from pinning a SESSION.
+        setWorkspacePinned: (d, id, pinned) => {
+          const list = Array.isArray(d.pinnedWorkspaceIds) ? d.pinnedWorkspaceIds : []
+          const without = list.filter((x) => x !== id)
+          d.pinnedWorkspaceIds = pinned ? [id].concat(without) : without
+        },
         setPref: (d, key, value) => { if (!d.prefs) d.prefs = {}; d.prefs[key] = value },
         setStyling: (d, key, value) => { if (!d.styling) d.styling = {}; if (value === null) delete d.styling[key]; else d.styling[key] = value },
         // Browser-local session order (v0.10.2): the fallback channel for
@@ -7296,6 +7345,8 @@ window.__ModuleLoader__.load({
       const sessionGroupOrderMap = useStore ? (useStore(s => s.sessionGroupOrder) || {}) : {}
       // v0.30.3: per-level session watermark (how many rows are revealed).
       const sessionWatermarksMap = useStore ? (useStore(s => s.sessionWatermarks) || {}) : {}
+      // v0.30.7: pinned WORKSPACES / workspace groups lead their siblings.
+      const pinnedWorkspaceIds = useStore ? (useStore(s => s.pinnedWorkspaceIds) || []) : []
       // Workspace-layer dragged order (v0.23.0): ONE global list of folder name
       // paths plus `id:<workspaceId>` keys. Fallback discipline as above.
       const workspaceGroupOrder = useStore ? (useStore(s => s.workspaceGroupOrder) || []) : []
@@ -9508,8 +9559,18 @@ window.__ModuleLoader__.load({
         for (const workspace of items || []) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
         bodyRows.push(...renderUngroupedBlock())
       } else {
-        for (const folder of tree.folders) bodyRows.push(...renderPlainFolder(folder, 0))
-        for (const workspace of tree.workspaces) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
+        // v0.30.7: at this level the order is
+        //   pinned groups -> pinned workspaces -> remaining groups -> remaining workspaces
+        // so a pinned entry leads its siblings and outranks a sibling group,
+        // mirroring the session-level rule one tier up.
+        const pinnedFolders = tree.folders.filter((f) => pinnedWorkspaceIds.includes('folder:' + String(f.path || '')))
+        const restFolders = tree.folders.filter((f) => !pinnedWorkspaceIds.includes('folder:' + String(f.path || '')))
+        const pinnedWs = tree.workspaces.filter((w) => pinnedWorkspaceIds.includes(String(w.workspaceId || '')))
+        const restWs = tree.workspaces.filter((w) => !pinnedWorkspaceIds.includes(String(w.workspaceId || '')))
+        for (const folder of pinnedFolders) bodyRows.push(...renderPlainFolder(folder, 0))
+        for (const workspace of pinnedWs) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
+        for (const folder of restFolders) bodyRows.push(...renderPlainFolder(folder, 0))
+        for (const workspace of restWs) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
         bodyRows.push(...renderUngroupedBlock())
       }
       const isEmpty = bodyRows.length === 0
@@ -9532,6 +9593,12 @@ window.__ModuleLoader__.load({
         const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
         const isPinned = ctx.kind === 'session' && pinnedSet !== null && pinnedSet.has(ctx.payload.id)
         const isArchived = ctx.kind === 'session' && archivedSet.has(ctx.payload.id)
+        // Workspace-level pin id: a workspace row pins its workspaceId, a folder
+        // row pins its folder path.
+        const wsPinId = ctx.kind === 'workspace'
+          ? String(ctx.payload.workspaceId || '')
+          : ctx.kind === 'folder' ? 'folder:' + String(ctx.payload.folderPath || '') : ''
+        const isWsPinned = wsPinId !== '' && pinnedWorkspaceIds.includes(wsPinId)
         const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutline16', 16) }
         // The discoverability entry (v0.15): every row kind can be moved into
         // a name group. One shared item object, inserted after each branch's
@@ -9540,6 +9607,7 @@ window.__ModuleLoader__.load({
         if (ctx.kind === 'folder') return [
           { id: 'rename-folder', label: t('menu.renameFolder'), icon: icon('IconEditOutline16', 16) },
           { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
+          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutline16', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -9547,6 +9615,7 @@ window.__ModuleLoader__.load({
         if (ctx.kind === 'workspace') return [
           { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
           { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
+          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutline16', 16) },
           { id: 'delete', label: ot ? ot('delete.workspace') : t('menu.delete'), icon: icon('IconTrashOutline16', 16), danger: true },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
@@ -9644,6 +9713,11 @@ window.__ModuleLoader__.load({
           const key = String(wsId || '') + '|' + groupPath
           const open = sessionGroupOpen(key)
           if (actions && typeof actions.setSessionGroupExpanded === 'function') actions.setSessionGroupExpanded(key, !open)
+          return
+        }
+        else if (id === 'pin-workspace') {
+          if (wsPinId === '') return
+          if (actions && typeof actions.setWorkspacePinned === 'function') actions.setWorkspacePinned(wsPinId, !isWsPinned)
           return
         }
         else if (kind === 'workspace' && id === 'rename') setDialog({ kind: 'ws-rename', workspace: payload })

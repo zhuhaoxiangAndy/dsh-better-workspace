@@ -1467,3 +1467,20 @@ test('an ungrouped session can be dropped onto a workspace (v0.30.6)', () => {
   assert.match(join, /const groupPath = cutAt === -1 \? text : text\.slice\(cutAt \+ 2\)/, 'it reads the group prefix from the id path')
   assert.match(join, /groupPath === '' \? leaf : groupPath \+ '\/' \+ leaf/, 'workspace-level drop keeps the bare leaf')
 })
+
+test('a workstation or workspace group can be pinned (v0.30.7)', () => {
+  const text = read('src/client.js')
+  // Session pinning is sibling-local; pinning a WORKSPACE is a different feature
+  // and leads its siblings, outranking a sibling group at the same level.
+  assert.match(text, /pinnedWorkspaceIds: \[\]/, 'store holds pinned workspaces')
+  assert.match(text, /setWorkspacePinned: \(d, id, pinned\) => \{/, 'an action toggles it')
+  const wsMenu = text.slice(text.indexOf("if (ctx.kind === 'workspace') return ["), text.indexOf("if (ctx.kind === 'session') return ["))
+  assert.match(wsMenu, /id: 'pin-workspace'/, 'a workspace menu entry exists')
+  const folderMenu = text.slice(text.indexOf("if (ctx.kind === 'folder') return ["), text.indexOf("if (ctx.kind === 'session') return ["))
+  assert.match(folderMenu, /id: 'pin-workspace'/, 'a group menu entry exists')
+  // Order at the level: pinned groups -> pinned workspaces -> rest.
+  assert.match(text, /for \(const folder of pinnedFolders\)/, 'pinned groups render first')
+  assert.match(text, /for \(const workspace of pinnedWs\)/, 'pinned workspaces render next')
+  assert.match(text, /for \(const folder of restFolders\)/, 'remaining groups follow')
+  assert.match(text, /for \(const workspace of restWs\)/, 'remaining workspaces last')
+})
