@@ -971,9 +971,10 @@ test('interaction hub renders in the additive composer dock (v0.24.0)', () => {
  */
 test('folder rows expose edge bands so a group can be placed beside another', () => {
   const text = read('src/client.js')
-  assert.match(text, /const folderEdgeBand = \(event\) => \{/, 'edge-band helper exists')
-  assert.match(text, /if \(event\.clientY < rect\.top \+ 6\) return 'before'/, 'top 6px band means insert before')
-  assert.match(text, /if \(event\.clientY > rect\.bottom - 6\) return 'after'/, 'bottom 6px band means insert after')
+  assert.ok(text.includes('const edgeBandOf = (event'), 'proportional edge-band helper exists')
+  assert.ok(text.includes('const folderEdgeBand = (event) => edgeBandOf(event)'), 'folder rows use it')
+  assert.ok(text.includes("if (y <= band) return 'before'"), 'top band means insert before')
+  assert.ok(text.includes("if (y >= h - band) return 'after'"), 'bottom band means insert after')
   assert.match(text, /return null/, 'the middle keeps the move-into meaning')
   // The drop must branch on the band, not always move-into.
   assert.match(text, /const band = folderEdgeBand\(event\)/, 'drop reads the band')

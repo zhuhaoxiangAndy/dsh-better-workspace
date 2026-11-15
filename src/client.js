@@ -7477,21 +7477,81 @@ window.__ModuleLoader__.load({
        *
        * @param {'settings'|'plugins'} page
        */
+    /**
+     * Open the shipped Settings panel from inside this plugin.
+     *
+     * v0.30.9 FIX: the previous implementation dispatched a synthetic
+     * `Ctrl+,` keydown and relied on the shell's `settings.open` command
+     * handler to pick it up. That made this button a STAND-IN for the
+     * shortcut: when the shortcut itself stopped working (the very bug the
+     * user is chasing), the Settings button stopped working too, and the
+     * user was left with no way into Settings at all. A button must never
+     * depend on the keyboard path it is meant to replace.
+     *
+     * The reliable, keyboard-free path is to activate the shell's OWN
+     * Settings trigger element. `ui-settings-general` renders it in the
+     * sidebar foot (`sidebar.settings` seat) as a real <button> whose
+     * accessible name is the localized "Settings" label. Clicking that
+     * element runs the shell's own `actions.open()` directly — no shortcut,
+     * no synthetic event, no dependency on the broken command.
+     *
+     * Order of attempts (first success wins):
+     *   1. the shell's trigger button in the sidebar foot, by accessible name
+     *   2. any element whose aria-label/title is the Settings label
+     *   3. synthetic Ctrl+, as a last resort (old behaviour)
+     *
+     * @param {'settings'|'plugins'} page
+     */
     const openSettingsPage = (page) => {
+        const LABELS = ['设置', 'Settings', '設定', 'Einstellungen', 'Réglages',
+                        'Configuración', 'Настройки', 'Configurações', 'Impostazioni']
+        const looksLikeSettings = (el) => {
+          const label = (el.getAttribute && (el.getAttribute('aria-label') || el.getAttribute('title'))) || ''
+          return LABELS.includes(label.trim())
+        }
+
+        // 1) The shell's sidebar-foot trigger. Scope the search to the foot
+        //    region so a plugin's own "Settings" button cannot be clicked by
+        //    mistake (that would recurse into this same handler).
+        let clicked = false
         try {
-          const ev = new KeyboardEvent('keydown', {
-            key: ',',
-            code: 'Comma',
-            ctrlKey: true,
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-          })
-          document.dispatchEvent(ev)
-          // The shortcuts adapter listens on document in the capture phase, so a
-          // second dispatch on window covers hosts that bubble-only.
-          if (!ev.defaultPrevented) window.dispatchEvent(ev.cloneNode ? ev : ev)
-        } catch { /* older engines without KeyboardEvent constructor */ }
+          const foot = document.querySelector('[class*="settingsArea"]')
+          const scope = foot || document
+          const btns = scope.querySelectorAll('button')
+          for (const b of btns) {
+            if (b.closest && b.closest('.bw-root')) continue   // skip our own chrome
+            if (looksLikeSettings(b)) { b.click(); clicked = true; break }
+          }
+        } catch { /* keep trying */ }
+
+        // 2) Fallback: any Settings-labelled button outside our own chrome.
+        if (!clicked) {
+          try {
+            const btns = document.querySelectorAll('button')
+            for (const b of btns) {
+              if (b.closest && b.closest('.bw-root')) continue
+              if (looksLikeSettings(b)) { b.click(); clicked = true; break }
+            }
+          } catch { /* keep trying */ }
+        }
+
+        // 3) Last resort: the old synthetic shortcut. Kept only so a host that
+        //    renames its trigger still has a path; it is no longer the primary.
+        if (!clicked) {
+          try {
+            const ev = new KeyboardEvent('keydown', {
+              key: ',',
+              code: 'Comma',
+              ctrlKey: true,
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+            })
+            document.dispatchEvent(ev)
+            if (!ev.defaultPrevented) window.dispatchEvent(ev)
+          } catch { /* older engines without KeyboardEvent constructor */ }
+        }
+
         // Best-effort deep link: once the panel is open, select the page.
         if (page === 'plugins') {
           try { window.__dshOpenSettingsPage = 'plugins' } catch { }
@@ -8550,17 +8610,18 @@ window.__ModuleLoader__.load({
           setDrag(null)
         },
         onDragOver: (event) => {
-          if (!dragMatches('workspace')) return
+          // v0.31.0: a GROUP dragged over a workspace row must produce feedback
+          // too. Before this the handler bailed out on anything that was not a
+          // workspace drag, so dragging a group here highlighted nothing and the
+          // user concluded groups can only be dropped into other groups.
+          if (!dragMatches('workspace') && !dragMatches('folder')) return
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
           const half = rowHalf(event)
-          // Edge band for the group-root INTO rule: 6px strips at either end.
-          let edge = false
-          try {
-            const rect = event.currentTarget.getBoundingClientRect()
-            edge = event.clientY < rect.top + 6 || event.clientY > rect.bottom - 6
-          } catch { edge = true }
+          // Proportional edge bands (same helper the folder rows use) so the
+          // insert-beside target is actually reachable.
+          const edge = edgeBandOf(event)
           setDrag(current => {
             if (current && current.over && current.over.kind === 'workspace' && current.over.target === workspace.workspaceId && current.over.half === half && current.over.edge === edge) return current
             return current ? { ...current, over: { kind: 'workspace', target: workspace.workspaceId, half, edge } } : current
@@ -8570,8 +8631,19 @@ window.__ModuleLoader__.load({
           event.preventDefault()
           event.stopPropagation()
           if (dragMatches('folder')) {
-            // Dropping a folder onto a root-level workspace clears the group
-            // prefix entirely (move the whole group to the root, beside it).
+            // v0.31.0: a GROUP dragged over a WORKSPACE row used to have exactly
+            // one meaning — "move into". That is why the user reported
+            // "工作区组无法移动，因为显示只能拖到其他工作区组里面": there was no way
+            // to place a group BESIDE a workspace row.
+            // Now the same edge bands as a folder row: the top/bottom bands place
+            // the group beside this workspace, the middle still moves it in.
+            const edge = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId
+              ? drag.over.edge
+              : null
+            if (edge === 'before' || edge === 'after') {
+              commitFolderReorderBesideWorkspace(workspace, edge)
+              return
+            }
             if ((workspace.folderPath || '') === '') { commitFolderMoveInto(''); return }
             commitFolderMoveInto(workspace.folderPath)
             return
@@ -8588,9 +8660,12 @@ window.__ModuleLoader__.load({
           // reading currentTarget inside onDrop crashed the tree when the drop
           // landed after the row re-rendered, taking the whole header with it.
           const half = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId ? drag.over.half : 'after'
-          const nearEdge = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId
-            ? drag.over.edge === true
-            : true
+          // v0.31.0: `edge` is now 'before' | 'after' | null (it used to be a
+          // boolean). "Near an edge" = the pointer is inside one of the bands.
+          const overEdge = drag.over && drag.over.kind === 'workspace' && drag.over.target === workspace.workspaceId
+            ? drag.over.edge
+            : null
+          const nearEdge = overEdge === 'before' || overEdge === 'after'
           if (isGroupRoot && !nearEdge) {
             const segs = splitTitleSegs(String(workspace.title || ''))
             const targetGroup = segs.length > 0 ? segs.join('/') : ''
@@ -8632,14 +8707,26 @@ window.__ModuleLoader__.load({
        * Edge bands are what make "put this group between those two groups"
        * expressible at all.
        */
-      const folderEdgeBand = (event) => {
+      /**
+       * Which edge of a row the pointer is over: 'before' | 'after' | null.
+       *
+       * v0.31.0: the bands were 6px, which on a 26-28px row is a 4-pixel window —
+       * effectively impossible to hit, so the user reported "工作区没有显示能拖到
+       * 两个组中间". They are now a proportional third of the row (min 8px, max
+       * 14px), which is what every file manager uses.
+       */
+      const edgeBandOf = (event, ratio = 0.34) => {
         try {
           const rect = event.currentTarget.getBoundingClientRect()
-          if (event.clientY < rect.top + 6) return 'before'
-          if (event.clientY > rect.bottom - 6) return 'after'
+          const h = rect.height || 28
+          const band = Math.min(14, Math.max(8, h * ratio))
+          const y = event.clientY - rect.top
+          if (y <= band) return 'before'
+          if (y >= h - band) return 'after'
           return null
         } catch { return null }
       }
+      const folderEdgeBand = (event) => edgeBandOf(event)
 
       /** Flat visible sibling keys of the name level that owns `folderPath`. */
       const siblingKeysAt = (folderPath) => {
@@ -8680,6 +8767,58 @@ window.__ModuleLoader__.load({
        * prefix, so "moving a group" means re-prefixing every member; the sibling
        * ORDER is then recorded locally, exactly like a workspace-row drag.
        */
+      /**
+       * v0.31.0 Place a GROUP beside a WORKSPACE row (before/after).
+       *
+       * A group is a title prefix, so "placing a group beside a workspace" means:
+       *   1. keep the group's own prefix (it stays a group),
+       *   2. record the sibling ORDER so the group sorts next to that workspace.
+       *
+       * The order list holds sibling keys at one level: groups appear as their
+       * path, workspaces as "id:<workspaceId>". So we insert the group's path
+       * immediately before/after that workspace's key.
+       *
+       * @param {any} workspace the workspace row the group was dropped on
+       * @param {'before'|'after'} half
+       */
+      const commitFolderReorderBesideWorkspace = safeCommit('commitFolderReorderBesideWorkspace', (workspace, half) => {
+        const source = drag && drag.source
+        setDrag(null)
+        if (!source || drag.kind !== 'folder') return
+        const groupPath = String(source.folderPath || '')
+        if (groupPath === '') return
+        const wsId = String(workspace.workspaceId || '')
+        if (wsId === '') return
+        // The workspace's own sibling level: its folderPath ('' at the root).
+        const levelPath = String(workspace.folderPath || '')
+        const sib = siblingKeysAt(levelPath === '' ? '//' : levelPath + '//')
+        const groupKey = groupPath
+        const wsKey = 'id:' + wsId
+        if (sib && Array.isArray(sib.all)) {
+          if (sib.all.includes(groupKey) && sib.all.includes(wsKey)) {
+            writeWorkspaceOrder(sib.all, groupKey, wsKey, half)
+            return
+          }
+        }
+        // Fall back: build the level's sibling list from what is rendered.
+        const keys = []
+        for (const w of items || []) {
+          const sameLevel = String(w.folderPath || '') === levelPath
+          if (sameLevel) keys.push('id:' + w.workspaceId)
+        }
+        const tree = buildTree(items || [], workspaceSlash, workspaceGroupOrder)
+        const findGroup = (node) => {
+          if (node.path === levelPath) return node
+          for (const g of node.groups) { const hit = findGroup(g); if (hit) return hit }
+          return null
+        }
+        const level = findGroup(tree)
+        if (level) for (const g of level.groups) keys.unshift(g.path)
+        if (keys.includes(groupKey) && keys.includes(wsKey)) {
+          writeWorkspaceOrder(keys, groupKey, wsKey, half)
+        }
+      })
+
       const commitFolderReorder = safeCommit('commitFolderReorder', (targetIdPath, half) => {
         const source = drag.source
         setDrag(null)
