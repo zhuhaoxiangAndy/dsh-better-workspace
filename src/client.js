@@ -51,7 +51,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '会话按"/"分组',
         'viewOptions.workspaceSlash': '工作区按"/"分组',
       'group.ungrouped': '未分组',
-      'group.pinned': '置顶',
       'launcher.plugins': '插件',
       'sessions.expand': '展开 {n} 个会话',
       'sessions.collapse': '收起',
@@ -215,7 +214,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Group sessions by "/"',
         'viewOptions.workspaceSlash': 'Group workspaces by "/"',
       'group.ungrouped': 'Ungrouped',
-      'group.pinned': 'Pinned',
       'launcher.plugins': 'Plugins',
       'sessions.expand': 'Show {n} more sessions',
       'sessions.collapse': 'Collapse',
@@ -387,7 +385,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'تجميع الجلسات حسب "/"',
         'viewOptions.workspaceSlash': 'تجميع مساحات العمل حسب "/"',
         'group.ungrouped': 'بلا مجموعة',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'عرض {n} جلسات إضافية',
         'sessions.collapse': 'طيّ',
@@ -551,7 +548,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Sitzungen nach "/" gruppieren',
         'viewOptions.workspaceSlash': 'Arbeitsbereiche nach "/" gruppieren',
         'group.ungrouped': 'Ohne Gruppe',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} Sitzungen einblenden',
         'sessions.collapse': 'Einklappen',
@@ -715,7 +711,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Grouper les sessions par « / »',
         'viewOptions.workspaceSlash': 'Grouper les espaces par « / »',
         'group.ungrouped': 'Sans groupe',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Afficher {n} sessions',
         'sessions.collapse': 'Réduire',
@@ -879,7 +874,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'सत्रों को "/" से समूहित करें',
         'viewOptions.workspaceSlash': 'कार्यक्षेत्रों को "/" से समूहित करें',
         'group.ungrouped': 'बिना समूह',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} सत्र दिखाएँ',
         'sessions.collapse': 'समेटें',
@@ -1043,7 +1037,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Kelompokkan sesi per "/"',
         'viewOptions.workspaceSlash': 'Kelompokkan ruang kerja per "/"',
         'group.ungrouped': 'Tanpa grup',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Tampilkan {n} sesi',
         'sessions.collapse': 'Ciutkan',
@@ -1207,7 +1200,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Raggruppa sessioni per "/"',
         'viewOptions.workspaceSlash': 'Raggruppa aree per "/"',
         'group.ungrouped': 'Senza gruppo',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Mostra {n} sessioni',
         'sessions.collapse': 'Comprimi',
@@ -1371,7 +1363,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'セッションを「/」でグループ化',
         'viewOptions.workspaceSlash': 'ワークスペースを「/」でグループ化',
         'group.ungrouped': '未分類',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} 件のセッションを展開',
         'sessions.collapse': '折りたたむ',
@@ -1535,7 +1526,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '세션을 "/"로 그룹화',
         'viewOptions.workspaceSlash': '작업 공간을 "/"로 그룹화',
         'group.ungrouped': '미분류',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '세션 {n}개 펼치기',
         'sessions.collapse': '접기',
@@ -1699,7 +1689,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Sessies groeperen op "/"',
         'viewOptions.workspaceSlash': 'Werkruimtes groeperen op "/"',
         'group.ungrouped': 'Zonder groep',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} sessies uitklappen',
         'sessions.collapse': 'Inklappen',
@@ -1863,7 +1852,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Grupuj sesje po "/"',
         'viewOptions.workspaceSlash': 'Grupuj obszary po "/"',
         'group.ungrouped': 'Bez grupy',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Pokaż {n} sesji',
         'sessions.collapse': 'Zwiń',
@@ -2027,7 +2015,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Agrupar sessões por "/"',
         'viewOptions.workspaceSlash': 'Agrupar áreas por "/"',
         'group.ungrouped': 'Sem grupo',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Mostrar {n} sessões',
         'sessions.collapse': 'Recolher',
@@ -2191,7 +2178,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Группировать сессии по «/»',
         'viewOptions.workspaceSlash': 'Группировать области по «/»',
         'group.ungrouped': 'Без группы',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Показать ещё {n} сессий',
         'sessions.collapse': 'Свернуть',
@@ -2355,7 +2341,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Gruppera sessioner efter "/"',
         'viewOptions.workspaceSlash': 'Gruppera arbetsytor efter "/"',
         'group.ungrouped': 'Utan grupp',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Visa {n} sessioner',
         'sessions.collapse': 'Fäll ihop',
@@ -2519,7 +2504,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'จัดกลุ่มเซสชันตาม "/"',
         'viewOptions.workspaceSlash': 'จัดกลุ่มพื้นที่ทำงานตาม "/"',
         'group.ungrouped': 'ไม่มีกลุ่ม',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'แสดงอีก {n} เซสชัน',
         'sessions.collapse': 'ย่อ',
@@ -2683,7 +2667,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Oturumları "/" ile gruplandır',
         'viewOptions.workspaceSlash': 'Çalışma alanlarını "/" ile gruplandır',
         'group.ungrouped': 'Grubusuz',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '{n} oturumu göster',
         'sessions.collapse': 'Daralt',
@@ -2847,7 +2830,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': 'Nhóm phiên theo "/"',
         'viewOptions.workspaceSlash': 'Nhóm khu vực theo "/"',
         'group.ungrouped': 'Chưa phân nhóm',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': 'Hiện thêm {n} phiên',
         'sessions.collapse': 'Thu gọn',
@@ -3011,7 +2993,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '對話按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
@@ -3175,7 +3156,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '對話按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
@@ -3339,7 +3319,6 @@ window.__ModuleLoader__.load({
         'viewOptions.sessionSlash': '工作階段按「/」分組',
         'viewOptions.workspaceSlash': '工作區按「/」分組',
         'group.ungrouped': '未分組',
-        'group.pinned': 'Pinned',
         'launcher.plugins': 'Plugins',
         'sessions.expand': '展開 {n} 個工作階段',
         'sessions.collapse': '收合',
@@ -3827,7 +3806,14 @@ window.__ModuleLoader__.load({
      * titles. Groups are virtual (projection of names). Rows keep the Host
      * workspace.sessionIds (manual) order — drag-to-reorder must be visible.
      */
-    function buildSessionTree(rows, groupBySlash, groupOrder) {
+    /**
+     * @param rows        flat session rows (already ordered by the active mode)
+     * @param groupBySlash whether to split titles on "/"
+     * @param groupOrder  saved sibling-group order (group paths)
+     * @param pinnedIds   Set of pinned session ids, or null when the host exposes none
+     * @param pinRank     Map id -> index in the host's pinnedSessionIds array
+     */
+    function buildSessionTree(rows, groupBySlash, groupOrder, pinnedIds, pinRank) {
       const root = { path: '', name: '', groups: [], sessions: [] }
       const byPath = new Map([['', root]])
       // Slash grouping OFF (v0.13 view option): every row lands at the
@@ -3861,6 +3847,28 @@ window.__ModuleLoader__.load({
         const folderPath = segs.slice(0, -1).join('/')
         const leaf = segs.length > 0 ? segs[segs.length - 1] : row.title
         ensure(segs.slice(0, -1)).sessions.push({ ...row, leaf })
+      }
+      // v0.29.0 PIN INSIDE EACH SECTION.
+      // Grouping splits one workspace's rows into several groups, so a pin
+      // applied to the flat list (withPinned) gets scattered across those
+      // groups and is invisible. The shipped browser pins WITHIN a section
+      // (sectionMembers: blank -> pinned -> rest), so each node's own session
+      // list is re-partitioned here, after grouping, exactly like that.
+      if (pinnedIds && pinnedIds.size > 0) {
+        const reorder = (node) => {
+          const placeholders = []
+          const leading = []
+          const rest = []
+          for (const row of node.sessions) {
+            if (row.blank) placeholders.push(row)
+            else if (pinRank.has(row.id)) leading.push(row)
+            else rest.push(row)
+          }
+          if (leading.length > 1) leading.sort((a, b) => pinRank.get(a.id) - pinRank.get(b.id))
+          node.sessions = placeholders.concat(leading, rest)
+          for (const group of node.groups) reorder(group)
+        }
+        reorder(root)
       }
       // Order of sibling groups. Historically alphabetical only; v0.23.0 adds a
       // user-dragged order per workspace. The saved list holds GROUP PATHS (not
@@ -4247,15 +4255,11 @@ window.__ModuleLoader__.load({
       '.bw-row-icon{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
     // v0.28.0 tab-group rail: a 3px coloured bar, deliberately narrow so a
     // deeply nested group does not push the label right the way a folder icon did.
-    // v0.28.0 pinned block: the row plus a small owner chip on the right, so a
     // pinned session still says which workspace it came from.
     // v0.28.0 settings-launcher addition (sits beside the shipped trigger).
     '.bw-launcher-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:none;border-radius:var(--dsw-radius-sm,8px);background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);cursor:pointer;font-size:13px}',
     '.bw-launcher-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-launcher-label{white-space:nowrap}',
-    '.bw-pin-row{position:relative}',
-    '.bw-pin-owner{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;line-height:14px;padding:0 5px;border-radius:var(--dsw-radius-xs,4px);background:var(--dsw-alias-bg-layer-3,rgba(127,127,127,.16));color:var(--dsw-alias-label-quaternary,#8a8a8a);max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}',
-    '.bw-pin-label{padding:10px 6px 2px}',
     '.bw-group-rail{flex:none;width:3px;align-self:stretch;margin:2px 2px 2px 0;border-radius:2px;opacity:.9}',
     '.bw-group-rail-pulse{animation:bw-rail-breathe 1.8s ease-in-out infinite}',
     '@keyframes bw-rail-breathe{0%,100%{opacity:.9}50%{opacity:.4}}',
@@ -6859,6 +6863,17 @@ window.__ModuleLoader__.load({
       // menu uses to omit the pin item entirely rather than render a dead row.
       const pinnedRaw = useWorkspaces(s => s.pinnedSessionIds)
       const pinnedSessionIds = Array.isArray(pinnedRaw) ? pinnedRaw : null
+      // v0.29.0: grouping splits one workspace into several sections, so pinning
+      // must be applied INSIDE each section (shipped sectionMembers semantics).
+      // These two derived values are what buildSessionTree needs for that.
+      const pinnedSetForTree = React.useMemo(
+        () => (pinnedSessionIds === null ? null : new Set(pinnedSessionIds)),
+        [pinnedSessionIds],
+      )
+      const pinRankForTree = React.useMemo(
+        () => new Map((pinnedSessionIds || []).map((id, i) => [id, i])),
+        [pinnedSessionIds],
+      )
       const list = useSessions(s => s)
       const pending = useSessionPendingInteraction ? useSessionPendingInteraction(s => s) : null
       const expandedMap = useStore ? (useStore(s => s.expanded) || {}) : {}
@@ -7221,9 +7236,44 @@ window.__ModuleLoader__.load({
           })
       }
 
-      const renameByUser = (sessionId, title) => {        if (humanTouchedRef.current === null) humanTouchedRef.current = new Set()
+      /**
+       * Rename because the USER asked for it. Marks the session as human-touched,
+       * which permanently stops the automatic-title provider from overwriting it
+       * (dsh-session-title: a rename sets source.kind='user').
+       */
+      const renameByUser = (sessionId, title) => {
+        if (humanTouchedRef.current === null) humanTouchedRef.current = new Set()
         humanTouchedRef.current.add(String(sessionId))
         if (autoStableRef.current) autoStableRef.current.delete(String(sessionId))
+        return renameSession(sessionId, title)
+      }
+
+      /**
+       * v0.29.0 Rename because the GROUPING changed, not because the user edited
+       * the title.
+       *
+       * Grouping is expressed as a "/"-prefix on the title, so dragging a session
+       * into a group rewrites that title. Routing it through renameByUser was
+       * wrong: it flagged the session as human-touched and flipped the title
+       * source to 'user', which permanently DISABLES
+       * @deepseek-ai/dsh-session-title for that session. The user reported
+       * exactly this — after reorganising groups, a session stopped getting
+       * automatic titles.
+       *
+       * This path still calls the host rename (the title really must change), but
+       * it does NOT mark the session human-touched, and it remembers the
+       * group-derived title so the auto-name heuristics can recognise their own
+       * projection and keep working on top of it.
+       */
+      const groupDerivedTitlesRef = React.useRef(null)
+
+      const renameForGrouping = (sessionId, title) => {
+        const id = String(sessionId)
+        if (groupDerivedTitlesRef.current === null) groupDerivedTitlesRef.current = new Map()
+        groupDerivedTitlesRef.current.set(id, String(title))
+        // Deliberately NOT touching humanTouchedRef: a grouping change is not a
+        // human title edit.
+        if (autoStableRef.current) autoStableRef.current.delete(id)
         return renameSession(sessionId, title)
       }
 
@@ -7253,7 +7303,7 @@ window.__ModuleLoader__.load({
               const leafSegs = splitTitleSegs(cur)
               const leaf = leafSegs.length > 0 ? leafSegs[leafSegs.length - 1] : cur
               const next = groupPath !== '' ? groupPath + '/' + leaf : leaf
-              if (next !== cur) { try { renameByUser(sid, next) } catch { /* best effort */ } }
+              if (next !== cur) { try { renameForGrouping(sid, next) } catch { /* best effort */ } }
               pend.delete(wsId)
               break
             }
@@ -7421,19 +7471,45 @@ window.__ModuleLoader__.load({
        * Pinned rows missing from this workspace are simply absent here; extras
        * are appended after the known ones so a stale id cannot hide a row.
        */
+      /**
+       * Pin ordering — EXACT port of the shipped `sectionMembers()`.
+       *
+       * Read out of the running bundle
+       * (@deepseek-ai/dsh-client-ui-workspace/lib/client.js):
+       *
+       *   for (member of members)
+       *     if (member.blank) placeholders.push(member)
+       *     else if (!archived.has(id) && pinned.has(id)) leading.push(member)
+       *     else rest.push(member)
+       *   return [...placeholders, ...leading, ...rest]
+       *
+       * Two things this gets right that my previous attempt did not:
+       *  1. pin is per-SECTION (each workspace / each session group), NOT a
+       *     global block above every workspace. The shipped browser never had a
+       *     global pinned area, which is why the global block looked wrong.
+       *  2. the provisional blank row always leads, and an ARCHIVED pinned
+       *     session falls back into `rest` (archiving wins over pinning).
+       * Inside `leading` the shipped order follows the host's pinnedSessionIds
+       * array, so that order is preserved here too.
+       */
       const withPinned = (rows) => {
-        if (pinnedSessionIds === null || pinnedSessionIds.length === 0) return rows
         if (!Array.isArray(rows) || rows.length === 0) return rows
-        const byId = new Map(rows.map((row) => [row.id, row]))
-        const lead = []
-        const taken = new Set()
-        for (const id of pinnedSessionIds) {
-          const row = byId.get(id)
-          if (row && !taken.has(id)) { lead.push(row); taken.add(id) }
+        const pinnedSet = pinnedSessionIds === null ? null : new Set(pinnedSessionIds)
+        const placeholders = []
+        const leading = []
+        const rest = []
+        for (const row of rows) {
+          if (row.blank) placeholders.push(row)
+          else if (pinnedSet !== null && pinnedSet.has(row.id) && !archivedSet.has(row.id)) leading.push(row)
+          else rest.push(row)
         }
-        if (lead.length === 0) return rows
-        const rest = rows.filter((row) => !taken.has(row.id))
-        return lead.concat(rest)
+        if (pinnedSet !== null && leading.length > 1) {
+          // Keep the host array's order, like the shipped implementation feeds
+          // `pinnedSessionIds` straight into the loop.
+          const rank = new Map(pinnedSessionIds.map((id, i) => [id, i]))
+          leading.sort((a, b) => (rank.get(a.id) ?? 0) - (rank.get(b.id) ?? 0))
+        }
+        return placeholders.concat(leading, rest)
       }
 
       const sessionsOf = (workspace) => {
@@ -7531,7 +7607,7 @@ window.__ModuleLoader__.load({
       // tree AND its disk-nested child levels.
       const wsAllPulseOf = (workspace) => {
         if (!statusPulse || searching) return null
-        let best = nodePulseOf(buildSessionTree(sessionsOf(workspace), sessionSlash))
+        let best = nodePulseOf(buildSessionTree(sessionsOf(workspace), sessionSlash, undefined, pinnedSetForTree, pinRankForTree))
         if (workspace.sub) {
           for (const folder of workspace.sub.folders) {
             const s = folderPulseOf(folder)
@@ -7657,7 +7733,7 @@ window.__ModuleLoader__.load({
         }
         if (target.kind === 'session') {
           Promise.resolve()
-            .then(() => renameByUser(target.id, next))
+            .then(() => renameForGrouping(target.id, next))
             .then(() => setDialog(null))
             .catch(fail)
           return
@@ -7677,14 +7753,14 @@ window.__ModuleLoader__.load({
         if (target.kind === 'sgroup') {
           const workspace = (items || []).find((w) => w.workspaceId === target.workspaceId)
           if (!workspace) { setDialog(null); return }
-          const node = findSessionGroup(buildSessionTree(sessionsOf(workspace), sessionSlash), target.path)
+          const node = findSessionGroup(buildSessionTree(sessionsOf(workspace), sessionSlash, undefined, pinnedSetForTree, pinRankForTree), target.path)
           if (!node) { setDialog(null); return }
           const affected = collectSessionRows(node)
           Promise.resolve()
             .then(async () => {
               for (const row of affected) {
                 if (row.blank) continue
-                await renameByUser(row.id, next + row.title.slice(target.path.length))
+                await renameForGrouping(row.id, next + row.title.slice(target.path.length))
               }
             })
             .then(() => setDialog(null))
@@ -8144,17 +8220,44 @@ window.__ModuleLoader__.load({
         const over = drag.over
         return over && over.kind === 'session' && over.target === sessionId ? over.half : null
       }
-      const sgroupDropInto = (workspaceId, path) => dragMatches('session') && drag.over && drag.over.kind === 'sgroup' && drag.over.target === path
+      /**
+       * Should this group row render the "drop INTO" rim?
+       *
+       * Two cases:
+       *   - a SESSION dragged over the row (the whole row is the target);
+       *   - a GROUP dragged over the row's MIDDLE band, which now nests it
+       *     (v0.29.0). Edge bands keep the reorder look instead.
+       */
+      const sgroupDropInto = (workspaceId, path) => {
+        if (!drag || !drag.over || drag.over.kind !== 'sgroup' || drag.over.target !== path) return false
+        if (dragMatches('session')) return true
+        return dragMatches('sgroup') && drag.over.half === 'into'
+      }
       /**
        * Which edge of a group row the pointer is over. Only meaningful while a
        * SIBLING GROUP is in flight: a session drag uses the whole row as a
        * "move into this group" target, where an edge would be misleading.
        */
-      const sgroupDropHalf = (event) => {
+      /**
+       * Zone inside a session-group row.
+       *
+       * Top and bottom edge bands reorder beside the target; the middle band
+       * nests INTO it. The shipped browser has no session-group nesting at all
+       * (a group is just a "/"-prefix projection), so this is a bw extension —
+       * the user asked for it three times, and it is the only way to build
+       * CUMCM26/ inside Modelling/ without hand-editing titles.
+       *
+       * @returns {'before'|'after'|'into'|null} null while the pointer is still
+       *   inside the middle band of an invalid target
+       */
+      const sgroupDropZone = (event) => {
         try {
           const rect = event.currentTarget.getBoundingClientRect()
-          const mid = rect.top + rect.height / 2
-          return event.clientY > mid ? 'after' : 'before'
+          const y = event.clientY - rect.top
+          const band = Math.min(8, Math.max(3, rect.height * 0.22))
+          if (y < band) return 'before'
+          if (y > rect.height - band) return 'after'
+          return 'into'
         } catch { return 'before' }
       }
       const sessionDragEvents = (session, workspaceId) => ({
@@ -8206,7 +8309,7 @@ window.__ModuleLoader__.load({
         // an empty list.
         const ws = (items || []).find((w) => w.workspaceId === workspaceId)
         if (!ws) return
-        const tree = buildSessionTree(sessionsOf(ws), sessionSlash, current)
+        const tree = buildSessionTree(sessionsOf(ws), sessionSlash, current, pinnedSetForTree, pinRankForTree)
         const parentPath = parentOf(sourcePath)
         const findNode = (node) => {
           if (node.path === parentPath) return node
@@ -8225,6 +8328,62 @@ window.__ModuleLoader__.load({
         const set = new Set(siblings)
         const next = (Array.isArray(current) ? current.filter((p) => !set.has(p)) : []).concat(without)
         if (actions && typeof actions.setSessionGroupOrder === 'function') actions.setSessionGroupOrder(workspaceId, next)
+      }
+
+      /**
+       * v0.29.0 NEST a session group inside another one.
+       *
+       * A session group is a "/"-prefix projection: every member's title carries
+       * `Parent/Child/Rest`. Nesting CUMCM26 under Modelling therefore means
+       * REWRITING every member's title from `CUMCM26/...` to
+       * `Modelling/CUMCM26/...`. This is the same mechanism `commitSessionMoveInto`
+       * uses for a single session; the difference is that a whole distinct
+       * sibling group becomes the child.
+       *
+       * Refusals (each is a real way to corrupt the tree, so none is a guess):
+       *   - nesting a group inside itself, or inside one of its own descendants
+       *     (would produce `A/A/x` and an infinite tree);
+       *   - when the target is already a descendant of the source.
+       * Everything else is allowed, at any depth, which is what the user asked
+       * for ("内外两种组都支持嵌套").
+       *
+       * @param {string} workspaceId
+       * @param {string} sourcePath group path being dragged (e.g. "CUMCM26")
+       * @param {string} targetPath group path it was dropped onto (e.g. "Modelling")
+       */
+      const commitSessionGroupNest = (workspaceId, sourcePath, targetPath) => {
+        setDrag(null)
+        const src = String(sourcePath || '')
+        const tgt = String(targetPath || '')
+        if (src === '' || tgt === '' || src === tgt) return
+        // self-containment: dropping A into A/B would create A/B/A
+        if (tgt === src || tgt.startsWith(src + '/')) return
+        const workspace = (items || []).find((w) => w.workspaceId === workspaceId)
+        if (!workspace) return
+        const newPrefix = tgt + '/' + src
+        // Rewrite every member whose title starts with `src/` (or equals the
+        // group leaf itself). Do it as one promise chain so a partial failure
+        // still leaves the workspace usable; each rename is independent.
+        const affected = []
+        for (const sid of workspace.sessionIds || []) {
+          const title = sessionTitleOf(list && list.byId ? list.byId[sid] : undefined, t, rememberedTitleOf(sid))
+          if (typeof title !== 'string' || title === '') continue
+          const segs = splitTitleSegs(title)
+          const path = segs.slice(0, -1).join('/')
+          if (path !== src && !path.startsWith(src + '/')) continue
+          const leaf = segs[segs.length - 1]
+          const rest = path === src ? '' : path.slice(src.length + 1)
+          const nextTitle = newPrefix + (rest === '' ? '' : '/' + rest) + '/' + leaf
+          affected.push({ sid, nextTitle })
+        }
+        if (affected.length === 0) return
+        Promise.resolve()
+          .then(async () => {
+            for (const item of affected) {
+              try { await renameForGrouping(item.sid, item.nextTitle) } catch (error) { fail(error) }
+            }
+          })
+          .catch(fail)
       }
 
       const sgroupDragEvents = (workspaceId, path) => ({
@@ -8255,7 +8414,7 @@ window.__ModuleLoader__.load({
           event.preventDefault()
           event.stopPropagation()
           try { event.dataTransfer.dropEffect = 'move' } catch { }
-          const half = siblingIn ? sgroupDropHalf(event) : null
+          const half = siblingIn ? sgroupDropZone(event) : null
           setDrag(current => {
             if (!current) return current
             const same = current.over && current.over.kind === 'sgroup' && current.over.target === path && current.over.half === half
@@ -8266,7 +8425,12 @@ window.__ModuleLoader__.load({
           if (dragMatches('sgroup') && drag.source.workspaceId === workspaceId) {
             event.preventDefault()
             event.stopPropagation()
-            commitSessionGroupOrder(workspaceId, drag.source.sgroupPath, path, sgroupDropHalf(event))
+            const zone = sgroupDropZone(event)
+            // v0.29.0 GROUP NESTING: the middle band nests the dragged group
+            // INSIDE this one (CUMCM26 -> Modelling becomes Modelling/CUMCM26),
+            // the edge bands keep the existing sibling reorder.
+            if (zone === 'into') commitSessionGroupNest(workspaceId, drag.source.sgroupPath, path)
+            else commitSessionGroupOrder(workspaceId, drag.source.sgroupPath, path, zone === 'after' ? 'after' : 'before')
             return
           }
           if (!dragMatches('session') || drag.source.workspaceId !== workspaceId) return
@@ -8296,7 +8460,7 @@ window.__ModuleLoader__.load({
             ? (idxT === -1 ? undefined : (flatT[idxT + 1] ? flatT[idxT + 1].id : undefined))
             : targetSessionId
           Promise.resolve()
-            .then(() => renameByUser(source.sessionId, targetGroup !== '' ? targetGroup + '/' + (source.leaf || source.title || source.sessionId) : (source.leaf || source.title || source.sessionId)))
+            .then(() => renameForGrouping(source.sessionId, targetGroup !== '' ? targetGroup + '/' + (source.leaf || source.title || source.sessionId) : (source.leaf || source.title || source.sessionId)))
             .then(() => (typeof insertSessionBefore === 'function'
               ? (anchorT !== undefined ? insertSessionBefore(workspaceId, source.sessionId, anchorT) : insertSessionBefore(workspaceId, source.sessionId))
               : undefined))
@@ -8340,7 +8504,7 @@ window.__ModuleLoader__.load({
         const targetGroup = targetRow ? groupPrefixOf(targetRow.title) : ''
         const nextTitle = targetGroup !== '' ? targetGroup + '/' + leafOf(source.title) : leafOf(source.title)
         if (targetRow && targetGroup !== groupPrefixOf(source.title) && nextTitle !== source.title) {
-          renameByUser(source.sessionId, nextTitle).then(commitOrder).catch(fail)
+          renameForGrouping(source.sessionId, nextTitle).then(commitOrder).catch(fail)
           return
         }
         commitOrder()
@@ -8351,7 +8515,7 @@ window.__ModuleLoader__.load({
         const newTitle = groupPath !== '' ? groupPath + '/' + source.leaf : source.leaf
         if (newTitle === source.title) return
         Promise.resolve()
-          .then(() => renameByUser(source.sessionId, newTitle))
+          .then(() => renameForGrouping(source.sessionId, newTitle))
           .catch(fail)
       }
 
@@ -8408,6 +8572,8 @@ window.__ModuleLoader__.load({
         const title = String(nextTitle || '').trim()
         if (title === '' || title === session.title) { setDialog(null); return }
         Promise.resolve()
+          // A title the user typed themselves: this legitimately claims the
+          // title, so the automatic provider must stop overwriting it.
           .then(() => renameByUser(session.id, title))
           .then(() => setDialog(null))
           .catch(fail)
@@ -8420,7 +8586,7 @@ window.__ModuleLoader__.load({
         if (name === target.name) { setDialog(null); return }
         const workspace = (items || []).find(w => w.workspaceId === target.workspaceId)
         if (!workspace) { setDialog(null); return }
-        const node = findSessionGroup(buildSessionTree(sessionsOf(workspace), sessionSlash), target.path)
+        const node = findSessionGroup(buildSessionTree(sessionsOf(workspace), sessionSlash, undefined, pinnedSetForTree, pinRankForTree), target.path)
         if (!node) { setDialog(null); return }
         const parentPath = target.path.includes('/') ? target.path.slice(0, target.path.lastIndexOf('/')) : ''
         const nextPath = parentPath !== '' ? parentPath + '/' + name : name
@@ -8430,7 +8596,7 @@ window.__ModuleLoader__.load({
             for (const row of affected) {
               if (row.blank) continue
               const nextTitle = nextPath + row.title.slice(target.path.length)
-              await renameByUser(row.id, nextTitle)
+              await renameForGrouping(row.id, nextTitle)
             }
           })
           .then(() => setDialog(null))
@@ -8481,7 +8647,7 @@ window.__ModuleLoader__.load({
         if (!searching && !sessionsOpenOf(workspace.workspaceId)) return []
         const rows = sessionsOf(workspace)
         if (rows.length === 0) return []
-        return renderSessionNode(buildSessionTree(rows, sessionSlash, sessionGroupOrderMap[workspace.workspaceId]), workspace.workspaceId, depth)
+        return renderSessionNode(buildSessionTree(rows, sessionSlash, sessionGroupOrderMap[workspace.workspaceId], pinnedSetForTree, pinRankForTree), workspace.workspaceId, depth)
       }
       const searchSessionNode = (node) => {
         const groups = []
@@ -8584,7 +8750,7 @@ window.__ModuleLoader__.load({
 
       const renderWorkspaceEntry = (entry, depth, pulse) => {
         const { workspace } = entry
-        const count = countSessionTree(buildSessionTree(sessionsOf(workspace), sessionSlash))
+        const count = countSessionTree(buildSessionTree(sessionsOf(workspace), sessionSlash, undefined, pinnedSetForTree, pinRankForTree))
         const rows = [E(WorkspaceRow, {
           key: 'ws-' + workspace.workspaceId,
           workspace,
@@ -8719,61 +8885,6 @@ window.__ModuleLoader__.load({
         rows.push(...ungrouped)
         return rows.map((s) => renderSessionRow({ ...s, leaf: s.title }, 0, undefined))
       }
-      /**
-       * v0.28.0 GLOBAL PINNED BLOCK.
-       *
-       * The user's rule: a pinned session must sit ABOVE every workspace and
-       * every session group — pinned in `resume-harness` should be the first
-       * thing in the whole sidebar, higher than the `legacy` tab group.
-       * Before this, `withPinned` only sorted WITHIN a workspace, so a pin was
-       * invisible unless you already looked inside that workspace.
-       *
-       * Pinned rows render at depth 0 with a workspace chip so the user still
-       * knows where each one belongs; the workspace chip is also what makes the
-       * group ("pinned") readable rather than a mystery list.
-       */
-      const renderPinnedBlock = () => {
-        if (pinnedSessionIds === null || pinnedSessionIds.length === 0) return []
-        if (searching) return []            // search results have their own order
-        const rows = []
-        const seen = new Set()
-        for (const id of pinnedSessionIds) {
-          if (seen.has(id)) continue
-          seen.add(id)
-          // Find this session wherever it lives so the row keeps real status.
-          let found = null
-          let ownerTitle = ''
-          for (const w of items || []) {
-            const hit = (w.sessionIds || []).includes(id)
-            if (!hit) continue
-            const summary = list && list.byId ? list.byId[id] : undefined
-            if (!sessionVisible(summary, currentId, archivedSet, showArchived)) continue
-            found = {
-              id,
-              title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
-              leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
-              blank: !!summary.blank,
-              ...statusFaceOf(id, summary),
-              hasActiveSchedule: hasActiveScheduleOf(summary),
-              updatedAt: summary.updatedAt || 0,
-            }
-            ownerTitle = w.title || w.leaf || ''
-            break
-          }
-          if (found === null) continue
-          const row = renderSessionRow(found, 0)
-          rows.push(E('div', { key: 'pin-wrap-' + id, className: 'bw-pin-row' },
-            row,
-            ownerTitle ? E('span', { className: 'bw-pin-owner', title: ownerTitle }, ownerTitle) : null,
-          ))
-        }
-        if (rows.length === 0) return []
-        return [
-          E('div', { key: 'pinned-label', className: 'bw-header-title bw-pin-label' }, t('group.pinned')),
-          ...rows,
-        ]
-      }
-
       const renderUngroupedBlock = () => {
         const rows = []
         if (ungrouped.length > 0) {
@@ -8798,11 +8909,6 @@ window.__ModuleLoader__.load({
         for (const folder of tree.folders) bodyRows.push(...renderPlainFolder(folder, 0))
         for (const workspace of tree.workspaces) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
         bodyRows.push(...renderUngroupedBlock())
-      }
-      // Pinned rows lead the whole tree, above workspaces and groups.
-      if (!searching) {
-        const pinBlock = renderPinnedBlock()
-        if (pinBlock.length > 0) bodyRows = [...pinBlock, ...bodyRows]
       }
       const isEmpty = bodyRows.length === 0
       if (isEmpty) {

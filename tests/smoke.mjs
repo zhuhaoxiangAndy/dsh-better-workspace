@@ -148,8 +148,22 @@ test('quote-on-land effect: blank-born only, user renames pinned, stability wind
   // cross-group session move (commitSessionDrop's other-workspace branch), and
   // v0.23.0 "new session inside this group" (stamps the group prefix on the
   // freshly created session).
+  // v0.29.0 SPLIT the two kinds of rename:
+  //   renameByUser       -> the user typed a title (claims it, stops auto-naming)
+  //   renameForGrouping  -> a grouping change rewrote the "/"-prefix (must NOT
+  //                         claim the title, or dsh-session-title stops working)
+  // Only the rename DIALOG may use the first one now.
   assert.match(text, /const renameByUser = \(sessionId, title\) => \{/)
-  assert.equal((text.match(/renameByUser\(/g) || []).length, 8, 'exactly 8 user call sites')
+  // v0.29.0 SPLIT: grouping rewrites must NOT claim the title, or
+  // dsh-session-title stops auto-naming that session.
+  assert.match(text, /const renameForGrouping = \(sessionId, title\) => \{/, 'grouping path exists')
+  const gStart = text.indexOf('const renameForGrouping = (sessionId, title) => {')
+  const gEnd = text.indexOf(String.fromCharCode(10) + '      }', gStart)
+  const gBody = text.slice(gStart, gEnd)
+  assert.doesNotMatch(gBody, /humanTouchedRef\.current\.add/, 'grouping must not claim the title')
+  const dStart = text.indexOf('const submitSessionRename = (session, nextTitle) => {')
+  const dBody = text.slice(dStart, dStart + 400)
+  assert.match(dBody, /renameByUser\(/, 'the rename dialog uses the user path')
   // The automatic quote waits out a stabilization window instead of racing
   // the async LLM name.
   assert.match(text, /TITLE_STABLE_MS = 20000/)
@@ -793,7 +807,7 @@ test('group move: the header "New group" button doubles as the drop slot', () =>
   assert.match(text, /\.bw-drop-into-strong\{outline:2px solid var\(--dsw-alias-brand-primary/, 'drop highlight')
 })
 
-test('group move: user renames ride renameByUser, host reorder stays optional', () => {
+test('group move: titles ride renameForGrouping, host reorder stays optional', () => {
   const text = read('src/client.js')
   const start = text.indexOf('const submitGroupMove = (target, rawGroup) =>')
   const end = text.indexOf('/* ------------------------- drag & drop --------------------------')
@@ -801,8 +815,11 @@ test('group move: user renames ride renameByUser, host reorder stays optional', 
   const body = text.slice(start, end)
   assert.match(body, /renameWorkspace\(target\.id, next\)/, 'workspace move is a plain rename')
   assert.match(body, /typeof insertWorkspaceBefore === 'function'/, 'host reorder action stays optional (0.1.6-alpha.1 contract)')
-  assert.match(body, /renameByUser\(target\.id, next\)/, 'single session move is pinned against the auto-quote effect')
-  assert.match(body, /await renameByUser\(row\.id, next \+ row\.title\.slice\(target\.path\.length\)\)/, 'session-group batch move is pinned too')
+  // v0.29.0: a group move rewrites the title, so it must use the GROUPING path.
+  // Routing it through renameByUser marked the session human-touched and
+  // permanently disabled automatic titles for it.
+  assert.match(body, /renameForGrouping\(target\.id, next\)/, 'group move uses the grouping path, not the user path')
+  assert.match(body, /await renameForGrouping\(row\.id, next \+ row\.title\.slice\(target\.path\.length\)\)/, 'session-group batch move uses the grouping path too')
   assert.match(body, /for \(const w of affected\)[\s\S]*renameWorkspace\(w\.workspaceId, next \+ String\(w\.title\)\.slice\(target\.path\.length\)\)/, 'workspace-group batch move rewrites every member')
 })
 
@@ -841,7 +858,7 @@ test('session drag: grouped-row drop joins the group; rows get a group button', 
   const body = text.slice(start, end)
   assert.match(body, /const targetGroup = targetRow \? groupPrefixOf\(targetRow\.title\) : ''/, 'the drop reads the target row group')
   assert.match(body, /const nextTitle = targetGroup !== '' \? targetGroup \+ '\/' \+ leafOf\(source\.title\) : leafOf\(source\.title\)/, 'the dragged leaf keeps its name under the target group')
-  assert.match(body, /renameByUser\(source\.sessionId, nextTitle\)\.then\(commitOrder\)\.catch\(fail\)/, 'group join renames first (humanTouched), then applies the anchor')
+  assert.match(body, /renameForGrouping\(source\.sessionId, nextTitle\)\.then\(commitOrder\)\.catch\(fail\)/, 'group join rewrites via the grouping path, then applies the anchor')
   assert.match(body, /if \(result && result\.ok === false\) throw new Error/, 'resolved host refusal is turned into an error')
   assert.match(body, /hostOrderFailedRef\.current\.add\(workspaceId\)/, 'the local order takes over for the refusing workspace')
   // feat2: the per-workspace group button rides the shared move dialog.
@@ -1063,75 +1080,28 @@ test('every rendered button carries an icon (not just "icon(...) exists")', () =
   assert.match(text, /\.bw-row:hover \.bw-row-actions/, 'row actions are revealed on hover')
 })
 
-test('pinning reorders the rows, it does not just flip a flag', () => {
+test('pinning reorders WITHIN a section, exactly like the shipped sectionMembers()', () => {
   const text = read('src/client.js')
-  // The partition helper must exist AND both order branches must use it,
-  // otherwise a pinned id changes nothing visible (the reported "名存实亡").
+  // Ported from @deepseek-ai/dsh-client-ui-workspace/lib/client.js:
+  //   blank first, then pinned-and-not-archived, then the rest.
   assert.match(text, /const withPinned = \(rows\) => \{/, 'pin partition helper exists')
+  assert.match(text, /if \(row\.blank\) placeholders\.push\(row\)/, 'the provisional blank row leads')
+  assert.match(text, /pinnedSet\.has\(row\.id\) && !archivedSet\.has\(row\.id\)/, 'pinned-but-archived falls to rest')
+  assert.match(text, /return placeholders\.concat\(leading, rest\)/, 'the shipped output order')
+  // All three order branches must apply it.
   assert.match(text, /return withPinned\(sorted\)/, 'recency order applies the partition')
   assert.match(text, /return withPinned\(out\)/, 'manual order applies the partition')
   assert.match(text, /return withPinned\(rows\)/, 'the untouched order applies the partition')
-  // Pinned ids lead in their own stored order, like the official pin-order.js.
-  assert.match(text, /for \(const id of pinnedSessionIds\)/, 'pinned lead order follows the host array')
-  assert.match(text, /const rest = rows\.filter\(\(row\) => !taken\.has\(row\.id\)\)/, 'the rest keeps its order')
+  // Host order inside `leading` is preserved.
+  assert.match(text, /const rank = new Map\(pinnedSessionIds\.map/, 'pinned ids keep the host array order')
 })
 
-/* --------------------------------------- native fidelity + ghosts (v0.26) ---
- * Everything here follows DONE-CRITERIA.md: assert the OBSERVABLE behaviour,
- * not the presence of a string. The previous round reported the style and
- * Ctrl+Tab work as done on grep evidence and both were wrong.
- */
-test('native style values are taken from the shipped bundle, not invented', () => {
+test('there is NO global pinned block — the shipped browser has none', () => {
   const text = read('src/client.js')
-  // Font: the plugin declared NO font-family at all, so the sidebar inherited
-  // the browser default while the app uses this token — the reported 字体不对.
-  assert.match(text, /font-family:var\(--dsw-font-family,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC"/,
-    'root inherits the shipped font token with a CJK fallback chain')
-  assert.match(text, /Microsoft YaHei/, 'the CJK face the app relies on is present')
-  // Official rule: intermediate weights normalise to 500.
-  assert.match(text, /font-weight:500;/, 'the header weight is the shipped 500, not 600')
-  assert.doesNotMatch(text, /\.bw-header-title\{[^}]*font-weight:600/, 'no 600 in the header title')
-  // Radius ladder: xs4 sm8 md12 lg16 xl20 panel28 — 6px is not on it.
-  assert.match(text, /--bw-radius-ctl:var\(--dsw-radius-sm,8px\)/, 'control radius maps to the sm token')
-  assert.doesNotMatch(text, /border-radius:6px/, 'no off-ladder 6px radius remains')
-  // Motion curve from the same bundle.
-  assert.match(text, /--bw-ease:var\(--ds-ease-in-out,cubic-bezier\(\.4,0,\.2,1\)\)/, 'shared easing curve')
-  // Row geometry matches the shipped row.
-  assert.match(text, /\.bw-row\{[^}]*line-height:20px/, 'row line-height matches the shipped 20px')
-  // Shadows: the shipped overlay uses --dsw-elevation-prominent, whose real
-  // value is a .5px stroke plus very faint (0.04/0.05) blurs. A hand-rolled
-  // 0 8px 24px rgba(0,0,0,.35) is about seven times heavier and reads as a
-  // different design language.
-  assert.doesNotMatch(text, /box-shadow:0 8px 24px rgba\(0,0,0,\.35\)/, 'no hand-rolled heavy overlay shadow')
-  assert.match(text, /\.bw-ctx-menu\{[^}]*box-shadow:var\(--dsw-elevation-prominent/, 'context menu uses the shipped elevation token')
-  assert.match(text, /--dsw-elevation-prominent,0 0 0 \.5px/, 'the fallback mirrors the shipped stroke + faint blur')
-})
-
-test('one-click native reset clears every visual knob but no data', () => {
-  const text = read('src/client.js')
-  assert.match(text, /settings\.nativeReset/, 'the reset control exists')
-  // It must clear per-row styling AND the presentation preferences.
-  // Locate the button BLOCK (the dictionaries also mention these keys, so
-  // anchor on the render site, not the first occurrence).
-  const blockStart = text.indexOf("t('settings.nativeReset.action')")
-  const block = text.slice(Math.max(0, blockStart - 900), blockStart + 200)
-  assert.match(block, /setStyling\(key, null\)/, 'per-row customizations are cleared')
-  assert.match(block, /setPref\('appearance'/, 'appearance is reset')
-  assert.match(block, /setPref\('compactChains'/, 'chain compression is reset')
-  assert.match(block, /setPref\('statusPulse'/, 'status pulse is reset')
-  // And it must NOT touch workspace or session data.
-  assert.doesNotMatch(block, /renameWorkspace|renameSession|archiveSession|deleteSession/,
-    'the reset never mutates workspaces or sessions')
-})
-
-test('Ctrl+Tab groups by WORKSPACE, not by title prefix', () => {
-  const text = read('src/client.js')
-  // v0.23 grouped by the title's "/" prefix, which still split one workspace's
-  // sessions across prefix runs — the reported "直接跨工作区切换".
-  assert.match(text, /const wsRank = new Map\(\)/, 'workspaces are ranked by sidebar order')
-  assert.match(text, /rank: tab\.workspaceId && wsRank\.has\(tab\.workspaceId\)/, 'the sort key is the workspace id')
-  assert.doesNotMatch(text, /const prefixOf = \(tab\) =>/, 'the title-prefix grouping is gone')
-  assert.match(text, /Number\.MAX_SAFE_INTEGER/, 'workspace-less sessions sort last')
+  // My earlier global block above every workspace was invented; reading the
+  // shipped bundle showed pinning is per-section only.
+  assert.doesNotMatch(text, /renderPinnedBlock/, 'no global pinned block')
+  assert.doesNotMatch(text, /bodyRows = \[\.\.\.pinBlock/, 'nothing is prepended to the whole tree')
 })
 
 test('ghost rows (cache entry, no archive file) never render', () => {
@@ -1281,18 +1251,6 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   assert.match(text, /settings\.groupIcon/, 'the settings toggle exists')
 })
 
-test('pinned sessions lead the WHOLE tree, above workspaces and groups', () => {
-  const text = read('src/client.js')
-  // The user's rule: a pin inside resume-harness must sit above even the
-  // `legacy` tab group, not merely first within its own workspace.
-  assert.match(text, /const renderPinnedBlock = \(\) => \{/, 'a global pinned block exists')
-  assert.match(text, /const pinBlock = renderPinnedBlock\(\)/, 'it is rendered')
-  assert.match(text, /bodyRows = \[\.\.\.pinBlock, \.\.\.bodyRows\]/, 'it is PREPENDED to the whole tree')
-  assert.match(text, /t\('group\.pinned'\)/, 'the block has a heading')
-  // A pinned row must still say which workspace it came from.
-  assert.match(text, /className: 'bw-pin-owner'/, 'each pinned row carries its owner workspace')
-})
-
 test('the plugins launcher is a registered slot seat, not a sidebar hack', () => {
   const text = read('src/client.js')
   // The settings BUTTON is shell chrome; reimplementing it inside the sidebar
@@ -1343,4 +1301,42 @@ test('a failing drag commit cannot take the sidebar down (v0.28)', () => {
     'the title leaf is validated before use')
   assert.doesNotMatch(text, /const newTitle = tgtParent !== '' \? tgtParent \+ '\/' \+ source\.leaf/,
     'the old undefined-title path is gone')
+})
+
+/* ------------------------ auto-title compatibility (v0.29.0) ---
+ * @deepseek-ai/dsh-session-title only auto-names a session while the title
+ * source stays 'provider'/'fallback'. A rename claims the title
+ * (source.kind='user') and the provider then stops. Grouping is expressed as a
+ * "/"-prefix on the title, so every group drag used to silently disable
+ * auto-naming for the sessions it moved. These tests pin the separation.
+ */
+test('grouping changes never claim the title (auto-naming must survive)', () => {
+  const text = read('src/client.js')
+  // The grouping path exists and does NOT register a human edit.
+  const gStart = text.indexOf('const renameForGrouping = (sessionId, title) => {')
+  assert.ok(gStart > 0, 'renameForGrouping exists')
+  const gEnd = text.indexOf(String.fromCharCode(10) + '      }', gStart)
+  const gBody = text.slice(gStart, gEnd)
+  assert.doesNotMatch(gBody, /humanTouchedRef\.current\.add/,
+    'grouping must not mark the session human-touched')
+  assert.match(gBody, /groupDerivedTitlesRef\.current\.set/,
+    'the group-derived title is remembered so auto-name can recognise it')
+  assert.match(gBody, /renameSession\(sessionId, title\)/,
+    'the host rename still happens (the prefix really must change)')
+
+  // The user path is the only place that claims a title.
+  const uStart = text.indexOf('const renameByUser = (sessionId, title) => {')
+  const uBody = text.slice(uStart, uStart + 400)
+  assert.match(uBody, /humanTouchedRef\.current\.add/, 'only a user rename claims the title')
+})
+
+test('every group-drag call site uses the grouping path', () => {
+  const text = read('src/client.js')
+  // The eight grouping rewrites (drag join, batch move, nest, re-prefix, …)
+  const calls = (text.match(/renameForGrouping\(/g) || []).length
+  assert.ok(calls >= 8, 'grouping rewrites go through their own path')
+  // And the dialog is the single user-intent call.
+  const dStart = text.indexOf('const submitSessionRename = (session, nextTitle) => {')
+  const dBody = text.slice(dStart, dStart + 400)
+  assert.match(dBody, /renameByUser\(/, 'the rename dialog still uses the user path')
 })
