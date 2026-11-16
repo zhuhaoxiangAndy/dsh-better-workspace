@@ -5019,12 +5019,17 @@ window.__ModuleLoader__.load({
     '.bw-launcher-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-launcher-label{white-space:nowrap}',
     // v0.30.1 Edge/Chrome tab group: coloured pill + matching rail.
-    '.bw-group-pill{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:100%;height:22px;padding:0 9px 0 6px;border-radius:11px;color:#fff;font-size:12px;line-height:22px;overflow:hidden}',
+    '.bw-group-pill{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:100%;height:24px;padding:0 10px;border-radius:12px;color:#fff;font-size:12px;line-height:24px;overflow:hidden}',
     // v0.31.6 BUBBLE shape: the chip spans the row's grey area so the group
     // reads as a filled bar (browser tab-group look), not a small tag.
     '.bw-group-pill-bubble{flex:1;min-width:0;height:24px;border-radius:12px;padding:0 10px;justify-content:flex-start}',
     // v0.33.1 workspace-group bubble: fills the row's grey area, name in white.
-    '.bw-folder-bubble{flex:1;min-width:0;display:flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;color:#fff;font-size:13px;overflow:hidden}',
+    // v0.34.4 UNIFIED SCALE: the two group tiers must read as the same family.
+    // The workspace bubble was 13px while the session pill was 12px, so the
+    // parent tier looked like a different component. Both are now 12px with the
+    // same 10px padding and 12px radius; only the WIDTH differs (flex:1 vs auto),
+    // which is the actual requested difference.
+    '.bw-folder-bubble{flex:1;min-width:0;display:flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;color:#fff;font-size:12px;overflow:hidden}',
     '.bw-folder-bubble-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
     '.bw-folder-bubble-count{flex:none;font-size:11px;opacity:.85}',
     '.bw-group-pill-bubble .bw-group-pill-text{font-weight:500}',

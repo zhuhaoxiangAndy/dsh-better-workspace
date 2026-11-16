@@ -1269,7 +1269,7 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   // name, plus a rail in the same colour continuing through the members.
   assert.match(text, /className: cls\('bw-group-pill'/, 'the group row renders a coloured pill')
   assert.match(text, /style: \{ background: tabGroupColor\(name\) \}/, 'the pill carries the group colour')
-  assert.match(text, /'\.bw-group-pill\{[^']*border-radius:11px/, 'the pill is a rounded capsule')
+  assert.match(text, /'\.bw-group-pill\{[^']*border-radius:12px/, 'the pill is a rounded capsule')
   assert.match(text, /bw-sgroup-member-rail/, 'members draw the same colour as a left rail')
   assert.match(text, /renderSessionNode\(group, workspaceId, depth \+ 1, tabGroupColor\(group\.name\), chainForChildren\)/,
     'the colour chain is inherited down the whole subtree')
@@ -1859,4 +1859,30 @@ test('old persisted state cannot white-screen the sidebar, and appearance persis
     'setStyling writes through the store action')
   assert.ok(text.includes('const next = { ...stylingMap }'), 'and maintains a local copy')
   assert.ok(text.includes('if (value === null) delete next[key]'), 'reset removes the key rather than storing null')
+})
+
+test('both group tiers share one visual scale (v0.34.4)', () => {
+  const text = read('src/client.js')
+  const get = (sel) => {
+    const i = text.indexOf("'" + sel + "{")
+    if (i === -1) return null
+    const j = text.indexOf("',", i)
+    return text.slice(i, j)
+  }
+  const pill = get('.bw-group-pill')
+  const bubble = get('.bw-folder-bubble')
+  assert.ok(pill && bubble, 'both group styles exist')
+
+  const num = (s, key) => {
+    const m = new RegExp(key + ':(\d+)px').exec(s)
+    return m ? Number(m[1]) : null
+  }
+  // The two tiers must read as one family: same height, same radius, same font
+  // size. Only the WIDTH differs (flex:1 vs auto) — that is the requested
+  // difference, not a styling accident.
+  assert.equal(num(pill, 'height'), num(bubble, 'height'), 'same height')
+  assert.equal(num(pill, 'border-radius'), num(bubble, 'border-radius'), 'same radius')
+  assert.equal(num(pill, 'font-size'), num(bubble, 'font-size'), 'same font size')
+  // And the workspace bubble really does fill the row.
+  assert.ok(bubble.includes('flex:1'), 'the workspace bubble fills the row')
 })
