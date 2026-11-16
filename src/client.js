@@ -4976,7 +4976,11 @@ window.__ModuleLoader__.load({
     '.bw-group-pill-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
     // Members under a group draw the SAME colour rail down their left edge, so
     // the group's extent is visible like a tab strip's coloured spine.
-    '.bw-sgroup-member-rail{position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:1px;opacity:.75}',
+    // v0.33.7 RAIL ALIGNED UNDER THE CHEVRON (user: 竖线太左，应该在三角下面).
+    // left:0 put it on the row's outer edge, visually detached from the tree.
+    // 12px lines it up with the chevron/folder-glyph column (row padding 8px +
+    // half of a 14px glyph), so the rail reads as part of the tree spine.
+    '.bw-sgroup-member-rail{position:absolute;left:12px;top:0;bottom:0;width:2px;border-radius:1px;opacity:.75}',
     '.bw-group-rail{flex:none;width:3px;align-self:stretch;margin:2px 2px 2px 0;border-radius:2px;opacity:.9}',
     '.bw-group-rail-pulse{animation:bw-rail-breathe 1.8s ease-in-out infinite}',
     '@keyframes bw-rail-breathe{0%,100%{opacity:.9}50%{opacity:.4}}',
@@ -6435,7 +6439,10 @@ window.__ModuleLoader__.load({
         'aria-expanded': expanded,
         ...(dragEvents || {}),
       },
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
+        // v0.33.7 MUTUALLY EXCLUSIVE (user: 三角和气泡胶囊互斥): the bubble
+        // carries its own expand affordance — clicking the row toggles — so a
+        // leading triangle is redundant. The triangle survives only in the 'mini'
+        // shape, where it IS the chip itself.
         // v0.28.0: a tab-group RAIL instead of a folder glyph. One vertical bar
         // in the group's own colour — narrow, nestable, and instantly readable
         // as "this is a group", which a folder icon never was.

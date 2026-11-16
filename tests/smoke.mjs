@@ -1734,3 +1734,25 @@ test('nested groups render, and single-child chains merge by design (v0.33.6)', 
   assert.ok(text.includes("folderExpanded"), 'folders default to expanded')
   assert.ok(text.includes("expandedMap[path] !== false"), 'so nested levels are visible unless collapsed')
 })
+
+test('session-group rows: no separate triangle, rail sits under the glyph column (v0.33.7)', () => {
+  const text = read('src/client.js')
+  const gStart = text.indexOf('function SessionGroupRow(')
+  const row = text.slice(gStart, gStart + 2600)
+
+  // "bws 的会话组也不应该有三角（三角和气泡胶囊互斥）"
+  // The bubble is itself the affordance; a leading triangle beside it is clutter.
+  assert.ok(!row.includes("className: cls('bw-chevron'"), 'no standalone chevron span in the group row')
+  assert.ok(row.includes('bw-group-pill-bubble'), 'the bubble shape remains')
+  assert.ok(row.includes('bw-group-mini'), 'the mini shape remains')
+  // In mini the triangle IS the chip, so it must still come from the chip render.
+  assert.ok(row.includes("icon('IconTriangleRightFillRegular', 10)"), 'mini chip draws its own triangle')
+
+  // "他的竖线太左了，应该在三角下面"
+  // left:0 attached the rail to the row's outer edge; 12px lines it up with the
+  // chevron / folder-glyph column (8px row padding + half a 14px glyph).
+  assert.ok(text.includes('.bw-sgroup-member-rail{position:absolute;left:12px'),
+    'the member rail is aligned to the glyph column, not the row edge')
+  assert.ok(!text.includes('.bw-sgroup-member-rail{position:absolute;left:0'),
+    'the old left-edge position is gone')
+})
