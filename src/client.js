@@ -25,6 +25,27 @@ window.__ModuleLoader__.load({
     const React = require('react')
     const storeKit = require('@deepseek-ai/dsh-client-store')
     const ui = require('@deepseek-ai/dsh-client-ui-primitives')
+    // v0.31.5 BOOT DIAGNOSTIC.
+    // Record what the loader actually handed us, at LOAD time (not first icon
+    // call), so a completely empty module is distinguishable from "the module is
+    // fine but a few names are missing". Written to a global the UI can read and
+    // to the console once.
+    const primitivesProbe = (() => {
+      try {
+        const keys = ui ? Object.keys(ui) : null
+        const iconKeys = ui ? Object.keys(ui).filter((k) => /^Icon/.test(k) && typeof ui[k] === 'function') : []
+        return {
+          received: ui !== undefined && ui !== null,
+          type: ui === null ? 'null' : typeof ui,
+          totalKeys: keys ? keys.length : -1,
+          iconCount: iconKeys.length,
+          firstIcons: iconKeys.slice(0, 8),
+          firstKeys: keys ? keys.slice(0, 8) : [],
+        }
+      } catch (error) {
+        return { received: false, type: 'throw', error: String(error && error.message || error) }
+      }
+    })()
 
     const E = React.createElement
     const NS = 'betterWorkspace'
@@ -3963,6 +3984,9 @@ window.__ModuleLoader__.load({
     /** Names the loaded primitives actually exposes (filled on first icon() call). */
     let iconAvailableNames = null
     /** Snapshot of what went missing, for the settings diagnostic. */
+    // Expose the probe on the page so it can be read without devtools.
+    try { if (typeof window !== 'undefined') window.__bwsIconProbe = primitivesProbe } catch { }
+
     const iconDiagnostics = () => ({
       available: iconAvailableNames ? iconAvailableNames.length : -1,
       missing: [...iconMisses],
@@ -4014,13 +4038,51 @@ window.__ModuleLoader__.load({
           }
         } catch { }
       }
+      // v0.31.5 FALLBACK GLYPHS.
+      // If the host does not expose a name, show a MEANINGFUL symbol rather than
+      // an empty box: the user must still be able to tell a 新建 button from a
+      // 删除 button when icons are unavailable.
+      const FALLBACK_GLYPHS = {
+        IconPlusOutline16: '+',
+        IconFolderClose16: '▸',
+        IconFolderOpen16: '▾',
+        IconTriangleRightFill14: '▸',
+        IconEditOutline16: '✎',
+        IconTrashOutline16: '␡',
+        IconArchiveOutline20: '▤',
+        IconBranchOutline16: '⑂',
+        IconCopyOutline16: '⧉',
+        IconSearchOutline16: '⌕',
+        IconSettingsOutline16: '⚙',
+        IconCordisPluginOutline14: '◈',
+        IconChevronLeftOutline14: '‹',
+        IconChevronRightOutline14: '›',
+        IconRightUpOutline16: '↑',
+        IconTreeCorner8x10: '⌗',
+        IconListPenOutline16: '☰',
+        IconClockOutline16: '◷',
+        IconPersonalizationOutline16: '✦',
+        IconAlarmClockOutline16: '⏰',
+        IconProjectAddOutline16: '⊞',
+        IconFolderOpenOutline16: '▾',
+      }
       // v0.30.1 DEGRADE QUIETLY when the whole module is missing.
       // A red box per icon was correct while debugging (it exposed that NO icon
       // resolved), but shipping it paints the entire sidebar red. Distinguish
       // the two cases: a single unknown name is a real bug worth showing; a
       // module-wide miss is an environment problem and gets a neutral gap.
-      const moduleMissing = !ui || Object.keys(ui).filter((k) => /^Icon/.test(k)).length === 0
       const px = size || 16
+      const glyph = FALLBACK_GLYPHS[name]
+      if (glyph !== undefined) {
+        // A readable symbol beats an empty box: the button still communicates.
+        return E('span', {
+          className: 'bw-icon-glyph',
+          style: { width: px + 'px', height: px + 'px', fontSize: Math.round(px * 0.9) + 'px' },
+          'aria-hidden': 'true',
+          title: String(name),
+        }, glyph)
+      }
+      const moduleMissing = !ui || Object.keys(ui).filter((k) => /^Icon/.test(k)).length === 0
       return E('span', {
         className: moduleMissing ? 'bw-icon-absent' : 'bw-icon-missing',
         style: { width: px + 'px', height: px + 'px' },
@@ -4777,6 +4839,8 @@ window.__ModuleLoader__.load({
     '.bw-icon-missing{display:inline-block;border:1px dashed var(--dsw-alias-label-error,#e5726f);border-radius:2px;flex:none}',
     // Whole-module miss: an invisible gap of the right size, no red box.
     '.bw-icon-absent{display:inline-block;flex:none}',
+    // v0.31.5 fallback symbol: centred, inherits colour, never a red box.
+    '.bw-icon-glyph{display:inline-grid;place-items:center;flex:none;line-height:1;opacity:.85}',
       '.bw-chevron{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .15s ease}',
       '.bw-chevron-open{transform:rotate(90deg)}',
       // overflow:hidden (needed for the ellipsis) clips the outline: 3px of
@@ -6768,8 +6832,20 @@ window.__ModuleLoader__.load({
         // so the cause is diagnosable without opening devtools.
         (() => {
           const d = iconDiagnostics()
+          const p = primitivesProbe
           return E('div', { style: { marginTop: 12 } },
             E('div', { className: 'bw-setting-label' }, t('settings.iconDiag')),
+            // The load-time probe answers the decisive question first: did the
+            // module arrive at all?
+            E('div', { className: 'bw-hint' },
+              'primitives: received=' + String(p.received)
+              + ' type=' + String(p.type)
+              + ' keys=' + String(p.totalKeys)
+              + ' icons=' + String(p.iconCount)),
+            p.totalKeys > 0 && p.iconCount === 0
+              ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } },
+                  'module arrived but exports no Icon* — keys: ' + p.firstKeys.join(', '))
+              : null,
             E('div', { className: 'bw-hint' }, t('settings.iconDiag.count', { n: d.available })),
             d.missing.length > 0
               ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } }, t('settings.iconDiag.missing', { list: d.missing.slice(0, 8).join(', ') }))
