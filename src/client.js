@@ -4894,6 +4894,8 @@ window.__ModuleLoader__.load({
     '.bw-icon-absent{display:inline-block;flex:none}',
     // v0.31.5 fallback symbol: centred, inherits colour, never a red box.
     '.bw-icon-glyph{display:inline-grid;place-items:center;flex:none;line-height:1;opacity:.85}',
+    // v0.31.7 pinned marker: a small accent chevron before the label.
+    '.bw-pin-mark{flex:none;display:inline-grid;place-items:center;width:12px;font-size:10px;line-height:1;color:var(--dsw-alias-brand-primary,#5b8def);opacity:.9}',
     // v0.31.6 fallback dialog: only used when the host Modal is unavailable.
     '.bw-fallback-modal-backdrop{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:rgba(0,0,0,.45)}',
     '.bw-fallback-modal{min-width:320px;max-width:min(560px,92vw);max-height:82vh;overflow:auto;border-radius:var(--dsw-radius-lg,16px);background:var(--dsw-alias-bg-layer-1,#1f1f24);border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.3));box-shadow:0 8px 24px rgba(0,0,0,.45);padding:14px 16px;display:flex;flex-direction:column;gap:10px}',
@@ -6254,6 +6256,14 @@ window.__ModuleLoader__.load({
         // v0.30.1: a member of a session group inherits that group's colour as a
         // thin left rail, so the group's extent reads like a browser tab strip.
         railColor ? E('span', { className: 'bw-sgroup-member-rail', style: { background: railColor }, 'aria-hidden': 'true' }) : null,
+        // v0.31.7: a pinned row must LOOK pinned. Until now the only signal was
+        // its position, which the user understandably read as "置顶不完善".
+        pinned ? E('span', {
+          className: 'bw-pin-mark',
+          title: t('menu.pin'),
+          'aria-label': t('menu.pin'),
+          role: 'img',
+        }, '⇧') : null,
         E('span', { className: 'bw-row-icon', title: status ? status.title : undefined },
           status && state !== 'idle' && typeof ui.StateDot === 'function'
             ? (state === 'ongoing' && breathing
