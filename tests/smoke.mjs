@@ -1526,3 +1526,28 @@ test('a cross-workspace session drag attaches first and explains a cwd mismatch 
   assert.match(cross, /not accounted\|does not resolve to\|is not a directory\|cannot attach/,
     'the host validation errors are translated')
 })
+
+test('EVERY cross-workspace session drop attaches before touching the host order (v0.31.2)', () => {
+  const text = read('src/client.js')
+  // There are two distinct drop paths and the first fix only covered one:
+  //   commitSessionDrop          - dropped on another SESSION row
+  //   commitSessionJoinWorkspace - dropped on a WORKSPACE or GROUP row
+  // The user's error came from the second one, so both must attach.
+  const attachCalls = (text.match(/attachSession\(source\.sessionId\)/g) || []).length
+  assert.ok(attachCalls >= 2, 'both drop paths attach; found ' + attachCalls)
+
+  const join = text.slice(
+    text.indexOf('const commitSessionJoinWorkspace = (idPath) => {'),
+    text.indexOf('const commitWorkspaceMoveInto = (folderIdPath) => {'),
+  )
+  assert.ok(join.includes('attachSession(source.sessionId)'), 'the row-drop path attaches')
+  assert.ok(join.includes('movingAcross'), 'it only attaches when the workspace actually differs')
+  assert.ok(join.includes("move.needsSameCwd"), 'and it explains a cwd mismatch')
+
+  // Every insertSessionBefore call site must be either the exposed definition or
+  // a same-workspace reorder (which needs no attach).
+  const calls = text.split('\n')
+    .map((l, i) => ({ line: l, no: i + 1 }))
+    .filter((x) => x.line.includes('insertSessionBefore(') && !x.line.includes('typeof') && !x.line.trim().startsWith('//'))
+  assert.equal(calls.length, 3, 'exactly 3 occurrences: 2 call sites + 1 definition')
+})

@@ -9098,7 +9098,30 @@ window.__ModuleLoader__.load({
           // A grouping change must not claim the title, or automatic titles stop
           // for this session (see renameForGrouping).
           .then(() => renameForGrouping(source.sessionId, nextTitle))
-          .catch(fail)
+          // v0.31.2: if this session belongs to a DIFFERENT workspace, the host
+          // must be told to account for it before any reorder, or it answers
+          // `workspace/move-invalid: the session is not accounted`. This path
+          // (drop on a workspace/group ROW) was the one still missing the attach.
+          .then(() => {
+            const movingAcross = source.workspaceId !== undefined
+              && targetWs !== undefined
+              && String(source.workspaceId) !== String(targetWs)
+            if (!movingAcross) return undefined
+            if (typeof attachSession !== 'function') return undefined
+            return attachSession(source.sessionId)
+          })
+          .catch((error) => {
+            const msg = String(error && error.message || error)
+            // The host only allows attaching a session whose own cwd equals the
+            // target workspace path. Say that plainly instead of echoing the
+            // terse validation error.
+            if (/not accounted|does not resolve to|is not a directory|cannot attach/i.test(msg)) {
+              const ws = (items || []).find((w) => String(w.workspaceId) === String(targetWs))
+              fail(t('move.needsSameCwd', { target: String((ws && (ws.title || ws.path)) || targetWs) }))
+              return
+            }
+            fail(msg)
+          })
       }
 
       const commitWorkspaceMoveInto = (folderIdPath) => {
