@@ -24,7 +24,18 @@ window.__ModuleLoader__.load({
   factory: (require) => {
     const React = require('react')
     const storeKit = require('@deepseek-ai/dsh-client-store')
-    const ui = require('@deepseek-ai/dsh-client-ui-primitives')
+    // v0.31.6: require can THROW here (the loader throws loudly on an
+    // unregistered module). A bare require would take the whole plugin down and
+    // the sidebar would simply not render, so capture it and keep going with an
+    // empty namespace — then report exactly what happened.
+    let ui
+    let uiLoadError = null
+    try {
+      ui = require('@deepseek-ai/dsh-client-ui-primitives')
+    } catch (error) {
+      ui = {}
+      uiLoadError = String(error && error.message || error)
+    }
     // v0.31.5 BOOT DIAGNOSTIC.
     // Record what the loader actually handed us, at LOAD time (not first icon
     // call), so a completely empty module is distinguishable from "the module is
@@ -35,6 +46,7 @@ window.__ModuleLoader__.load({
         const keys = ui ? Object.keys(ui) : null
         const iconKeys = ui ? Object.keys(ui).filter((k) => /^Icon/.test(k) && typeof ui[k] === 'function') : []
         return {
+          loadError: uiLoadError,
           received: ui !== undefined && ui !== null,
           type: ui === null ? 'null' : typeof ui,
           totalKeys: keys ? keys.length : -1,
@@ -48,6 +60,40 @@ window.__ModuleLoader__.load({
     })()
 
     const E = React.createElement
+    /**
+     * v0.31.6 SAFE PRIMITIVES ACCESS.
+     *
+     * Every dialog in this plugin was written as `E(uiModal, …)`. If the
+     * primitives module did not arrive, ui.Modal is undefined and React throws
+     * "Element type is invalid" — which takes the whole subtree down, so the
+     * appearance panel (and anything else modal-based) simply never appeared.
+     * The user reported exactly that: "外观调整界面都无效了".
+     *
+     * `uiModal` returns the host Modal when present, otherwise a minimal
+     * substitute that renders the same props contract, so a missing module
+     * degrades the LOOK instead of breaking the FEATURE.
+     */
+    const uiModal = (ui && typeof ui.Modal === 'function')
+      ? ui.Modal
+      : function FallbackModal(props) {
+        if (!props || props.open !== true) return null
+        const close = typeof props.onClose === 'function' ? props.onClose : () => {}
+        return E('div', {
+          className: 'bw-fallback-modal-backdrop',
+          role: 'dialog',
+          'aria-label': props.title || '',
+          onMouseDown: (e) => { if (e.target === e.currentTarget) close() },
+        },
+          E('div', { className: 'bw-fallback-modal' },
+            E('div', { className: 'bw-fallback-modal-head' },
+              E('span', { className: 'bw-fallback-modal-title' }, props.title || ''),
+              E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': props.closeLabel || 'close', onClick: close }, '✕'),
+            ),
+            E('div', { className: 'bw-fallback-modal-body' }, props.children),
+            props.footer ? E('div', { className: 'bw-fallback-modal-foot' }, props.footer) : null,
+          ),
+        )
+      }
     const NS = 'betterWorkspace'
 
     /* ============================== i18n ============================== */
@@ -4825,6 +4871,13 @@ window.__ModuleLoader__.load({
     '.bw-launcher-label{white-space:nowrap}',
     // v0.30.1 Edge/Chrome tab group: coloured pill + matching rail.
     '.bw-group-pill{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:100%;height:22px;padding:0 9px 0 6px;border-radius:11px;color:#fff;font-size:12px;line-height:22px;overflow:hidden}',
+    // v0.31.6 BUBBLE shape: the chip spans the row's grey area so the group
+    // reads as a filled bar (browser tab-group look), not a small tag.
+    '.bw-group-pill-bubble{flex:1;min-width:0;height:24px;border-radius:12px;padding:0 10px;justify-content:flex-start}',
+    '.bw-group-pill-bubble .bw-group-pill-text{font-weight:500}',
+    // MINI shape: chevron only, minimal width, name via tooltip.
+    '.bw-group-mini{flex:none;display:inline-grid;place-items:center;width:16px;height:16px;border:1px solid;border-radius:4px}',
+    '.bw-group-mini-pulse{animation:bw-pill-breathe 1.8s ease-in-out infinite}',
     '.bw-group-pill-pulse{animation:bw-pill-breathe 1.8s ease-in-out infinite}',
     '@keyframes bw-pill-breathe{0%,100%{opacity:1}50%{opacity:.62}}',
     '.bw-group-pill-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
@@ -4841,6 +4894,13 @@ window.__ModuleLoader__.load({
     '.bw-icon-absent{display:inline-block;flex:none}',
     // v0.31.5 fallback symbol: centred, inherits colour, never a red box.
     '.bw-icon-glyph{display:inline-grid;place-items:center;flex:none;line-height:1;opacity:.85}',
+    // v0.31.6 fallback dialog: only used when the host Modal is unavailable.
+    '.bw-fallback-modal-backdrop{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:rgba(0,0,0,.45)}',
+    '.bw-fallback-modal{min-width:320px;max-width:min(560px,92vw);max-height:82vh;overflow:auto;border-radius:var(--dsw-radius-lg,16px);background:var(--dsw-alias-bg-layer-1,#1f1f24);border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.3));box-shadow:0 8px 24px rgba(0,0,0,.45);padding:14px 16px;display:flex;flex-direction:column;gap:10px}',
+    '.bw-fallback-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}',
+    '.bw-fallback-modal-title{font-size:14px;font-weight:500}',
+    '.bw-fallback-modal-body{display:flex;flex-direction:column;gap:8px}',
+    '.bw-fallback-modal-foot{display:flex;justify-content:flex-end;gap:8px}',
       '.bw-chevron{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .15s ease}',
       '.bw-chevron-open{transform:rotate(90deg)}',
       // overflow:hidden (needed for the ellipsis) clips the outline: 3px of
@@ -5369,7 +5429,7 @@ window.__ModuleLoader__.load({
       const inputRef = React.useRef(null)
       React.useEffect(() => { if (inputRef.current) { inputRef.current.focus(); inputRef.current.select() } }, [])
       const commit = () => onConfirm(value)
-      return E(ui.Modal, {
+      return E(uiModal, {
         open: true,
         onClose,
         closeLabel: t('close'),
@@ -5396,7 +5456,7 @@ window.__ModuleLoader__.load({
     }
 
     function ConfirmDialog({ title, body, onConfirm, onClose, t }) {
-      return E(ui.Modal, {
+      return E(uiModal, {
         open: true,
         onClose,
         closeLabel: t('close'),
@@ -5426,7 +5486,7 @@ window.__ModuleLoader__.load({
       React.useEffect(() => { if (inputRef.current) { inputRef.current.focus(); inputRef.current.select() } }, [])
       const commit = () => onConfirm(hasTargets ? targetValue : undefined, value)
       const hintList = Array.isArray(groupPaths) ? groupPaths.filter((p) => p !== '') : []
-      return E(ui.Modal, {
+      return E(uiModal, {
         open: true,
         onClose,
         closeLabel: t('close'),
@@ -5797,7 +5857,7 @@ window.__ModuleLoader__.load({
         }, selectedEntry !== null ? t('browse.selectNamed', { name: selectedEntry.name }) : t('browse.select')),
       )
 
-      return E(ui.Modal, {
+      return E(uiModal, {
         open: true,
         onClose: () => { if (busy !== true) onClose() },
         closeLabel: t('close'),
@@ -6241,7 +6301,7 @@ window.__ModuleLoader__.load({
      * titles). Deliberately NOT styled like a workspace folder — no folder
      * icon, tertiary color — so a session level never reads as a workspace.
      */
-    function SessionGroupRow({ name, depth, expanded, count, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, pulse, onStart, onAddGroup, t }) {
+    function SessionGroupRow({ name, depth, expanded, count, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, pulse, onStart, onAddGroup, groupChip, t }) {
       return E('div', {
         className: cls('bw-row', 'bw-sgroup-row', dropInto && 'bw-drop-into', dropInto && 'bw-drop-into-strong', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 10 + depth * 12, ...(custStyle || {}) },
@@ -6261,13 +6321,23 @@ window.__ModuleLoader__.load({
         // v0.30.3: the little notch inside the pill was redundant — the user
         // asked for it to go. The pill itself carries the group colour, and the
         // MEMBER rail below carries it down the subtree.
-        E('span', {
-          className: cls('bw-group-pill', pulse && 'bw-group-pill-pulse'),
-          style: { background: tabGroupColor(name) },
-          title: name,
-        },
-          E('span', { className: 'bw-group-pill-text' }, name),
-        ),
+        // v0.31.6 TWO PILL SHAPES (user asked for both, then said start with one):
+        //   'bubble' — the chip fills the row's grey area, like a browser tab group;
+        //   'mini'   — only a chevron, minimal width, the group name on hover.
+        // BOTH keep a vertical rail so the group's extent reads like `tree` output.
+        groupChip === 'mini'
+          ? E('span', {
+              className: cls('bw-group-mini', pulse && 'bw-group-mini-pulse'),
+              style: { borderColor: tabGroupColor(name), color: tabGroupColor(name) },
+              title: name,
+            }, icon('IconTriangleRightFill14', 10))
+          : E('span', {
+              className: cls('bw-group-pill', 'bw-group-pill-bubble', pulse && 'bw-group-pill-pulse'),
+              style: { background: tabGroupColor(name) },
+              title: name,
+            },
+            E('span', { className: 'bw-group-pill-text' }, name),
+          ),
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
         // (the name lives inside the pill above)
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
@@ -6639,7 +6709,7 @@ window.__ModuleLoader__.load({
         onChange(unchanged ? null : entry)
         onClose()
       }
-      return E(ui.Modal, {
+      return E(uiModal, {
         open: true,
         onClose,
         closeLabel: t('close'),
@@ -6842,6 +6912,10 @@ window.__ModuleLoader__.load({
               + ' type=' + String(p.type)
               + ' keys=' + String(p.totalKeys)
               + ' icons=' + String(p.iconCount)),
+            p.loadError
+              ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } },
+                  'require failed: ' + p.loadError)
+              : null,
             p.totalKeys > 0 && p.iconCount === 0
               ? E('div', { className: 'bw-hint', style: { color: 'var(--dsw-alias-label-error,#e5726f)' } },
                   'module arrived but exports no Icon* — keys: ' + p.firstKeys.join(', '))
@@ -7742,6 +7816,9 @@ window.__ModuleLoader__.load({
       // v0.28.0: session-group glyph style — 'tab' (coloured rail, default) or
       // 'folder' (the previous folder icon).
       const groupIcon = prefsMap.groupIcon === 'folder' ? 'folder' : 'tab'
+      // v0.31.6: which group-chip shape to draw. 'bubble' fills the row,
+      // 'mini' is a minimal chevron. Default bubble (the user's current pick).
+      const groupChip = prefsMap.groupChip === 'mini' ? 'mini' : 'bubble'
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
       // v0.26.0: subscribes to the host's archive audit so ghost rows disappear.
       useArchiveIds()
@@ -9770,6 +9847,7 @@ window.__ModuleLoader__.load({
           out.push(E(SessionGroupRow, {
             key: 'sg-' + key,
             name: group.name,
+            groupChip,
             depth,
             expanded: open,
             pulse: (statusPulse && !open) ? nodePulseOf(group) : null,
@@ -10383,7 +10461,7 @@ window.__ModuleLoader__.load({
         // error, and a busy state while the host route works.
         if (deleteSession !== null) {
           const name = deleteSession.session.title || deleteSession.session.id
-          return E(ui.Modal, {
+          return E(uiModal, {
             key: 'sess-delete',
             open: true,
             onClose: () => setDeleteSession(null),
@@ -10652,7 +10730,7 @@ window.__ModuleLoader__.load({
           onClose: () => setCustomize(null),
           t,
         }),
-        E(ui.Modal, {
+        E(uiModal, {
           open: errorText !== null,
           onClose: () => setErrorText(null),
           closeLabel: t('close'),
