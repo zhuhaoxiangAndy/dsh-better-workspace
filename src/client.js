@@ -4963,6 +4963,10 @@ window.__ModuleLoader__.load({
     // v0.31.6 BUBBLE shape: the chip spans the row's grey area so the group
     // reads as a filled bar (browser tab-group look), not a small tag.
     '.bw-group-pill-bubble{flex:1;min-width:0;height:24px;border-radius:12px;padding:0 10px;justify-content:flex-start}',
+    // v0.33.1 workspace-group bubble: fills the row's grey area, name in white.
+    '.bw-folder-bubble{flex:1;min-width:0;display:flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;color:#fff;font-size:13px;overflow:hidden}',
+    '.bw-folder-bubble-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}',
+    '.bw-folder-bubble-count{flex:none;font-size:11px;opacity:.85}',
     '.bw-group-pill-bubble .bw-group-pill-text{font-weight:500}',
     // MINI shape: chevron only, minimal width, name via tooltip.
     '.bw-group-mini{flex:none;display:inline-grid;place-items:center;width:16px;height:16px;border:1px solid;border-radius:4px}',
@@ -6227,9 +6231,19 @@ window.__ModuleLoader__.load({
         iconEl
           ? null
           : E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
-        // A row that already carries a custom label glow breathes in sync.
-        E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
-        total > 0 ? E('span', { className: 'bw-row-count' }, String(total)) : null,
+        // v0.33.1 WORKSPACE-GROUP BUBBLE.
+        // The user asked for both group kinds to be pills, and for the workspace
+        // group's pill to fill the whole grey row ("工作区组的胶囊应该叫气泡，
+        // 充满整个按钮"). The colour comes from the same name hash the session
+        // groups use, so a name reads as one colour everywhere.
+        E('span', {
+          className: cls('bw-folder-bubble'),
+          style: { background: tabGroupColor(node.name) },
+        },
+          // A row that already carries a custom label glow breathes in sync.
+          E('span', { className: cls('bw-folder-bubble-text', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
+          total > 0 ? E('span', { className: 'bw-folder-bubble-count' }, String(total)) : null,
+        ),
       )
     }
 
