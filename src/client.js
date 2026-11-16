@@ -6339,7 +6339,7 @@ window.__ModuleLoader__.load({
       return s === 'ongoing' ? null : s
     }
 
-    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, onArchiveToggle, onPinToggle, pinned, now, dropHalf, dragEvents, custStyle, breathing, railColor, t }) {
+    function SessionRow({ node, depth, current, archived, onOpen, onContextMenu, onArchiveToggle, onPinToggle, pinned, now, dropHalf, dragEvents, custStyle, breathing, railColor, railChain, t }) {
       const state = sessionStateOf(node)
       // Official copy when available (the bound 'workspace' dictionary carries the
       // exact shipped strings: 等待审批 / 待审批 / 计划待审 / 待回答 / 进行中 / 已完成).
@@ -6371,9 +6371,21 @@ window.__ModuleLoader__.load({
         role: 'treeitem',
         ...(dragEvents || {}),
       },
-        // v0.30.1: a member of a session group inherits that group's colour as a
-        // thin left rail, so the group's extent reads like a browser tab strip.
-        railColor ? E('span', { className: 'bw-sgroup-member-rail', style: { background: railColor }, 'aria-hidden': 'true' }) : null,
+        // v0.33.8 TREE SPINE: one rail per ANCESTOR group, each indented one step
+        // further, so a deeply nested member shows the whole chain like `tree`
+        // output instead of only its immediate parent's colour.
+        (() => {
+          const chain = Array.isArray(railChain) && railChain.length > 0
+            ? railChain
+            : (railColor ? [railColor] : [])
+          if (chain.length === 0) return null
+          return chain.map((colour, i) => E('span', {
+            key: 'rail-' + i,
+            className: 'bw-sgroup-member-rail',
+            style: { background: colour, left: (12 + i * 12) + 'px' },
+            'aria-hidden': 'true',
+          }))
+        })(),
         // v0.31.7: a pinned row must LOOK pinned. Until now the only signal was
         // its position, which the user understandably read as "置顶不完善".
         pinned ? E('span', {
@@ -10002,7 +10014,7 @@ window.__ModuleLoader__.load({
         return Number.isFinite(v) ? v : SESSION_WATERMARK_BASE
       }
 
-      const renderSessionNode = (node, workspaceId, depth, inheritedColor) => {
+      const renderSessionNode = (node, workspaceId, depth, inheritedColor, inheritedChain) => {
         const view = searching ? searchSessionNode(node) : node
         if (!view) return []
         const out = []
@@ -10016,7 +10028,7 @@ window.__ModuleLoader__.load({
         const hoisted = []
         const trailing = []
         for (const s of view.sessions) { if (isPinned(s)) hoisted.push(s); else trailing.push(s) }
-        for (const s of hoisted) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
+        for (const s of hoisted) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor, inheritedChain))
         for (const group of view.groups) {
           const key = workspaceId + '|' + group.path
           // v0.30.8: a hidden group is not rendered at all (its sessions go with
@@ -10069,7 +10081,11 @@ window.__ModuleLoader__.load({
             }) : undefined,
             t,
           }))
-          if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1, tabGroupColor(group.name)))
+          // v0.33.8 TREE SPINE: a member inherits every ancestor group's colour,
+          // not just its immediate parent's. The rail then draws one continuous
+          // spine down the whole nesting chain, like `tree` output.
+          const chainForChildren = (inheritedChain || []).concat([tabGroupColor(group.name)])
+          if (open) out.push(...renderSessionNode(group, workspaceId, depth + 1, tabGroupColor(group.name), chainForChildren))
         }
         // v0.30.3 WATERMARK: keep the first N sessions at this level and stand in
         // for the rest with one small "expand N more" row, exactly like the
@@ -10086,7 +10102,7 @@ window.__ModuleLoader__.load({
         const wmRaw = Number.isFinite(wmExact) ? wmExact : (Number.isFinite(wmInherited) ? wmInherited : SESSION_WATERMARK_BASE)
         const wm = Math.max(1, wmRaw)
         const { rows: shown, hiddenCount } = watermarkRows(trailing, wm)
-        for (const s of shown) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor))
+        for (const s of shown) out.push(renderSessionRow(s, depth, workspaceId, inheritedColor, inheritedChain))
         if (hiddenCount > 0) {
           out.push(E('button', {
             key: 'wm-' + wmKey,
@@ -10103,8 +10119,9 @@ window.__ModuleLoader__.load({
         return out
       }
 
-      const renderSessionRow = (session, depth, workspaceId, railColor) => E(SessionRow, {
+      const renderSessionRow = (session, depth, workspaceId, railColor, railChain) => E(SessionRow, {
         railColor: railColor || null,
+        railChain: railChain || null,
         key: session.id,
         node: session,
         depth,

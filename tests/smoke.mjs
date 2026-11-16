@@ -1271,8 +1271,10 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   assert.match(text, /style: \{ background: tabGroupColor\(name\) \}/, 'the pill carries the group colour')
   assert.match(text, /'\.bw-group-pill\{[^']*border-radius:11px/, 'the pill is a rounded capsule')
   assert.match(text, /bw-sgroup-member-rail/, 'members draw the same colour as a left rail')
-  assert.match(text, /renderSessionNode\(group, workspaceId, depth \+ 1, tabGroupColor\(group\.name\)\)/,
-    'the colour is inherited down the whole subtree')
+  assert.match(text, /renderSessionNode\(group, workspaceId, depth \+ 1, tabGroupColor\(group\.name\), chainForChildren\)/,
+    'the colour chain is inherited down the whole subtree')
+  assert.match(text, /const chainForChildren = \(inheritedChain \|\| \[\]\)\.concat/,
+    'each nesting level appends its own colour')
   // The style must be switchable back to the folder look.
   assert.match(text, /const groupIcon = prefsMap\.groupIcon === 'folder' \? 'folder' : 'tab'/, 'the style preference exists')
   assert.match(text, /settings\.groupIcon/, 'the settings toggle exists')
