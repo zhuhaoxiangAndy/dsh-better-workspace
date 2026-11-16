@@ -1923,3 +1923,40 @@ test('every LIST-slot registration carries a top-level id (v0.34.6)', () => {
   // but the message has to reach the console with the slot name.
   assert.match(text, /register skipped for ' \+ slotKey/, 'a skipped registration names its slot')
 })
+
+test('every declared entry point actually ships (v0.34.7)', () => {
+  const here = join(root, 'package.json')
+  const pkg = JSON.parse(readFileSync(here, 'utf8'))
+
+  // 2026-11-16: the plugin stopped loading and the sidebar silently reverted to
+  // the official one. No error appeared anywhere in the plugin list. The cause
+  // was mundane and completely invisible: the profile only ever received
+  // src/client.js and package.json, so src/delete-session.mjs and src/paths.mjs
+  // were missing. src/index.js imports them, the HOST half failed to load, and
+  // the whole plugin — client half included — was skipped.
+  //
+  // So: every path the package DECLARES must exist in the repo, and the sync
+  // script must copy the whole payload rather than the two files I happened to
+  // edit.
+  const check = (value, label) => {
+    if (typeof value === 'string' && value.startsWith('./')) {
+      const p = join(root, value.slice(2))
+      assert.ok(existsSync(p), label + ' exists: ' + value)
+    } else if (value && typeof value === 'object') {
+      for (const [k, v] of Object.entries(value)) check(v, label + '.' + k)
+    }
+  }
+  check(pkg.main, 'main')
+  check(pkg.exports, 'exports')
+
+  // The host half imports siblings by relative path; those must exist too or the
+  // module throws at load time and takes the plugin down.
+  const indexSrc = read('src/index.js')
+  for (const m of indexSrc.matchAll(/from\s+['"](\.\/[^'"]+)['"]/g)) {
+    const rel = 'src/' + m[1].replace(/^\.\//, '')
+    assert.ok(existsSync(join(root, rel)), 'host half relative import exists: ' + m[1])
+  }
+
+  // And a sync helper must exist, so "copy the whole package" is the default path.
+  assert.ok(existsSync(join(root, 'scripts/sync-to-profiles.mjs')), 'a complete-sync script exists')
+})
