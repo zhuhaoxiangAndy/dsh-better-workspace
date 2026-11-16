@@ -8971,16 +8971,32 @@ window.__ModuleLoader__.load({
         }
         if (targetPath === source.folderPath) return
         if (targetPath.startsWith(source.folderPath + '/')) return // into own child: no-op
+        // v0.31.3 WHOLE SUBTREE, NOT JUST DIRECT MEMBERS.
+        //
+        // The old filter matched only rows whose parent path EQUALLED the dragged
+        // group path, so a group that itself contained sub-groups lost them:
+        // dropping "CUMCM26" left "CUMCM26/Sub/x" behind because its parent was
+        // "CUMCM26/Sub", not "CUMCM26". From the user's side that is
+        // "自动被拆散".
+        const srcPrefix = source.folderPath + '/'
         const affected = (items || []).filter((w) => {
-          const segs = splitTitleSegs(w.title)
-          return segs.slice(0, -1).join('/') === source.folderPath
+          const parent = splitTitleSegs(w.title).slice(0, -1).join('/')
+          return parent === source.folderPath || parent.startsWith(srcPrefix)
         })
         Promise.resolve()
           .then(async () => {
             for (const w of affected) {
               const segs = splitTitleSegs(w.title)
               const leaf = segs[segs.length - 1]
-              await renameWorkspace(w.workspaceId, targetPath + '/' + leaf)
+              const parent = segs.slice(0, -1).join('/')
+              // Keep the RELATIVE path below the dragged group, so a nested
+              // sub-group stays nested under the new parent instead of being
+              // flattened.
+              const relative = parent === source.folderPath
+                ? ''
+                : parent.slice(srcPrefix.length)
+              const nextParent = relative === '' ? targetPath : targetPath + '/' + relative
+              await renameWorkspace(w.workspaceId, nextParent + '/' + leaf)
             }
           })
           .catch(fail)
@@ -9132,9 +9148,26 @@ window.__ModuleLoader__.load({
         const cutAt = folderIdPath.lastIndexOf('//')
         const folderPath = cutAt === -1 ? folderIdPath : folderIdPath.slice(cutAt + 2)
         if (source.folderPath === folderPath) return
+        // v0.31.3 A WORKSPACE CARRIES ITS SUBTREE.
+        // A workspace whose title others extend ("web" with "web/sub/…") owns a
+        // subtree. Moving only the workspace row used to leave those members
+        // behind, which reads as "the group got torn apart". Rewrite the whole
+        // subtree, keeping each member's relative path.
+        const oldTitle = String(source.folderPath !== '' ? source.folderPath + '/' + source.leaf : source.leaf)
         const newTitle = folderPath !== '' ? folderPath + '/' + source.leaf : source.leaf
+        const members = (items || []).filter((w) => {
+          const t = String(w.title || '')
+          return t === oldTitle || t.startsWith(oldTitle + '/')
+        })
         Promise.resolve()
-          .then(() => renameWorkspace(source.workspaceId, newTitle))
+          .then(async () => {
+            for (const w of members) {
+              const t = String(w.title || '')
+              const relative = t === oldTitle ? '' : t.slice(oldTitle.length + 1)
+              const next = relative === '' ? newTitle : newTitle + '/' + relative
+              if (next !== t) await renameWorkspace(w.workspaceId, next)
+            }
+          })
           .then(() => insertWorkspaceBefore(source.workspaceId))
           .catch(fail)
       }
@@ -9183,7 +9216,11 @@ window.__ModuleLoader__.load({
         try {
           const rect = event.currentTarget.getBoundingClientRect()
           const y = event.clientY - rect.top
-          const band = Math.min(8, Math.max(3, rect.height * 0.22))
+          // v0.31.3: use the SAME proportional band as every other row (34%,
+          // clamped 8-14px). It used to be 22% / 3-8px, so on a 26px group row the
+          // insert zone was 6px total — the user reasonably reported that a group
+          // could only ever be dropped INTO another group.
+          const band = Math.min(14, Math.max(8, rect.height * 0.34))
           if (y < band) return 'before'
           if (y > rect.height - band) return 'after'
           return 'into'

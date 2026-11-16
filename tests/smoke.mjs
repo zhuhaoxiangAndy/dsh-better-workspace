@@ -1551,3 +1551,34 @@ test('EVERY cross-workspace session drop attaches before touching the host order
     .filter((x) => x.line.includes('insertSessionBefore(') && !x.line.includes('typeof') && !x.line.trim().startsWith('//'))
   assert.equal(calls.length, 3, 'exactly 3 occurrences: 2 call sites + 1 definition')
 })
+
+test('moving a group carries its WHOLE subtree, at any depth (v0.31.3)', () => {
+  const text = read('src/client.js')
+
+  // commitFolderMoveInto used to match only DIRECT members (parent === groupPath),
+  // so a group that contained sub-groups lost them — the reported "自动被拆散".
+  const folder = text.slice(
+    text.indexOf('const commitFolderMoveInto = (targetIdPath) => {'),
+    text.indexOf('/* ---------------------- session drag & drop'),
+  )
+  assert.ok(folder.includes('parent.startsWith(srcPrefix)'), 'descendants are included')
+  assert.ok(folder.includes('const relative ='), 'the relative path is preserved')
+  assert.ok(folder.includes("relative === '' ? targetPath : targetPath + '/' + relative"),
+    'a nested sub-group stays nested under the new parent')
+
+  // commitWorkspaceMoveInto had the same defect: moving a workspace row left the
+  // titles that extended it behind.
+  const ws = text.slice(
+    text.indexOf('const commitWorkspaceMoveInto = (folderIdPath) => {'),
+    text.indexOf('/* ---------------------- session drag & drop'),
+  )
+  assert.ok(ws.includes('t.startsWith(oldTitle + \'/\')'), 'workspace members move too')
+  assert.ok(ws.includes('const relative ='), 'their relative path is preserved')
+
+  // All row kinds share one proportional edge band, so "insert between two
+  // groups" is reachable everywhere.
+  assert.ok(text.includes('const edgeBandOf = (event, ratio = 0.34)'), 'shared band helper')
+  const sgroup = text.slice(text.indexOf('const sgroupDropZone = (event) => {'), text.indexOf('const sessionDragEvents ='))
+  assert.ok(sgroup.includes('Math.min(14, Math.max(8, rect.height * 0.34))'),
+    'session groups use the same 34% band')
+})
