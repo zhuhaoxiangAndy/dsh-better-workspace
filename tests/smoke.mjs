@@ -470,11 +470,11 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
   assert.equal(load(oldUi).resolveIconName(undefined), '')
   assert.equal(load(oldUi).resolveIconName('solid'), '', 'legacy slots are not glyph names')
 
-  const added = ['IconPaperPlaneOutline14', 'IconShieldOutline16', 'IconCompactOutline16', 'IconWrapLinesOutline16', 'IconPlanOutline14']
+  const added = ['IconPaperPlaneOutlineRegular', 'IconSendOutlineRegular', 'IconWarningTriangleOutlineRegular', 'IconCompactOutlineRegular', 'IconWrapLinesOutlineRegular', 'IconPlanOutlineRegular']
   const newUi = { IconSendOutline14: () => null }
   for (const name of added) newUi[name] = () => null
-  assert.equal(load(newUi).resolveIconName('IconSendOutline16'), 'IconSendOutline14', 'a retired glyph follows its alias chain')
-  assert.equal(load(newUi).resolveIconName('IconSendOutline14'), 'IconSendOutline14')
+  assert.equal(load(newUi).resolveIconName('IconSendOutline16'), 'IconSendOutlineRegular', 'a retired glyph follows its alias chain')
+  assert.equal(load(newUi).resolveIconName('IconSendOutlineRegular'), 'IconSendOutlineRegular')
   assert.equal(load({}).resolveIconName('IconSendOutline16'), '', 'an alias with no survivor stays empty rather than crashing')
 
   const choicesStart = text.indexOf('const ICON_CHOICES = [')
@@ -485,8 +485,8 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
   const listOf = (ui) => new Function('ui', pickerCode + '\nreturn { ICON_CHOICES, ICON_PICKER_CHOICES }')(ui)
   const onNew = listOf(newUi)
   assert.ok(!onNew.ICON_CHOICES.includes('IconSendOutline16'), 'the retired name is gone from the committed list')
-  assert.ok(onNew.ICON_CHOICES.includes('IconSendOutline14'), 'the surviving glyph is committed')
-  assert.ok(onNew.ICON_PICKER_CHOICES.includes('IconSendOutline14'), 'the surviving glyph is offered')
+  assert.ok(onNew.ICON_CHOICES.includes('IconSendOutlineRegular'), 'the surviving glyph is committed')
+  assert.ok(onNew.ICON_PICKER_CHOICES.includes('IconSendOutlineRegular'), 'the surviving glyph is offered')
   assert.equal(new Set(onNew.ICON_PICKER_CHOICES).size, onNew.ICON_PICKER_CHOICES.length, 'no duplicate cells')
   assert.ok(onNew.ICON_PICKER_CHOICES.includes('solid') && onNew.ICON_PICKER_CHOICES.includes('none'), 'legacy slots always survive')
   assert.ok(onNew.ICON_PICKER_CHOICES.length < onNew.ICON_CHOICES.length, 'glyphs this host lacks are filtered out')
@@ -495,9 +495,12 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
     assert.ok(onNew.ICON_PICKER_CHOICES.includes(name), name + ' is offered on a host that exports it')
   }
   // A host that lacks the newer glyphs still offers the survivors, never them.
+  // A host that exports only the OLD numeric name must still offer that glyph:
+  // resolveIconName maps the new name onto it through the alias chain, so the
+  // picker offers whichever name the host can actually render.
   const bare = listOf({ IconSendOutline14: () => null })
-  for (const name of added) assert.ok(!bare.ICON_PICKER_CHOICES.includes(name), name + ' must be filtered out on a host that lacks it')
-  assert.ok(bare.ICON_PICKER_CHOICES.includes('IconSendOutline14'), 'the survivor stays offered')
+  for (const name of added) assert.ok(!bare.ICON_PICKER_CHOICES.includes(name), name + ' must not be listed under a name the host lacks')
+  assert.ok(bare.ICON_PICKER_CHOICES.includes('IconSendOutline14'), 'the glyph the host really exports is offered')
 })
 
 /**
@@ -767,15 +770,15 @@ test('context menu: official alignment via the workspace dictionary (0.14.0)', (
   assert.match(text, /ot\('menu\.fork'\)/)
   assert.match(text, /ot\('menu\.archiveSession'\)/)
   assert.match(text, /ot\('rename'\)/)
-  assert.match(text, /icon\('IconArchiveOutline20', 16\)/)
-  assert.match(text, /icon\('IconTrashOutline16', 16\), danger: true/)
+  assert.match(text, /icon\('IconArchiveOutlineRegular', 16\)/)
+  assert.match(text, /icon\('IconTrashOutlineRegular', 16\), danger: true/)
   // The archive entry must NOT be destructive (official Rows.tsx comment).
   assert.match(text, /deliberately NOT styled destructive/)
   // Rendered through the official primitives Menu, positioned by the event.
   assert.match(text, /typeof ui\.Menu === 'function'\) \? E\(ui\.Menu/)
   assert.match(text, /getAnchorRect: \(\) => new DOMRect\(ctx\.x, ctx\.y, 0, 0\)/)
   // The bw-only entries ride after a separator.
-  assert.match(text, /id: 'customize', label: t\('custom\.title'\), icon: icon\('IconPersonalizationOutline16', 16\)/)
+  assert.match(text, /id: 'customize', label: t\('custom\.title'\), icon: icon\('IconPersonalizationOutlineMedium', 16\)/)
 })
 
 /**
@@ -921,7 +924,7 @@ test('client.js cycles session tabs across groups with two persisted orders (v0.
   assert.match(text, /tabCycleOrder/, 'order persists in the view store')
   assert.match(text, /setTabCycleOrder/, 'store action exists')
   assert.match(text, /'recent' \? 'page' : 'recent'/, 'header button toggles the order')
-  assert.match(text, /IconClockOutline16/, 'recent order uses the official clock icon')
+  assert.match(text, /IconClockOutlineRegular/, 'recent order uses the official clock icon')
   assert.match(text, /cycle\.order\.page/, 'i18n keys shipped')
 })
 
@@ -1073,10 +1076,10 @@ test('every rendered button carries an icon (not just "icon(...) exists")', () =
   assert.match(row, /className: 'bw-row-actions'/, 'session rows own a hover action span')
   assert.match(row, /onArchiveToggle \? E\('button'/, 'archive hover button exists')
   assert.match(row, /onPinToggle \? E\('button'/, 'pin hover button exists')
-  assert.match(row, /IconArchiveOutline20/, 'archive button carries an icon')
-  assert.match(row, /icon\('IconRightUpOutline16', 14\)/, 'pin button carries a real primitives icon')
+  assert.match(row, /IconArchiveOutlineRegular/, 'archive button carries an icon')
+  assert.match(row, /icon\('IconRightUpOutlineRegular'/, 'pin button carries a real primitives icon')
   // The header's "new group" button used to be text-only.
-  assert.match(text, /bw-newgroup-btn[^]*?icon\('IconFolderClose16'/, 'new-group button carries an icon')
+  assert.match(text, /bw-newgroup-btn[^]*?icon\('IconFolderCloseRegular'/, 'new-group button carries an icon')
   // Hover reveal, mirroring the official row.
   assert.match(text, /\.bw-row:hover \.bw-row-actions/, 'row actions are revealed on hover')
 })
@@ -1198,13 +1201,23 @@ test('registry never registers a session without an archive file', () => {
 
 test('every icon name exists in the real primitives export list', () => {
   // The previous icon test used a Proxy that answered for ANY `Icon*` name, so
-  // it passed while four names did not exist and rendered as null — buttons
-  // looked iconless. This one compares against the authoritative export list in
-  // the dsh source checkout (packages/client/ui-primitives/src/icons/index.tsx).
-  const ICONS_SRC = 'C:/Users/Andy/dsh/deepseek-harness/packages/client/ui-primitives/src/icons/index.tsx'
-  if (!existsSync(ICONS_SRC)) return   // source checkout absent on this host
+  // it passed while the real names were wrong and every icon rendered as null —
+  // the user saw "占位 icon" everywhere.
+  //
+  // Two traps this test now avoids:
+  //  1. the local source checkout is 0.1.5-rc.2 (names end in 16/14) while the
+  //     app runs 0.2.2-rc.1 (names end in Regular/Medium), so the checkout is
+  //     NOT authoritative;
+  //  2. the shipped bundles minify identifiers, so grepping the bundle for a
+  //     name finds nothing either.
+  //
+  // The fixture below was extracted from the OFFICIAL client bundles inside
+  // app.asar (every `X.IconName` usage). Official code calling those names means
+  // the host really exports them.
+  const FIXTURE = 'tests/fixtures/official-icon-names.txt'
+  assert.ok(existsSync(join(root, FIXTURE)), 'the official icon fixture is present')
   const real = new Set(
-    [...readFileSync(ICONS_SRC, 'utf8').matchAll(/export const (Icon[A-Za-z0-9]+)/g)].map((m) => m[1]),
+    readFileSync(join(root, FIXTURE), 'utf8').split(String.fromCharCode(10)).map((s) => s.trim()).filter(Boolean),
   )
   assert.ok(real.size > 50, 'the export list parsed correctly')
   const text = read('src/client.js')
@@ -1220,7 +1233,7 @@ test('workspace rows always show a folder icon, and folder precedes the chevron'
   // The shipped row renders <span folder><span chevron>; a workspace with no
   // user-picked icon must still get the default folder glyph.
   assert.match(text, /if \(!mode \|\| mode === 'solid' \|\| mode === 'folder'\)/, 'an unset mode means the solid folder')
-  assert.match(text, /icon\(expanded \? 'IconFolderOpen16' : 'IconFolderClose16', 16\)/, 'the folder glyph is actually produced')
+  assert.match(text, /icon\(expanded \? 'IconFolderOpenRegular' : 'IconFolderCloseRegular', 16\)/, 'the folder glyph is actually produced')
   // Order: folder slot first, chevron second.
   const row = text.slice(text.indexOf('function WorkspaceRow('), text.indexOf('function SessionGroupRow('))
   const folderAt = row.indexOf("'bw-row-icon', 'bw-folder-slot'")

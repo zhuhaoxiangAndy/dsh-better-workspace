@@ -4005,11 +4005,81 @@ window.__ModuleLoader__.load({
 
     /**
      * Glyphs a host may have RETIRED, mapped to the surviving equivalents in
-     * preference order. dsh 0.1.6-alpha.1 replaced IconSendOutline16 with
-     * IconPaperPlaneOutline14 and deleted the old export, so a saved custom
+     * preference order. dsh 0.1.6-alpha.1 replaced IconSendOutlineRegular with
+     * IconPaperPlaneOutlineRegular and deleted the old export, so a saved custom
      * icon naming it must land on something real rather than an empty cell.
      */
-    const ICON_ALIASES = { IconSendOutline16: ['IconSendOutline14'] }
+    const ICON_ALIASES = {
+      // Retired numeric-suffix names (the 0.1.5 naming) resolve to the shapes the
+      // 0.2.x host actually exports, so a custom icon saved under an old name
+      // still lands on a real glyph.
+      IconSendOutlineRegular: ['IconSendOutlineRegular', 'IconSendOutline14'],
+      IconPaperPlaneOutlineRegular: ['IconPaperPlaneOutlineRegular', 'IconPaperPlaneOutline14'],
+      IconSendOutline16: ['IconSendOutlineRegular', 'IconSendOutline14', 'IconPaperPlaneOutlineRegular'],
+      IconSendOutline14: ['IconSendOutlineRegular', 'IconPaperPlaneOutlineRegular'],
+      IconPaperPlaneOutline14: ['IconPaperPlaneOutlineRegular', 'IconSendOutlineRegular'],
+      IconChevronDownOutline14: ['IconChevronDownOutlineRegular'],
+      IconChevronUpOutline14: ['IconChevronUpOutlineRegular'],
+      IconCheckOutline16: ['IconCheckOutlineRegular'],
+      IconCloseOutline16: ['IconCloseOutlineRegular'],
+      IconEditOutline16: ['IconEditOutlineRegular'],
+      IconTrashOutline16: ['IconTrashOutlineRegular'],
+      IconPlusOutline16: ['IconPlusOutlineRegular'],
+      IconSearchOutline16: ['IconSearchOutlineRegular'],
+      IconSettingsOutline16: ['IconSettingsOutlineRegular'],
+      IconFolderClose16: ['IconFolderCloseRegular'],
+      IconFolderOpen16: ['IconFolderOpenRegular'],
+      IconTriangleRightFill14: ['IconTriangleRightFillRegular'],
+      IconRightUpOutline16: ['IconRightUpOutlineRegular'],
+      IconArchiveOutline20: ['IconArchiveOutlineRegular'],
+      IconClockOutline16: ['IconClockOutlineRegular'],
+      IconListPenOutline16: ['IconListPenOutlineRegular'],
+      IconProjectAddOutline16: ['IconProjectAddOutlineRegular'],
+      IconBranchOutline16: ['IconBranchOutlineRegular'],
+      IconCopyOutline16: ['IconCopyOutlineRegular'],
+      IconPersonalizationOutline16: ['IconPersonalizationOutlineMedium'],
+      IconCordisPluginOutline14: ['IconCordisPluginOutlineRegular'],
+      IconEllipsisOutline16: ['IconEllipsisOutlineRegular'],
+      IconPlanOutline16: ['IconPlanOutlineRegular'],
+      IconGoalOutline16: ['IconGoalOutlineRegular'],
+      IconSkillOutline16: ['IconSkillOutlineRegular'],
+      IconQueueOutline16: ['IconQueueOutlineRegular'],
+      IconRefreshOutline16: ['IconRefreshOutlineRegular'],
+      IconSaveOutline16: ['IconSaveOutlineRegular'],
+      IconShareOutline16: ['IconShareOutlineRegular'],
+      IconUsersOutline16: ['IconUsersOutlineRegular'],
+      IconUserOutline16: ['IconUserOutlineRegular'],
+      IconLinkOutline16: ['IconLinkOutlineRegular'],
+      IconGlobeOutline16: ['IconGlobeOutlineRegular'],
+      IconCodeOutline16: ['IconCodeOutlineRegular'],
+      IconDatabaseOutline16: ['IconDatabaseOutlineRegular'],
+      IconDownloadOutline16: ['IconDownloadOutlineRegular'],
+      IconLikeOutline16: ['IconLikeOutlineRegular'],
+      IconDislikeOutline16: ['IconDislikeOutlineRegular'],
+      IconPauseOutline16: ['IconPauseOutlineRegular'],
+      IconPlayOutline16: ['IconPlayOutlineRegular'],
+      IconStopFill16: ['IconStopFillRegular'],
+      IconThinkOutline16: ['IconThinkOutlineRegular'],
+      IconSparkle16: ['IconSparkleRegular'],
+      IconWarningOutline16: ['IconWarningOutlineRegular'],
+      IconInspectOutline12: ['IconInspectOutlineRegular'],
+      IconChecklistOutline14: ['IconChecklistOutlineRegular'],
+      IconCompactOutline16: ['IconCompactOutlineRegular'],
+      IconContextInjectionOutline16: ['IconContextInjectionOutlineRegular'],
+      IconDarkOutline16: ['IconDarkOutlineMedium'],
+      IconLightOutline16: ['IconLightOutlineMedium'],
+      IconFollowsystemOutline16: ['IconFollowsystemOutlineMedium'],
+      IconWrapLinesOutline16: ['IconWrapLinesOutlineRegular'],
+      IconDataOutline16: ['IconDataOutlineRegular'],
+      IconFullscreenOutline16: ['IconCompareSplitOutlineRegular'],
+      IconShieldOutline16: ['IconWarningTriangleOutlineRegular'],
+      IconEnhanceOutline16: ['IconSparkleRegular'],
+      IconBrowseOutline16: ['IconBrowseOutlineRegular'],
+      IconApiOutline14: ['IconApiOutlineRegular'],
+      IconAgentPresetOutline16: ['IconAgentPresetOutlineRegular'],
+      IconQuestionOutline14: ['IconQuestionOutlineRegular'],
+      IconPlanOutline14: ['IconPlanOutlineRegular'],
+    }
 
     /**
      * Resolve one configured icon value to a glyph the LOADED primitives
@@ -4070,7 +4140,7 @@ window.__ModuleLoader__.load({
       // v0.27.1: the host may expose primitives as a flat namespace, as a
       // nested `icons` map, or behind a CJS `default`. Asking only the flat top
       // level made EVERY icon look missing on a host that nests them, which is
-      // exactly what "missing icon: IconFolderClose16" on the shipped folder
+      // exactly what "missing icon: IconFolderCloseRegular" on the shipped folder
       // glyph proves. Probe all three shapes.
       const C = typeof name === 'string'
         ? (ui && (ui[name] || (ui.icons && ui.icons[name]) || (ui.default && (ui.default[name] || (ui.default.icons && ui.default.icons[name])))))
@@ -4089,28 +4159,26 @@ window.__ModuleLoader__.load({
       // an empty box: the user must still be able to tell a 新建 button from a
       // 删除 button when icons are unavailable.
       const FALLBACK_GLYPHS = {
-        IconPlusOutline16: '+',
-        IconFolderClose16: '▸',
-        IconFolderOpen16: '▾',
-        IconTriangleRightFill14: '▸',
-        IconEditOutline16: '✎',
-        IconTrashOutline16: '␡',
-        IconArchiveOutline20: '▤',
-        IconBranchOutline16: '⑂',
-        IconCopyOutline16: '⧉',
-        IconSearchOutline16: '⌕',
-        IconSettingsOutline16: '⚙',
-        IconCordisPluginOutline14: '◈',
-        IconChevronLeftOutline14: '‹',
-        IconChevronRightOutline14: '›',
-        IconRightUpOutline16: '↑',
-        IconTreeCorner8x10: '⌗',
-        IconListPenOutline16: '☰',
-        IconClockOutline16: '◷',
-        IconPersonalizationOutline16: '✦',
-        IconAlarmClockOutline16: '⏰',
-        IconProjectAddOutline16: '⊞',
-        IconFolderOpenOutline16: '▾',
+        'IconPlusOutlineRegular': '+',
+        'IconFolderCloseRegular': '▸',
+        'IconFolderOpenRegular': '▾',
+        'IconFolderOpenOutlineRegular': '▾',
+        'IconTriangleRightFillRegular': '▸',
+        'IconEditOutlineRegular': '✎',
+        'IconTrashOutlineRegular': '␡',
+        'IconArchiveOutlineRegular': '▤',
+        'IconBranchOutlineRegular': '⑂',
+        'IconCopyOutlineRegular': '⧉',
+        'IconSearchOutlineRegular': '⌕',
+        'IconSettingsOutlineRegular': '⚙',
+        'IconCordisPluginOutlineRegular': '◈',
+        'IconChevronLeftOutlineRegular': '‹',
+        'IconChevronRightOutlineRegular': '›',
+        'IconRightUpOutlineRegular': '↑',
+        'IconListPenOutlineRegular': '☰',
+        'IconClockOutlineRegular': '◷',
+        'IconPersonalizationOutlineMedium': '✦',
+        'IconProjectAddOutlineRegular': '⊞',
       }
       // v0.30.1 DEGRADE QUIETLY when the whole module is missing.
       // A red box per icon was correct while debugging (it exposed that NO icon
@@ -4148,24 +4216,24 @@ window.__ModuleLoader__.load({
      */
     /** Every primitives icon name this client asks for (used by the settings diagnostics). */
     const CSS_ICON_NAMES = [
-      'IconAlarmClockOutline16',
-      'IconArchiveOutline20',
-      'IconBranchOutline16',
-      'IconChevronDownOutline14',
-      'IconChevronLeftOutline14',
-      'IconChevronRightOutline14',
-      'IconCopyOutline16',
-      'IconEditOutline16',
-      'IconFolderClose16',
-      'IconFolderOpenOutline16',
-      'IconPersonalizationOutline16',
-      'IconPlusOutline16',
-      'IconProjectAddOutline16',
-      'IconRightUpOutline16',
-      'IconSearchOutline16',
-      'IconTrashOutline16',
-      'IconTriangleRightFill14',
-      'IconWarningOutline16',
+      'IconClockOutlineRegular',
+      'IconArchiveOutlineRegular',
+      'IconBranchOutlineRegular',
+      'IconChevronDownOutlineRegular',
+      'IconChevronLeftOutlineRegular',
+      'IconChevronRightOutlineRegular',
+      'IconCopyOutlineRegular',
+      'IconEditOutlineRegular',
+      'IconFolderCloseRegular',
+      'IconFolderOpenOutlineRegular',
+      'IconPersonalizationOutlineMedium',
+      'IconPlusOutlineRegular',
+      'IconProjectAddOutlineRegular',
+      'IconRightUpOutlineRegular',
+      'IconSearchOutlineRegular',
+      'IconTrashOutlineRegular',
+      'IconTriangleRightFillRegular',
+      'IconWarningOutlineRegular',
     ]
 
     const availableIcons = () => {
@@ -5751,7 +5819,7 @@ window.__ModuleLoader__.load({
             title: t('browse.editPath'),
             'aria-label': t('browse.editPath'),
             onClick: () => { setDraft(currentPath); setEditing(true) },
-          }, icon('IconEditOutline16')),
+          }, icon('IconEditOutlineRegular')),
         )
 
       // One click SELECTS a row (the footer button then adopts it — no need to
@@ -5770,7 +5838,7 @@ window.__ModuleLoader__.load({
           else if (event.key === ' ') { event.preventDefault(); setSelected((current) => (current === entry.path ? '' : entry.path)) }
         },
       },
-        icon('IconFolderClose16'),
+        icon('IconFolderCloseRegular'),
         E('span', { className: 'bw-browse-name' }, entry.name),
         E('button', {
           type: 'button',
@@ -5984,9 +6052,9 @@ window.__ModuleLoader__.load({
     const iconOf = (mode, expanded) => {
       if (mode === 'none') return null
       if (!mode || mode === 'solid' || mode === 'folder') {
-        return icon(expanded ? 'IconFolderOpen16' : 'IconFolderClose16', 16)
+        return icon(expanded ? 'IconFolderOpenRegular' : 'IconFolderCloseRegular', 16)
       }
-      if (mode === 'outline') return icon('IconFolderOpenOutline16', 16)
+      if (mode === 'outline') return icon('IconFolderOpenOutlineRegular', 16)
       return icon(resolveIconName(mode), 16)
     }
 
@@ -6130,7 +6198,7 @@ window.__ModuleLoader__.load({
         // <span chevron>); this plugin had them reversed and folded the pulse
         // into the same slot, so a row showed at most one of the two.
         E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         // A row that already carries a custom label glow breathes in sync.
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
         total > 0 ? E('span', { className: 'bw-row-count' }, String(total)) : null,
@@ -6155,7 +6223,7 @@ window.__ModuleLoader__.load({
         // <span chevron>); this plugin had them reversed and folded the pulse
         // into the same slot, so a row showed at most one of the two.
         E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
-        E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         E('span', {
           className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'),
           // Official parity: the official browser's hover card carries the disk
@@ -6174,8 +6242,8 @@ window.__ModuleLoader__.load({
             'aria-label': t('group.new'),
             title: t('group.new'),
             onClick: (e) => { e.stopPropagation(); onAddGroup() },
-          }, icon('IconFolderClose16', 16) || icon('IconProjectAddOutline16', 16)) : null,
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutline16')),
+          }, icon('IconFolderCloseRegular', 16) || icon('IconProjectAddOutlineRegular', 16)) : null,
+          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutlineRegular')),
         ),
       )
     }
@@ -6276,7 +6344,7 @@ window.__ModuleLoader__.load({
         // official browser shows.
         E('span', { className: 'bw-row-label', title: node.title || node.leaf }, node.leaf || node.title),
         node.hasActiveSchedule
-          ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutline16', 14))
+          ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconClockOutlineRegular', 14))
           : null,
         // Official trailing contract: the compact pending text REPLACES the
         // relative time while waiting (official Rows: trailingLabel ?? timeLabel).
@@ -6294,14 +6362,14 @@ window.__ModuleLoader__.load({
             'aria-label': archived ? t('menu.unarchive') : t('menu.archive'),
             title: archived ? t('menu.unarchive') : t('menu.archive'),
             onClick: (e) => { e.stopPropagation(); onArchiveToggle() },
-          }, icon('IconArchiveOutline20', 14)) : null,
+          }, icon('IconArchiveOutlineRegular', 14)) : null,
           onPinToggle ? E('button', {
             type: 'button',
             className: 'bw-icon-btn',
             'aria-label': pinned ? t('menu.unpin') : t('menu.pin'),
             title: pinned ? t('menu.unpin') : t('menu.pin'),
             onClick: (e) => { e.stopPropagation(); onPinToggle() },
-          }, icon('IconRightUpOutline16', 14)) : null,
+          }, icon('IconRightUpOutlineRegular', 14)) : null,
         ),
       )
     }
@@ -6321,7 +6389,7 @@ window.__ModuleLoader__.load({
         'aria-expanded': expanded,
         ...(dragEvents || {}),
       },
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         // v0.28.0: a tab-group RAIL instead of a folder glyph. One vertical bar
         // in the group's own colour — narrow, nestable, and instantly readable
         // as "this is a group", which a folder icon never was.
@@ -6340,7 +6408,7 @@ window.__ModuleLoader__.load({
               className: cls('bw-group-mini', pulse && 'bw-group-mini-pulse'),
               style: { borderColor: tabGroupColor(name), color: tabGroupColor(name) },
               title: name,
-            }, icon('IconTriangleRightFill14', 10))
+            }, icon('IconTriangleRightFillRegular', 10))
           : E('span', {
               className: cls('bw-group-pill', 'bw-group-pill-bubble', pulse && 'bw-group-pill-pulse'),
               style: { background: tabGroupColor(name) },
@@ -6364,14 +6432,14 @@ window.__ModuleLoader__.load({
             'aria-label': t('group.new'),
             title: t('group.new'),
             onClick: (e) => { e.stopPropagation(); onAddGroup() },
-          }, icon('IconFolderClose16', 16) || icon('IconProjectAddOutline16', 16)) : null,
+          }, icon('IconFolderCloseRegular', 16) || icon('IconProjectAddOutlineRegular', 16)) : null,
           onStart ? E('button', {
             type: 'button',
             className: 'bw-icon-btn',
             'aria-label': t('session.new'),
             title: t('session.new'),
             onClick: (e) => { e.stopPropagation(); onStart() },
-          }, icon('IconPlusOutline16', 16)) : null,
+          }, icon('IconPlusOutlineRegular', 16)) : null,
         ),
       )
     }
@@ -6427,7 +6495,7 @@ window.__ModuleLoader__.load({
           'aria-label': t('viewOptions.label'),
           title: t('viewOptions.label'),
           onClick: () => { setOpen(v => !v) },
-        }, icon('IconPersonalizationOutline16')),
+        }, icon('IconPersonalizationOutlineMedium')),
       })
     }
 
@@ -6441,28 +6509,28 @@ window.__ModuleLoader__.load({
     const GLOW_MAX = 14
     const ICON_CHOICES = [
       'solid', 'outline', 'none',
-      'IconProjectAddOutline16', 'IconBranchOutline16', 'IconArchiveOutline20', 'IconCodeOutline16',
-      'IconDataOutline16', 'IconGoalOutline16', 'IconGlobeOutline14', 'IconInspectOutline12',
-      'IconCopyOutline16', 'IconLinkOutline16', 'IconListPenOutline16', 'IconChecklistOutline14',
-      'IconBrowseOutline16', 'IconDownloadOutline16', 'IconContextInjectionOutline16',
-      'IconCordisPluginOutline14', 'IconApiOutline14', 'IconAgentPresetOutline16', 'IconEnhanceOutline16',
-      'IconSkillOutline16', 'IconSparkle16', 'IconNewChatOutline16',
-      'IconCheckOutline14', 'IconCheckOutline16', 'IconChevronDownOutline14', 'IconChevronLeftOutline14',
-      'IconChevronRightOutline14', 'IconChevronUpOutline14', 'IconCloseOutline16', 'IconDarkOutline16',
-      'IconEditOutline16', 'IconEllipsisOutline16', 'IconFolderClose16', 'IconFolderOpen16',
-      'IconFolderOpenOutline16', 'IconFullscreenOutline16', 'IconLightOutline16', 'IconLinkOutline14',
-      'IconLoadingOutline16', 'IconPanelLeftOutline16', 'IconPaperclipOutline16', 'IconPersonalizationOutline16',
-      'IconPlayOutline16', 'IconPauseOutline16', 'IconPlusOutline16', 'IconQuestionOutline14',
-      'IconQueueOutline14', 'IconRefreshOutline14', 'IconRefreshOutline16', 'IconRightUpOutline14',
-      'IconSearchOutline16', 'IconSendOutline14', 'IconSettingsOutline14',
-      'IconSettingsOutline16', 'IconShareOutline16', 'IconStopFill16', 'IconThinkOutline14',
-      'IconThinkOutline16', 'IconTrashOutline16', 'IconUserOutline16', 'IconWarningOutline16',
-      'IconLikeOutline16', 'IconDislikeOutline16', 'IconFollowsystemOutline16',
-      'IconAlarmClockOutline16', 'IconClockOutline16', 'IconDatabaseOutline16',
+      'IconProjectAddOutlineRegular', 'IconBranchOutlineRegular', 'IconArchiveOutlineRegular', 'IconCodeOutlineRegular',
+      'IconDataOutlineRegular', 'IconGoalOutlineRegular', 'IconGlobeOutlineRegular', 'IconInspectOutlineRegular',
+      'IconCopyOutlineRegular', 'IconLinkOutlineRegular', 'IconListPenOutlineRegular', 'IconChecklistOutlineRegular',
+      'IconBrowseOutlineRegular', 'IconDownloadOutlineRegular', 'IconContextInjectionOutlineRegular',
+      'IconCordisPluginOutlineRegular', 'IconApiOutlineRegular', 'IconAgentPresetOutlineRegular', 'IconSparkleRegular',
+      'IconSkillOutlineRegular', 'IconSparkleRegular', 'IconNewChatOutlineRegular',
+      'IconCheckOutlineRegular', 'IconCheckOutlineRegular', 'IconChevronDownOutlineRegular', 'IconChevronLeftOutlineRegular',
+      'IconChevronRightOutlineRegular', 'IconChevronUpOutlineRegular', 'IconCloseOutlineRegular', 'IconDarkOutlineMedium',
+      'IconEditOutlineRegular', 'IconEllipsisOutlineRegular', 'IconFolderCloseRegular', 'IconFolderOpenRegular',
+      'IconFolderOpenOutlineRegular', 'IconCompareSplitOutlineRegular', 'IconLightOutlineMedium', 'IconLinkOutlineRegular',
+      'IconLoadingOutlineRegular', 'IconPanelLeftOutlineRegular', 'IconPaperclipOutlineRegular', 'IconPersonalizationOutlineMedium',
+      'IconPlayOutlineRegular', 'IconPauseOutlineRegular', 'IconPlusOutlineRegular', 'IconQuestionOutlineRegular',
+      'IconQueueOutlineRegular', 'IconRefreshOutlineRegular', 'IconRefreshOutlineRegular', 'IconRightUpOutlineRegular',
+      'IconSearchOutlineRegular', 'IconSendOutlineRegular', 'IconSettingsOutlineRegular',
+      'IconSettingsOutlineRegular', 'IconShareOutlineRegular', 'IconStopFillRegular', 'IconThinkOutlineRegular',
+      'IconThinkOutlineRegular', 'IconTrashOutlineRegular', 'IconUserOutlineRegular', 'IconWarningOutlineRegular',
+      'IconLikeOutlineRegular', 'IconDislikeOutlineRegular', 'IconFollowsystemOutlineMedium',
+      'IconClockOutlineRegular', 'IconClockOutlineRegular', 'IconDatabaseOutlineRegular',
       // Added with dsh 0.1.6-alpha.1 — absent on older hosts, where the picker
       // filters them out (see ICON_PICKER_CHOICES).
-      'IconPaperPlaneOutline14', 'IconShieldOutline16', 'IconPlanOutline14',
-      'IconWrapLinesOutline16', 'IconCompactOutline16',
+      'IconPaperPlaneOutlineRegular', 'IconWarningTriangleOutlineRegular', 'IconPlanOutlineRegular',
+      'IconWrapLinesOutlineRegular', 'IconCompactOutlineRegular',
     ]
 
     /**
@@ -6471,15 +6539,24 @@ window.__ModuleLoader__.load({
      * name so a retired alias can never double a cell. Computed once — the icon
      * module is fixed for the lifetime of the page.
      */
+    // v0.31.8: offer the name the HOST can render, not the name we happen to
+    // list. A retired entry resolves through ICON_ALIASES to a live glyph, so the
+    // picker must store and display that resolved glyph — otherwise picking a
+    // retired entry would store a name this host cannot draw.
     const ICON_PICKER_CHOICES = (() => {
       const seen = new Set()
-      return ICON_CHOICES.filter((mode) => {
-        if (mode === 'solid' || mode === 'outline' || mode === 'none') return true
+      const out = []
+      for (const mode of ICON_CHOICES) {
+        if (mode === 'solid' || mode === 'outline' || mode === 'none') {
+          if (!seen.has(mode)) { seen.add(mode); out.push(mode) }
+          continue
+        }
         const name = resolveIconName(mode)
-        if (name === '' || seen.has(name)) return false
+        if (name === '' || seen.has(name)) continue
         seen.add(name)
-        return true
-      })
+        out.push(name)
+      }
+      return out
     })()
 
     /**
@@ -6979,7 +7056,7 @@ window.__ModuleLoader__.load({
       // settings body sits directly under a one-line title.
       const pageView = props.view === 'page'
       const [open, setOpen] = React.useState(false)
-      const Chevron = ui.IconChevronDownOutline14
+      const Chevron = ui.IconChevronDownOutlineRegular
       if (pageView) {
         return E('div', { className: 'bw-plugin-card' },
           E('div', { className: 'bw-plugin-head' },
@@ -7122,7 +7199,7 @@ window.__ModuleLoader__.load({
       const openFlag = useHubOpen()
       const rows = collectInteractions(uiStatus, list, items)
       const count = rows.length
-      const Warning = ui.IconWarningOutline16
+      const Warning = ui.IconWarningOutlineRegular
       return E("button", {
         type: "button",
         className: cls("bw-icon-btn bw-hub-trigger", openFlag && "bw-hub-trigger-on"),
@@ -10256,24 +10333,24 @@ window.__ModuleLoader__.load({
           ? String(ctx.payload.workspaceId || '') + '|' + String(ctx.payload.path || '')
           : ''
         const isGroupHidden = groupKey !== '' && hiddenSessionGroupsMap[groupKey] === true
-        const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutline16', 16) }
+        const customizeEntry = { id: 'customize', label: t('custom.title'), icon: icon('IconPersonalizationOutlineMedium', 16) }
         // The discoverability entry (v0.15): every row kind can be moved into
         // a name group. One shared item object, inserted after each branch's
         // official items and before the bw-only separator.
-        const groupItem = { id: 'move-group', label: t('menu.moveToGroup'), icon: icon('IconFolderClose16', 16) }
+        const groupItem = { id: 'move-group', label: t('menu.moveToGroup'), icon: icon('IconFolderCloseRegular', 16) }
         if (ctx.kind === 'folder') return [
-          { id: 'rename-folder', label: t('menu.renameFolder'), icon: icon('IconEditOutline16', 16) },
-          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
-          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutline16', 16) },
+          { id: 'rename-folder', label: t('menu.renameFolder'), icon: icon('IconEditOutlineRegular', 16) },
+          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutlineRegular', 16) },
+          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutlineRegular', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
         ]
         if (ctx.kind === 'workspace') return [
-          { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
-          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutline16', 16) },
-          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutline16', 16) },
-          { id: 'delete', label: ot ? ot('delete.workspace') : t('menu.delete'), icon: icon('IconTrashOutline16', 16), danger: true },
+          { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutlineRegular', 16) },
+          { id: 'watermark', label: t('menu.watermark'), icon: icon('IconListPenOutlineRegular', 16) },
+          { id: 'pin-workspace', label: isWsPinned ? t('menu.unpinWorkspace') : t('menu.pinWorkspace'), icon: icon('IconRightUpOutlineRegular', 16) },
+          { id: 'delete', label: ot ? ot('delete.workspace') : t('menu.delete'), icon: icon('IconTrashOutlineRegular', 16), danger: true },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -10288,38 +10365,38 @@ window.__ModuleLoader__.load({
             ? [{
                 id: 'pin',
                 label: ot ? ot(isPinned ? 'menu.unpinSession' : 'menu.pinSession') : (isPinned ? t('menu.unpin') : t('menu.pin')),
-                icon: icon(isPinned ? 'IconRightUpOutline16' : 'IconRightUpOutline16', 16),
+                icon: icon(isPinned ? 'IconRightUpOutlineRegular' : 'IconRightUpOutlineRegular', 16),
               }]
             : []),
-          { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutline16', 16) },
-          { id: 'fork', label: ot ? ot('menu.fork') : t('menu.fork'), icon: icon('IconBranchOutline16', 16) },
+          { id: 'rename', label: ot ? ot('rename') : t('menu.rename'), icon: icon('IconEditOutlineRegular', 16) },
+          { id: 'fork', label: ot ? ot('menu.fork') : t('menu.fork'), icon: icon('IconBranchOutlineRegular', 16) },
           // Official semantics (Rows.tsx): archive hides the row through the
           // registry-global archive set and never touches the session log —
           // deliberately NOT styled destructive.
           // v0.27.0: an ARCHIVED row gets the inverse item instead, so archiving
           // is finally reversible from the same place it was applied.
           isArchived
-            ? { id: 'unarchive', label: ot ? ot('menu.unarchiveSession') : t('menu.unarchive'), icon: icon('IconArchiveOutline20', 16) }
-            : { id: 'archive', label: ot ? ot('menu.archiveSession') : t('menu.archive'), icon: icon('IconArchiveOutline20', 16) },
-          { id: 'session-id', label: ot ? ot('menu.sessionId') : t('menu.sessionId'), icon: icon('IconCopyOutline16', 16) },
+            ? { id: 'unarchive', label: ot ? ot('menu.unarchiveSession') : t('menu.unarchive'), icon: icon('IconArchiveOutlineRegular', 16) }
+            : { id: 'archive', label: ot ? ot('menu.archiveSession') : t('menu.archive'), icon: icon('IconArchiveOutlineRegular', 16) },
+          { id: 'session-id', label: ot ? ot('menu.sessionId') : t('menu.sessionId'), icon: icon('IconCopyOutlineRegular', 16) },
           // v0.27.0 DELETE-FOREVER: leaves the menu's normal group entirely and
           // sits last, destructive-styled, behind a confirmation dialog that
           // spells out what is destroyed. Archiving is reversible; this is not.
           { type: 'separator', id: 'bw-del-sep' },
-          { id: 'delete-forever', label: t('menu.deleteForever'), icon: icon('IconTrashOutline16', 16), danger: true },
+          { id: 'delete-forever', label: t('menu.deleteForever'), icon: icon('IconTrashOutlineRegular', 16), danger: true },
           // v0.30.4: collapse/expand the group this session belongs to, without
           // having to find and click the group row.
           { type: 'separator', id: 'bw-grp-sep' },
-          { id: 'toggle-group', label: t('menu.toggleGroup'), icon: icon('IconTriangleRightFill14', 14) },
+          { id: 'toggle-group', label: t('menu.toggleGroup'), icon: icon('IconTriangleRightFillRegular', 14) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
         ]
         return [
-          { id: 'rename-sgroup', label: t('menu.renameSgroup'), icon: icon('IconEditOutline16', 16) },
+          { id: 'rename-sgroup', label: t('menu.renameSgroup'), icon: icon('IconEditOutlineRegular', 16) },
           isGroupHidden
-            ? { id: 'unhide-sgroup', label: t('menu.unhideGroup'), icon: icon('IconFolderOpen16', 16) }
-            : { id: 'hide-sgroup', label: t('menu.hideGroup'), icon: icon('IconFolderClose16', 16) },
+            ? { id: 'unhide-sgroup', label: t('menu.unhideGroup'), icon: icon('IconFolderOpenRegular', 16) }
+            : { id: 'hide-sgroup', label: t('menu.hideGroup'), icon: icon('IconFolderCloseRegular', 16) },
           groupItem,
           { type: 'separator', id: 'bw-sep' },
           customizeEntry,
@@ -10442,8 +10519,8 @@ window.__ModuleLoader__.load({
       if (!wide) {
         return E('div', { className: 'bw-rail' },
           StyleNode(),
-          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.search'), onClick: () => { expandSidebar(); setSearchOpen(true) } }, icon('IconSearchOutline16', 18)),
-          flowAvailable ? E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.add'), onClick: () => { expandSidebar(); setFlowOpen(true) } }, icon('IconProjectAddOutline16', 18)) : null,
+          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.search'), onClick: () => { expandSidebar(); setSearchOpen(true) } }, icon('IconSearchOutlineRegular', 18)),
+          flowAvailable ? E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.add'), onClick: () => { expandSidebar(); setFlowOpen(true) } }, icon('IconProjectAddOutlineRegular', 18)) : null,
         )
       }
 
@@ -10589,14 +10666,14 @@ window.__ModuleLoader__.load({
             'aria-label': labelsSettings(),
             title: labelsSettings(),
             onClick: () => openSettingsPage('settings'),
-          }, icon('IconSettingsOutline16', 16)),
+          }, icon('IconSettingsOutlineRegular', 16)),
           E('button', {
             type: 'button',
             className: 'bw-icon-btn',
             'aria-label': labelsLauncher(),
             title: labelsLauncher(),
             onClick: () => openSettingsPage('plugins'),
-          }, icon('IconCordisPluginOutline14', 16)),
+          }, icon('IconCordisPluginOutlineRegular', 16)),
           // Group discoverability (v0.15): a visible "New group" entry point
           // that doubles as the row-drop zone. Clicking opens the picker
           // shape; dropping a row onto it locks that row in the same dialog.
@@ -10607,7 +10684,7 @@ window.__ModuleLoader__.load({
             title: t('group.new'),
             onClick: () => setDialog({ kind: 'group-move', target: null, targets: targetListOf(), initial: '' }),
             ...groupDropEvents,
-          }, icon('IconFolderClose16', 16)),
+          }, icon('IconFolderCloseRegular', 16)),
           (searchOpen || query !== '') ? E('input', {
             className: 'bw-input',
             style: { width: 130, flex: 'none' },
@@ -10629,7 +10706,7 @@ window.__ModuleLoader__.load({
             'aria-label': t('nav.back'),
             title: t('nav.back'),
             onClick: (e) => { e.stopPropagation(); if (navState.canBack) goNav(-1) },
-          }, icon('IconChevronLeftOutline14', 16)),
+          }, icon('IconChevronLeftOutlineRegular', 16)),
           E('button', {
             type: 'button',
             className: 'bw-icon-btn',
@@ -10637,7 +10714,7 @@ window.__ModuleLoader__.load({
             'aria-label': t('nav.forward'),
             title: t('nav.forward'),
             onClick: (e) => { e.stopPropagation(); if (navState.canForward) goNav(1) },
-          }, icon('IconChevronRightOutline14', 16)),
+          }, icon('IconChevronRightOutlineRegular', 16)),
           E(ViewOptionsMenu, {
             groupBy,
             orderBy,
@@ -10661,9 +10738,9 @@ window.__ModuleLoader__.load({
             title: tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
             'aria-label': tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
             onClick: () => { if (actions && typeof actions.setTabCycleOrder === 'function') actions.setTabCycleOrder(tabOrder === 'recent' ? 'page' : 'recent') },
-          }, icon(tabOrder === 'recent' ? 'IconClockOutline16' : (groupBy === 'workspace-tree' ? 'IconTreeCorner8x10' : 'IconListPenOutline16'))),
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
-          flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutline16')) : null,
+          }, icon(tabOrder === 'recent' ? 'IconClockOutlineRegular' : (groupBy === 'workspace-tree' ? 'IconBranchOutlineRegular' : 'IconListPenOutlineRegular'))),
+          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutlineRegular')),
+          flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutlineRegular')) : null,
         ),
         // v0.23.0 sidebar seat for the interaction hub: expands inline between
         // the header strip and the tree, so the warning button always has
