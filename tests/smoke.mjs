@@ -1503,3 +1503,26 @@ test('a session group can be hidden and found again (v0.30.8)', () => {
   assert.ok(text.includes('actions.setSessionGroupHidden(k, false)'), 'it unhides them all')
 
 })
+
+test('a cross-workspace session drag attaches first and explains a cwd mismatch (v0.31.1)', () => {
+  const text = read('src/client.js')
+  // The host refuses to reorder a session the target workspace does not account
+  // for, so the order must be attach -> insertSessionBefore.
+  assert.ok(text.includes('attachSession: workspaces && typeof workspaces.attachSession'), 'attachSession is exposed')
+  const cross = text.slice(
+    text.indexOf('if (source.workspaceId !== workspaceId) {'),
+    text.indexOf('const flat = sessionsOf(workspace)'),
+  )
+  assert.ok(cross.includes('attachSession(source.sessionId)'), 'the drag attaches the session')
+  // attachSession takes ONE argument (it reads the header cwd itself).
+  assert.ok(!cross.includes('attachSession(workspaceId'), 'attach is called with the session id only')
+  assert.ok(
+    cross.indexOf('attachSession(source.sessionId)') < cross.indexOf('insertSessionBefore(workspaceId'),
+    'attach runs before the reorder',
+  )
+  // The host rejects a session whose cwd differs from the workspace path; that
+  // must be explained, not surfaced as "not accounted".
+  assert.ok(text.includes("move.needsSameCwd"), 'a readable explanation exists')
+  assert.match(cross, /not accounted\|does not resolve to\|is not a directory\|cannot attach/,
+    'the host validation errors are translated')
+})

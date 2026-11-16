@@ -87,6 +87,7 @@ window.__ModuleLoader__.load({
       'menu.watermark': '折叠会话个数…',
       'menu.pinWorkspace': '置顶这个工作区/组',
       'menu.hideGroup': '隐藏这个会话组',
+      'move.needsSameCwd': '无法把这个会话移进「{target}」：会话的 cwd 与其工作区路径不一致。DSH 要求两者相同，所以跨目录移动会话是不允许的。请把该会话所在的整个工作区拖进这个分组。',
       'menu.unhideGroup': '取消隐藏会话组',
       'settings.showHiddenGroups': '显示已隐藏的会话组',
       'settings.showHiddenGroups.hint': '隐藏的会话组不会出现在树里；开启此项可重新看到它们并取消隐藏。',
@@ -268,6 +269,7 @@ window.__ModuleLoader__.load({
       'menu.watermark': 'Collapse sessions after…',
       'menu.pinWorkspace': 'Pin this workspace / group',
       'menu.hideGroup': 'Hide this session group',
+      'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
       'menu.unhideGroup': 'Unhide session group',
       'settings.showHiddenGroups': 'Show hidden session groups',
       'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -457,6 +459,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -638,6 +641,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -819,6 +823,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1000,6 +1005,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1181,6 +1187,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1362,6 +1369,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1543,6 +1551,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1724,6 +1733,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -1905,6 +1915,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2086,6 +2097,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2267,6 +2279,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2448,6 +2461,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2629,6 +2643,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2810,6 +2825,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -2991,6 +3007,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -3172,6 +3189,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -3353,6 +3371,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -3534,6 +3553,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -3715,6 +3735,7 @@ window.__ModuleLoader__.load({
         'menu.watermark': 'Collapse sessions after…',
         'menu.pinWorkspace': 'Pin this workspace / group',
         'menu.hideGroup': 'Hide this session group',
+        'move.needsSameCwd': 'Cannot move this session into "{target}": the session cwd does not match that workspace path. DSH requires them to be equal, so a session cannot move across directories. Drag its whole workspace into the group instead.',
         'menu.unhideGroup': 'Unhide session group',
         'settings.showHiddenGroups': 'Show hidden session groups',
         'settings.showHiddenGroups.hint': 'Hidden groups are left out of the tree; turn this on to see them again and unhide.',
@@ -9346,10 +9367,33 @@ window.__ModuleLoader__.load({
             : targetSessionId
           Promise.resolve()
             .then(() => renameForGrouping(source.sessionId, targetGroup !== '' ? targetGroup + '/' + (source.leaf || source.title || source.sessionId) : (source.leaf || source.title || source.sessionId)))
+            // v0.31.1 ORDER MATTERS: the host refuses to reorder a session the
+            // target workspace does not yet account for, so ATTACH first. This is
+            // the fix for "workspace/move-invalid: the session is not accounted"
+            // when dragging a session into a DIFFERENT workspace.
+            // v0.31.1: attach can only succeed when the session's own cwd equals
+            // the target workspace path — that is the host's rule, not ours
+            // (attachSession reads the header cwd and compares it). Explaining it
+            // here is far more useful than letting `workspace/move-invalid: the
+            // session is not accounted` surface, which sounds like a bug.
+            .then(() => (typeof attachSession === 'function' ? attachSession(source.sessionId) : undefined))
+            .then((attached) => {
+              // A host that resolves with {ok:false} instead of throwing.
+              if (attached && attached.ok === false) throw new Error(String(attached.error?.message || ''))
+            })
             .then(() => (typeof insertSessionBefore === 'function'
               ? (anchorT !== undefined ? insertSessionBefore(workspaceId, source.sessionId, anchorT) : insertSessionBefore(workspaceId, source.sessionId))
               : undefined))
-            .catch(fail)
+            .catch((error) => {
+              const msg = String(error && error.message || error)
+              // Translate the host's terse validation errors into what the user
+              // actually did wrong and what to do instead.
+              if (/not accounted|does not resolve to|is not a directory|cannot attach/i.test(msg)) {
+                fail(t('move.needsSameCwd', { target: String(workspace.title || workspace.path || '') }))
+                return
+              }
+              fail(msg)
+            })
           return
         }
         const flat = sessionsOf(workspace)
@@ -10591,6 +10635,12 @@ window.__ModuleLoader__.load({
         // older hosts degrade to "group-move only" instead of a TypeError.
         insertSessionBefore: typeof workspaces.insertSessionBefore === 'function'
           ? (workspaceId, sessionId, beforeSessionId) => workspaces.insertSessionBefore(workspaceId, sessionId, beforeSessionId)
+          : undefined,
+        // v0.31.1: a session must be ACCOUNTED by a workspace before the host
+        // will reorder it there. insertSessionBefore alone throws
+        // `workspace/move-invalid: the session is not accounted`.
+        attachSession: workspaces && typeof workspaces.attachSession === 'function'
+          ? (sessionId) => workspaces.attachSession(sessionId)
           : undefined,
         archiveSession: (sessionId) => uiWorkspace.archiveSession(sessionId),
         // v0.27.0: the inverse of archive, feature-probed like every other host
