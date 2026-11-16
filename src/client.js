@@ -114,6 +114,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '单列表',
         'viewOptions.columns': '分栏显示',
         'viewOptions.orderBy': '排序方式',
+        'viewOptions.tabCycle': '切换顺序（Tab 循环）',
         'viewOptions.manualOrder': '手动排序',
         'viewOptions.updatedOrder': '最近更新',
         'viewOptions.sessionSlash': '会话按"/"分组',
@@ -296,6 +297,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'In one list',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Order by',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Last updated',
         'viewOptions.sessionSlash': 'Group sessions by "/"',
@@ -486,6 +488,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'قائمة واحدة',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'الترتيب حسب',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'يدوي',
         'viewOptions.updatedOrder': 'آخر تحديث',
         'viewOptions.sessionSlash': 'تجميع الجلسات حسب "/"',
@@ -668,6 +671,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'In einer Liste',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortieren',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manuell',
         'viewOptions.updatedOrder': 'Zuletzt aktualisiert',
         'viewOptions.sessionSlash': 'Sitzungen nach "/" gruppieren',
@@ -850,6 +854,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'En une liste',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Trier par',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manuel',
         'viewOptions.updatedOrder': 'Dernière mise à jour',
         'viewOptions.sessionSlash': 'Grouper les sessions par « / »',
@@ -1032,6 +1037,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'एक सूची में',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'क्रम',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'मैन्युअल',
         'viewOptions.updatedOrder': 'हाल का अपडेट',
         'viewOptions.sessionSlash': 'सत्रों को "/" से समूहित करें',
@@ -1214,6 +1220,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Satu daftar',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Urutkan',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Terakhir diperbarui',
         'viewOptions.sessionSlash': 'Kelompokkan sesi per "/"',
@@ -1396,6 +1403,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'In un elenco',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Ordina per',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manuale',
         'viewOptions.updatedOrder': 'Ultimo aggiornamento',
         'viewOptions.sessionSlash': 'Raggruppa sessioni per "/"',
@@ -1578,6 +1586,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '1 つのリスト',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '並べ替え',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': '手動',
         'viewOptions.updatedOrder': '最近の更新',
         'viewOptions.sessionSlash': 'セッションを「/」でグループ化',
@@ -1760,6 +1769,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '하나의 목록',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '정렬',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': '수동',
         'viewOptions.updatedOrder': '최근 업데이트',
         'viewOptions.sessionSlash': '세션을 "/"로 그룹화',
@@ -1942,6 +1952,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'In één lijst',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sorteren op',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Handmatig',
         'viewOptions.updatedOrder': 'Laatst bijgewerkt',
         'viewOptions.sessionSlash': 'Sessies groeperen op "/"',
@@ -2124,6 +2135,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Jedna lista',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortuj według',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Ręcznie',
         'viewOptions.updatedOrder': 'Ostatnia aktualizacja',
         'viewOptions.sessionSlash': 'Grupuj sesje po "/"',
@@ -2306,6 +2318,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Numa lista',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Ordenar por',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manual',
         'viewOptions.updatedOrder': 'Atualização recente',
         'viewOptions.sessionSlash': 'Agrupar sessões por "/"',
@@ -2488,6 +2501,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Одним списком',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Сортировка',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Вручную',
         'viewOptions.updatedOrder': 'По обновлению',
         'viewOptions.sessionSlash': 'Группировать сессии по «/»',
@@ -2670,6 +2684,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'I en lista',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sortera efter',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Manuellt',
         'viewOptions.updatedOrder': 'Senast uppdaterad',
         'viewOptions.sessionSlash': 'Gruppera sessioner efter "/"',
@@ -2852,6 +2867,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'รายการเดียว',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'เรียงตาม',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'ด้วยตนเอง',
         'viewOptions.updatedOrder': 'อัปเดตล่าสุด',
         'viewOptions.sessionSlash': 'จัดกลุ่มเซสชันตาม "/"',
@@ -3034,6 +3050,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Tek liste',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sırala',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'El ile',
         'viewOptions.updatedOrder': 'Son güncelleme',
         'viewOptions.sessionSlash': 'Oturumları "/" ile gruplandır',
@@ -3216,6 +3233,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': 'Một danh sách',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': 'Sắp xếp theo',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': 'Thủ công',
         'viewOptions.updatedOrder': 'Cập nhật gần đây',
         'viewOptions.sessionSlash': 'Nhóm phiên theo "/"',
@@ -3398,6 +3416,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '單一列表',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
         'viewOptions.sessionSlash': '對話按「/」分組',
@@ -3580,6 +3599,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '單一列表',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
         'viewOptions.sessionSlash': '對話按「/」分組',
@@ -3762,6 +3782,7 @@ window.__ModuleLoader__.load({
         'viewOptions.flat': '單一列表',
         'viewOptions.columns': 'Columns',
         'viewOptions.orderBy': '排序方式',
+        'viewOptions.tabCycle': 'Cycle order (tab)',
         'viewOptions.manualOrder': '手動排序',
         'viewOptions.updatedOrder': '最近更新',
         'viewOptions.sessionSlash': '工作階段按「/」分組',
@@ -6468,7 +6489,7 @@ window.__ModuleLoader__.load({
      * name layer). The primitives Menu is feature-probed like every
      * component — without it the button simply never renders.
      */
-    function ViewOptionsMenu({ groupBy, orderBy, sessionSlash, workspaceSlash, onPick, onToggle, t }) {
+    function ViewOptionsMenu({ groupBy, orderBy, sessionSlash, workspaceSlash, tabOrder, onPick, onToggle, t }) {
       const [open, setOpen] = React.useState(false)
       if (typeof ui.Menu !== 'function') return null
       return E(ui.Menu, {
@@ -6484,16 +6505,27 @@ window.__ModuleLoader__.load({
           { type: 'label', id: 'bw-order-by', text: t('viewOptions.orderBy') },
           { id: 'manual', label: t('viewOptions.manualOrder') },
           { id: 'updated', label: t('viewOptions.updatedOrder') },
+          { type: 'separator', id: 'bw-cycle-sep' },
+          // v0.33.0: the tab-cycle order toggle moved OFF the header and into
+          // this menu (user: "这个切换排序顺序应该放在这个视图选项菜单里面").
+          // It is a view preference, exactly like grouping and ordering, so it
+          // belongs with them instead of occupying a header slot of its own.
+          { type: 'label', id: 'bw-cycle-label', text: t('viewOptions.tabCycle') },
+          { id: 'cycle-page', label: t('cycle.order.page') },
+          { id: 'cycle-recent', label: t('cycle.order.recent') },
           { type: 'separator', id: 'bw-slash-sep' },
           { id: 'session-slash', label: t('viewOptions.sessionSlash'), disabled: groupBy === 'flat' },
           { id: 'workspace-slash', label: t('viewOptions.workspaceSlash'), disabled: groupBy !== 'workspace-tree' },
         ],
         selectedIds: [groupBy, orderBy]
+          .concat(tabOrder === 'recent' ? ['cycle-recent'] : ['cycle-page'])
           .concat(sessionSlash ? ['session-slash'] : [])
           .concat(workspaceSlash ? ['workspace-slash'] : []),
         onSelect: (id) => {
           if (id === 'workspace' || id === 'workspace-tree' || id === 'flat' || id === 'columns') { onPick('groupBy', id); setOpen(false); return }
           if (id === 'manual' || id === 'updated') { onPick('orderBy', id); setOpen(false); return }
+          if (id === 'cycle-page') { onPick('tabCycleOrder', 'page'); return }
+          if (id === 'cycle-recent') { onPick('tabCycleOrder', 'recent'); return }
           if (id === 'session-slash') { onToggle('sessionTitleSlash', !sessionSlash); return }
           if (id === 'workspace-slash') { onToggle('workspaceTitleSlash', !workspaceSlash); return }
         },
@@ -10733,7 +10765,12 @@ window.__ModuleLoader__.load({
             orderBy,
             sessionSlash,
             workspaceSlash,
-            onPick: (kind, value) => { if (kind === 'groupBy') actions.setGroupBy(value); else actions.setOrderBy(value) },
+            tabOrder,
+            onPick: (kind, value) => {
+              if (kind === 'groupBy') actions.setGroupBy(value)
+              else if (kind === 'tabCycleOrder') { if (typeof actions.setTabCycleOrder === 'function') actions.setTabCycleOrder(value) }
+              else actions.setOrderBy(value)
+            },
             onToggle: (key, value) => { if (key === 'sessionTitleSlash') actions.setSessionTitleSlash(value); else actions.setWorkspaceTitleSlash(value) },
             t,
           }),
@@ -10742,16 +10779,10 @@ window.__ModuleLoader__.load({
           // (below the input box). The sidebar copy was redundant and, worse, it
           // competed for attention with the tree. The composer strip keeps the
           // full question/approval flow: options, allow/reject, directory list.
-          // Tab-cycle order toggle (v0.17): page order vs recent (access) order.
-          // Official primitive icons only: page = the view glyph for the current
-          // grouping (tree in tree mode, flat list otherwise), recent = the clock.
-          E('button', {
-            type: 'button',
-            className: 'bw-icon-btn',
-            title: tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
-            'aria-label': tabOrder === 'recent' ? t('cycle.order.recent') : t('cycle.order.page'),
-            onClick: () => { if (actions && typeof actions.setTabCycleOrder === 'function') actions.setTabCycleOrder(tabOrder === 'recent' ? 'page' : 'recent') },
-          }, icon(tabOrder === 'recent' ? 'IconClockOutlineRegular' : (groupBy === 'workspace-tree' ? 'IconBranchOutlineRegular' : 'IconListPenOutlineRegular'))),
+          // v0.33.0: the tab-cycle toggle MOVED into ViewOptionsMenu. It is a view
+          // preference like grouping/ordering, so it belongs in that menu rather
+          // than owning a header slot. Nothing is lost: the menu shows the current
+          // choice with a check mark.
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutlineRegular')),
           flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutlineRegular')) : null,
         ),

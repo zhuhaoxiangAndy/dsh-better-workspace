@@ -923,7 +923,12 @@ test('client.js cycles session tabs across groups with two persisted orders (v0.
   assert.match(text, /cycleTabs/, 'session-level cycle helper')
   assert.match(text, /tabCycleOrder/, 'order persists in the view store')
   assert.match(text, /setTabCycleOrder/, 'store action exists')
-  assert.match(text, /'recent' \? 'page' : 'recent'/, 'header button toggles the order')
+  // v0.33.0: the toggle is no longer a header button — it is a pair of
+  // radio-style entries inside the view-options menu, so check the wiring there.
+  assert.match(text, /id: 'cycle-page'/, 'menu offers page order')
+  assert.match(text, /id: 'cycle-recent'/, 'menu offers recent order')
+  assert.match(text, /onPick\('tabCycleOrder'/, 'menu writes the preference')
+  assert.doesNotMatch(text, /'aria-label': tabOrder === 'recent'/, 'no header toggle button remains')
   assert.match(text, /IconClockOutlineRegular/, 'recent order uses the official clock icon')
   assert.match(text, /cycle\.order\.page/, 'i18n keys shipped')
 })
