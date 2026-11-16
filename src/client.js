@@ -9238,13 +9238,23 @@ window.__ModuleLoader__.load({
           if (sameLevel) keys.push('id:' + w.workspaceId)
         }
         const tree = buildTree(items || [], workspaceSlash, workspaceGroupOrder)
+        // v0.34.5 BUGFIX: crash "commitFolderReorderBesideWorkspace: node.groups
+        // is not iterable".
+        //
+        // buildTree() produces the WORKSPACE tree, whose nodes expose
+        // `folders` and `workspaces`. Only the SESSION tree (buildSessionTree)
+        // uses `groups`/`sessions`. Reading node.groups here threw for every
+        // workspace whose name layer had a group — which is why it only showed
+        // up on "Sim-to-Real_GR00T-N1.7+SO-101" / "RBE999": those are exactly
+        // the rows that create a name-layer group.
+        const childFolders = (node) => (Array.isArray(node.folders) ? node.folders : [])
         const findGroup = (node) => {
           if (node.path === levelPath) return node
-          for (const g of node.groups) { const hit = findGroup(g); if (hit) return hit }
+          for (const g of childFolders(node)) { const hit = findGroup(g); if (hit) return hit }
           return null
         }
         const level = findGroup(tree)
-        if (level) for (const g of level.groups) keys.unshift(g.path)
+        if (level) for (const g of childFolders(level)) keys.unshift(g.path)
         if (keys.includes(groupKey) && keys.includes(wsKey)) {
           writeWorkspaceOrder(keys, groupKey, wsKey, half)
         }
@@ -9587,7 +9597,23 @@ window.__ModuleLoader__.load({
               if (next !== t) await renameWorkspace(w.workspaceId, next)
             }
           })
-          .then(() => insertWorkspaceBefore(source.workspaceId))
+          // v0.34.5 BUGFIX: the host signature is insertBefore(id, beforeId).
+          // Calling it with ONE argument left beforeId undefined, so the host had
+          // no anchor and the row was not placed where the drop happened — which
+          // is why dragging INTO a group appeared to do nothing and the only way
+          // to join RBE999 was to rename. Anchor on the FIRST member of the target
+          // group instead.
+          .then(() => {
+            if (typeof insertWorkspaceBefore !== 'function') return undefined
+            const targetPrefix = folderPath === '' ? '' : folderPath + '/'
+            const anchor = (items || []).find((w) => {
+              if (w.workspaceId === source.workspaceId) return false
+              const t = String(w.title || '')
+              if (targetPrefix === '') return !t.includes('/')
+              return t.startsWith(targetPrefix)
+            })
+            return insertWorkspaceBefore(source.workspaceId, anchor ? anchor.workspaceId : undefined)
+          })
           .catch(fail)
       }
 
