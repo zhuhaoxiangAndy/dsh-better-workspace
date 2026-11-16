@@ -1650,3 +1650,24 @@ test('appearance preferences actually reach the rendered row (v0.33.2)', () => {
   assert.ok(text.includes("id: 'customize'"), 'the row right-click menu offers customization')
   assert.ok(text.includes('rowStyleOf('), 'rows consume the computed style')
 })
+
+test('never occupy a single-occupancy shell slot (v0.33.3)', () => {
+  const text = read('src/client.js')
+  // `shell.leading` and friends are kind:"single": occupying one REPLACES the
+  // shipped control. That is exactly how the Settings button disappeared at
+  // v0.28.0, and how without thinking I would have replaced the sidebar
+  // toggle / new-session controls at v0.32.0. Top-bar actions must go in a LIST
+  // slot, where they join the existing entries instead of displacing them.
+  assert.doesNotMatch(text, /slots\.inject\('shell\.leading'/, 'never take the shell.leading single slot')
+  assert.doesNotMatch(text, /slots\.inject\('settings\.launcher'/, 'never take the settings.launcher single slot')
+  assert.doesNotMatch(text, /slots\.inject\('settings\.trigger'/, 'never take the settings.trigger single slot')
+
+  // The history controls belong in the top bar's ACTION LIST.
+  assert.match(text, /slots\.inject\('conversation\.session\.header\.actions'/, 'history joins a list slot')
+  assert.ok(text.includes("options: { id: 'better-workspace-history'"), 'the list entry carries an order')
+
+  // Every other seat this plugin claims is a list slot too.
+  for (const slot of ['settings.section', 'conversation.composer.dock']) {
+    assert.ok(text.includes(`slots.inject('${slot}'`), slot + ' is claimed')
+  }
+})

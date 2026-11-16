@@ -11144,11 +11144,17 @@ window.__ModuleLoader__.load({
       //
       // The component reads the SAME navState the sidebar used to own, so the
       // history itself is unchanged; only its placement moved.
-      slots.inject('shell.leading', guarded(
-        'shell.leading',
+      // v0.33.3: shell.leading is kind:"single" — taking it REPLACES the shipped
+      // sidebar-toggle / new-session controls, which is the same mistake that
+      // removed the Settings button at v0.28.0. A top-bar action must go in a
+      // LIST slot instead. `conversation.session.header.actions` is the top bar's
+      // own action list, so back/forward join it as one more entry.
+      slots.inject('conversation.session.header.actions', guarded(
+        'conversation.session.header.actions',
         {
-          name: 'shell.leading',
+          name: 'conversation.session.header.actions',
           key: 'better-workspace-history',
+          options: { id: 'better-workspace-history', order: 40 },
           locale: NS,
           store: viewStore,
         },
