@@ -1563,7 +1563,7 @@ test('moving a group carries its WHOLE subtree, at any depth (v0.31.3)', () => {
   )
   assert.ok(folder.includes('parent.startsWith(srcPrefix)'), 'descendants are included')
   assert.ok(folder.includes('const relative ='), 'the relative path is preserved')
-  assert.ok(folder.includes("relative === '' ? targetPath : targetPath + '/' + relative"),
+  assert.ok(folder.includes("relative === '' ? base : base + '/' + relative"),
     'a nested sub-group stays nested under the new parent')
 
   // commitWorkspaceMoveInto had the same defect: moving a workspace row left the
@@ -1581,4 +1581,20 @@ test('moving a group carries its WHOLE subtree, at any depth (v0.31.3)', () => {
   const sgroup = text.slice(text.indexOf('const sgroupDropZone = (event) => {'), text.indexOf('const sessionDragEvents ='))
   assert.ok(sgroup.includes('Math.min(14, Math.max(8, rect.height * 0.34))'),
     'session groups use the same 34% band')
+})
+
+test('dropping a group into another KEEPS the dragged group name (v0.31.4)', () => {
+  const text = read('src/client.js')
+  const body = text.slice(
+    text.indexOf('const commitFolderMoveInto = (targetIdPath) => {'),
+    text.indexOf('/* ---------------------- session drag & drop'),
+  )
+  // The bug: `targetPath + relative` dropped the dragged group's own segment, so
+  // Project/CUMCM26 dropped into Project/ADS999-Model became
+  // Project/ADS999-Model/A-DsDsh-x (the group name vanished and the members
+  // looked re-parented = "散开"). The new parent must include the group leaf.
+  assert.ok(body.includes('const groupLeaf ='), 'the dragged group leaf is read')
+  assert.ok(body.includes("targetPath + '/' + groupLeaf"), 'the new parent keeps that leaf')
+  assert.ok(body.includes("relative === '' ? base : base + '/' + relative"),
+    'a nested sub-group is appended below the kept leaf')
 })

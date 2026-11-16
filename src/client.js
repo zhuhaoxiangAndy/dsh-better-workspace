@@ -8995,7 +8995,16 @@ window.__ModuleLoader__.load({
               const relative = parent === source.folderPath
                 ? ''
                 : parent.slice(srcPrefix.length)
-              const nextParent = relative === '' ? targetPath : targetPath + '/' + relative
+              // v0.31.4 KEEP THE GROUP NAME.
+              // The previous version wrote `targetPath + relative`, which DROPPED
+              // the dragged group's own name: dropping "Project/CUMCM26" into
+              // "Project/ADS999-Model" produced "Project/ADS999-Model/A-DsDsh-x"
+              // instead of "Project/ADS999-Model/CUMCM26/A-DsDsh-x". The group
+              // dissolved and its members appeared re-parented — the reported
+              // "拖进 ads 还是散开了".
+              const groupLeaf = String(source.leaf || source.folderPath.split('/').pop() || '')
+              const base = groupLeaf === '' ? targetPath : targetPath + '/' + groupLeaf
+              const nextParent = relative === '' ? base : base + '/' + relative
               await renameWorkspace(w.workspaceId, nextParent + '/' + leaf)
             }
           })
