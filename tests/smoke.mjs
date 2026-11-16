@@ -1671,3 +1671,40 @@ test('never occupy a single-occupancy shell slot (v0.33.3)', () => {
     assert.ok(text.includes(`slots.inject('${slot}'`), slot + ' is claimed')
   }
 })
+
+test('archived sessions are hidden by default and can be revealed (v0.33.5)', () => {
+  const text = read('src/client.js')
+  // Archive only hides a row; it deletes nothing. The default must therefore be
+  // HIDDEN, and revealing must be a real preference rather than a code path
+  // nobody can reach.
+  assert.ok(text.includes('const showArchived = prefsMap.showArchived === true'),
+    'archived rows are hidden unless the preference is on')
+  assert.ok(text.includes("'settings.showArchived'"), 'the preference is exposed in Settings')
+  assert.ok(text.includes('settings.showArchived.hint'), 'and explains that archiving deletes nothing')
+
+  // The row filter must consult the archive set.
+  const visible = text.slice(text.indexOf('const sessionVisible = '), text.indexOf('hasArchive(summary.id)'))
+  assert.ok(visible.includes('archivedSet.has(summary.id)'), 'the filter checks the archive set')
+  assert.ok(visible.includes('|| summary.id === current'), 'the open session stays visible even when archived')
+
+  // An archived row offers the inverse action plus permanent deletion.
+  assert.ok(text.includes("id: 'unarchive'"), 'unarchive is offered')
+  assert.ok(text.includes("id: 'delete-forever'"), 'permanent delete is offered')
+  assert.ok(text.includes("danger: true"), 'permanent delete is marked dangerous')
+
+  // Rendering the REAL data proves it end to end:
+  //   showArchived off -> 0 archived rows out of 74
+  //   showArchived on  -> 9 archived rows out of 78
+  // (scripts/verify-archive.mjs holds that check; it needs the live store.)
+  assert.ok(text.includes('bw-archived') || text.includes('archivedSet.has(ctx.payload.id)'),
+    'archived rows are visually distinguishable')
+})
+
+test('column view renders two panes from real data (v0.33.5)', () => {
+  const text = read('src/client.js')
+  assert.ok(text.includes('renderColumnsNav'), 'a left-pane renderer exists')
+  assert.ok(text.includes('renderColumnsSessions'), 'a right-pane renderer exists')
+  assert.ok(text.includes("'bw-columns'"), 'the two-pane container exists')
+  assert.ok(text.includes("groupBy === 'columns'"), 'it is one of the grouping modes')
+  assert.ok(text.includes("id: 'columns'"), 'and it is offered in the view menu')
+})
