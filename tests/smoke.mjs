@@ -1758,3 +1758,29 @@ test('session-group rows: no separate triangle, rail sits under the glyph column
   assert.ok(!text.includes('.bw-sgroup-member-rail{position:absolute;left:0'),
     'the old left-edge position is gone')
 })
+
+test('workspace rows use a folder glyph, and a readable symbol when icons are absent (v0.33.9)', () => {
+  const text = read('src/client.js')
+
+  // Target 4: "工作区用原生文件夹图标而非三角标".
+  assert.ok(text.includes("return icon(expanded ? 'IconFolderOpenRegular' : 'IconFolderCloseRegular', 16)"),
+    'the default icon mode resolves to a real folder glyph')
+  assert.ok(text.includes("iconMode: (styleEntry('workspace:' + workspace.workspaceId) || {}).icon || 'solid'"),
+    'workspace rows default to that mode')
+
+  // The triangle is now only a FALLBACK branch in both row kinds, so a row never
+  // shows a folder glyph AND a triangle.
+  for (const fn of ['function FolderRow(', 'function WorkspaceRow(']) {
+    const start = text.indexOf(fn)
+    const body = text.slice(start, start + 2600)
+    assert.ok(body.includes('iconEl'), fn + ' computes the glyph')
+    assert.ok(body.includes('? null'), fn + ' suppresses the triangle when the glyph rendered')
+  }
+
+  // When the primitives module is missing, icon() must still return something
+  // READABLE. Returning null (or an empty span) leaves the user unable to tell a
+  // collapse control from a blank row.
+  assert.ok(text.includes('const FALLBACK_GLYPHS = {'), 'fallback glyphs exist')
+  assert.ok(text.includes("'IconFolderCloseRegular': '▸'"), 'folder-close falls back to a triangle-ish symbol')
+  assert.ok(text.includes("'IconFolderOpenRegular': '▾'"), 'folder-open falls back to a down symbol')
+})
