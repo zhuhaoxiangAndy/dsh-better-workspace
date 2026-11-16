@@ -1616,3 +1616,37 @@ test('dropping a group into another KEEPS the dragged group name (v0.31.4)', () 
   assert.ok(body.includes("relative === '' ? base : base + '/' + relative"),
     'a nested sub-group is appended below the kept leaf')
 })
+
+test('appearance preferences actually reach the rendered row (v0.33.2)', () => {
+  const text = read('src/client.js')
+  // "ui 调整界面（亮度阴影加粗颜色等）都无效了" had TWO separate causes:
+  //   1. the dialog never mounted (ui.Modal undefined -> React threw), fixed in
+  //      v0.31.6 by every dialog using the uiModal fallback;
+  //   2. even with the dialog alive, a preference must survive the trip through
+  //      the store into an inline style, or it silently does nothing.
+  // This test locks in (2): every appearance field must be consumed by
+  // rowStyleOf and end up in a style object.
+  for (const field of ['color', 'glow', 'weight', 'shadow', 'stroke', 'strokeWidth', 'strokeColor']) {
+    assert.ok(text.includes(field), field + ' is part of the appearance model')
+  }
+
+  const rowStyle = text.slice(text.indexOf('const rowStyleOf = (key) => {'), text.indexOf('const keyOf = (kind, payload) =>'))
+  assert.ok(rowStyle.includes('style.color = color'), 'colour lands in the style')
+  assert.ok(rowStyle.includes('style.fontWeight = weight'), 'weight lands in the style')
+  assert.ok(rowStyle.includes("'0 0 ' + glow + 'px ' + color"), 'glow becomes a textShadow')
+  assert.ok(rowStyle.includes("'1px 1px 2px rgba(0,0,0,.85)'"), 'shadow becomes a textShadow')
+  assert.ok(rowStyle.includes('strokeStyleOf(appearance)'), 'stroke is applied')
+  assert.ok(rowStyle.includes('return Object.keys(style).length > 0 ? style : null'), 'an empty style degrades to null')
+
+  // The per-row entry must override the settings default, field by field.
+  assert.ok(text.includes('const appearanceOf = (key) => mergeAppearance(defaultAppearance, styleEntry(key))'),
+    'row entry merges over the settings default')
+  const merge = text.slice(text.indexOf('const mergeAppearance = (base, entry) => {'), text.indexOf('const parseCssColor'))
+  assert.ok(merge.includes('for (const field of APPEARANCE_FIELDS)'), 'merge walks every field')
+  assert.ok(merge.includes('if (entry[field] !== undefined) merged[field] = entry[field]'),
+    'a defined entry field overrides, an absent one inherits')
+
+  // Both entry points must exist: the row context menu and the settings card.
+  assert.ok(text.includes("id: 'customize'"), 'the row right-click menu offers customization')
+  assert.ok(text.includes('rowStyleOf('), 'rows consume the computed style')
+})
