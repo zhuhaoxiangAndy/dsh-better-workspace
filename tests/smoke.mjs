@@ -1832,3 +1832,31 @@ test('CUMCM26 is a real three-level nested group with its members beneath it (v0
   assert.ok(compress.includes("return { kind: 'folder', path: node.path, segs: [node.name]"),
     'a branching folder keeps its own node')
 })
+
+test('old persisted state cannot white-screen the sidebar, and appearance persists (v0.34.3)', () => {
+  const text = read('src/client.js')
+
+  // The store hydrates by REPLACING state with the persisted whole value, so
+  // init defaults never merge. A snapshot written by an older plugin version is
+  // therefore missing every key added since — and one unguarded dereference
+  // blanks the entire sidebar.
+  assert.ok(text.includes("persist: 'dsh.betterWorkspace.view.v1'"), 'the view store persists')
+  assert.match(text, /persist: 'dsh\.betterWorkspace\.view\.v\d+'/, 'the persist key is versioned so it can evolve')
+
+  const guarded = [
+    'useStore(s => s.sessionGroups) || {}',
+    'useStore(s => s.sessionWatermarks) || {}',
+    'useStore(s => s.hiddenSessionGroups) || {}',
+    'useStore(s => s.pinnedWorkspaceIds) || []',
+    'useStore(s => s.styling) || {}',
+    'useStore(s => s.prefs) || {}',
+  ]
+  for (const g of guarded) assert.ok(text.includes(g), 'guarded read: ' + g)
+
+  // Appearance must reach the persisted store, or a custom look is lost on the
+  // next start — which reads to the user as "the setting does nothing".
+  assert.ok(text.includes("if (actions && typeof actions.setStyling === 'function') actions.setStyling(key, value)"),
+    'setStyling writes through the store action')
+  assert.ok(text.includes('const next = { ...stylingMap }'), 'and maintains a local copy')
+  assert.ok(text.includes('if (value === null) delete next[key]'), 'reset removes the key rather than storing null')
+})
