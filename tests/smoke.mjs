@@ -80,8 +80,8 @@ test('client half registers the expected seats (v0.12.1)', () => {
   assert.doesNotMatch(text, /slots\.inject\('conversation\.hero\.workspace\.directoryFlow'/,
     'the hero hole must stay official')
   // Settings ride BOTH host eras.
-  assert.match(text, /slots\.inject\('settings\.plugin\.item',[\s\S]*?key: 'better-workspace',/)
-  assert.match(text, /slots\.inject\('plugins\.bundle\.config',[\s\S]*?key: 'dsh-better-workspace',/)
+  assert.match(text, /slots\.inject\('settings\.plugin\.item',[\s\S]*?id: 'better-workspace',/)
+  assert.match(text, /slots\.inject\('plugins\.bundle\.config',[\s\S]*?id: 'better-workspace',/)
   assert.match(text, /props\.view === 'page'/)
 })
 
@@ -1666,7 +1666,8 @@ test('never occupy a single-occupancy shell slot (v0.33.3)', () => {
 
   // The history controls belong in the top bar's ACTION LIST.
   assert.match(text, /slots\.inject\('conversation\.session\.header\.actions'/, 'history joins a list slot')
-  assert.ok(text.includes("options: { id: 'better-workspace-history'"), 'the list entry carries an order')
+  assert.ok(text.includes("id: 'better-workspace-history'"), 'the list entry carries a top-level id (host reads e.id)')
+  assert.ok(text.includes('options: { order: 40 }'), 'and an order')
 
   // Every other seat this plugin claims is a list slot too.
   for (const slot of ['settings.section', 'conversation.composer.dock']) {
@@ -1885,4 +1886,40 @@ test('both group tiers share one visual scale (v0.34.4)', () => {
   assert.equal(num(pill, 'font-size'), num(bubble, 'font-size'), 'same font size')
   // And the workspace bubble really does fill the row.
   assert.ok(bubble.includes('flex:1'), 'the workspace bubble fills the row')
+})
+
+test('every LIST-slot registration carries a top-level id (v0.34.6)', () => {
+  const text = read('src/client.js')
+
+  // The host's register() reads `e.id` from the TOP level for list slots:
+  //
+  //   case "list": {
+  //     if (e.id === void 0) throw new Error(`list slot "${e.name}" requires options.id`)
+  //
+  // Putting the value inside `options: { id }` throws, and `guarded` swallowed the
+  // throw, so the seat was silently missing while the plugin reported no error.
+  // That is exactly why the appearance/settings page and the top-bar history
+  // controls never appeared.
+  const LIST_SLOTS = [
+    'conversation.session.header.actions',
+    'settings.section',
+    'settings.plugin.item',
+    'plugins.bundle.config',
+    'conversation.composer.dock',
+  ]
+
+  for (const slot of LIST_SLOTS) {
+    const at = text.indexOf(`slots.inject('${slot}'`)
+    assert.ok(at > 0, slot + ' is registered')
+    // Grab the options object literal that follows the slot name.
+    // Take the slice up to the component argument (the options literal ends there).
+    const endMark = at + 700
+    const body = text.slice(at, endMark)
+    assert.ok(/^\s+id: '/m.test(body), slot + ' passes a top-level id')
+    assert.ok(!/options:\s*\{\s*id:/.test(body), slot + ' must NOT bury the id inside options')
+  }
+
+  // And the guard must not hide a registration failure: it is allowed to catch,
+  // but the message has to reach the console with the slot name.
+  assert.match(text, /register skipped for ' \+ slotKey/, 'a skipped registration names its slot')
 })

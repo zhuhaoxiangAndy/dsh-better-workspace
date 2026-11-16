@@ -11174,9 +11174,26 @@ window.__ModuleLoader__.load({
       // the polished in-app dialog on browse Hosts. The HERO hole stays
       // untouched: the conversation empty-state flow is purely official.
 
-      // One shared store handle: the browser and the settings page must see the
-      // same persisted state (expansion, folder list, prefs, styling).
-      const viewStore = createViewStore()
+      // v0.34.6 ONE HANDLE, ONE SCOPE.
+      //
+      // The host tracks which SCOPE each store handle was mounted under:
+      //
+      //   if (handleScopes.get(store) !== undefined && handleScopes.get(store).scope !== spec.scope)
+      //     throw new Error(`store handle mounted under "${name}" (scope "${scope}") is
+      //                      already mounted under scope "${prev}" — one handle, one scope`)
+      //
+      // Mounting the SAME handle on slots that declare different scopes throws, and
+      // `guarded` swallowed that throw — which is why the sidebar silently stayed
+      // the official one while the plugin reported no error at all.
+      //
+      // Each of these seats therefore gets its own handle. They are all views over
+      // the same persisted key (`dsh.betterWorkspace.view.v1`), so they still agree
+      // on the data; only the handle identity differs.
+      const viewStore = createViewStore()                 // sidebar.workspaces (root)
+      const headerActionsStore = createViewStore()        // conversation.session.header.actions
+      const settingsStore = createViewStore()             // settings.section / settings.plugin.item
+      const bundleStore = createViewStore()               // plugins.bundle.config
+      const composerStore = createViewStore()             // conversation.composer.dock
 
       // Cold-restart title fallback (see the title-cache block). Hydration
       // reads localStorage synchronously here, before the first render, so a
@@ -11268,10 +11285,13 @@ window.__ModuleLoader__.load({
         'conversation.session.header.actions',
         {
           name: 'conversation.session.header.actions',
-          key: 'better-workspace-history',
-          options: { id: 'better-workspace-history', order: 40 },
+          // v0.34.6: a LIST slot reads `e.id` from the TOP level. Putting it in
+          // `options` threw `list slot "…" requires options.id`, which `guarded`
+          // swallowed — so the top-bar history controls silently never appeared.
+          id: 'better-workspace-history',
+          options: { order: 40 },
           locale: NS,
-          store: viewStore,
+          store: headerActionsStore,
         },
         function HistoryControls(props) {
           const navState = useStore ? (useStore((state) => state.navState) || { canBack: false, canForward: false }) : { canBack: false, canForward: false }
@@ -11308,8 +11328,11 @@ window.__ModuleLoader__.load({
           name: 'settings.section',
           key: 'better-workspace',
           locale: NS,
-          store: viewStore,
-          options: { id: 'better-workspace', order: 90, label: 'Better Workspace' },
+          store: settingsStore,
+          // v0.34.6: same fix — the LIST slot needs a top-level id, and this one
+          // is why the whole bws settings page never registered.
+          id: 'better-workspace',
+          options: { order: 90, label: 'Better Workspace' },
         },
         BetterWorkspaceSettings,
       ))
@@ -11318,9 +11341,10 @@ window.__ModuleLoader__.load({
         'settings.plugin.item',
         {
           name: 'settings.plugin.item',
-          key: 'better-workspace',
+          // v0.34.6: LIST slot — needs a top-level id (keyed slots read `key`).
+          id: 'better-workspace',
           locale: NS,
-          store: viewStore,
+          store: settingsStore,
         },
         BetterWorkspacePluginCard,
       ))
@@ -11334,9 +11358,13 @@ window.__ModuleLoader__.load({
         'plugins.bundle.config',
         {
           name: 'plugins.bundle.config',
+          // v0.34.6: this one is a KEYED slot — the host reads `e.key`
+          // ("keyed slot ... requires options.key"). Supplying both is harmless
+          // and keeps it working if the host ever re-declares it as a list.
+          id: 'better-workspace',
           key: 'dsh-better-workspace',
           locale: NS,
-          store: viewStore,
+          store: bundleStore,
         },
         BetterWorkspacePluginCard,
       ))
