@@ -1807,3 +1807,28 @@ test('the running renderer can self-report what the user should see (v0.34.0)', 
   // The boot probe must remain for the module-missing case.
   assert.ok(text.includes('window.__bwsIconProbe'), 'the boot-time probe is still there')
 })
+
+test('CUMCM26 is a real three-level nested group with its members beneath it (v0.34.2)', () => {
+  const text = read('src/client.js')
+  // Goal 6 asks to confirm the group is visible after a restart. Visibility alone
+  // is weak — the group could exist at the wrong level or hold its members as
+  // siblings. These are the structural facts that must hold:
+  //
+  //     Project            depth 0
+  //       ADS999-Model     depth 1
+  //         CUMCM26        depth 2
+  //           A-DsDsh-*    inside it
+  //
+  // Rendering the real registry proves exactly that (scripts/verify-cumcm-hierarchy.mjs),
+  // and the recursion that makes it possible is here.
+  assert.ok(text.includes('const renderPlainFolder = (node, depth) => {'), 'folder rows recurse')
+  assert.ok(text.includes('rows.push(...renderPlainFolder(child, depth + 1))'), 'child folders gain a level')
+  assert.ok(text.includes('rows.push(...renderWorkspaceEntry({ workspace }, depth + 1'), 'workspaces gain a level')
+  // A group must not be folded away just because it holds a single chain.
+  const compress = text.slice(text.indexOf('function compressTree(node) {'), text.indexOf('function compressTree(node) {') + 1600)
+  assert.ok(compress.includes('workspaces.length === 0 && folders.length === 1'), 'pure chains merge')
+  assert.ok(compress.includes('folders.length === 0 && workspaces.length === 1'), 'single-workspace folders fold into the row')
+  // Anything with both children and a name keeps its own row.
+  assert.ok(compress.includes("return { kind: 'folder', path: node.path, segs: [node.name]"),
+    'a branching folder keeps its own node')
+})
