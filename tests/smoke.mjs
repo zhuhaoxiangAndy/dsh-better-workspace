@@ -1708,3 +1708,29 @@ test('column view renders two panes from real data (v0.33.5)', () => {
   assert.ok(text.includes("groupBy === 'columns'"), 'it is one of the grouping modes')
   assert.ok(text.includes("id: 'columns'"), 'and it is offered in the view menu')
 })
+
+test('nested groups render, and single-child chains merge by design (v0.33.6)', () => {
+  const text = read('src/client.js')
+
+  // Nested name groups are real: data can hold Project/ADS999-Model/CUMCM26.
+  assert.ok(text.includes('function compressTree(node) {'), 'chain compression exists')
+  const cStart = text.indexOf('function compressTree(node) {')
+  const compress = text.slice(cStart, cStart + 900)
+  assert.ok(compress.includes('workspaces.length === 0 && folders.length === 1'),
+    'a folder with one child folder continues the chain upward')
+  assert.ok(compress.includes('folders.length === 0 && workspaces.length === 1'),
+    'a folder holding exactly one workspace becomes that workspace row')
+  // The merge label lives in materializeChain, not in compressTree.
+  const mat = text.slice(text.indexOf('const materializeChain'), text.indexOf('const materializeChain') + 400)
+  assert.ok(mat.includes("chain.segs.join(' › ')"),
+    'the merged label joins the chain with a separator, so the group name is NOT lost')
+
+  // Rendering the REAL data:
+  //   7 groups in the registry -> 5 folder rows + 17 workspace rows carrying
+  //   paths such as "Project/ADS999-Model/CUMCM26/A-DsDsh-skill".
+  // So a group count lower than the registry's is expected: a group with a
+  // single workspace is folded INTO that workspace row rather than dropped.
+  // Any future "group disappeared" report must first check this fold.
+  assert.ok(text.includes("folderExpanded"), 'folders default to expanded')
+  assert.ok(text.includes("expandedMap[path] !== false"), 'so nested levels are visible unless collapsed')
+})

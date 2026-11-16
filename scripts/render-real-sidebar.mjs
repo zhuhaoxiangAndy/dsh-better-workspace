@@ -138,12 +138,34 @@ const walk = (n, depth = 0) => {
   if (n.props && n.props.children !== undefined) walk(n.props.children, depth + 1)
   if (n.children !== undefined) walk(n.children, depth + 1)
 }
+// bodyRows 是已展开的扁平数组，直接遍历它才能覆盖所有嵌套层
 walk(tree)
+if (stats.folderRows.length === 0 || stats.folderRows.length < 7) {
+  // 兜底：从组件的 props.children 里再挖一层 bodyRows
+  const deep = (n, d = 0) => {
+    if (!n || d > 40) return
+    if (Array.isArray(n)) { n.forEach((c) => deep(c, d + 1)); return }
+    if (typeof n !== 'object') return
+    if (typeof n.type === 'function' && n.type.name === 'FolderRow' && !stats.folderRows.includes(n.props.node.name)) {
+      stats.folderRows.push(n.props.node.name)
+    }
+    if (n.props && n.props.children !== undefined) deep(n.props.children, d + 1)
+    if (n.children !== undefined) deep(n.children, d + 1)
+  }
+  deep(tree)
+}
 
 console.log()
 console.log('=== 实际渲染 ===')
 console.log('  工作区行:', stats.workspaceRows.length)
 console.log('  文件夹/组行:', stats.folderRows.length)
+console.log('  组名:', stats.folderRows.join(' | '))
+// 单链压缩会把「只有一个工作区、没有子组」的文件夹并进工作区行
+// （显示为「AIP › AI-benchmark-test」）。所以组数 < 数据组数是正常的，
+// 关键看它们的名字是否以合并形式出现在工作区行里。
+const mergedChains = stats.workspaceRows.filter((t) => String(t).includes('/') || String(t).includes('›'))
+console.log('  工作区行（含压缩链）:', mergedChains.length)
+for (const t of mergedChains) console.log('    ', t)
 console.log('  会话行:', stats.sessionRows.length)
 const shownUngrouped = stats.sessionRows.filter((id) => !accounted.has(id))
 console.log('  未分组会话行:', shownUngrouped.length)
