@@ -6198,7 +6198,14 @@ window.__ModuleLoader__.load({
         // <span chevron>); this plugin had them reversed and folded the pulse
         // into the same slot, so a row showed at most one of the two.
         E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
+        // v0.32.0 MUTUALLY EXCLUSIVE (user: "有了文件夹图标就不要三角，只留一个"):
+        // a folder glyph already communicates the row kind AND rotates to show
+        // expansion, so a second triangle beside it is redundant clutter.
+        // The triangle is the FALLBACK, drawn only when no folder glyph rendered
+        // (icon mode 'none', or the primitive is unavailable).
+        iconEl
+          ? null
+          : E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         // A row that already carries a custom label glow breathes in sync.
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
         total > 0 ? E('span', { className: 'bw-row-count' }, String(total)) : null,
@@ -6223,7 +6230,11 @@ window.__ModuleLoader__.load({
         // <span chevron>); this plugin had them reversed and folded the pulse
         // into the same slot, so a row showed at most one of the two.
         E('span', { className: cls('bw-row-icon', 'bw-folder-slot') }, iconChild),
-        E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
+        // v0.32.0 MUTUALLY EXCLUSIVE: folder glyph OR triangle, never both
+        // (user: 有了文件夹图标就不要三角，只留一个). Same rule as FolderRow.
+        iconEl
+          ? null
+          : E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         E('span', {
           className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'),
           // Official parity: the official browser's hover card carries the disk
@@ -7768,21 +7779,57 @@ window.__ModuleLoader__.load({
           return LABELS.includes(label.trim())
         }
 
-        // 1) The shell's sidebar-foot trigger. Scope the search to the foot
-        //    region so a plugin's own "Settings" button cannot be clicked by
-        //    mistake (that would recurse into this same handler).
         let clicked = false
+
+        // 1) The shell's own Settings trigger, addressed by its stable CSS-module
+        //    class. `SettingsRoot` renders it as `<button class="<hash>_trigger">`
+        //    and its onClick calls the shell's `actions.open()` directly — no
+        //    keyboard involved. This is the reliable path.
+        //
+        //    NOTE: on hosts where `ui-settings-account` occupies the
+        //    `settings.launcher` (single) hole, this trigger is NOT rendered at
+        //    all — the account menu replaces it. Path 2 below covers that case.
         try {
-          const foot = document.querySelector('[class*="settingsArea"]')
-          const scope = foot || document
-          const btns = scope.querySelectorAll('button')
-          for (const b of btns) {
-            if (b.closest && b.closest('.bw-root')) continue   // skip our own chrome
-            if (looksLikeSettings(b)) { b.click(); clicked = true; break }
+          const shellTrigger = document.querySelector('button[class*="_trigger"]:not(.bw-icon-btn)')
+          const cands = document.querySelectorAll('button[class*="_trigger"]')
+          for (const b of cands) {
+            if (b.closest && b.closest('.bw-root')) continue
+            const cls = String(b.className || '')
+            // shell trigger rows use a `<hash>_trigger` module class
+            if (/_trigger\b/.test(cls) || looksLikeSettings(b)) {
+              b.click(); clicked = true; break
+            }
           }
         } catch { /* keep trying */ }
 
-        // 2) Fallback: any Settings-labelled button outside our own chrome.
+        // 2) The account menu path. When `ui-settings-account` owns the launcher
+        //    hole, the shipped Settings entry lives INSIDE that menu as its first
+        //    item. Open the menu, then click the "Settings" item.
+        if (!clicked) {
+          try {
+            const LAB = LABELS
+            // open the account menu
+            const menus = document.querySelectorAll('button[class*="trigger"]')
+            for (const m of menus) {
+              if (m.closest && m.closest('.bw-root')) continue
+              const lab = (m.getAttribute('aria-label') || m.getAttribute('title') || '')
+              if (m.getAttribute('aria-haspopup') === 'menu' || /账号|account|more|更多/i.test(lab)) {
+                m.click()
+                break
+              }
+            }
+            // then click the Settings item that appears in the portal
+            const items = document.querySelectorAll('[role="menuitem"], [role="menu"] button, [role="menu"] [role="menuitem"]')
+            for (const it of items) {
+              const txt = (it.textContent || '').trim()
+              if (LAB.some((l) => txt === l || txt.indexOf(l) === 0)) {
+                it.click(); clicked = true; break
+              }
+            }
+          } catch { /* keep trying */ }
+        }
+
+        // 3) Any Settings-labelled button outside our own chrome.
         if (!clicked) {
           try {
             const btns = document.querySelectorAll('button')
@@ -7814,13 +7861,6 @@ window.__ModuleLoader__.load({
         if (page === 'plugins') {
           try { window.__dshOpenSettingsPage = 'plugins' } catch { }
         }
-      }
-
-    const labelsLauncher = () => {
-        return '插件'
-      }
-    const labelsSettings = () => {
-        return '设置'
       }
 
     function BetterBrowser(props) {
@@ -10657,23 +10697,11 @@ window.__ModuleLoader__.load({
         StyleNode(),
         E('div', { className: 'bw-header' },
           E('div', { className: 'bw-header-title' }, t('title')),
-          // v0.30.2 Our own Settings / Plugins entries. They live in OUR header,
-          // so they cannot displace a shell seat (taking settings.launcher is
-          // what removed the shipped Settings button at v0.28.0).
-          E('button', {
-            type: 'button',
-            className: 'bw-icon-btn',
-            'aria-label': labelsSettings(),
-            title: labelsSettings(),
-            onClick: () => openSettingsPage('settings'),
-          }, icon('IconSettingsOutlineRegular', 16)),
-          E('button', {
-            type: 'button',
-            className: 'bw-icon-btn',
-            'aria-label': labelsLauncher(),
-            title: labelsLauncher(),
-            onClick: () => openSettingsPage('plugins'),
-          }, icon('IconCordisPluginOutlineRegular', 16)),
+          // v0.32.0: Settings and Plugins were REMOVED from our header. The user
+          // was explicit: "设置不是原生位置，插件应该在设置里面". They belong in
+          // the shell's Settings surface, which is where bws already registers
+          // its page (settings.section). Keeping duplicate icon buttons in the
+          // sidebar made the placements look like they were ours to invent.
           // Group discoverability (v0.15): a visible "New group" entry point
           // that doubles as the row-drop zone. Clicking opens the picker
           // shape; dropping a row onto it locks that row in the same dialog.
@@ -10695,26 +10723,11 @@ window.__ModuleLoader__.load({
             onKeyDown: (e) => { if (e.key === 'Escape') { setQuery(''); setSearchOpen(false) } },
             onBlur: () => { if (query === '') setSearchOpen(false) },
           }) : null,
-          // ---- back / forward (v0.23.0) --------------------------------
-          // Browser-like session history the host does not provide. Disabled
-          // states are real `disabled` attributes so they read as unavailable
-          // instead of dead.
-          E('button', {
-            type: 'button',
-            className: 'bw-icon-btn',
-            disabled: !navState.canBack,
-            'aria-label': t('nav.back'),
-            title: t('nav.back'),
-            onClick: (e) => { e.stopPropagation(); if (navState.canBack) goNav(-1) },
-          }, icon('IconChevronLeftOutlineRegular', 16)),
-          E('button', {
-            type: 'button',
-            className: 'bw-icon-btn',
-            disabled: !navState.canForward,
-            'aria-label': t('nav.forward'),
-            title: t('nav.forward'),
-            onClick: (e) => { e.stopPropagation(); if (navState.canForward) goNav(1) },
-          }, icon('IconChevronRightOutlineRegular', 16)),
+          // v0.32.0: back/forward REMOVED from the sidebar header. The user was
+          // explicit that they belong in the TOP bar, not the sidebar. They are
+          // published to the top-bar slot family below (see the
+          // `topbar`/`shell.topbar` registration), so the same history controls
+          // appear where the browser-like chrome lives.
           E(ViewOptionsMenu, {
             groupBy,
             orderBy,
@@ -11078,6 +11091,51 @@ window.__ModuleLoader__.load({
        * settings through the shell's own state, instead of playing with the
        * launcher hole.
        */
+      // v0.32.0 TOP-BAR HISTORY CONTROLS.
+      // The user was explicit: back/forward must NOT live in the sidebar, they
+      // belong in the top bar (image 2). `shell.leading` is the frame's
+      // window-chrome seat — the same one the official sidebar plugin uses for
+      // its open/new controls — so we mount the history buttons there.
+      //
+      // The component reads the SAME navState the sidebar used to own, so the
+      // history itself is unchanged; only its placement moved.
+      slots.inject('shell.leading', guarded(
+        'shell.leading',
+        {
+          name: 'shell.leading',
+          key: 'better-workspace-history',
+          locale: NS,
+          store: viewStore,
+        },
+        function HistoryControls(props) {
+          const navState = useStore ? (useStore((state) => state.navState) || { canBack: false, canForward: false }) : { canBack: false, canForward: false }
+          const canBack = navState.canBack === true
+          const canForward = navState.canForward === true
+          const go = (delta) => {
+            if (typeof props.goNav === 'function') { props.goNav(delta); return }
+            if (typeof actions.goNav === 'function') actions.goNav(delta)
+          }
+          return E('div', { className: 'bw-topbar-history' },
+            E('button', {
+              type: 'button',
+              className: 'bw-icon-btn',
+              disabled: !canBack,
+              'aria-label': 'back',
+              title: 'back',
+              onClick: (event) => { event.stopPropagation(); if (canBack) go(-1) },
+            }, icon('IconChevronLeftOutlineRegular', 16)),
+            E('button', {
+              type: 'button',
+              className: 'bw-icon-btn',
+              disabled: !canForward,
+              'aria-label': 'forward',
+              title: 'forward',
+              onClick: (event) => { event.stopPropagation(); if (canForward) go(1) },
+            }, icon('IconChevronRightOutlineRegular', 16)),
+          )
+        },
+      ))
+
       slots.inject('settings.section', guarded(
         'settings.section',
         {

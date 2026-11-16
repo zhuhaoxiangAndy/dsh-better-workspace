@@ -1281,22 +1281,22 @@ test('settings entries live in OUR header and never occupy a shell single-slot',
   assert.doesNotMatch(text, /slots\.inject\('settings\.launcher'/, 'never take the launcher single-slot')
   assert.doesNotMatch(text, /slots\.inject\('settings\.trigger'/, 'never take the trigger single-slot')
 
-  // Instead: our own buttons in our own header.
-  assert.match(text, /const labelsSettings = \(\) => \{/, 'a settings label helper exists')
-  assert.match(text, /const openSettingsPage = \(page\) => \{/, 'a settings opener exists')
-  assert.match(text, /'aria-label': labelsSettings\(\)/, 'the header renders a Settings button')
-  assert.match(text, /'aria-label': labelsLauncher\(\)/, 'the header renders a Plugins button')
+  // v0.32.0: Settings and Plugins must NOT be duplicated in our sidebar header.
+  // The user was explicit — "设置不是原生位置，插件应该在设置里面". bws already owns
+  // a page inside the shell's Settings surface (settings.section); a second icon
+  // button in the sidebar invented a placement the shell already owns.
+  assert.match(text, /const openSettingsPage = \(page\) => \{/, 'a settings opener exists (used by settings.section)')
+  assert.doesNotMatch(text, /'aria-label': labelsSettings\(\)/, 'no Settings button in our sidebar header')
+  assert.doesNotMatch(text, /'aria-label': labelsLauncher\(\)/, 'no Plugins button in our sidebar header')
+  assert.match(text, /slots\.inject\('settings\.section'/, 'bws lives inside the shell Settings surface')
 
   // The opener dispatches the shell's own settings.open shortcut (Ctrl+,).
   assert.match(text, /key: ','/, 'it dispatches the comma key')
   assert.match(text, /ctrlKey: true/, 'with the primary modifier')
   assert.match(text, /document\.dispatchEvent\(ev\)/, 'on document, where the shell listens')
 
-  // It must be defined BEFORE the component that uses it, or painting throws
-  // ReferenceError (this actually happened and the paint test caught it).
-  const defAt = text.indexOf('const labelsSettings = () => {')
-  const useAt = text.indexOf("'aria-label': labelsSettings()")
-  assert.ok(defAt > 0 && useAt > 0 && defAt < useAt, 'the helper is defined before its use')
+  // v0.32.0: the header buttons are gone, so their label helpers are gone too.
+  assert.ok(!text.includes('labelsSettings'), 'no dead label helper remains')
 
   // And a settings page can be contributed safely: settings.section is a list.
   assert.match(text, /slots\.inject\('settings\.section'/, 'a settings page is registered on the LIST slot')
