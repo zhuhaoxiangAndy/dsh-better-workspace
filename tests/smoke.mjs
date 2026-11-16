@@ -1784,3 +1784,26 @@ test('workspace rows use a folder glyph, and a readable symbol when icons are ab
   assert.ok(text.includes("'IconFolderCloseRegular': '▸'"), 'folder-close falls back to a triangle-ish symbol')
   assert.ok(text.includes("'IconFolderOpenRegular': '▾'"), 'folder-open falls back to a down symbol')
 })
+
+test('the running renderer can self-report what the user should see (v0.34.0)', () => {
+  const text = read('src/client.js')
+  // Every fix in this round can only be confirmed AFTER a restart, and "看屏幕"
+  // is a memory test. The probe turns it into a re-runnable answer.
+  assert.ok(text.includes('window.__bwsSelfCheck'), 'the self-check is exposed')
+  assert.ok(text.includes('const selfCheck = () => {'), 'and implemented')
+
+  const body = text.slice(text.indexOf('const selfCheck = () => {'), text.indexOf('window.__bwsSelfCheck = selfCheck'))
+  // It must report all four things the goal asks about.
+  for (const key of ['primitives', 'groups', 'rows', 'pinMarks']) {
+    assert.ok(body.includes(key + ':'), 'reports ' + key)
+  }
+  assert.ok(body.includes('.bw-group-pill'), 'counts session pills')
+  assert.ok(body.includes('.bw-group-mini'), 'counts mini chips')
+  assert.ok(body.includes('.bw-folder-bubble'), 'counts workspace bubbles')
+  assert.ok(body.includes('.bw-sgroup-member-rail'), 'counts tree rails')
+  assert.ok(body.includes('.bw-folder-slot'), 'counts folder glyph slots')
+  // The stray-triangle regression must be observable from outside.
+  assert.ok(body.includes('.bw-sgroup-row .bw-chevron'), 'reports stray triangles in group rows')
+  // The boot probe must remain for the module-missing case.
+  assert.ok(text.includes('window.__bwsIconProbe'), 'the boot-time probe is still there')
+})

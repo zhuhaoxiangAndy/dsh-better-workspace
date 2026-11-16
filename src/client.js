@@ -4124,6 +4124,66 @@ window.__ModuleLoader__.load({
     // Expose the probe on the page so it can be read without devtools.
     try { if (typeof window !== 'undefined') window.__bwsIconProbe = primitivesProbe } catch { }
 
+    /**
+     * v0.34.0 RUNTIME SELF-CHECK.
+     *
+     * Why this exists: every fix in this round (icons, pills, rails, appearance,
+     * settings placement) can only be CONFIRMED after a restart, and "look at the
+     * screen and tell me" is not a check — it is a memory test. This probe answers
+     * the same questions from inside the running renderer, so a restart can be
+     * verified with one command instead of an eyeball survey.
+     *
+     * Exposed as window.__bwsSelfCheck() and left in the shipped build on purpose:
+     * an ENABLED diagnostic is worth more than a documented one.
+     */
+    const selfCheck = () => {
+      const q = (sel) => { try { return document.querySelectorAll(sel) } catch { return [] } }
+      const icons = (() => {
+        const names = new Set()
+        const harvest = (obj) => {
+          if (!obj || typeof obj !== 'object') return
+          for (const k of Object.keys(obj)) if (/^Icon/.test(k) && typeof obj[k] === 'function') names.add(k)
+        }
+        harvest(ui)
+        if (ui && ui.icons) harvest(ui.icons)
+        if (ui && ui.default) { harvest(ui.default); if (ui.default.icons) harvest(ui.default.icons) }
+        return [...names].sort()
+      })()
+      const missing = [...iconMisses]
+      return {
+        version: '0.34.0',
+        primitives: {
+          received: primitivesPowerOn(),
+          totalKeys: primitivesProbe.totalKeys,
+          iconCount: icons.length,
+          missing,
+        },
+        // Goal 1: both group kinds must be pills/bubbles and carry the rail.
+        groups: {
+          sessionPills: q('.bw-group-pill').length,
+          sessionMini: q('.bw-group-mini').length,
+          workspaceBubbles: q('.bw-folder-bubble').length,
+          rails: q('.bw-sgroup-member-rail').length,
+          strayChevronsInGroups: q('.bw-sgroup-row .bw-chevron').length,
+        },
+        // Goal 4: workspace rows must show a folder glyph, not a triangle.
+        rows: {
+          folderSlots: q('.bw-folder-slot').length,
+          glyphFallbacks: q('.bw-icon-glyph').length,
+          folderRows: q('.bw-folder-bubble').length,
+        },
+        // Goal 2: the appearance dialog must be mountable.
+        appearance: { customDialogOpen: q('.bw-appearance').length },
+        // Goal 3/5: visible affordances.
+        pinMarks: q('.bw-pin-mark').length,
+        columns: q('.bw-columns').length,
+        headerHasSettingsButton: q('.bw-header [aria-label="设置"], .bw-header [aria-label="Settings"]').length,
+      }
+    }
+    // primitivesProbe.received is a boot-time snapshot; this re-reads it now.
+    const primitivesPowerOn = () => !!(ui && Object.keys(ui).length > 0)
+    try { if (typeof window !== 'undefined') window.__bwsSelfCheck = selfCheck } catch { }
+
     const iconDiagnostics = () => ({
       available: iconAvailableNames ? iconAvailableNames.length : -1,
       missing: [...iconMisses],
