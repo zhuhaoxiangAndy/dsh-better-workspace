@@ -5449,15 +5449,21 @@ window.__ModuleLoader__.load({
     // card. The official ActivityPill / UsagePill (session stats, token usage,
     // context usage) live in the same dock, so the hub must not occupy their
     // space or push them around.
-    '.bw-hub-dock{position:relative;display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%}',
-    '.bw-hub-toggle{flex:none;display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:11px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);font-size:12px;line-height:20px;cursor:pointer;font-family:inherit;transition:background-color .1s ease,color .1s ease}',
+    // v0.39.0 the dock now sits INSIDE the input row, so it must be an inline,
+    // zero-width-when-idle icon button — never a full-width strip.
+    '.bw-hub-dock{position:relative;display:inline-flex;align-items:center;flex:none}',
+    // Compact icon button sized like the "+" it sits beside; the label is a
+    // tooltip only, so the input row keeps its height and spacing.
+    '.bw-hub-toggle{flex:none;display:inline-grid;place-items:center;width:26px;height:26px;padding:0;border-radius:8px;border:none;background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);cursor:pointer;font-family:inherit;position:relative;transition:background-color .1s ease,color .1s ease}',
     '.bw-hub-toggle:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-hub-toggle-on{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
     '.bw-hub-toggle-hot{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-brand-primary,#5b8def)}',
-    '.bw-hub-toggle-count{flex:none;min-width:14px;height:14px;padding:0 3px;border-radius:7px;background:var(--dsw-alias-brand-primary,#5b8def);color:#fff;font-size:10px;line-height:14px;text-align:center}',
+    '.bw-hub-toggle-text{display:none}',
+    // Count badge rides the icon's corner, like a notification dot.
+    '.bw-hub-toggle-count{position:absolute;top:1px;right:0;min-width:13px;height:13px;padding:0 3px;border-radius:7px;background:var(--dsw-alias-brand-primary,#5b8def);color:#fff;font-size:9px;line-height:13px;text-align:center;pointer-events:none}',
     // The popover opens UPWARD from the dock and floats over the conversation,
     // so it takes no layout height and cannot displace the pills.
-    '.bw-hub-pop{position:absolute;left:0;bottom:calc(100% + 8px);z-index:30;width:min(560px,calc(100vw - 64px));max-height:min(52vh,520px);margin:0;box-shadow:0 8px 28px rgba(0,0,0,.28)}',
+    '.bw-hub-pop{position:absolute;left:0;bottom:calc(100% + 10px);z-index:30;width:min(520px,calc(100vw - 80px));max-height:min(52vh,500px);margin:0;box-shadow:0 8px 28px rgba(0,0,0,.28)}',
     '.bw-hub-list{display:flex;flex-direction:column;gap:6px}',
     '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
     '.bw-hub-dirs-label{font-size:12px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
@@ -11930,13 +11936,26 @@ window.__ModuleLoader__.load({
       //
       // The panel still returns null when the hub is closed, so a closed hub
       // contributes zero height.
-      slots.inject('conversation.composer.dock', guarded(
-        'conversation.composer.dock',
+      // v0.39.0 THE BUTTON MOVES INTO THE INPUT ROW.
+      //
+      // v0.37.0 put the chip in `conversation.composer.dock` — the strip BELOW the
+      // input box, which is exactly where the official ActivityPill / UsagePill
+      // (session stats, token usage, context usage) live. Even as a small chip it
+      // still shared that row, so it could nudge or crowd them. The user pointed at
+      // the two circled spots: one LEFT of "+", one RIGHT of the permission picker —
+      // i.e. the input row itself.
+      //
+      // `conversation.input.left` is a LIST hole inside that row, so adding our
+      // control there cannot displace anything; the official pills keep their row
+      // untouched.
+      slots.inject('conversation.input.left', guarded(
+        'conversation.input.left',
         {
-          name: 'conversation.composer.dock',
+          name: 'conversation.input.left',
           id: 'interaction-hub',
           order: 10,
           locale: NS,
+          inject: browserInjected,
         },
         InteractionComposerPanel,
       ))

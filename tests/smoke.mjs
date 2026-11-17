@@ -951,19 +951,21 @@ test('containment follows the title, folders drag, chains show a visual separato
   assert.doesNotMatch(text, /const sameDisk = source\.disk/, 'disk-layer gating removed from drop commits')
 })
 
-test('interaction hub renders in the additive composer dock (v0.24.0)', () => {
+test('interaction hub renders in the input row, not the pill dock (v0.39.0)', () => {
   const text = read('src/client.js')
-  assert.match(text, /slots\.inject\('conversation\.composer\.dock'/, 'registers into the additive dock list')
+  assert.match(text, /slots\.inject\('conversation\.input\.left'/, 'registers into the input-row list')
+  assert.doesNotMatch(text, /slots\.inject\('conversation\.composer\.dock'/, 'and NOT into the pill dock')
   assert.match(text, /function InteractionComposerPanel/, 'composer panel component exists')
   assert.doesNotMatch(text, /InteractionHubModal/, 'the centered-modal variant is gone')
   assert.doesNotMatch(text, /bw-hub-panel/, 'no hand-rolled absolute panel')
   assert.match(text, /useHubOpen/, 'sidebar trigger and composer panel share one open flag')
   assert.match(text, /bw-hub-card\{[^}]*border-radius:16px/, 'card follows the native approval shape')
-  // v0.24.0: an ADDITIVE strip must ride the LIST hole `composer.dock`.
+  // v0.39.0: the strip rides `conversation.input.left` — INSIDE the input row,
+  // beside the "+" — because the dock below holds the official pills.
   // v0.23 wrongly took `conversation.composer`, a SINGLE-occupancy hole whose
   // first non-null select OWNS the composer area — a permanently non-null select
   // there evicted the shipped composer and the user's input box disappeared.
-  assert.match(text, /slots\.inject\('conversation\.composer\.dock'/, 'hub rides the additive dock list')
+  assert.match(text, /slots\.inject\('conversation\.input\.left'/, 'hub rides the input-row list')
   assert.doesNotMatch(text, /slots\.inject\('conversation\.composer',/, 'must never take the single-occupancy composer hole')
   assert.doesNotMatch(text, /hubSeat/, 'the single-hole select sentinel is gone')
   assert.doesNotMatch(text, /pendingInteraction === undefined \? null : pendingInteraction/,
@@ -1670,7 +1672,7 @@ test('never occupy a single-occupancy shell slot (v0.33.3)', () => {
   assert.ok(text.includes('options: { order: 40 }'), 'and an order')
 
   // Every other seat this plugin claims is a list slot too.
-  for (const slot of ['settings.section', 'conversation.composer.dock']) {
+  for (const slot of ['settings.section', 'conversation.input.left']) {
     assert.ok(text.includes(`slots.inject('${slot}'`), slot + ' is claimed')
   }
 })
@@ -1905,7 +1907,7 @@ test('every LIST-slot registration carries a top-level id (v0.34.6)', () => {
     'settings.section',
     'settings.plugin.item',
     'plugins.bundle.config',
-    'conversation.composer.dock',
+    'conversation.input.left',
   ]
 
   for (const slot of LIST_SLOTS) {
@@ -2113,4 +2115,30 @@ test('collapsing the interaction hub leaves a way back, and it never eats the co
   // A waiting prompt must be visible on the collapsed chip itself.
   assert.ok(text.includes('bw-hub-toggle-count'), 'the chip shows a count')
   assert.ok(text.includes('bw-hub-toggle-hot'), 'and highlights when something waits')
+})
+
+test('the hub button lives in the input row and never touches the pill dock (v0.39.0)', () => {
+  const text = read('src/client.js')
+
+  // The user circled two spots: one LEFT of "+", one RIGHT of the permission
+  // picker. Both are on the INPUT ROW. The previous attempt put the chip in
+  // `conversation.composer.dock` — the strip BELOW the box — which is where the
+  // official ActivityPill / UsagePill live, so even a small chip shared their row.
+  assert.match(text, /slots\.inject\('conversation\.input\.left'/, 'the hub registers inside the input row')
+  assert.doesNotMatch(text, /slots\.inject\('conversation\.composer\.dock'/, 'it must not register in the pill dock')
+
+  // And it must be an inline icon button, sized like the "+" beside it, not a
+  // full-width strip: zero layout height, no text label, count on a corner badge.
+  const css = text.slice(text.indexOf("'.bw-hub-toggle{"), text.indexOf("'.bw-hub-toggle{") + 400)
+  assert.ok(css.includes('width:26px'), 'sized like the adjacent control')
+  assert.ok(css.includes('position:relative'), 'positioned for its count badge')
+  assert.ok(text.includes('.bw-hub-toggle-text{display:none}'), 'no text label inside the row')
+  const dockCss = text.slice(text.indexOf("'.bw-hub-dock{"), text.indexOf("'.bw-hub-dock{") + 200)
+  assert.ok(dockCss.includes('inline-flex'), 'the dock is inline, not a full-width strip')
+
+  // The popover still opens upward and stays capped so it cannot cover the pills.
+  const pop = text.slice(text.indexOf("'.bw-hub-pop{"), text.indexOf("'.bw-hub-pop{") + 400)
+  assert.ok(pop.includes('position:absolute'), 'panel is an overlay')
+  assert.ok(pop.includes('bottom:calc(100%'), 'opens upward from the input row')
+  assert.ok(pop.includes('width:min('), 'width is capped')
 })
