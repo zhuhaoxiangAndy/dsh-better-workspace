@@ -5445,6 +5445,19 @@ window.__ModuleLoader__.load({
     // The hub frame itself is deliberately wider than the composer: the gutters
     // need room. 100% + 2*gutter keeps the bubble centred at composer width.
     '.bw-hub-inline,.bw-hub-card{--bw-hub-bubble-w:100%;width:min(100%,var(--bw-hub-max-w,720px))}',
+    // v0.37.0 the composer-dock dock: a chip plus a POPOVER, never a full-width
+    // card. The official ActivityPill / UsagePill (session stats, token usage,
+    // context usage) live in the same dock, so the hub must not occupy their
+    // space or push them around.
+    '.bw-hub-dock{position:relative;display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%}',
+    '.bw-hub-toggle{flex:none;display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:11px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#9a9a9a);font-size:12px;line-height:20px;cursor:pointer;font-family:inherit;transition:background-color .1s ease,color .1s ease}',
+    '.bw-hub-toggle:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-toggle-on{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
+    '.bw-hub-toggle-hot{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-brand-primary,#5b8def)}',
+    '.bw-hub-toggle-count{flex:none;min-width:14px;height:14px;padding:0 3px;border-radius:7px;background:var(--dsw-alias-brand-primary,#5b8def);color:#fff;font-size:10px;line-height:14px;text-align:center}',
+    // The popover opens UPWARD from the dock and floats over the conversation,
+    // so it takes no layout height and cannot displace the pills.
+    '.bw-hub-pop{position:absolute;left:0;bottom:calc(100% + 8px);z-index:30;width:min(560px,calc(100vw - 64px));max-height:min(52vh,520px);margin:0;box-shadow:0 8px 28px rgba(0,0,0,.28)}',
     '.bw-hub-list{display:flex;flex-direction:column;gap:6px}',
     '.bw-hub-dirs{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1,rgba(255,255,255,.10));border-radius:var(--dsw-radius-sm,8px);background:var(--dsw-alias-bg-layer-2,rgba(255,255,255,.04))}',
     '.bw-hub-dirs-label{font-size:12px;line-height:16px;color:var(--dsw-alias-label-secondary,#9a9a9a)}',
@@ -5465,6 +5478,7 @@ window.__ModuleLoader__.load({
     // flow, so it drops the elevation (nothing is layered over the window) and
     // tightens spacing to survive a narrow rail.
     '.bw-hub-inline{margin:6px 8px 8px;padding:10px 10px;border-radius:12px;box-shadow:none}',
+    '.bw-hub-inline-collapsed{margin:6px 8px 2px}',
     '.bw-hub-inline .bw-hub-list{max-height:min(38vh,340px);gap:8px}',
     '.bw-hub-inline .bw-hub-item{padding:8px 9px;border-radius:var(--dsw-radius-sm,8px)}',
     '.bw-hub-inline .bw-hub-actions{gap:6px}',
@@ -8208,11 +8222,29 @@ window.__ModuleLoader__.load({
       const rows = collectInteractions(props.uiStatus, props.list, props.items)
       // v0.36.0: pop up by itself when something is waiting (any workspace).
       React.useEffect(() => { hubConsiderAutoShow(rows) }, [rows.map((r) => r.key).join('|')])
-      if (!openFlag) return null
       const t = props.t
       // Closing latches the CURRENT interaction set so it stays closed until a new
       // prompt arrives — otherwise the auto-pop would re-open instantly.
       const close = () => hubDismiss(rows)
+      // v0.37.0 same fix as the composer dock: collapsing must leave a way back.
+      // A collapsed hub renders a compact bar instead of nothing.
+      if (!openFlag) {
+        return E('div', { className: 'bw-hub-inline-collapsed' },
+          E('button', {
+            type: 'button',
+            className: cls('bw-hub-toggle', rows.length > 0 && 'bw-hub-toggle-hot'),
+            'aria-expanded': 'false',
+            'aria-label': t('hub.title'),
+            title: t('hub.title'),
+            onClick: () => setHubOpen(true),
+          },
+            icon('IconQuestionOutlineRegular', 14),
+            E('span', { className: 'bw-hub-toggle-text' }, t('hub.title')),
+            rows.length > 0 ? E('span', { className: 'bw-hub-toggle-count' }, String(rows.length)) : null,
+          ),
+          StyleNode(),
+        )
+      }
       return E('div', { className: 'bw-hub-card bw-hub-inline', role: 'group', 'aria-label': t('hub.title') },
         E('div', { className: 'bw-hub-strip' },
           E('span', { className: 'bw-hub-strip-label' },
@@ -8234,18 +8266,40 @@ window.__ModuleLoader__.load({
       const ws = typeof props.useWorkspaces === "function" ? props.useWorkspaces((s) => s) : null
       const items = ws ? ws.items : null
       const rows = collectInteractions(uiStatus, list, items)
-      if (!openFlag) return null
       const ot = typeof props.officialT === "function" ? props.officialT : null
       const t = props.t
-      const close = () => setHubOpen(false)
-      return E("div", { className: "bw-hub-card", role: "group", "aria-label": t("hub.title") },
-        E("div", { className: "bw-hub-strip" },
-          E("span", { className: "bw-hub-strip-label" },
-            rows.length > 0 ? t("hub.title") + " · " + String(rows.length) : t("hub.title")),
-          E("button", { type: "button", className: "bw-hub-close", onClick: close, "aria-label": t("close") }, "✕"),
+      // v0.37.0 COLLAPSE, DON'T VANISH.
+      // Closing used to set hubOpen=false and render NOTHING, so the only control
+      // was gone and there was no way back. The dock now ALWAYS renders a compact
+      // toggle chip; the panel itself is a popover above it.
+      const collapse = () => hubDismiss(rows)
+      const toggle = () => { if (openFlag) collapse(); else setHubOpen(true) }
+      const count = rows.length
+      return E("div", { className: "bw-hub-dock" },
+        // The panel OPENS ABOVE the composer as an overlay, so it cannot push or
+        // cover the official pills (session stats / token usage / context usage)
+        // that share this dock. Width is capped instead of filling the column.
+        (openFlag && count > 0) ? E("div", { className: "bw-hub-card bw-hub-pop", role: "group", "aria-label": t("hub.title") },
+          E("div", { className: "bw-hub-strip" },
+            E("span", { className: "bw-hub-strip-label" }, t("hub.title") + " · " + String(count)),
+            E("button", { type: "button", className: "bw-hub-close", onClick: collapse, "aria-label": t("close") }, "✕"),
+          ),
+          E("div", { className: "bw-hub-list" },
+            hubRowsNode(rows, { t, officialT: ot, uiWorkspace: props.uiWorkspace, close: collapse })),
+        ) : null,
+        // Always present, so the user can reopen after collapsing.
+        E("button", {
+          type: "button",
+          className: cls("bw-hub-toggle", openFlag && "bw-hub-toggle-on", count > 0 && "bw-hub-toggle-hot"),
+          "aria-expanded": openFlag ? "true" : "false",
+          "aria-label": t("hub.title"),
+          title: t("hub.title"),
+          onClick: toggle,
+        },
+          icon("IconQuestionOutlineRegular", 14),
+          E("span", { className: "bw-hub-toggle-text" }, t("hub.title")),
+          count > 0 ? E("span", { className: "bw-hub-toggle-count" }, String(count)) : null,
         ),
-        E("div", { className: "bw-hub-list" },
-          hubRowsNode(rows, { t, officialT: ot, uiWorkspace: props.uiWorkspace, close })),
       )
     }
 

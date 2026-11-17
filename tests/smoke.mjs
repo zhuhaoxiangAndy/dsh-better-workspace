@@ -2084,3 +2084,33 @@ test('the Settings page covers every knob this plugin ships (v0.36.2)', () => {
   // And the page really is inside the shell's Settings surface.
   assert.ok(text.includes("slots.inject('settings.section'"), 'registered on settings.section (a list slot)')
 })
+
+test('collapsing the interaction hub leaves a way back, and it never eats the composer pills (v0.37.0)', () => {
+  const text = read('src/client.js')
+
+  // "我点他就收起，而不是我现在点了叉之后，啥都没了"
+  // Closing used to set hubOpen=false and render NOTHING — the control vanished.
+  // Both seats must now keep a toggle chip on screen.
+  const dock = text.slice(text.indexOf('function InteractionComposerPanel'), text.indexOf('function InteractionComposerPanel') + 3600)
+  assert.ok(!dock.includes('if (!openFlag) return null'), 'the composer dock no longer renders nothing when closed')
+  assert.ok(dock.includes('bw-hub-toggle'), 'the dock keeps a toggle chip')
+  assert.ok(dock.includes('setHubOpen(true)'), 'the chip reopens the hub')
+
+  const inline = text.slice(text.indexOf('function InteractionHubInline'), text.indexOf('function InteractionHubInline') + 2400)
+  assert.ok(inline.includes('bw-hub-inline-collapsed'), 'the sidebar seat renders a collapsed bar')
+  assert.ok(inline.includes('setHubOpen(true)'), 'and it reopens too')
+
+  // "你这个完全可以覆盖掉气泡外左右三个东西" — session stats / token usage /
+  // context usage pills live in the SAME composer dock. The panel must therefore
+  // be an OVERLAY, not an in-flow full-width card.
+  const pop = text.slice(text.indexOf("'.bw-hub-pop{"), text.indexOf("'.bw-hub-pop{") + 400)
+  assert.ok(pop.includes('position:absolute'), 'the panel floats instead of taking layout space')
+  assert.ok(pop.includes('bottom:calc(100%'), 'it opens upward from the dock')
+  assert.ok(pop.includes('z-index'), 'and sits above the conversation')
+  assert.ok(pop.includes('width:min('), 'its width is capped, never the full column')
+  assert.ok(text.includes("'.bw-hub-dock{position:relative"), 'the dock is its positioning context')
+
+  // A waiting prompt must be visible on the collapsed chip itself.
+  assert.ok(text.includes('bw-hub-toggle-count'), 'the chip shows a count')
+  assert.ok(text.includes('bw-hub-toggle-hot'), 'and highlights when something waits')
+})
