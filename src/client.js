@@ -11431,12 +11431,15 @@ window.__ModuleLoader__.load({
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutlineRegular')),
           flowAvailable ? E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => setFlowOpen(true) }, icon('IconProjectAddOutlineRegular')) : null,
         ),
-        // v0.23.0 sidebar seat for the interaction hub: expands inline between
-        // the header strip and the tree, so the warning button always has
-        // something to show even when the active session has no interaction.
-        E(InteractionHubInline, {
-          uiStatus, list, items, uiWorkspace, officialT, t,
-        }),
+        // v0.38.0 THE SIDEBAR HUB IS GONE — REALLY THIS TIME.
+        //
+        // The comment a few lines up already said "the interaction hub lives ONLY
+        // in the composer dock", but only the header BUTTON had been removed; the
+        // inline PANEL kept rendering between the header and the tree. The user
+        // saw it and asked why the sidebar still had one.
+        //
+        // This is the user's spec, verbatim: "侧栏不应该有互动中心". The hub has
+        // exactly ONE seat — the composer dock above the input box.
         groupBy === 'columns'
           ? E('div', { ref: treeRef, className: 'bw-columns', role: 'tree', 'aria-label': t('title') },
               // LEFT column: every workspace (and name group) as a compact picker.
