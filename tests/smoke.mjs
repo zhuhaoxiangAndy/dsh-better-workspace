@@ -2018,3 +2018,34 @@ test('the interaction centre pops up by itself, in any workspace (v0.36.0)', () 
   assert.ok(text.includes("setPref('hubAutoShow'"), 'toggleable in Settings')
   assert.ok(text.includes('settings.hubAutoShow.hint'), 'the toggle explains itself')
 })
+
+test('a pinned WORKSPACE hoists AND shows a marker (v0.36.1)', () => {
+  const text = read('src/client.js')
+
+  // The ordering already worked; the row gave no sign of WHY it was first, which
+  // is what made pinning feel unfinished next to a session pin (those show ⇧).
+  const wsRow = text.slice(text.indexOf('function WorkspaceRow('), text.indexOf('function WorkspaceRow(') + 4200)
+  assert.ok(wsRow.includes('workspacePinned'), 'the workspace row knows it is pinned')
+  assert.ok(wsRow.includes('bw-pin-mark'), 'and draws the marker')
+
+  const folderRow = text.slice(text.indexOf('function FolderRow('), text.indexOf('function FolderRow(') + 4200)
+  assert.ok(folderRow.includes('workspacePinned'), 'a pinned workspace GROUP knows too')
+  assert.ok(folderRow.includes('bw-pin-mark'), 'and draws the marker')
+
+  // Both call sites must pass it, keyed the same way the ordering filter does.
+  assert.ok(text.includes("workspacePinned: pinnedWorkspaceIds.includes(String(workspace.workspaceId))"),
+    'workspace rows pass the workspace id')
+  assert.ok(text.includes("workspacePinned: pinnedWorkspaceIds.includes('folder:' + String(idPath))"),
+    'folder rows pass the folder: key')
+
+  // Ordering: pinned groups, then pinned workspaces, then the rest.
+  const order = text.indexOf('for (const folder of pinnedFolders)') < text.indexOf('for (const workspace of pinnedWs)')
+  assert.ok(order, 'pinned groups precede pinned workspaces')
+  assert.ok(text.indexOf('for (const workspace of pinnedWs)') < text.indexOf('for (const folder of restFolders)'),
+    'pinned workspaces precede the remaining groups')
+
+  // And the two pin systems stay separate: session pins live in the host set,
+  // workspace pins in our own preference.
+  assert.ok(text.includes('pinnedSessionIds'), 'session pins come from the host')
+  assert.ok(text.includes("pinnedWorkspaceIds: []"), 'workspace pins are our own preference list')
+})

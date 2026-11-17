@@ -6488,7 +6488,7 @@ window.__ModuleLoader__.load({
       }
     }
 
-    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, onStart, onAddGroup, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
+    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, onStart, onAddGroup, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, workspacePinned, t }) {
       const total = countWorkspaces(node)
       const iconEl = iconOf(iconMode, expanded)
       // Hidden status dots breathe on the icon; with the icon hidden (mode
@@ -6527,6 +6527,8 @@ window.__ModuleLoader__.load({
           style: { background: tabGroupColor(node.name) },
         },
           // A row that already carries a custom label glow breathes in sync.
+          // v0.36.1 a WORKSPACE-level pin must be visible, exactly like a session pin.
+          workspacePinned ? E('span', { className: 'bw-pin-mark', title: t('menu.pinWorkspace'), 'aria-label': t('menu.pinWorkspace'), role: 'img' }, '⇧') : null,
           E('span', { className: cls('bw-folder-bubble-text', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
           total > 0 ? E('span', { className: 'bw-folder-bubble-count' }, String(total)) : null,
         ),
@@ -6554,7 +6556,7 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function WorkspaceRow({ workspace, depth, count, sessionsOpen, onToggle, onStart, onAddGroup, onContextMenu, currentInside, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
+    function WorkspaceRow({ workspace, depth, count, sessionsOpen, onToggle, onStart, onAddGroup, onContextMenu, currentInside, dropHalf, dragEvents, custStyle, iconMode, pulse, workspacePinned, t }) {
       const iconEl = iconOf(iconMode, sessionsOpen)
       const iconChild = pulse
         ? E(PulseGlow, { state: pulse }, iconEl || (typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null))
@@ -6577,6 +6579,7 @@ window.__ModuleLoader__.load({
         iconEl
           ? null
           : E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
+        workspacePinned ? E('span', { className: 'bw-pin-mark', title: t('menu.pinWorkspace'), 'aria-label': t('menu.pinWorkspace'), role: 'img' }, '⇧') : null,
         E('span', {
           className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'),
           // Official parity: the official browser's hover card carries the disk
@@ -10598,6 +10601,7 @@ window.__ModuleLoader__.load({
           dragEvents: workspaceDragEvents(workspace),
           custStyle: rowStyleOf('workspace:' + workspace.workspaceId),
           iconMode: (styleEntry('workspace:' + workspace.workspaceId) || {}).icon || 'solid',
+          workspacePinned: pinnedWorkspaceIds.includes(String(workspace.workspaceId)),
           pulse,
           t,
         })]
@@ -10715,6 +10719,7 @@ window.__ModuleLoader__.load({
           dragEvents: folderDragEvents(idPath),
           custStyle: rowStyleOf('folder:' + idPath),
           iconMode: (styleEntry('folder:' + idPath) || {}).icon || 'solid',
+          workspacePinned: pinnedWorkspaceIds.includes('folder:' + String(idPath)),
           pulse: expanded ? null : folderPulseOf(node),
           t,
         })]
