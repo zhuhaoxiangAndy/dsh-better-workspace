@@ -1986,3 +1986,35 @@ test('both group kinds can add INSIDE, and group colour is configurable (v0.35.0
   assert.ok(text.includes("setPref('groupPalette'"), 'the palette is editable in Settings')
   assert.ok(text.includes("settings.groupColor.modeName"), 'both modes are labelled')
 })
+
+test('the interaction centre pops up by itself, in any workspace (v0.36.0)', () => {
+  const text = read('src/client.js')
+
+  // The centre was never removed — it was gated behind a module-level flag that
+  // defaulted to false, so unless you opened it manually it could not appear.
+  // The user wants it to "跳脸": appear on its own, in ANY workspace, by default.
+  assert.ok(text.includes('let hubAuto = true'), 'auto-pop defaults ON')
+  assert.ok(text.includes('hubConsiderAutoShow'), 'there is an auto-show entry point')
+  assert.ok(text.includes('hubDismissedKey'), 'closing latches the current prompt')
+
+  // Auto-show is driven by the pending set, not by the active workspace: the
+  // collector walks EVERY session the host reports, and attributes a workspace
+  // per row rather than filtering to one.
+  const collect = text.slice(text.indexOf('function collectInteractions'), text.indexOf('function collectInteractions') + 1600)
+  assert.ok(collect.includes('wsOf'), 'each row is attributed to its workspace')
+  assert.ok(!/filter\([^)]*current/i.test(collect), 'it does not filter to the current workspace')
+
+  // Both seats (sidebar strip and composer dock) run the same auto-show check.
+  const uses = text.split('hubConsiderAutoShow(rows)').length - 1 + (text.split('hubConsiderAutoShow(hubRowsEarly)').length - 1)
+  assert.ok(uses >= 2, 'both seats run the auto-show check')
+
+  // Closing must NOT re-open immediately: the latch records which prompt was
+  // dismissed, and only a different prompt re-opens.
+  assert.ok(text.includes("hubDismissedKey === currentKey"), 'same prompt stays dismissed')
+  assert.ok(text.includes('hubDismissedKey = null'), 'an empty queue clears the latch')
+
+  // And it is a real, ON-by-default preference on the Settings page.
+  assert.ok(text.includes("prefs.hubAutoShow !== false"), 'default ON, not merely truthy')
+  assert.ok(text.includes("setPref('hubAutoShow'"), 'toggleable in Settings')
+  assert.ok(text.includes('settings.hubAutoShow.hint'), 'the toggle explains itself')
+})

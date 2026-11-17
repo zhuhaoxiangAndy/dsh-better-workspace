@@ -181,6 +181,8 @@ window.__ModuleLoader__.load({
       'settings.groupColor.paletteHint': '留空恢复默认八色。例：#5b8def,#e5726f,#3fb950',
       'settings.groupIcon.hint': '关闭时用浏览器标签页组那种彩色竖线（更窄、能看出嵌套）；开启时用文件夹图标。',
       'settings.statusPulse': '状态呼吸灯',
+      'settings.hubAutoShow': '交互中心自动弹出（跳脸）',
+      'settings.hubAutoShow.hint': '开启后，任何工作区下只要出现待回答的提问或审批，交互中心都会自动弹出在底部。关闭它才会只在手动打开时显示。',
       'settings.statusPulse.hint': '被折叠藏起的状态灯(完成绿 / 运行蓝 / 待交互琥珀)沿层级向外冒泡:工作区与分组行以图标呼吸发光(颜色随状态,自定义过发光的标题一起呼吸),会话分组行显示呼吸状态灯;默认开启,可在此关闭。',
       'settings.appearance': '默认外观',
       'settings.appearance.hint': '没有单独自定义过的行使用这套外观;字体描边默认开启——背景画面下不描边文字常常看不清。字体颜色留空即跟随主题。',
@@ -371,6 +373,8 @@ window.__ModuleLoader__.load({
       'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
       'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
       'settings.statusPulse': 'Status breathing light',
+      'settings.hubAutoShow': 'Auto-show the interaction centre',
+      'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
       'settings.statusPulse.hint': 'Status dots hidden by collapse (done green / running blue / pending amber) bubble outward: workspace and folder rows breathe on their icon in the status color (custom-glow labels breathe along), session-group rows show a breathing dot; on by default, turn it off here.',
       'settings.appearance': 'Default appearance',
       'settings.appearance.hint': 'Rows that were never customized use this appearance; the outline is on by default — text without it is often unreadable over a background image. Leave the color empty to follow the theme.',
@@ -569,6 +573,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'مؤشر حالة نابض',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'مؤشرات الحالة التي يخفيها الطيّ (مكتمل أخضر / قيد التشغيل أزرق / بانتظار تفاعل كهرماني) تتصاعد عبر المستويات: تصدر أسطر مساحات العمل والمجلدات وميضاً نابضاً للأيقونة بلون الحالة (وتنبض معها العناوين ذات التوهج المخصص)، وتعرض أسطر مجموعات الجلسات نقطة حالة نابضة؛ مفعّل افتراضياً ويمكن إيقافه هنا.',
         'settings.appearance': 'المظهر الافتراضي',
         'settings.appearance.hint': 'تستخدم الأسطر غير المخصصة هذا المظهر؛ حدّ النص مفعّل افتراضياً — فبدونه يصعب قراءة النص فوق صورة خلفية. اترك اللون فارغاً لاتباع السمة.',
@@ -759,6 +765,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Status-Pulslicht',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Vom Einklappen verdeckte Statuspunkte (fertig grün / läuft blau / wartet amber) steigen die Hierarchie hinauf: Arbeitsbereich- und Ordnerzeilen lassen ihr Symbol in der Statusfarbe pulsieren (eigens gefärbte Titel pulsieren mit), Sitzungsgruppen zeigen einen pulsierenden Statuspunkt; standardmäßig an, hier abschaltbar.',
         'settings.appearance': 'Standardaussehen',
         'settings.appearance.hint': 'Zeilen ohne eigene Anpassung nutzen dieses Aussehen; die Textkontur ist standardmäßig an – ohne sie ist Text über einem Hintergrundbild oft kaum lesbar. Bleibt die Farbe leer, folgt sie dem Thema.',
@@ -949,6 +957,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Voyant d\'état pulsant',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Les voyants masqués par le repli (terminé vert / en cours bleu / en attente ambre) remontent la hiérarchie: les lignes d\'espace de travail et de dossier font pulser leur icône dans la couleur d\'état (les titres à lueur personnalisée pulsent aussi), les lignes de groupe de sessions affichent un voyant pulsant; activé par défaut, désactivable ici.',
         'settings.appearance': 'Apparence par défaut',
         'settings.appearance.hint': 'Les lignes sans personnalisation utilisent cette apparence; le contour du texte est activé par défaut — sans lui, le texte reste souvent illisible sur une image de fond. Laissez la couleur vide pour suivre le thème.',
@@ -1139,6 +1149,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'स्थिति की साँस लेती बत्ती',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'समेटने से छिपी स्थिति बत्तियाँ (पूर्ण हरी / चल रहा नीली / प्रतीक्षारत अंबर) पदानुक्रम में ऊपर उठती हैं: कार्यस्थान और फ़ोल्डर पंक्तियों का चिह्न स्थिति के रंग में साँस लेता है (अनुकूलित चमक वाले शीर्षक भी साथ साँस लेते हैं), सत्र समूह पंक्तियों पर साँस लेता स्थिति बिंदु दिखता है; डिफ़ॉल्ट रूप से चालू, यहाँ बंद किया जा सकता है।',
         'settings.appearance': 'डिफ़ॉल्ट रूप',
         'settings.appearance.hint': 'जिन पंक्तियों को अलग से अनुकूलित नहीं किया गया वे यह रूप इस्तेमाल करती हैं; पाठ की रूपरेखा डिफ़ॉल्ट रूप से चालू है — पृष्ठभूमि छवि पर बिना रूपरेखा वाला पाठ अक्सर पढ़ा नहीं जाता। रंग खाली छोड़ने पर वह थीम का अनुसरण करता है।',
@@ -1329,6 +1341,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Lampu status bernapas',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Lampu status yang tersembunyi karena pelipatan (selesai hijau / berjalan biru / menunggu kuning) menggelembung ke tingkat atas: baris ruang kerja dan folder membuat ikonnya bernapas dalam warna status (judul dengan pendar khusus ikut bernapas), baris grup sesi menampilkan titik status yang bernapas; aktif secara bawaan, bisa dimatikan di sini.',
         'settings.appearance': 'Tampilan bawaan',
         'settings.appearance.hint': 'Baris yang belum disesuaikan memakai tampilan ini; garis luar teks aktif secara bawaan — tanpa itu teks sering tak terbaca di atas gambar latar. Biarkan warna kosong agar mengikuti tema.',
@@ -1519,6 +1533,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Spia di stato pulsante',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Le spie nascoste dalla compressione (completato verde / in esecuzione blu / in attesa ambra) risalgono la gerarchia: le righe di aree di lavoro e cartelle fanno pulsare l\'icona nel colore di stato (anche i titoli con bagliore personalizzato pulsano), le righe dei gruppi di sessioni mostrano una spia pulsante; attiva per impostazione predefinita, disattivabile qui.',
         'settings.appearance': 'Aspetto predefinito',
         'settings.appearance.hint': 'Le righe mai personalizzate usano questo aspetto; il contorno del testo è attivo per impostazione predefinita — senza di esso il testo è spesso illeggibile sopra un\'immagine di sfondo. Lascia il colore vuoto per seguire il tema.',
@@ -1709,6 +1725,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ステータス表示灯',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': '折りたたみで隠れたステータス表示(完了は緑 / 実行中は青 / 操作待ちは琥珀)が上位の階層へ伝わります:ワークスペースとフォルダーの行はアイコンがステータス色で明滅し(グローを設定したタイトルも連動),セッショングループの行には明滅するステータスドットが出ます;既定はオンで,ここでオフにできます。',
         'settings.appearance': '既定の外観',
         'settings.appearance.hint': '個別にカスタマイズしていない行に適用される外観です;文字の縁取りは既定でオンです——背景画像の上では縁取りのない文字が読みにくいためです。色を空にするとテーマに従います。',
@@ -1899,6 +1917,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '상태 표시등',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': '접혀서 가려진 상태 표시(완료는 초록 / 실행은 파랑 / 대기는 호박색)가 상위 단계로 번집니다: 워크스페이스와 폴더 행은 아이콘이 상태 색으로 깜빡이고(글로우를 지정한 제목도 함께 깜빡임), 세션 그룹 행에는 깜빡이는 상태 점이 표시됩니다; 기본값은 켜짐이며 여기서 끌 수 있습니다.',
         'settings.appearance': '기본 모양',
         'settings.appearance.hint': '따로 지정하지 않은 행에 적용되는 모양입니다; 글자 외곽선은 기본으로 켜져 있습니다——배경 이미지 위에서는 외곽선 없는 글자가 잘 보이지 않기 때문입니다. 색을 비우면 테마를 따릅니다.',
@@ -2089,6 +2109,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserend statuslampje',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Statuslampjes die door het inklappen verborgen zijn (voltooid groen / actief blauw / wachtend amber) borrelen door de hiërarchie omhoog: werkruimte- en mapregels laten hun pictogram in de statuskleur pulseren (titels met eigen gloed pulseren mee), sessiegroepregels tonen een pulserend statusstipje; standaard aan, hier uit te zetten.',
         'settings.appearance': 'Standaarduiterlijk',
         'settings.appearance.hint': 'Regels zonder eigen aanpassing gebruiken dit uiterlijk; de tekstomtrek staat standaard aan — zonder omtrek is tekst op een achtergrondafbeelding vaak slecht leesbaar. Laat de kleur leeg om het thema te volgen.',
@@ -2279,6 +2301,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulsująca lampka stanu',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Lampki ukryte przez zwinięcie (ukończono zielona / trwa niebieska / czeka bursztynowa) bąbelkują w górę hierarchii: wiersze obszarów roboczych i folderów pulsują ikoną w kolorze stanu (tytuły z własną poświatą pulsują razem), wiersze grup sesji pokazują pulsującą kropkę stanu; domyślnie włączone, tutaj można wyłączyć.',
         'settings.appearance': 'Domyślny wygląd',
         'settings.appearance.hint': 'Wiersze bez własnych ustawień używają tego wyglądu; obrys tekstu jest domyślnie włączony — bez niego tekst na obrazie tła bywa nieczytelny. Puste pole koloru oznacza podążanie za motywem.',
@@ -2469,6 +2493,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Luz de status pulsante',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'As luzes escondidas pelo recolhimento (concluído verde / em execução azul / aguardando âmbar) sobem pela hierarquia: linhas de espaço de trabalho e pasta pulsam o ícone na cor do status (títulos com brilho personalizado pulsam junto), linhas de grupo de sessões mostram um ponto pulsante; ativado por padrão, pode ser desligado aqui.',
         'settings.appearance': 'Aparência padrão',
         'settings.appearance.hint': 'Linhas sem personalização usam esta aparência; o contorno do texto vem ativado por padrão — sem ele, o texto costuma ficar ilegível sobre uma imagem de fundo. Deixe a cor vazia para seguir o tema.',
@@ -2659,6 +2685,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Пульсирующий индикатор состояния',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Индикаторы, скрытые сворачиванием (завершено — зелёный / выполняется — синий / ожидает — янтарный), всплывают вверх по иерархии: строки рабочих областей и папок пульсируют значком в цвете состояния (заголовки со своим свечением пульсируют вместе с ними), строки групп сессий показывают пульсирующую точку; включено по умолчанию, здесь можно отключить.',
         'settings.appearance': 'Оформление по умолчанию',
         'settings.appearance.hint': 'Строки без своей настройки используют это оформление; обводка текста включена по умолчанию — без неё текст на фоновом изображении часто нечитаем. Пустой цвет означает следование теме.',
@@ -2849,6 +2877,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserande statuslampa',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Statuslampor som döljs av ihopfällningen (klart grön / körs blå / väntar bärnsten) bubblar uppåt i hierarkin: rader för arbetsytor och mappar pulserar ikonen i statusfärgen (titlar med egen glöd pulserar med), sessionsgrupper visar en pulserande prick; på som standard, stängs av här.',
         'settings.appearance': 'Standardutseende',
         'settings.appearance.hint': 'Rader utan egen anpassning använder detta utseende; textkonturen är på som standard — utan den är texten ofta oläslig ovanpå en bakgrundsbild. Lämna färgen tom för att följa temat.',
@@ -3039,6 +3069,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ไฟสถานะหายใจ',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'ไฟสถานะที่ถูกย่อซ่อนไว้ (เสร็จแล้วสีเขียว / กำลังทำงานสีน้ำเงิน / รอตอบสนองสีเหลืองอำพัน) จะลอยขึ้นตามลำดับชั้น: แถวพื้นที่ทำงานและโฟลเดอร์จะให้ไอคอนหายใจเป็นสีตามสถานะ (ชื่อที่มีการเรืองแสงกำหนดเองก็หายใจตาม) แถวกลุ่มเซสชันจะแสดงจุดสถานะที่หายใจ เปิดไว้เป็นค่าเริ่มต้น ปิดได้ที่นี่',
         'settings.appearance': 'รูปลักษณ์เริ่มต้น',
         'settings.appearance.hint': 'แถวที่ยังไม่ได้กำหนดเองจะใช้รูปลักษณ์นี้ เส้นขอบตัวอักษรเปิดไว้เป็นค่าเริ่มต้น — บนภาพพื้นหลัง ตัวอักษรที่ไม่มีเส้นขอบมักอ่านยาก เว้นสีว่างไว้เพื่อตามธีม',
@@ -3229,6 +3261,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Nefes alan durum ışığı',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Daraltmayla gizlenen durum ışıkları (tamamlandı yeşil / çalışıyor mavi / bekliyor amber) hiyerarşide yukarı taşar: çalışma alanı ve klasör satırlarının simgesi durum renginde nefes alır (özel ışıması olan başlıklar da birlikte nefes alır), oturum grubu satırları nefes alan bir durum noktası gösterir; varsayılan olarak açık, buradan kapatılabilir.',
         'settings.appearance': 'Varsayılan görünüm',
         'settings.appearance.hint': 'Özel olarak uyarlanmamış satırlar bu görünümü kullanır; metin konturu varsayılan olarak açıktır — arka plan görseli üzerinde kontursuz metin çoğu zaman okunmaz. Rengi boş bırakırsanız temayı izler.',
@@ -3419,6 +3453,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Đèn trạng thái nhấp nháy',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': 'Những đèn trạng thái bị thu gọn che đi (xong màu xanh lá / đang chạy màu xanh dương / đang chờ màu hổ phách) sẽ nổi dần lên các tầng trên: hàng không gian làm việc và thư mục cho biểu tượng nhấp nháy theo màu trạng thái (tiêu đề có đặt phát sáng cũng nhấp nháy theo), hàng nhóm phiên hiện một chấm trạng thái nhấp nháy; mặc định bật, có thể tắt tại đây.',
         'settings.appearance': 'Giao diện mặc định',
         'settings.appearance.hint': 'Những hàng chưa tùy chỉnh riêng dùng giao diện này; viền chữ mặc định bật — trên ảnh nền, chữ không viền thường khó đọc. Để trống màu để theo chủ đề.',
@@ -3609,6 +3645,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未單獨自訂過嘅行會用呢套外觀;字體描邊預設開啟——有背景圖嗰陣唔描邊嘅字經常睇唔清。字體顏色留空就會跟主題。',
@@ -3799,6 +3837,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未單獨自訂過嘅行會用呢套外觀;字體描邊預設開啟——有背景圖嗰陣唔描邊嘅字經常睇唔清。字體顏色留空就會跟主題。',
@@ -3989,6 +4029,8 @@ window.__ModuleLoader__.load({
         'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
+        'settings.hubAutoShow': 'Auto-show the interaction centre',
+        'settings.hubAutoShow.hint': 'When on, the interaction centre pops up at the bottom of ANY workspace as soon as a question or approval is waiting. Turn it off to only see it when you open it yourself.',
         'settings.statusPulse.hint': '被收合藏起的狀態燈(完成綠 / 執行藍 / 待互動琥珀)會沿著層級向外冒出:工作區與群組列以圖示呼吸發光(顏色隨狀態,自訂過發光的標題一起呼吸),工作階段群組列則顯示呼吸狀態燈;預設開啟,可在此關閉。',
         'settings.appearance': '預設外觀',
         'settings.appearance.hint': '未個別自訂過的列會使用這套外觀;字型外框預設開啟——在背景圖片上沒有外框的文字常常看不清楚。字型顏色留空即跟隨佈景主題。',
@@ -7170,6 +7212,8 @@ window.__ModuleLoader__.load({
       const showArchived = prefs.showArchived === true
       // v0.35.0 group colour controls (see tabGroupColor for how the colour is chosen).
       const groupColorMode = prefs.groupColorMode === 'index' ? 'index' : 'name'
+      // v0.36.0 interaction centre auto-pop, default ON.
+      const hubAutoShow = prefs.hubAutoShow !== false
       const groupPalette = typeof prefs.groupPalette === 'string' ? prefs.groupPalette : ''
       // Default appearance: the base every row inherits unless it carries its
       // own per-row entry. The outline ships ON — text over a background image
@@ -7257,6 +7301,19 @@ window.__ModuleLoader__.load({
         // v0.35.0 GROUP COLOURS — the user asked how the colour is chosen, so the
         // answer is also made adjustable here: switch the selection mode or paste
         // your own palette.
+        // v0.36.0 交互中心"跳脸"开关，默认开启。
+        E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.hubAutoShow')),
+          E('button', {
+            type: 'button',
+            role: 'switch',
+            'aria-checked': hubAutoShow,
+            'aria-label': t('settings.hubAutoShow'),
+            className: cls('bw-switch', hubAutoShow && 'bw-switch-on'),
+            onClick: () => setPref('hubAutoShow', !hubAutoShow),
+          }, E('span', { className: 'bw-switch-thumb' })),
+        ),
+        E('div', { className: 'bw-hint' }, t('settings.hubAutoShow.hint')),
         E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
           E('div', { className: 'bw-setting-label' }, t('settings.groupColor.mode')),
           E('div', { className: 'bw-seg' },
@@ -7481,11 +7538,39 @@ window.__ModuleLoader__.load({
     // client realm, and the value is a single boolean, so a store would be
     // ceremony. `hubOpenListeners` keeps every mounted trigger and panel in sync.
     let hubOpen = false
+    // v0.36.0 AUTO-POP ("跳脸"): the user wants the interaction centre to appear
+    // by itself — in ANY workspace — whenever something is waiting for an answer.
+    // Two independent inputs drive visibility:
+    //   autoShow  preference (default ON)  — pop up when an interaction arrives
+    //   dismiss   user closed it          — suppress until a NEW interaction appears
+    // The dismiss latch is keyed by the interaction key, so closing one prompt does
+    // not hide the next one. `hubAuto` mirrors the preference for the module-level
+    // helpers; it is set from prefs wherever they are in scope.
+    let hubAuto = true
+    let hubDismissedKey = null
     const hubOpenListeners = new Set()
     const setHubOpen = (next) => {
       if (hubOpen === next) return
       hubOpen = next
       for (const fn of [...hubOpenListeners]) { try { fn(next) } catch (e) { /* one bad seat never blocks the rest */ } }
+    }
+    /** Called by a seat when it sees the current interaction set. */
+    const hubConsiderAutoShow = (rows) => {
+      const list = Array.isArray(rows) ? rows : []
+      if (list.length === 0) {
+        // Nothing waiting: release the latch so the NEXT prompt can pop again.
+        hubDismissedKey = null
+        return
+      }
+      if (hubAuto !== true) return
+      // Only a genuinely new prompt re-opens after the user closed the centre.
+      const currentKey = list.map((r) => r.key).join('|')
+      if (hubDismissedKey !== null && hubDismissedKey === currentKey) return
+      setHubOpen(true)
+    }
+    const hubDismiss = (rows) => {
+      hubDismissedKey = (Array.isArray(rows) ? rows : []).map((r) => r.key).join('|')
+      setHubOpen(false)
     }
     const useHubOpen = () => {
       const [open, set] = React.useState(hubOpen)
@@ -8015,10 +8100,14 @@ window.__ModuleLoader__.load({
      */
     function InteractionHubInline(props) {
       const openFlag = useHubOpen()
-      if (!openFlag) return null
       const rows = collectInteractions(props.uiStatus, props.list, props.items)
+      // v0.36.0: pop up by itself when something is waiting (any workspace).
+      React.useEffect(() => { hubConsiderAutoShow(rows) }, [rows.map((r) => r.key).join('|')])
+      if (!openFlag) return null
       const t = props.t
-      const close = () => setHubOpen(false)
+      // Closing latches the CURRENT interaction set so it stays closed until a new
+      // prompt arrives — otherwise the auto-pop would re-open instantly.
+      const close = () => hubDismiss(rows)
       return E('div', { className: 'bw-hub-card bw-hub-inline', role: 'group', 'aria-label': t('hub.title') },
         E('div', { className: 'bw-hub-strip' },
           E('span', { className: 'bw-hub-strip-label' },
@@ -8033,6 +8122,8 @@ window.__ModuleLoader__.load({
 
     function InteractionComposerPanel(props) {
       const openFlag = useHubOpen()
+      const hubRowsEarly = collectInteractions(props.uiStatus, props.list, props.items)
+      React.useEffect(() => { hubConsiderAutoShow(hubRowsEarly) }, [hubRowsEarly.map((r) => r.key).join('|')])
       const uiStatus = typeof props.useSessionStatus === "function" ? props.useSessionStatus((s) => s) : null
       const list = typeof props.useSessions === "function" ? props.useSessions((s) => s) : null
       const ws = typeof props.useWorkspaces === "function" ? props.useWorkspaces((s) => s) : null
@@ -8307,6 +8398,8 @@ window.__ModuleLoader__.load({
       // v0.35.0 group colour preferences (see tabGroupColor for the algorithm).
       // Applied here because this is the first place prefs are in scope.
       paletteMode = prefsMap.groupColorMode === 'index' ? 'index' : 'name'
+      // v0.36.0: keep the module-level auto-pop flag in step with the preference.
+      hubAuto = prefsMap.hubAutoShow !== false
       activePalette = parsePalette(prefsMap.groupPalette)
       paletteIndexByName.clear()
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
