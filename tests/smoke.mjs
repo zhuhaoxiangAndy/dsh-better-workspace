@@ -989,7 +989,7 @@ test('folder rows expose edge bands so a group can be placed beside another', ()
   assert.match(text, /commitFolderReorder\(path, band\)/, 'group drags beside a sibling have their own commit')
   assert.match(text, /commitWorkspaceReorderBeside\(path, band\)/, 'workspace drags beside a group have their own commit')
   // And the visual affordance exists: the folder row accepts dropHalf.
-  assert.match(text, /function FolderRow\(\{ node, depth, expanded, onToggle, onContextMenu, dropInto, dropHalf,/, 'folder row accepts dropHalf')
+  assert.match(text, /function FolderRow\(\{[^}]*dropInto, dropHalf,/, 'folder row accepts dropHalf')
   assert.match(text, /dropHalf === 'before' && 'bw-drop-before'/, 'before-line renders')
   assert.match(text, /dropHalf === 'after' && 'bw-drop-after'/, 'after-line renders')
 })
@@ -1263,8 +1263,8 @@ test('session groups render a coloured tab-group rail, not a folder icon', () =>
   const text = read('src/client.js')
   // Edge/Chrome tab-group idiom: one thin coloured bar, narrow enough for deep
   // nesting, instead of a folder glyph that pushed the label right.
-  assert.match(text, /const TAB_GROUP_COLORS = \[/, 'a stable colour table exists')
-  assert.match(text, /const tabGroupColor = \(name\) => \{/, 'colour is derived from the group name')
+  assert.match(text, /const DEFAULT_TAB_GROUP_COLORS = \[/, 'a stable colour table exists')
+  assert.match(text, /const tabGroupColor = \(name, override\) => \{/, 'colour is derived from the group name')
   // v0.30.1 uses the Edge/Chrome idiom properly: a coloured PILL with the group
   // name, plus a rail in the same colour continuing through the members.
   assert.match(text, /className: cls\('bw-group-pill'/, 'the group row renders a coloured pill')
@@ -1959,4 +1959,30 @@ test('every declared entry point actually ships (v0.34.7)', () => {
 
   // And a sync helper must exist, so "copy the whole package" is the default path.
   assert.ok(existsSync(join(root, 'scripts/sync-to-profiles.mjs')), 'a complete-sync script exists')
+})
+
+test('both group kinds can add INSIDE, and group colour is configurable (v0.35.0)', () => {
+  const text = read('src/client.js')
+
+  // "两种组都应该有添加会话/工作区的功能" — a group row used to carry ONLY a
+  // context menu, so the sole way to put something inside a group was to drag it
+  // in. A chain-compressed group cannot even be expanded to reveal an inner slot,
+  // which is why adding inside a parent was impossible.
+  const folderSig = text.slice(text.indexOf('function FolderRow('), text.indexOf('function FolderRow(') + 400)
+  assert.ok(folderSig.includes('onStart'), 'FolderRow accepts a new-session action')
+  assert.ok(folderSig.includes('onAddGroup'), 'FolderRow accepts a new-group action')
+  assert.ok(text.includes("className: 'bw-row-actions'"), 'folder rows own a hover action strip')
+
+  const folderCall = text.slice(text.indexOf('const rows = [E(FolderRow'), text.indexOf('const rows = [E(FolderRow') + 2600)
+  assert.ok(folderCall.includes('onStart:'), 'the call site wires new-session')
+  assert.ok(folderCall.includes('onAddGroup:'), 'the call site wires new-group')
+
+  // How the colour is chosen must be answerable AND adjustable.
+  assert.ok(text.includes('DEFAULT_TAB_GROUP_COLORS'), 'a default palette exists')
+  assert.ok(text.includes('const tabGroupColor = (name, override) =>'), 'the hash takes a per-group override')
+  assert.ok(text.includes("h = (h * 31 + text.charCodeAt(i)) >>> 0"), 'the name hash is documented in code')
+  assert.ok(text.includes("prefs.groupColorMode === 'index'"), 'selection mode is a preference')
+  assert.ok(text.includes('parsePalette'), 'the palette is parsed from a preference')
+  assert.ok(text.includes("setPref('groupPalette'"), 'the palette is editable in Settings')
+  assert.ok(text.includes("settings.groupColor.modeName"), 'both modes are labelled')
 })

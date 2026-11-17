@@ -172,6 +172,13 @@ window.__ModuleLoader__.load({
       'settings.showArchived': '显示归档会话',
       'settings.showArchived.hint': '归档只把会话从列表里隐藏，不删除任何内容。开启后归档行会置灰显示，并可右键「取消归档」或「彻底删除」。',
       'settings.groupIcon': '会话组图标用文件夹',
+      'settings.groupColor': '分组颜色',
+      'settings.groupColor.hint': '每个组名经哈希后取色，同名永远同色。可改调色板，或切换为“按出现顺序”分配。',
+      'settings.groupColor.mode': '取色方式',
+      'settings.groupColor.modeName': '按名称哈希（默认）',
+      'settings.groupColor.modeIndex': '按出现顺序',
+      'settings.groupColor.palette': '调色板（逗号分隔的十六进制色）',
+      'settings.groupColor.paletteHint': '留空恢复默认八色。例：#5b8def,#e5726f,#3fb950',
       'settings.groupIcon.hint': '关闭时用浏览器标签页组那种彩色竖线（更窄、能看出嵌套）；开启时用文件夹图标。',
       'settings.statusPulse': '状态呼吸灯',
       'settings.statusPulse.hint': '被折叠藏起的状态灯(完成绿 / 运行蓝 / 待交互琥珀)沿层级向外冒泡:工作区与分组行以图标呼吸发光(颜色随状态,自定义过发光的标题一起呼吸),会话分组行显示呼吸状态灯;默认开启,可在此关闭。',
@@ -355,6 +362,13 @@ window.__ModuleLoader__.load({
       'settings.showArchived': 'Show archived sessions',
       'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
       'settings.groupIcon': 'Folder icon for session groups',
+      'settings.groupColor': 'Group colours',
+      'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+      'settings.groupColor.mode': 'Colour selection',
+      'settings.groupColor.modeName': 'Hash by name (default)',
+      'settings.groupColor.modeIndex': 'In order of appearance',
+      'settings.groupColor.palette': 'Palette (comma-separated hex)',
+      'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
       'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
       'settings.statusPulse': 'Status breathing light',
       'settings.statusPulse.hint': 'Status dots hidden by collapse (done green / running blue / pending amber) bubble outward: workspace and folder rows breathe on their icon in the status color (custom-glow labels breathe along), session-group rows show a breathing dot; on by default, turn it off here.',
@@ -546,6 +560,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'مؤشر حالة نابض',
         'settings.statusPulse.hint': 'مؤشرات الحالة التي يخفيها الطيّ (مكتمل أخضر / قيد التشغيل أزرق / بانتظار تفاعل كهرماني) تتصاعد عبر المستويات: تصدر أسطر مساحات العمل والمجلدات وميضاً نابضاً للأيقونة بلون الحالة (وتنبض معها العناوين ذات التوهج المخصص)، وتعرض أسطر مجموعات الجلسات نقطة حالة نابضة؛ مفعّل افتراضياً ويمكن إيقافه هنا.',
@@ -729,6 +750,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Status-Pulslicht',
         'settings.statusPulse.hint': 'Vom Einklappen verdeckte Statuspunkte (fertig grün / läuft blau / wartet amber) steigen die Hierarchie hinauf: Arbeitsbereich- und Ordnerzeilen lassen ihr Symbol in der Statusfarbe pulsieren (eigens gefärbte Titel pulsieren mit), Sitzungsgruppen zeigen einen pulsierenden Statuspunkt; standardmäßig an, hier abschaltbar.',
@@ -912,6 +940,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Voyant d\'état pulsant',
         'settings.statusPulse.hint': 'Les voyants masqués par le repli (terminé vert / en cours bleu / en attente ambre) remontent la hiérarchie: les lignes d\'espace de travail et de dossier font pulser leur icône dans la couleur d\'état (les titres à lueur personnalisée pulsent aussi), les lignes de groupe de sessions affichent un voyant pulsant; activé par défaut, désactivable ici.',
@@ -1095,6 +1130,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'स्थिति की साँस लेती बत्ती',
         'settings.statusPulse.hint': 'समेटने से छिपी स्थिति बत्तियाँ (पूर्ण हरी / चल रहा नीली / प्रतीक्षारत अंबर) पदानुक्रम में ऊपर उठती हैं: कार्यस्थान और फ़ोल्डर पंक्तियों का चिह्न स्थिति के रंग में साँस लेता है (अनुकूलित चमक वाले शीर्षक भी साथ साँस लेते हैं), सत्र समूह पंक्तियों पर साँस लेता स्थिति बिंदु दिखता है; डिफ़ॉल्ट रूप से चालू, यहाँ बंद किया जा सकता है।',
@@ -1278,6 +1320,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Lampu status bernapas',
         'settings.statusPulse.hint': 'Lampu status yang tersembunyi karena pelipatan (selesai hijau / berjalan biru / menunggu kuning) menggelembung ke tingkat atas: baris ruang kerja dan folder membuat ikonnya bernapas dalam warna status (judul dengan pendar khusus ikut bernapas), baris grup sesi menampilkan titik status yang bernapas; aktif secara bawaan, bisa dimatikan di sini.',
@@ -1461,6 +1510,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Spia di stato pulsante',
         'settings.statusPulse.hint': 'Le spie nascoste dalla compressione (completato verde / in esecuzione blu / in attesa ambra) risalgono la gerarchia: le righe di aree di lavoro e cartelle fanno pulsare l\'icona nel colore di stato (anche i titoli con bagliore personalizzato pulsano), le righe dei gruppi di sessioni mostrano una spia pulsante; attiva per impostazione predefinita, disattivabile qui.',
@@ -1644,6 +1700,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ステータス表示灯',
         'settings.statusPulse.hint': '折りたたみで隠れたステータス表示(完了は緑 / 実行中は青 / 操作待ちは琥珀)が上位の階層へ伝わります:ワークスペースとフォルダーの行はアイコンがステータス色で明滅し(グローを設定したタイトルも連動),セッショングループの行には明滅するステータスドットが出ます;既定はオンで,ここでオフにできます。',
@@ -1827,6 +1890,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '상태 표시등',
         'settings.statusPulse.hint': '접혀서 가려진 상태 표시(완료는 초록 / 실행은 파랑 / 대기는 호박색)가 상위 단계로 번집니다: 워크스페이스와 폴더 행은 아이콘이 상태 색으로 깜빡이고(글로우를 지정한 제목도 함께 깜빡임), 세션 그룹 행에는 깜빡이는 상태 점이 표시됩니다; 기본값은 켜짐이며 여기서 끌 수 있습니다.',
@@ -2010,6 +2080,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserend statuslampje',
         'settings.statusPulse.hint': 'Statuslampjes die door het inklappen verborgen zijn (voltooid groen / actief blauw / wachtend amber) borrelen door de hiërarchie omhoog: werkruimte- en mapregels laten hun pictogram in de statuskleur pulseren (titels met eigen gloed pulseren mee), sessiegroepregels tonen een pulserend statusstipje; standaard aan, hier uit te zetten.',
@@ -2193,6 +2270,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulsująca lampka stanu',
         'settings.statusPulse.hint': 'Lampki ukryte przez zwinięcie (ukończono zielona / trwa niebieska / czeka bursztynowa) bąbelkują w górę hierarchii: wiersze obszarów roboczych i folderów pulsują ikoną w kolorze stanu (tytuły z własną poświatą pulsują razem), wiersze grup sesji pokazują pulsującą kropkę stanu; domyślnie włączone, tutaj można wyłączyć.',
@@ -2376,6 +2460,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Luz de status pulsante',
         'settings.statusPulse.hint': 'As luzes escondidas pelo recolhimento (concluído verde / em execução azul / aguardando âmbar) sobem pela hierarquia: linhas de espaço de trabalho e pasta pulsam o ícone na cor do status (títulos com brilho personalizado pulsam junto), linhas de grupo de sessões mostram um ponto pulsante; ativado por padrão, pode ser desligado aqui.',
@@ -2559,6 +2650,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Пульсирующий индикатор состояния',
         'settings.statusPulse.hint': 'Индикаторы, скрытые сворачиванием (завершено — зелёный / выполняется — синий / ожидает — янтарный), всплывают вверх по иерархии: строки рабочих областей и папок пульсируют значком в цвете состояния (заголовки со своим свечением пульсируют вместе с ними), строки групп сессий показывают пульсирующую точку; включено по умолчанию, здесь можно отключить.',
@@ -2742,6 +2840,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Pulserande statuslampa',
         'settings.statusPulse.hint': 'Statuslampor som döljs av ihopfällningen (klart grön / körs blå / väntar bärnsten) bubblar uppåt i hierarkin: rader för arbetsytor och mappar pulserar ikonen i statusfärgen (titlar med egen glöd pulserar med), sessionsgrupper visar en pulserande prick; på som standard, stängs av här.',
@@ -2925,6 +3030,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'ไฟสถานะหายใจ',
         'settings.statusPulse.hint': 'ไฟสถานะที่ถูกย่อซ่อนไว้ (เสร็จแล้วสีเขียว / กำลังทำงานสีน้ำเงิน / รอตอบสนองสีเหลืองอำพัน) จะลอยขึ้นตามลำดับชั้น: แถวพื้นที่ทำงานและโฟลเดอร์จะให้ไอคอนหายใจเป็นสีตามสถานะ (ชื่อที่มีการเรืองแสงกำหนดเองก็หายใจตาม) แถวกลุ่มเซสชันจะแสดงจุดสถานะที่หายใจ เปิดไว้เป็นค่าเริ่มต้น ปิดได้ที่นี่',
@@ -3108,6 +3220,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Nefes alan durum ışığı',
         'settings.statusPulse.hint': 'Daraltmayla gizlenen durum ışıkları (tamamlandı yeşil / çalışıyor mavi / bekliyor amber) hiyerarşide yukarı taşar: çalışma alanı ve klasör satırlarının simgesi durum renginde nefes alır (özel ışıması olan başlıklar da birlikte nefes alır), oturum grubu satırları nefes alan bir durum noktası gösterir; varsayılan olarak açık, buradan kapatılabilir.',
@@ -3291,6 +3410,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': 'Đèn trạng thái nhấp nháy',
         'settings.statusPulse.hint': 'Những đèn trạng thái bị thu gọn che đi (xong màu xanh lá / đang chạy màu xanh dương / đang chờ màu hổ phách) sẽ nổi dần lên các tầng trên: hàng không gian làm việc và thư mục cho biểu tượng nhấp nháy theo màu trạng thái (tiêu đề có đặt phát sáng cũng nhấp nháy theo), hàng nhóm phiên hiện một chấm trạng thái nhấp nháy; mặc định bật, có thể tắt tại đây.',
@@ -3474,6 +3600,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
@@ -3657,6 +3790,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被摺疊遮住嘅狀態燈(完成綠 / 運行藍 / 待互動琥珀)會沿住層級向外冒泡:工作區同分組行會以圖示呼吸發光(顏色跟狀態,自訂過發光嘅標題一齊呼吸),對話分組行就會顯示呼吸狀態燈;預設開啟,可以喺度閂咗佢。',
@@ -3840,6 +3980,13 @@ window.__ModuleLoader__.load({
         'settings.showArchived': 'Show archived sessions',
         'settings.showArchived.hint': 'Archiving only hides a session from the list; it deletes nothing. When on, archived rows appear dimmed with unarchive / delete-forever in their menu.',
         'settings.groupIcon': 'Folder icon for session groups',
+        'settings.groupColor': 'Group colours',
+        'settings.groupColor.hint': 'Each group name is hashed to pick a colour, so the same name always gets the same colour. You can edit the palette or switch to first-come order.',
+        'settings.groupColor.mode': 'Colour selection',
+        'settings.groupColor.modeName': 'Hash by name (default)',
+        'settings.groupColor.modeIndex': 'In order of appearance',
+        'settings.groupColor.palette': 'Palette (comma-separated hex)',
+        'settings.groupColor.paletteHint': 'Leave empty for the default eight. e.g. #5b8def,#e5726f,#3fb950',
         'settings.groupIcon.hint': 'Off: a coloured tab-group rail (narrower, nesting stays readable). On: the folder icon.',
         'settings.statusPulse': '狀態呼吸燈',
         'settings.statusPulse.hint': '被收合藏起的狀態燈(完成綠 / 執行藍 / 待互動琥珀)會沿著層級向外冒出:工作區與群組列以圖示呼吸發光(顏色隨狀態,自訂過發光的標題一起呼吸),工作階段群組列則顯示呼吸狀態燈;預設開啟,可在此關閉。',
@@ -6135,12 +6282,40 @@ window.__ModuleLoader__.load({
      * groups: a thin coloured rail instead of a big folder icon, which keeps the
      * row narrow and makes nesting readable.
      */
-    const TAB_GROUP_COLORS = ['#5b8def', '#e5726f', '#3fb950', '#d29922', '#a371f7', '#39c5cf', '#f778ba', '#8b949e']
-    const tabGroupColor = (name) => {
+    /**
+     * Group colours.
+     *
+     * HOW IT WORKS (the user asked): each group name is hashed and the hash picks
+     * a palette entry. `h = h * 31 + charCode` (djb-ish, 32-bit), then
+     * `palette[h % palette.length]`. So a name always gets the SAME colour, on
+     * every machine, with no stored mapping.
+     *
+     * The hash and palette are now overridable, because "which colour does
+     * CUMCM26 get" is a taste question, not a correctness one:
+     *   - prefs.groupPalette  : a comma-separated list of hex colours
+     *   - prefs.groupColorMode: 'name' (hash the name) | 'index' (first colour,
+     *                           then next for each new group in tree order)
+     *   - a per-group override is stored in styling as `appearance.groupColor`
+     */
+    const DEFAULT_TAB_GROUP_COLORS = ['#5b8def', '#e5726f', '#3fb950', '#d29922', '#a371f7', '#39c5cf', '#f778ba', '#8b949e']
+    const parsePalette = (raw) => {
+      const list = String(raw || '').split(',').map((x) => x.trim()).filter((x) => /^#[0-9a-fA-F]{3,8}$/.test(x))
+      return list.length > 0 ? list : DEFAULT_TAB_GROUP_COLORS
+    }
+    let activePalette = DEFAULT_TAB_GROUP_COLORS
+    // Stable per-name index so 'index' mode does not shuffle between renders.
+    let paletteCursor = 0
+    const paletteIndexByName = new Map()
+    const tabGroupColor = (name, override) => {
+      if (typeof override === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(override)) return override
       const text = String(name || '')
+      if (paletteMode === 'index') {
+        if (!paletteIndexByName.has(text)) paletteIndexByName.set(text, paletteCursor++)
+        return activePalette[paletteIndexByName.get(text) % activePalette.length]
+      }
       let h = 0
       for (let i = 0; i < text.length; i += 1) h = (h * 31 + text.charCodeAt(i)) >>> 0
-      return TAB_GROUP_COLORS[h % TAB_GROUP_COLORS.length]
+      return activePalette[h % activePalette.length]
     }
 
     const iconOf = (mode, expanded) => {
@@ -6271,7 +6446,7 @@ window.__ModuleLoader__.load({
       }
     }
 
-    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
+    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, onStart, onAddGroup, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
       const total = countWorkspaces(node)
       const iconEl = iconOf(iconMode, expanded)
       // Hidden status dots breathe on the icon; with the icon hidden (mode
@@ -6312,6 +6487,27 @@ window.__ModuleLoader__.load({
           // A row that already carries a custom label glow breathes in sync.
           E('span', { className: cls('bw-folder-bubble-text', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
           total > 0 ? E('span', { className: 'bw-folder-bubble-count' }, String(total)) : null,
+        ),
+        // v0.35.0 HOVER ACTIONS FOR NAME GROUPS (user: 两种组都应该有添加会话/工作区的功能).
+        // A group row used to carry ONLY a context menu, so the only way to put
+        // something inside a group was to drag it in. A chain-compressed group
+        // (single child chain) cannot even be expanded to reveal an inner slot,
+        // which is why adding inside a parent was impossible.
+        E('span', { className: 'bw-row-actions' },
+          onStart ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': t('session.new'),
+            title: t('session.new'),
+            onClick: (e) => { e.stopPropagation(); onStart() },
+          }, icon('IconPlusOutlineRegular', 14)) : null,
+          onAddGroup ? E('button', {
+            type: 'button',
+            className: 'bw-icon-btn',
+            'aria-label': t('group.new'),
+            title: t('group.new'),
+            onClick: (e) => { e.stopPropagation(); onAddGroup() },
+          }, icon('IconFolderCloseRegular', 14)) : null,
         ),
       )
     }
@@ -6972,6 +7168,9 @@ window.__ModuleLoader__.load({
       const statusPulse = prefs.statusPulse !== false
       // v0.27.0: archived sessions are hidden by default; this reveals them.
       const showArchived = prefs.showArchived === true
+      // v0.35.0 group colour controls (see tabGroupColor for how the colour is chosen).
+      const groupColorMode = prefs.groupColorMode === 'index' ? 'index' : 'name'
+      const groupPalette = typeof prefs.groupPalette === 'string' ? prefs.groupPalette : ''
       // Default appearance: the base every row inherits unless it carries its
       // own per-row entry. The outline ships ON — text over a background image
       // is often unreadable without it.
@@ -7055,6 +7254,35 @@ window.__ModuleLoader__.load({
           }, E('span', { className: 'bw-switch-thumb' })),
         ),
         E('div', { className: 'bw-hint' }, t('settings.groupIcon.hint')),
+        // v0.35.0 GROUP COLOURS — the user asked how the colour is chosen, so the
+        // answer is also made adjustable here: switch the selection mode or paste
+        // your own palette.
+        E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.groupColor.mode')),
+          E('div', { className: 'bw-seg' },
+            E('button', {
+              type: 'button',
+              className: cls('bw-seg-btn', groupColorMode === 'name' && 'bw-seg-on'),
+              onClick: () => setPref('groupColorMode', 'name'),
+            }, t('settings.groupColor.modeName')),
+            E('button', {
+              type: 'button',
+              className: cls('bw-seg-btn', groupColorMode === 'index' && 'bw-seg-on'),
+              onClick: () => setPref('groupColorMode', 'index'),
+            }, t('settings.groupColor.modeIndex')),
+          ),
+        ),
+        E('div', { className: 'bw-setting-row', style: { marginTop: 8 } },
+          E('div', { className: 'bw-setting-label' }, t('settings.groupColor.palette')),
+        ),
+        E('input', {
+          className: 'bw-input',
+          value: groupPalette,
+          placeholder: DEFAULT_TAB_GROUP_COLORS.join(','),
+          onChange: (e) => setPref('groupPalette', e.target.value),
+        }),
+        E('div', { className: 'bw-hint' }, t('settings.groupColor.hint')),
+        E('div', { className: 'bw-hint' }, t('settings.groupColor.paletteHint')),
         E('div', { className: 'bw-setting-row', style: { marginTop: 10 } },
           E('div', { className: 'bw-setting-label' }, t('settings.statusPulse')),
           E('button', {
@@ -8076,6 +8304,11 @@ window.__ModuleLoader__.load({
       // v0.31.6: which group-chip shape to draw. 'bubble' fills the row,
       // 'mini' is a minimal chevron. Default bubble (the user's current pick).
       const groupChip = prefsMap.groupChip === 'mini' ? 'mini' : 'bubble'
+      // v0.35.0 group colour preferences (see tabGroupColor for the algorithm).
+      // Applied here because this is the first place prefs are in scope.
+      paletteMode = prefsMap.groupColorMode === 'index' ? 'index' : 'name'
+      activePalette = parsePalette(prefsMap.groupPalette)
+      paletteIndexByName.clear()
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
       // v0.26.0: subscribes to the host's archive audit so ghost rows disappear.
       useArchiveIds()
@@ -10345,6 +10578,35 @@ window.__ModuleLoader__.load({
           expanded,
           onToggle: () => { if (!searching) actions.setExpanded(idPath, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name, idPath }, e),
+          // v0.35.0 Add INSIDE a name group without dragging: pick any workspace
+          // under this group (or the group's only workspace when the chain is
+          // compressed) and start a session there. `node.path` is the group's
+          // name path, so the new session's title carries that prefix.
+          onStart: (() => {
+            if (searching) return undefined
+            const wsUnder = (items || []).filter((w) => {
+              const t = String(w.title || '')
+              return t.startsWith(node.path + '/') || t === node.path
+            })
+            if (wsUnder.length === 0) return undefined
+            return () => {
+              actions.setExpanded(idPath, true)
+              if (wsUnder.length === 1) { startSession(wsUnder[0].workspaceId); return }
+              setDialog({
+                kind: 'group-move',
+                target: null,
+                targets: wsUnder.map((w) => ({ value: 'wsstart:' + w.workspaceId, label: w.leaf || w.title })),
+                initial: '',
+              })
+            }
+          })(),
+          onAddGroup: (!searching && countWorkspaces(node) > 0) ? () => setDialog({
+            kind: 'group-move',
+            target: null,
+            targets: (items || []).filter((w) => String(w.title || '').startsWith(node.path + '/'))
+              .flatMap((w) => sessionsOf(w).map((s) => ({ value: 'sess:' + s.id, label: s.title }))),
+            initial: '',
+          }) : undefined,
           // `drag` is null whenever nothing is being dragged — the previous
           // version read `drag.over` unconditionally and threw
           // \`TypeError: Cannot read properties of null\`, which took the WHOLE
