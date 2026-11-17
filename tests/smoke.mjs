@@ -2049,3 +2049,38 @@ test('a pinned WORKSPACE hoists AND shows a marker (v0.36.1)', () => {
   assert.ok(text.includes('pinnedSessionIds'), 'session pins come from the host')
   assert.ok(text.includes("pinnedWorkspaceIds: []"), 'workspace pins are our own preference list')
 })
+
+test('both group-chip shapes are user-selectable, not code-only (v0.36.2)', () => {
+  const text = read('src/client.js')
+
+  // "两种都必须有" means the user can CHOOSE, not that the code happens to contain
+  // both render branches. Before this, 'bubble' vs 'mini' was fixed in source.
+  assert.ok(text.includes('bw-group-pill-bubble'), 'the bubble shape renders')
+  assert.ok(text.includes('bw-group-mini'), 'the mini shape renders')
+  assert.ok(text.includes("prefs.groupChip === 'mini' ? 'mini' : 'bubble'"), 'the shape is a preference')
+  assert.ok(text.includes("setPref('groupChip', 'bubble')"), 'the bubble is selectable in Settings')
+  assert.ok(text.includes("setPref('groupChip', 'mini')"), 'the mini is selectable in Settings')
+  assert.ok(text.includes('settings.groupChip.hint'), 'the choice explains the tradeoff')
+})
+
+test('the Settings page covers every knob this plugin ships (v0.36.2)', () => {
+  const text = read('src/client.js')
+  // The user's point: bws does far more than the shipped browser, so the knobs
+  // belong on the shell Settings page, not scattered through sidebar popups.
+  const KNOBS = [
+    'settings.appearance',      // per-row colour / glow / weight / shadow / outline
+    'settings.compactChains',   // single-child chain merging
+    'settings.statusPulse',     // status dot breathing
+    'settings.showArchived',    // reveal archived sessions
+    'settings.showHiddenGroups',// recover hidden session groups
+    'settings.groupIcon',       // group glyph style
+    'settings.groupChip',       // group pill shape
+    'settings.groupColor',      // palette / selection mode
+    'settings.hubAutoShow',     // interaction centre auto-pop
+    'settings.collapseLimit',   // how many sessions to show before "expand rest"
+    'settings.iconDiag',        // icon diagnostics
+  ]
+  for (const k of KNOBS) assert.ok(text.includes("'" + k), k + ' is on the Settings page')
+  // And the page really is inside the shell's Settings surface.
+  assert.ok(text.includes("slots.inject('settings.section'"), 'registered on settings.section (a list slot)')
+})

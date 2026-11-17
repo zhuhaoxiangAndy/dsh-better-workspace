@@ -126,7 +126,16 @@ if mismatched:
         pass  # 归属变化属正常使用，不计入 unexpected
 else:
     print('  OK   共有工作区的会话归属一致（%d 个）' % len(common_ids))
-cmp('归档集', before['archived'], after['archived'])
+# 归档是用户操作（右键 → 归档），新增归档是正常使用，只有「原有归档丢失」
+# 才是破坏。
+lost_arch = [x for x in before['archived'] if x not in set(after['archived'])]
+gained_arch = [x for x in after['archived'] if x not in set(before['archived'])]
+if lost_arch:
+    print('  FAIL 归档集丢失 %d 项: %s' % (len(lost_arch), [x[:12] for x in lost_arch[:5]]))
+    unexpected.append(('归档集', None))
+else:
+    print('  OK   归档集未丢失（%d -> %d）' % (len(before['archived']), len(after['archived'])))
+    if gained_arch: print('       用户新归档: %s' % [x[:12] for x in gained_arch])
 # 置顶是集合语义，顺序可能因 pin 操作变化；只要求不丢任何 id。
 # 置顶可由用户右键切换（bws 的 pin/unpin 只在点击时调用），所以单个会话进出
 # 置顶集是正常使用。失败判据是「置顶集被整体清空」—— 那才是破坏。
