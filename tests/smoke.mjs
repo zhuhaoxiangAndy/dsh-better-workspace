@@ -2142,3 +2142,28 @@ test('the hub button lives in the input row and never touches the pill dock (v0.
   assert.ok(pop.includes('bottom:calc(100%'), 'opens upward from the input row')
   assert.ok(pop.includes('width:min('), 'width is capped')
 })
+
+test('a pending group prefix only ever renames the NEW session, never a subagent (v0.39.2)', () => {
+  const text = read('src/client.js')
+
+  // Symptom the user hit: "新建会话失败：session/agent-busy: session ... is owned by
+  // subagent routing".
+  //
+  // Cause: when you start a session from a group's hover "+", bws records a pending
+  // group prefix and later renames the session to carry the prefix. The loop that
+  // applied it walked EVERY session in the workspace and renamed the first
+  // non-blank one — so in a workspace that also held a subagent child, it could
+  // pick that child, and the host refuses to rename a subagent-owned session.
+  const at = text.indexOf('const candidates = (ws.sessionIds || [])')
+  assert.ok(at > 0, 'the pending-prefix step now selects a candidate explicitly')
+  const block = text.slice(at, at + 900)
+
+  assert.ok(block.includes("origin !== 'subagent'"), 'subagent sessions are excluded')
+  assert.ok(block.includes('sort('), 'candidates are ordered')
+  assert.ok(block.includes('updatedAt'), 'the newest session wins')
+  assert.ok(block.includes('slice(0, 1)'), 'exactly one session is renamed')
+  assert.ok(block.includes('if (candidates.length === 0)'), 'an empty set waits for the next snapshot')
+
+  // And the old "walk everything, rename the first hit" shape must be gone.
+  assert.ok(!text.includes('for (const sid of (ws.sessionIds || [])) {'), 'the blanket loop is gone')
+})

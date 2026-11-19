@@ -8285,9 +8285,15 @@ window.__ModuleLoader__.load({
         // The panel OPENS ABOVE the composer as an overlay, so it cannot push or
         // cover the official pills (session stats / token usage / context usage)
         // that share this dock. Width is capped instead of filling the column.
-        (openFlag && count > 0) ? E("div", { className: "bw-hub-card bw-hub-pop", role: "group", "aria-label": t("hub.title") },
+        // v0.39.1 CLICKING MUST ALWAYS DO SOMETHING.
+        // `openFlag && count > 0` meant that with nothing pending, clicking the
+        // button changed state but rendered NOTHING — indistinguishable from a
+        // dead button. The panel now opens whenever the user asks for it and says
+        // "没有等待你的互动" when the queue is empty.
+        openFlag ? E("div", { className: "bw-hub-card bw-hub-pop", role: "group", "aria-label": t("hub.title") },
           E("div", { className: "bw-hub-strip" },
-            E("span", { className: "bw-hub-strip-label" }, t("hub.title") + " · " + String(count)),
+            E("span", { className: "bw-hub-strip-label" },
+              count > 0 ? t("hub.title") + " · " + String(count) : t("hub.title")),
             E("button", { type: "button", className: "bw-hub-close", onClick: collapse, "aria-label": t("close") }, "✕"),
           ),
           E("div", { className: "bw-hub-list" },
@@ -8951,19 +8957,35 @@ window.__ModuleLoader__.load({
           for (const [wsId, groupPath] of [...pend.entries()]) {
             const ws = (items || []).find((w) => w.workspaceId === wsId)
             if (!ws) { pend.delete(wsId); continue }
-            for (const sid of (ws.sessionIds || [])) {
-              const summary = list.byId[sid]
-              if (!summary) continue
-              if (summary.blank) continue
-              if (touched.has(sid)) { pend.delete(wsId); continue }
+            // v0.39.2 ONLY THE NEWEST SESSION.
+            //
+            // This loop used to walk EVERY session in the workspace and rename the
+            // first non-blank one. In a workspace that also held a subagent child,
+            // it could land on that child — and the host answers
+            // `session/agent-busy: session "…" is owned by subagent routing`,
+            // surfacing as "新建会话失败". The intent is only ever "the session I
+            // just created", so pick the most recently updated one and require it
+            // to be a plain session.
+            const candidates = (ws.sessionIds || [])
+              .map((sid) => ({ sid, summary: list.byId[sid] }))
+              .filter((x) => x.summary
+                && !x.summary.blank
+                && x.summary.origin !== 'subagent'
+                && !touched.has(x.sid)
+                && String(x.summary.title || '') !== '')
+              .sort((a, b) => (Number(b.summary.updatedAt) || 0) - (Number(a.summary.updatedAt) || 0))
+            if (candidates.length === 0) {
+              // Nothing eligible yet (title still on the wire): keep the pending
+              // prefix for the next snapshot instead of retrying another session.
+              continue
+            }
+            for (const { sid, summary } of candidates.slice(0, 1)) {
               const cur = String(summary.title || '')
-              if (cur === '') continue        // title still pending on the wire
               const leafSegs = splitTitleSegs(cur)
               const leaf = leafSegs.length > 0 ? leafSegs[leafSegs.length - 1] : cur
               const next = groupPath !== '' ? groupPath + '/' + leaf : leaf
               if (next !== cur) { try { renameForGrouping(sid, next) } catch { /* best effort */ } }
               pend.delete(wsId)
-              break
             }
           }
         }
